@@ -19,4 +19,9 @@ class Product extends Model
         'serial_number',
         'image',
     ];
+
+    public function reservations()
+    {
+        return $this->belongsToMany(Reservation::class);
+    }
 }

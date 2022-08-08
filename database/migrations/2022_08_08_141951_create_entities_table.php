@@ -15,6 +15,9 @@ class CreateEntitiesTable extends Migration
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->integer('phone_number');
             $table->timestamps();
         });
     }

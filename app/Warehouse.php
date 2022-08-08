@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Entity extends Model
+class Warehouse extends Model
 {
-    public function warehouses()
+    public function entity()
     {
-        return $this->hasMany(Warehouse::class);
+        return $this->belongsTo(Entity::class);
     }
 
     protected $fillable = [
-        'warehouse_id',
         'name',
+        'description',
         'address',
         'phone_number',
     ];

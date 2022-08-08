@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CostCenterSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(EntitySeeder::class);
+        $this->call(WarehouseSeeder::class);
     }
 }

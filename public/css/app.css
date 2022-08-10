@@ -53011,6 +53011,46 @@ a.text-muted:hover {
   border-color: #4b545c !important;
 }@charset "UTF-8";
 
+.text-blue {
+  color: #3490dc;
+}
+
+.text-indigo {
+  color: #6574cd;
+}
+
+.text-purple {
+  color: #9561e2;
+}
+
+.text-pink {
+  color: #f66d9b;
+}
+
+.text-red {
+  color: #e3342f;
+}
+
+.text-orange {
+  color: #f6993f;
+}
+
+.text-yellow {
+  color: #ffed4a;
+}
+
+.text-green {
+  color: #38c172;
+}
+
+.text-teal {
+  color: #4dc0b5;
+}
+
+.text-cyan {
+  color: #6cb2eb;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

@@ -14,9 +14,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    public function cost_center()
+    public function cost()
     {
-        return $this->belongsTo(Cost_Center::class);
+        return $this->belongsTo(Cost::class);
     }
 
 
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role_id','cost_center_id','name','phone_number', 'email', 'password',
+        'role_id','cost_id','name','phone_number', 'email', 'password',
     ];
 
     /**

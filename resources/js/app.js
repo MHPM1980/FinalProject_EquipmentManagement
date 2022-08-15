@@ -7,6 +7,22 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Form from 'vform'
+
+import {
+    Button,
+    HasError,
+    AlertError,
+    AlertErrors,
+    AlertSuccess
+} from 'vform/src/components/bootstrap5'
+
+window.Form=Form;
+Vue.component(Button.name, Button)
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+Vue.component(AlertErrors.name, AlertErrors)
+Vue.component(AlertSuccess.name, AlertSuccess)
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -19,7 +35,7 @@ let routes = [
     { path: '/profile',
         component: require('./components/Profile.vue').default },
     { path: '/users',
-        component: require('./components/Users.vue').default },
+        component: require('./components/Users/Users.vue').default },
 ]
 
 const router = new VueRouter({

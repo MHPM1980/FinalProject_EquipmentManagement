@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return Role::with(['users'])->orderBy('id','asc')->paginate(15);
     }
 
     /**

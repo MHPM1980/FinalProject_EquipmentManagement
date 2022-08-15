@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCostCentersTable extends Migration
+class CreateCostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCostCentersTable extends Migration
      */
     public function up()
     {
-        Schema::create('cost_centers', function (Blueprint $table) {
+        Schema::create('costs', function (Blueprint $table) {
             $table->id();
             $table->string('designation');
             $table->string('description');
@@ -28,6 +28,6 @@ class CreateCostCentersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cost_centers');
+        Schema::dropIfExists('costs');
     }
 }

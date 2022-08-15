@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cost_Center extends Model
+class Cost extends Model
 {
     public function users()
     {

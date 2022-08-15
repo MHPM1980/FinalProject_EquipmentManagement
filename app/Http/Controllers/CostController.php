@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Cost_Center;
+use App\Cost;
 use Illuminate\Http\Request;
 
-class CostCenterController extends Controller
+class CostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CostCenterController extends Controller
      */
     public function index()
     {
-        //
+        return Cost::with(['users'])->orderBy('id','asc')->paginate(15);
     }
 
     /**
@@ -41,10 +41,10 @@ class CostCenterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cost_Center  $cost_Center
+     * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function show(Cost_Center $cost_Center)
+    public function show(Cost $cost)
     {
         //
     }
@@ -52,10 +52,10 @@ class CostCenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cost_Center  $cost_Center
+     * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cost_Center $cost_Center)
+    public function edit(Cost $cost)
     {
         //
     }
@@ -64,10 +64,10 @@ class CostCenterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cost_Center  $cost_Center
+     * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cost_Center $cost_Center)
+    public function update(Request $request, Cost $cost)
     {
         //
     }
@@ -75,10 +75,10 @@ class CostCenterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cost_Center  $cost_Center
+     * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cost_Center $cost_Center)
+    public function destroy(Cost $cost)
     {
         //
     }

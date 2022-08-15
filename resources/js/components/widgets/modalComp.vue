@@ -9,20 +9,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create</button>
+                    <form-comp></form-comp>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-export default {
-    props:{
-        title: String
+    import FormComp from "../Users/widgets/formComp";
+    export default {
+        components: {
+            FormComp
+        },
+        props:{
+            title: String
+        }
     }
-}
 </script>

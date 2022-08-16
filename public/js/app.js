@@ -2040,32 +2040,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
+      var _this = this;
+
       this.$Progress.start();
-      this.form.post('api/users'); //costum Event to reload DOM
+      this.form.post('api/users').then(function () {
+        //costum Event to reload DOM
+        Fire.$emit('AfterCreate'); //Success toast
 
-      Fire.$emit('AfterCreate'); //Success toast
+        $('#addNew').modal('hide');
+        toast.fire({
+          icon: 'success',
+          title: 'User created successfully'
+        });
 
-      $('#addNew').modal('hide');
-      toast.fire({
-        icon: 'success',
-        title: 'User created successfully'
+        _this.$Progress.finish();
+      })["catch"](function () {
+        _this.$Progress.fail();
       });
-      this.$Progress.finish();
     },
     loadRoles: function loadRoles() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/roles/").then(function (_ref) {
         var data = _ref.data;
-        return _this.roles = data.data;
+        return _this2.roles = data.data;
       });
     },
     loadCosts: function loadCosts() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("api/costs/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this2.costs = data.data;
+        return _this3.costs = data.data;
       });
     }
   }

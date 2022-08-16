@@ -69,7 +69,9 @@ export default {
     },
     methods:{
         createUser(){
+            this.$Progress.start()
             this.form.post('api/users');
+            this.$Progress.finish()
         },
         loadRoles(){
             axios

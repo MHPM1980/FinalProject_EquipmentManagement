@@ -71,6 +71,9 @@ export default {
         createUser(){
             this.$Progress.start()
             this.form.post('api/users');
+            //costum Event to reload DOM
+            Fire.$emit('AfterCreate');
+            //Success toast
             $('#addNew').modal('hide');
             toast.fire({
                 icon: 'success',

@@ -28,6 +28,7 @@
         "admin-lte": "3.2",
         "moment": "^2.29.4",
         "vform": "^2.1.2",
+        "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.4"
     }
 }

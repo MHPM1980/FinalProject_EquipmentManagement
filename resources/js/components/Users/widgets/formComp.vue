@@ -69,7 +69,14 @@ export default {
     },
     methods:{
         createUser(){
+            this.$Progress.start()
             this.form.post('api/users');
+            $('#addNew').modal('hide');
+            toast.fire({
+                icon: 'success',
+                title: 'User created successfully'
+            })
+            this.$Progress.finish()
         },
         loadRoles(){
             axios

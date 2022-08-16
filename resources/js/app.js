@@ -7,9 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Form from 'vform'
 import moment from 'moment'
-
+// Vform implementation
+import Form from 'vform'
 import {
     Button,
     HasError,
@@ -25,11 +25,37 @@ Vue.component(AlertError.name, AlertError)
 Vue.component(AlertErrors.name, AlertErrors)
 Vue.component(AlertSuccess.name, AlertSuccess)
 
+//Vue
 import Vue from 'vue'
+//VueRouter implementation
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
+//Progress bar implementation
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '5px'
+})
+
+//Sweetalert2 implementation
+import Swal from 'sweetalert2'
+window.Swal=Swal
+const toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+window.toast=Swal
+
+//VueRoutes implementation
 let routes = [
     { path: '/dashboard',
         component: require('./components/Dashboard.vue').default},

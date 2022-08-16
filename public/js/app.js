@@ -75916,9 +75916,9 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
 /* harmony import */ var vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vform/src/components/bootstrap5 */ "./node_modules/vform/src/components/bootstrap5/index.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
@@ -75933,24 +75933,29 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+ // Vform implementation
 
 
 
-window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["default"];
+window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["default"];
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"]);
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"]);
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"]);
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"]);
-vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"]);
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"]); //Vue
+
+ //VueRouter implementation
 
 
-vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]); //Progress bar implementation
+
 
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_5___default.a, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
   height: '5px'
-});
+}); //VueRoutes implementation
+
 var routes = [{
   path: '/dashboard',
   component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")["default"]
@@ -75971,7 +75976,7 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.filter('upText', function (text) {
 }); // Format date to (16/08/2022)
 
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.filter('myDate', function (date) {
-  return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format('L');
+  return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('L');
 });
 /**
  * The following block of code may be used to automatically register your

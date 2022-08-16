@@ -1985,18 +1985,24 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.loadUsers();
+    var _this = this;
+
+    this.loadUsers(); //costum Event to reload DOM
+
+    Fire.$on('AfterCreate', function () {
+      _this.loadUsers();
+    });
   },
   components: {
     ModalComp: _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     loadUsers: function loadUsers() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/users/").then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data.data;
+        return _this2.users = data.data;
       });
     }
   }
@@ -2034,29 +2040,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
+      var _this = this;
+
       this.$Progress.start();
-      this.form.post('api/users');
-      $('#addNew').modal('hide');
-      toast.fire({
-        icon: 'success',
-        title: 'User created successfully'
+      this.form.post('api/users').then(function () {
+        //costum Event to reload DOM
+        Fire.$emit('AfterCreate'); //Success toast
+
+        $('#addNew').modal('hide');
+        toast.fire({
+          icon: 'success',
+          title: 'User created successfully'
+        });
+
+        _this.$Progress.finish();
+      })["catch"](function () {
+        _this.$Progress.fail();
       });
-      this.$Progress.finish();
     },
     loadRoles: function loadRoles() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/roles/").then(function (_ref) {
         var data = _ref.data;
-        return _this.roles = data.data;
+        return _this2.roles = data.data;
       });
     },
     loadCosts: function loadCosts() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("api/costs/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this2.costs = data.data;
+        return _this3.costs = data.data;
       });
     }
   }
@@ -80053,6 +80068,7 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.filter('upText', function (text) {
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.filter('myDate', function (date) {
   return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('L');
 });
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_3___default.a();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

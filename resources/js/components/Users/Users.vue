@@ -62,6 +62,10 @@
         },
         created(){
             this.loadUsers();
+            //costum Event to reload DOM
+            Fire.$on('AfterCreate',()=>{
+                this.loadUsers();
+            });
         },
         components: {
             ModalComp,

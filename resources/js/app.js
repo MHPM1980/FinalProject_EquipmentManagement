@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Form from 'vform'
+import moment from 'moment'
 
 import {
     Button,
@@ -46,6 +47,11 @@ const router = new VueRouter({
 //Uppercase the first letter, how to use -> ( text | upText )
 Vue.filter('upText',function (text){
     return text.charAt(0).toUpperCase()+text.slice(1);
+})
+
+// Format date to (16/08/2022)
+Vue.filter('myDate',function(date){
+    return moment(date).format('L');
 })
 
 /**

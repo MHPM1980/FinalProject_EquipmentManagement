@@ -54212,6 +54212,10 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
   routes: routes
+}); //Uppercase the first letter, how to use -> ( text | upText )
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.filter('upText', function (text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 });
 /**
  * The following block of code may be used to automatically register your

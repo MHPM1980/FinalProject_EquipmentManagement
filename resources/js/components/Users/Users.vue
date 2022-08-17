@@ -47,16 +47,20 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Create User"></modal-comp>
+        <modal-comp title="Create User" >
+            <form-comp ></form-comp>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formComp from "./widgets/formComp";
     export default {
         data(){
             return{
+
                 users: {},
             }
         },
@@ -69,6 +73,7 @@
         },
         components: {
             ModalComp,
+            formComp,
         },
         methods:{
             loadUsers(){

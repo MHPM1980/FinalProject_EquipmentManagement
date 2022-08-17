@@ -47,13 +47,16 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Armazém"></modal-comp>
+        <modal-comp title="Criar Armazém">
+            <form-comp-warehouses></form-comp-warehouses>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formCompWarehouses from "./widgets/formCompWarehouses";
     export default {
         data(){
             return{
@@ -69,6 +72,7 @@
         },
         components: {
             ModalComp,
+            formCompWarehouses
         },
         methods:{
             loadWarehouses(){

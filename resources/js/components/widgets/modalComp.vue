@@ -9,17 +9,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form-comp></form-comp>
+                    <slot>
+
+                    </slot>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-    import FormComp from "../Users/widgets/formComp";
     export default {
         components: {
-            FormComp
+
         },
         props:{
             title: String

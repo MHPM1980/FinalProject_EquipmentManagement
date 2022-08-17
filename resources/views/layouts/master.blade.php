@@ -106,6 +106,12 @@
                                 </router-link>
                             </li>
                             <li class="nav-item">
+                                <router-link to="/roles" class="nav-link">
+                                    <i class="fas fa-solid fa-lock nav-icon"></i>
+                                    <p>Permissões Utilizador</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
                                 <router-link to="/categories" class="nav-link">
                                     <i class="fas fa-solid fa-gears nav-icon"></i>
                                     <p>Categorias Equipamento</p>

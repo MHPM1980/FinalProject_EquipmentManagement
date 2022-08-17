@@ -2186,6 +2186,22 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         _this.$Progress.fail();
       });
+    },
+    loadRoles: function loadRoles() {
+      var _this2 = this;
+
+      axios.get("api/roles/").then(function (_ref) {
+        var data = _ref.data;
+        return _this2.roles = data.data;
+      });
+    },
+    loadCosts: function loadCosts() {
+      var _this3 = this;
+
+      axios.get("api/costs/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this3.costs = data.data;
+      });
     }
   }
 });
@@ -2875,7 +2891,7 @@ var render = function render() {
         _vm.$set(_vm.form, "role_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.users.role, function (role) {
+  }, _vm._l(_vm.roles, function (role) {
     return _c("option", {
       attrs: {
         name: "role_id"
@@ -2917,7 +2933,7 @@ var render = function render() {
         _vm.$set(_vm.form, "cost_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.users.cost, function (cost) {
+  }, _vm._l(_vm.costs, function (cost) {
     return _c("option", {
       attrs: {
         name: "cost_id"
@@ -81362,8 +81378,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

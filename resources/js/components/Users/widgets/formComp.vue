@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="createUser">
         <div class="form-group">
-            <input v-model="form.name" type="text" name="name" placeholder="Name"
+            <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
             <has-error :form="form" field="name"></has-error>
         </div>
@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group">
-            <input v-model="form.phone_number" type="text" name="phone_number" placeholder="Phone Number"
+            <input v-model="form.phone_number" type="text" name="phone_number" placeholder="Contacto"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
             <has-error :form="form" field="phone_number"></has-error>
         </div>
@@ -40,8 +40,8 @@
             <has-error :form="form" field="password"></has-error>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Criar</button>
         </div>
     </form>
 </template>

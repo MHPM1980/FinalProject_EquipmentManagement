@@ -4,10 +4,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Users Managment</h3>
+                        <h3 class="card-title">Gestão de Utilizadores</h3>
                         <div class="card-tools">
                             <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
-                                Add New <i class="fa-solid fa-user-plus"></i></button>
+                                Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>
 
@@ -16,11 +16,11 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Nome</th>
                                 <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Role</th>
-                                <th>Cost Center</th>
+                                <th>Contacto</th>
+                                <th>Permissão</th>
+                                <th>Centro Custo</th>
                                 <th>Tools</th>
                             </tr>
                             </thead>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Create User" >
+        <modal-comp title="Criar Utilizador" >
             <form-comp ></form-comp>
         </modal-comp>
     </div>

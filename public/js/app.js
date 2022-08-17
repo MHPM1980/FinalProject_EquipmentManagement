@@ -3045,7 +3045,7 @@ var render = function render() {
     }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _vm._m(2, true)]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
-      title: "Create User"
+      title: "Criar Utilizador"
     }
   }, [_c("form-comp")], 1)], 1);
 };
@@ -3058,7 +3058,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
-  }, [_vm._v("Users Managment")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Gestão de Utilizadores")]), _vm._v(" "), _c("div", {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
@@ -3066,14 +3066,14 @@ var staticRenderFns = [function () {
       "data-toggle": "modal",
       "data-target": "#addNew"
     }
-  }, [_vm._v("\n                            Add New "), _c("i", {
+  }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-user-plus"
   })])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Phone Number")]), _vm._v(" "), _c("th", [_vm._v("Role")]), _vm._v(" "), _c("th", [_vm._v("Cost Center")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -3135,7 +3135,7 @@ var render = function render() {
     attrs: {
       type: "text",
       name: "name",
-      placeholder: "Name"
+      placeholder: "Nome"
     },
     domProps: {
       value: _vm.form.name
@@ -3201,7 +3201,7 @@ var render = function render() {
     attrs: {
       type: "text",
       name: "phone_number",
-      placeholder: "Phone Number"
+      placeholder: "Contacto"
     },
     domProps: {
       value: _vm.form.phone_number
@@ -3350,12 +3350,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 

@@ -17,15 +17,6 @@ class RoleController extends Controller
         return Role::with(['users'])->orderBy('id','asc')->paginate(15);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+        ]);
+
+        try{
+            return Role::create([
+                'name' => $request['name'],
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

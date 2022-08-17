@@ -45,13 +45,16 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Permissão"></modal-comp>
+        <modal-comp title="Criar Permissão">
+            <form-comp-roles></form-comp-roles>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formCompRoles from "./widgets/formCompRoles";
     export default {
         data(){
             return{
@@ -67,6 +70,7 @@
         },
         components: {
             ModalComp,
+            formCompRoles
         },
         methods:{
             loadRoles(){

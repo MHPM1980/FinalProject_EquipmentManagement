@@ -7,7 +7,7 @@
                         <h3 class="card-title">Gestão de Entidades</h3>
                         <div class="card-tools">
                             <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
-                                Add New <i class="fa-solid fa-building"></i></button>
+                                Novo <i class="fa-solid fa-building"></i></button>
                         </div>
                     </div>
 
@@ -19,7 +19,7 @@
                                 <th>Nome</th>
                                 <th>Morada</th>
                                 <th>Telefone</th>
-                                <th>Armazéns</th>
+                                <th>Armazens</th>
                                 <th>Tools</th>
                             </tr>
                             </thead>
@@ -49,13 +49,16 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Entidade"></modal-comp>
+        <modal-comp title="Criar Entidade">
+            <form-comp-entities></form-comp-entities>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formCompEntities from "./widgets/formCompEntities.vue";
     export default {
         data(){
             return{
@@ -71,6 +74,7 @@
         },
         components: {
             ModalComp,
+            formCompEntities
         },
         methods:{
             loadEntities(){

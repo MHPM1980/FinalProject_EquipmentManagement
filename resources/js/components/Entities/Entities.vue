@@ -29,7 +29,9 @@
                                 <td>{{ entity.name }}</td>
                                 <td>{{ entity.address }}</td>
                                 <td>{{ entity.phone_number }}</td>
-                                <td>{{ entity.warehouse.name }}</td>
+                                <td v-for="waresouses in entity.warehouses">
+                                        {{ waresouses.name }}
+                                </td>
                                 <td>
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
@@ -56,7 +58,6 @@
         data(){
             return{
                 entities: {},
-                warehouses: {},
             }
         },
         created(){
@@ -74,11 +75,6 @@
                 axios
                     .get("api/entities/")
                     .then(({ data }) => (this.entities = data.data));
-            },
-            loadWarehouses(){
-                axios
-                    .get("api/warehouses/")
-                    .then(({ data }) => (this.warehouses = data.data));
             },
         }
     }

@@ -1947,8 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      entities: {},
-      warehouses: {}
+      entities: {}
     };
   },
   created: function created() {
@@ -1970,14 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("api/entities/").then(function (_ref) {
         var data = _ref.data;
         return _this2.entities = data.data;
-      });
-    },
-    loadWarehouses: function loadWarehouses() {
-      var _this3 = this;
-
-      axios.get("api/warehouses/").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this3.warehouses = data.data;
       });
     }
   }
@@ -2108,22 +2099,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.$Progress.finish();
       })["catch"](function () {
         _this.$Progress.fail();
-      });
-    },
-    loadRoles: function loadRoles() {
-      var _this2 = this;
-
-      axios.get("api/roles/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.roles = data.data;
-      });
-    },
-    loadCosts: function loadCosts() {
-      var _this3 = this;
-
-      axios.get("api/costs/").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this3.costs = data.data;
       });
     }
   }
@@ -2267,7 +2242,9 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.entities, function (entity) {
     return _c("tr", {
       key: entity.id
-    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.warehouse.name))]), _vm._v(" "), _vm._m(2, true)]);
+    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _vm._l(entity.warehouses, function (waresouses) {
+      return _c("td", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                            ")]);
+    }), _vm._v(" "), _vm._m(2, true)], 2);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Criar Entidade"
@@ -2638,7 +2615,7 @@ var render = function render() {
         _vm.$set(_vm.form, "role_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.roles, function (role) {
+  }, _vm._l(_vm.users.role, function (role) {
     return _c("option", {
       attrs: {
         name: "role_id"
@@ -2680,7 +2657,7 @@ var render = function render() {
         _vm.$set(_vm.form, "cost_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.costs, function (cost) {
+  }, _vm._l(_vm.users.cost, function (cost) {
     return _c("option", {
       attrs: {
         name: "cost_id"
@@ -80981,8 +80958,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

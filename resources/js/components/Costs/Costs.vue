@@ -47,13 +47,16 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Centro de Custo"></modal-comp>
+        <modal-comp title="Criar Centro de Custo">
+            <form-comp-costs></form-comp-costs>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formCompCosts from "./widgets/formCompCosts";
     export default {
         data(){
             return{
@@ -69,6 +72,7 @@
         },
         components: {
             ModalComp,
+            formCompCosts
         },
         methods:{
             loadCosts(){

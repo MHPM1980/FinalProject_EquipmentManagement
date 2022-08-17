@@ -1,0 +1,58 @@
+<template>
+    <form @submit.prevent="createCost">
+        <div class="form-group">
+            <input v-model="form.designation" type="text" name="designation" placeholder="Designação"
+                   class="form-control" :class="{ 'is-invalid': form.errors.has('designation') }">
+            <has-error :form="form" field="designation"></has-error>
+        </div>
+        <div class="form-group">
+            <input v-model="form.description" type="text" name="description" placeholder="Descrição"
+                   class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
+            <has-error :form="form" field="description"></has-error>
+        </div>
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Criar</button>
+        </div>
+    </form>
+</template>
+
+<script>
+
+export default {
+    data () {
+        return {
+
+            form: new Form({
+                designation: '',
+                description: ''
+            })
+        }
+    },
+    created(){
+
+    },
+    methods:{
+        createCost(){
+            this.$Progress.start()
+            this.form.post('api/costs')
+                .then(()=>{
+                    //costum Event to reload DOM
+                    Fire.$emit('AfterCreate');
+                    //Success toast
+                    $('#addNew').modal('hide');
+                    toast.fire({
+                        icon: 'success',
+                        title: 'Centro de Custo criado com sucesso'
+                    })
+                    this.$Progress.finish()
+                })
+                .catch(()=>{
+                    this.$Progress.fail()
+                })
+        },
+    }
+}
+</script>

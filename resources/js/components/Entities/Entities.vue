@@ -29,8 +29,10 @@
                                 <td>{{ entity.name }}</td>
                                 <td>{{ entity.address }}</td>
                                 <td>{{ entity.phone_number }}</td>
-                                <td v-for="waresouses in entity.warehouses">
+                                <td >
+                                    <p v-for="waresouses in entity.warehouses">
                                         {{ waresouses.name }}
+                                    </p>
                                 </td>
                                 <td>
                                     <a href="#">

@@ -2242,9 +2242,9 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.entities, function (entity) {
     return _c("tr", {
       key: entity.id
-    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _vm._l(entity.warehouses, function (waresouses) {
-      return _c("td", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                            ")]);
-    }), _vm._v(" "), _vm._m(2, true)], 2);
+    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
+      return _c("p", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                                ")]);
+    }), 0), _vm._v(" "), _vm._m(2, true)]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Criar Entidade"

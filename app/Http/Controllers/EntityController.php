@@ -14,17 +14,7 @@ class EntityController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Entity::with(['warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
     /**
@@ -35,7 +25,24 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'warehouse_id' =>'required|integer',
+            'name' => 'required|string|max:191',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer',
+        ]);
+
+        try{
+            return Entity::create([
+                'warehouse_id'=> $request['warehouse_id'],
+                'name' => $request['name'],
+                'address' => $request['address'],
+                'phone_number' => $request['phone_number']
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

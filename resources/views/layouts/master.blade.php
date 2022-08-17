@@ -79,10 +79,22 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link to="/equipments" class="nav-link">
+                            <i class="fas fa-solid fa-screwdriver-wrench nav-icon"></i>
+                            <p>Equipamentos</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/reservations" class="nav-link">
+                            <i class="fas fa-regular fa-calendar-check nav-icon"></i>
+                            <p>Reservas</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-cog"></i>
                             <p>
-                                Management
+                                Gestão
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -90,7 +102,31 @@
                             <li class="nav-item">
                                 <router-link to="/users" class="nav-link">
                                     <i class="fas fa-users nav-icon"></i>
-                                    <p>Users</p>
+                                    <p>Utilizadores</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/categories" class="nav-link">
+                                    <i class="fas fa-solid fa-gears nav-icon"></i>
+                                    <p>Categorias Equipamento</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/entities" class="nav-link">
+                                    <i class="fas fa-regular fa-building nav-icon"></i>
+                                    <p>Entidades</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/warehouses" class="nav-link">
+                                    <i class="fas fa-solid fa-warehouse nav-icon"></i>
+                                    <p>Armazéns</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/costs" class="nav-link">
+                                    <i class="fas fa-solid fa-euro-sign nav-icon"></i>
+                                    <p>Centro Custos</p>
                                 </router-link>
                             </li>
                         </ul>
@@ -99,7 +135,7 @@
                         <router-link to="/profile" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
-                                Profile
+                                Perfil
                             </p>
                         </router-link>
                     </li>
@@ -109,7 +145,7 @@
                                                      document.getElementById('logout-form').submit();">
                             <i class="nav-icon fas fa-power-off text-red"></i>
                             <p>
-                                {{ __('Logout') }}
+                                {{ __('Sair') }}
                             </p>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

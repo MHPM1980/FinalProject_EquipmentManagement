@@ -67,6 +67,8 @@ let routes = [
         component: require('./components/Entities/Entities.vue').default },
     { path: '/warehouses',
         component: require('./components/Warehouses/Warehouses.vue').default },
+    { path: '/costs',
+        component: require('./components/Costs/Costs.vue').default },
 ]
 
 const router = new VueRouter({

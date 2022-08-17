@@ -17,15 +17,6 @@ class CostController extends Controller
         return Cost::with(['users'])->orderBy('id','asc')->paginate(15);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,20 @@ class CostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'designation' => 'required|string|max:191',
+            'description' => 'required|string',
+        ]);
+
+        try{
+            return Cost::create([
+                'designation' => $request['designation'],
+                'description' => $request['description'],
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

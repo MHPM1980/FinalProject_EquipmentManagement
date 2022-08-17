@@ -12,6 +12,7 @@ class Warehouse extends Model
     }
 
     protected $fillable = [
+        'entity_id',
         'name',
         'description',
         'address',

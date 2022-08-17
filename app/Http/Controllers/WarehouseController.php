@@ -14,18 +14,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        //
+        return Warehouse::with(['entity'])->orderBy('id','asc')->paginate(15);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,26 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'description' => 'required|string|max:200',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer',
+            'entity_id' => 'required|integer',
+        ]);
+
+        try{
+            return Warehouse::create([
+                'name' => $request['name'],
+                'description' => $request['description'],
+                'address' => $request['address'],
+                'phone_number' => $request['phone_number'],
+                'entity_id' => $request['entity_id'],
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

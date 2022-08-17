@@ -63,6 +63,10 @@ let routes = [
         component: require('./components/Profile.vue').default },
     { path: '/users',
         component: require('./components/Users/Users.vue').default },
+    { path: '/entities',
+        component: require('./components/Entities/Entities.vue').default },
+    { path: '/warehouses',
+        component: require('./components/Warehouses/Warehouses.vue').default },
 ]
 
 const router = new VueRouter({

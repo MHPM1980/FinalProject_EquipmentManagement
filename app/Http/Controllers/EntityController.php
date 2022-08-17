@@ -14,7 +14,7 @@ class EntityController extends Controller
      */
     public function index()
     {
-        return Entity::with(['warehouse'])->orderBy('id','asc')->paginate(15);
+        return Entity::with(['warehouses'])->orderBy('id','asc')->paginate(15);
     }
 
     /**
@@ -26,7 +26,6 @@ class EntityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'warehouse_id' =>'required|integer',
             'name' => 'required|string|max:191',
             'address' => 'required|string',
             'phone_number' => 'required|integer',
@@ -34,7 +33,6 @@ class EntityController extends Controller
 
         try{
             return Entity::create([
-                'warehouse_id'=> $request['warehouse_id'],
                 'name' => $request['name'],
                 'address' => $request['address'],
                 'phone_number' => $request['phone_number']

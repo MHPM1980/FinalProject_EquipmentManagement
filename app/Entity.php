@@ -12,7 +12,6 @@ class Entity extends Model
     }
 
     protected $fillable = [
-        'warehouse_id',
         'name',
         'address',
         'phone_number',

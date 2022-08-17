@@ -23,3 +23,4 @@ Route::apiResource('entities','EntityController');
 Route::apiResource('warehouses','WarehouseController');
 Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
+Route::apiResource('categories','CategoryController');

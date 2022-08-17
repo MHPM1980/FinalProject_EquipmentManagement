@@ -40,13 +40,16 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Categoria"></modal-comp>
+        <modal-comp title="Criar Categoria">
+            <form-comp-categories></form-comp-categories>
+        </modal-comp>
     </div>
 
 </template>
 
 <script>
     import ModalComp from "../widgets/modalComp";
+    import formCompCategories from "./widgets/formCompCategories";
     export default {
         data(){
             return{
@@ -62,6 +65,7 @@
         },
         components: {
             ModalComp,
+            formCompCategories
         },
         methods:{
             loadCategories(){

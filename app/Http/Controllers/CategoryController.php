@@ -14,18 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::with(['products'])->orderBy('id','asc')->paginate(15);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'description' => 'required|string|max:200',
+        ]);
+
+        try{
+            return Category::create([
+                'name' => $request['name'],
+                'description' => $request['description'],
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

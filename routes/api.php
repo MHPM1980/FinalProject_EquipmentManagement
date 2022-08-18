@@ -24,3 +24,4 @@ Route::apiResource('warehouses','WarehouseController');
 Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
 Route::apiResource('categories','CategoryController');
+Route::apiResource('products','ProductController');

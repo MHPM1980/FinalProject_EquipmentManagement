@@ -11,13 +11,18 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
+
     protected $fillable = [
-        'category_id',
-        'warehouse_id',
+        'image',
         'name',
         'description',
         'serial_number',
-        'image',
+        'category_id',
+        'warehouse_id',
     ];
 
     public function reservations()

@@ -3772,12 +3772,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 

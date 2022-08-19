@@ -98,7 +98,6 @@ export default {
                 .then(({ data }) => (this.costs = data.data))
             ;
         },
-
     }
 }
 </script>

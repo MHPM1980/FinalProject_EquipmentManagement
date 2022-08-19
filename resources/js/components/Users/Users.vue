@@ -36,7 +36,7 @@
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" @click="deleteUser(user.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -60,8 +60,8 @@
     export default {
         data(){
             return{
-
                 users: {},
+                form: new Form({})
             }
         },
         created(){
@@ -81,6 +81,31 @@
                     .get("api/users/")
                     .then(({ data }) => (this.users = data.data));
             },
+            deleteUser(id){
+                Swal.fire({
+                    title: 'Confirmar',
+                    text: "A ação não pode ser revertida!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, apagar!'
+                }).then((result) => {
+                    if (result.isConfirmed){
+                        //Send request to the server
+                        this.form.delete('api/users/'+id).then(()=>{
+                            Swal.fire(
+                                'Apagado!',
+                                'O registo foi apagado.',
+                                'success'
+                            )
+                            Fire.$emit('AfterCreate');
+                        }).catch(()=>{
+                            swal("Failed!","There was something wrong.","warning");
+                        });
+                    }
+                })
+            }
         }
     }
 </script>

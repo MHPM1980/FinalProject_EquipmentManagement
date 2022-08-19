@@ -7,7 +7,7 @@
                         <h3 class="card-title">Gestão de Armazéns</h3>
                         <div class="card-tools">
                             <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
-                                Add New <i class="fa-solid fa-warehouse"></i></button>
+                                Novo <i class="fa-solid fa-warehouse"></i></button>
                         </div>
                     </div>
 

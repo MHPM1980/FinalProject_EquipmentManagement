@@ -2905,12 +2905,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 
@@ -3774,12 +3774,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 
@@ -4408,7 +4408,7 @@ var staticRenderFns = [function () {
       "data-toggle": "modal",
       "data-target": "#addNew"
     }
-  }, [_vm._v("\n                            Add New "), _c("i", {
+  }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-warehouse"
   })])])]);
 }, function () {
@@ -4650,12 +4650,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 
@@ -83551,8 +83551,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,7 +1,7 @@
 export const deleteMixin={
     data(){
         return {
-            link: ''
+            link: 'link'
         }
     },
     methods:{

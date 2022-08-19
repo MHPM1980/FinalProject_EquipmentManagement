@@ -2365,12 +2365,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompRoles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompRoles */ "./resources/js/components/Roles/widgets/formCompRoles.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      roles: {}
+      roles: {},
+      form: new Form({}),
+      link: 'roles'
     };
   },
   created: function created() {
@@ -2386,6 +2390,7 @@ __webpack_require__.r(__webpack_exports__);
     ModalComp: _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__["default"],
     formCompRoles: _widgets_formCompRoles__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   methods: {
     loadRoles: function loadRoles() {
       var _this2 = this;
@@ -3832,7 +3837,18 @@ var render = function render() {
       key: role.id
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _vm._m(2, true)]);
+    }), 0), _vm._v(" "), _c("td", [_vm._m(2, true), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(role.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Criar Permissão"
@@ -3868,19 +3884,13 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("td", [_c("a", {
+  return _c("a", {
     attrs: {
       href: "#"
     }
   }, [_c("i", {
     staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -83402,7 +83412,7 @@ __webpack_require__.r(__webpack_exports__);
 var deleteMixin = {
   data: function data() {
     return {
-      link: ''
+      link: 'link'
     };
   },
   methods: {

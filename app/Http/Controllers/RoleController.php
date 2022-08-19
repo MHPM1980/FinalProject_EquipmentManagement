@@ -80,8 +80,13 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        //Find user in DB
+        $role = Role::query()->findOrFail($id);
+        //Delete user in DB
+        $role->delete();
+
+        return ['message' => 'User Deleted'];
     }
 }

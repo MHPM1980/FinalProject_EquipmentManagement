@@ -34,7 +34,7 @@
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" @click="deleteItem(role.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -55,10 +55,14 @@
 <script>
     import ModalComp from "../widgets/modalComp";
     import formCompRoles from "./widgets/formCompRoles";
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
                 roles: {},
+                form: new Form({}),
+                link:'roles'
             }
         },
         created(){
@@ -72,6 +76,7 @@
             ModalComp,
             formCompRoles
         },
+        mixins:[deleteMixin],
         methods:{
             loadRoles(){
                 axios

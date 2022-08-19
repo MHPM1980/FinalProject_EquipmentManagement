@@ -41,15 +41,6 @@
             </select>
             <has-error :form="form" field="warehouse_id"></has-error>
         </div>
-
-
-
-        <div class="form-group">
-            <input v-model="form.phone_number" type="text" name="phone_number" placeholder="Contacto"
-                   class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
-            <has-error :form="form" field="phone_number"></has-error>
-        </div>
-
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
             <button type="submit" class="btn btn-primary">Criar</button>
@@ -63,6 +54,8 @@ export default {
     data () {
         return {
             products: {},
+            categories: {},
+            warehouses: {},
             form: new Form({
                 image:'',
                 name: '',
@@ -74,7 +67,8 @@ export default {
         }
     },
     created(){
-        this.loadProducts();
+        this.loadCategories();
+        this.loadWarehouses();
     },
     methods:{
         createProduct(){

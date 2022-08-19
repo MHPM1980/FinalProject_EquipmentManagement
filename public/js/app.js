@@ -2523,6 +2523,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     editForm: Object
@@ -2534,6 +2536,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       roles: {},
       costs: {},
+      link: 'users',
       form: new Form({
         name: '',
         role_id: '',
@@ -2544,47 +2547,26 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
   created: function created() {
     this.loadRoles();
     this.loadCosts();
   },
   methods: {
-    createUser: function createUser() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/users').then(function () {
-        //custom Event to reload DOM
-        Fire.$emit('AfterCreate'); //Clear form
-
-        _this.form.reset(); //Success toast
-
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'User created successfully'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    },
     loadRoles: function loadRoles() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("api/roles/").then(function (_ref) {
         var data = _ref.data;
-        return _this2.roles = data.data;
+        return _this.roles = data.data;
       });
     },
     loadCosts: function loadCosts() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.get("api/costs/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this3.costs = data.data;
+        return _this2.costs = data.data;
       });
     }
   }
@@ -83416,6 +83398,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_formCompWarehouses_vue_vue_type_template_id_a4369a72___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins/createMixin.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/mixins/createMixin.js ***!
+  \*******************************************************/
+/*! exports provided: createMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createMixin", function() { return createMixin; });
+var createMixin = {
+  data: function data() {
+    return {
+      link: 'link'
+    };
+  },
+  methods: {
+    createUser: function createUser() {
+      var _this = this;
+
+      this.$Progress.start();
+      this.form.post("api/".concat(this.link)).then(function () {
+        //custom Event to reload DOM
+        Fire.$emit('AfterCreate'); //Clear form
+
+        _this.form.reset(); //Success toast
+
+
+        $('#addNew').modal('hide');
+        toast.fire({
+          icon: 'success',
+          title: 'Registo criado com sucesso!'
+        });
+
+        _this.$Progress.finish();
+      })["catch"](function () {
+        _this.$Progress.fail();
+      });
+    }
+  }
+};
 
 /***/ }),
 

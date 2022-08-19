@@ -26,6 +26,7 @@
                                 <td>{{ category.id }}</td>
                                 <td>{{ category.name }}</td>
                                 <td>{{ category.description }}</td>
+                                <td>
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
                                     </a>

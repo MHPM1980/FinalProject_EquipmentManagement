@@ -2720,7 +2720,7 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.categories, function (category) {
     return _c("tr", {
       key: category.id
-    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _vm._m(2, true), _vm._v(" "), _vm._m(3, true)]);
+    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _vm._m(2, true)]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Criar Categoria"
@@ -2756,24 +2756,19 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("a", {
+  return _c("td", [_c("a", {
     attrs: {
       href: "#"
     }
   }, [_c("i", {
     staticClass: "fa fa-edit"
-  })]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("a", {
+  })]), _vm._v(" "), _c("a", {
     attrs: {
       href: "#"
     }
   }, [_c("i", {
     staticClass: "fa fa-trash text-red"
-  })]);
+  })])]);
 }];
 render._withStripped = true;
 

@@ -74,13 +74,15 @@ export default {
                 .then(()=>{
                     //costum Event to reload DOM
                     Fire.$emit('AfterCreate');
+                    this.form.reset();
                     //Success toast
                     $('#addNew').modal('hide');
                     toast.fire({
                         icon: 'success',
                         title: 'User created successfully'
                     })
-                    this.$Progress.finish()
+                    this.$Progress.finish();
+
                 })
                 .catch(()=>{
                     this.$Progress.fail()

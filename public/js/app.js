@@ -2486,6 +2486,9 @@ __webpack_require__.r(__webpack_exports__);
     formComp: _widgets_formComp__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      $('#addNew').modal('show');
+    },
     loadUsers: function loadUsers() {
       var _this2 = this;
 
@@ -2534,7 +2537,10 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start();
       this.form.post('api/users').then(function () {
         //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
+        Fire.$emit('AfterCreate');
+
+        _this.form.reset(); //Success toast
+
 
         $('#addNew').modal('hide');
         toast.fire({
@@ -3997,14 +4003,27 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h3", {
+    staticClass: "card-title"
+  }, [_vm._v("Gestão de Utilizadores")]), _vm._v(" "), _c("div", {
+    staticClass: "card-tools"
+  }, [_c("button", {
+    staticClass: "btn btn-success",
+    on: {
+      click: _vm.newModal
+    }
+  }, [_vm._v("\n                            Novo "), _c("i", {
+    staticClass: "fa-solid fa-user-plus"
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
     return _c("tr", {
       key: user.id
-    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_vm._m(2, true), _vm._v(" "), _c("a", {
+    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_vm._m(1, true), _vm._v(" "), _c("a", {
       attrs: {
         href: "#"
       },
@@ -4024,25 +4043,6 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "card-header"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Gestão de Utilizadores")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("button", {
-    staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
-    }
-  }, [_vm._v("\n                            Novo "), _c("i", {
-    staticClass: "fa-solid fa-user-plus"
-  })])])]);
-}, function () {
   var _vm = this,
       _c = _vm._self._c;
 

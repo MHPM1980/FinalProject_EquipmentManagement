@@ -49,6 +49,12 @@
 <script>
 
 export default {
+    props:{
+        editForm: Object
+    },
+    mounted() {
+        this.form=this.editForm;
+    },
     data () {
         return {
             roles: {},
@@ -72,8 +78,9 @@ export default {
             this.$Progress.start()
             this.form.post('api/users')
                 .then(()=>{
-                    //costum Event to reload DOM
+                    //custom Event to reload DOM
                     Fire.$emit('AfterCreate');
+                    //Clear form
                     this.form.reset();
                     //Success toast
                     $('#addNew').modal('hide');

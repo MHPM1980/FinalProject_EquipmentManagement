@@ -33,7 +33,7 @@
                                 <td>{{ user.role.name }}</td>
                                 <td>{{ user.cost.designation }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" @click="deleteItem(user.id)">
@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Utilizador" >
-            <form-comp ></form-comp >
+            <form-comp :edit-form="form"></form-comp >
         </modal-comp>
     </div>
 
@@ -63,7 +63,14 @@
         data(){
             return{
                 users: {},
-                form: new Form({}),
+                form: new Form({
+                    name: '',
+                    role_id: '',
+                    cost_id:'',
+                    phone_number: '',
+                    email: '',
+                    password: ''
+                }),
                 link:'users'
             }
         },
@@ -82,6 +89,10 @@
         methods:{
             newModal(){
                 $('#addNew').modal('show');
+            },
+            editModal(user){
+                $('#addNew').modal('show');
+                this.form.fill(user);
             },
             loadUsers(){
                 axios

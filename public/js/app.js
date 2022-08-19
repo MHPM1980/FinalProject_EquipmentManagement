@@ -2467,7 +2467,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: {},
-      form: new Form({}),
+      form: new Form({
+        name: '',
+        role_id: '',
+        cost_id: '',
+        phone_number: '',
+        email: '',
+        password: ''
+      }),
       link: 'users'
     };
   },
@@ -2488,6 +2495,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     newModal: function newModal() {
       $('#addNew').modal('show');
+    },
+    editModal: function editModal(user) {
+      $('#addNew').modal('show');
+      this.form.fill(user);
     },
     loadUsers: function loadUsers() {
       var _this2 = this;
@@ -2512,6 +2523,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+  },
   data: function data() {
     return {
       roles: {},
@@ -2536,8 +2553,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$Progress.start();
       this.form.post('api/users').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate');
+        //custom Event to reload DOM
+        Fire.$emit('AfterCreate'); //Clear form
 
         _this.form.reset(); //Success toast
 
@@ -2688,6 +2705,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
   components: {},
   props: {
     title: String
@@ -4023,7 +4043,18 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
     return _c("tr", {
       key: user.id
-    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_vm._m(1, true), _vm._v(" "), _c("a", {
+    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(user);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
       attrs: {
         href: "#"
       },
@@ -4039,7 +4070,11 @@ var render = function render() {
     attrs: {
       title: "Criar Utilizador"
     }
-  }, [_c("form-comp")], 1)], 1);
+  }, [_c("form-comp", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)], 1);
 };
 
 var staticRenderFns = [function () {
@@ -4047,17 +4082,6 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]);
 }];
 render._withStripped = true;
 

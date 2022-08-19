@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
 
 export default {
     props:{
@@ -59,6 +60,7 @@ export default {
         return {
             roles: {},
             costs:{},
+            link:'users',
             form: new Form({
                 name: '',
                 role_id: '',
@@ -69,32 +71,12 @@ export default {
             })
         }
     },
+    mixins:[createMixin],
     created(){
         this.loadRoles();
         this.loadCosts();
     },
     methods:{
-        createUser(){
-            this.$Progress.start()
-            this.form.post('api/users')
-                .then(()=>{
-                    //custom Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Clear form
-                    this.form.reset();
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'User created successfully'
-                    })
-                    this.$Progress.finish();
-
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
         loadRoles(){
             axios
                 .get("api/roles/")

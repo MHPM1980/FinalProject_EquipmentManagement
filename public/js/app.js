@@ -2237,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      Products: {}
+      products: {}
     };
   },
   created: function created() {
@@ -2280,6 +2280,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: {},
+      categories: {},
+      warehouses: {},
       form: new Form({
         image: '',
         name: '',
@@ -2291,7 +2293,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.loadProducts();
+    this.loadCategories();
+    this.loadWarehouses();
   },
   methods: {
     createProduct: function createProduct() {
@@ -3723,39 +3726,6 @@ var render = function render() {
     attrs: {
       form: _vm.form,
       field: "warehouse_id"
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.phone_number,
-      expression: "form.phone_number"
-    }],
-    staticClass: "form-control",
-    "class": {
-      "is-invalid": _vm.form.errors.has("phone_number")
-    },
-    attrs: {
-      type: "text",
-      name: "phone_number",
-      placeholder: "Contacto"
-    },
-    domProps: {
-      value: _vm.form.phone_number
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "phone_number", $event.target.value);
-      }
-    }
-  }), _vm._v(" "), _c("has-error", {
-    attrs: {
-      form: _vm.form,
-      field: "phone_number"
     }
   })], 1), _vm._v(" "), _vm._m(0)]);
 };
@@ -82149,7 +82119,7 @@ var routes = [{
   path: '/categories',
   component: __webpack_require__(/*! ./components/Categories/Categories.vue */ "./resources/js/components/Categories/Categories.vue")["default"]
 }, {
-  path: '/products',
+  path: '/equipments',
   component: __webpack_require__(/*! ./components/Products/Products.vue */ "./resources/js/components/Products/Products.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
@@ -83496,8 +83466,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -4383,7 +4383,7 @@ var staticRenderFns = [function () {
       "data-toggle": "modal",
       "data-target": "#addNew"
     }
-  }, [_vm._v("\n                            Add New "), _c("i", {
+  }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-warehouse"
   })])])]);
 }, function () {
@@ -4625,12 +4625,12 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Create")])]);
+  }, [_vm._v("Criar")])]);
 }];
 render._withStripped = true;
 

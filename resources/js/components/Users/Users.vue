@@ -89,6 +89,7 @@
         methods:{
             newModal(){
                 $('#addNew').modal('show');
+                this.form.reset();
             },
             editModal(user){
                 $('#addNew').modal('show');

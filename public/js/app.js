@@ -2495,6 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     newModal: function newModal() {
       $('#addNew').modal('show');
+      this.form.reset();
     },
     editModal: function editModal(user) {
       $('#addNew').modal('show');

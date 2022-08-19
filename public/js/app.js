@@ -2454,15 +2454,19 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formComp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formComp */ "./resources/js/components/Users/widgets/formComp.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
-      form: new Form({})
+      form: new Form({}),
+      link: 'users'
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2483,29 +2487,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("api/users/").then(function (_ref) {
         var data = _ref.data;
         return _this2.users = data.data;
-      });
-    },
-    deleteUser: function deleteUser(id) {
-      var _this3 = this;
-
-      Swal.fire({
-        title: 'Confirmar',
-        text: "A ação não pode ser revertida!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim, apagar!'
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          //Send request to the server
-          _this3.form["delete"]('api/users/' + id).then(function () {
-            Swal.fire('Apagado!', 'O registo foi apagado.', 'success');
-            Fire.$emit('AfterCreate');
-          })["catch"](function () {
-            swal("Failed!", "There was something wrong.", "warning");
-          });
-        }
       });
     }
   }
@@ -4024,7 +4005,7 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          return _vm.deleteUser(user.id);
+          return _vm.deleteItem(user.id);
         }
       }
     }, [_c("i", {
@@ -83405,6 +83386,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_formCompWarehouses_vue_vue_type_template_id_a4369a72___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins/deleteMixin.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/mixins/deleteMixin.js ***!
+  \*******************************************************/
+/*! exports provided: deleteMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteMixin", function() { return deleteMixin; });
+var deleteMixin = {
+  data: function data() {
+    return {
+      link: ''
+    };
+  },
+  methods: {
+    deleteItem: function deleteItem(id) {
+      var _this = this;
+
+      Swal.fire({
+        title: 'Confirmar',
+        text: "A ação não pode ser revertida!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, apagar!'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          //Send request to the server
+          _this.form["delete"]("api/".concat(_this.link, "/") + id).then(function () {
+            Swal.fire('Apagado!', 'O registo foi apagado.', 'success');
+            Fire.$emit('AfterCreate');
+          })["catch"](function () {
+            Swal.fire("Failed!", "There was something wrong.", "warning");
+          });
+        }
+      });
+    }
+  }
+};
 
 /***/ }),
 

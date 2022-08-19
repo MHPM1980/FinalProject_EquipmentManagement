@@ -36,7 +36,7 @@
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#" @click="deleteUser(user.id)">
+                                    <a href="#" @click="deleteItem(user.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Utilizador" >
-            <form-comp ></form-comp>
+            <form-comp ></form-comp >
         </modal-comp>
     </div>
 
@@ -57,13 +57,17 @@
 <script>
     import ModalComp from "../widgets/modalComp";
     import formComp from "./widgets/formComp";
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
                 users: {},
-                form: new Form({})
+                form: new Form({}),
+                link:'users'
             }
         },
+        mixins:[deleteMixin],
         created(){
             this.loadUsers();
             //costum Event to reload DOM
@@ -81,31 +85,6 @@
                     .get("api/users/")
                     .then(({ data }) => (this.users = data.data));
             },
-            deleteUser(id){
-                Swal.fire({
-                    title: 'Confirmar',
-                    text: "A ação não pode ser revertida!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sim, apagar!'
-                }).then((result) => {
-                    if (result.isConfirmed){
-                        //Send request to the server
-                        this.form.delete('api/users/'+id).then(()=>{
-                            Swal.fire(
-                                'Apagado!',
-                                'O registo foi apagado.',
-                                'success'
-                            )
-                            Fire.$emit('AfterCreate');
-                        }).catch(()=>{
-                            swal("Failed!","There was something wrong.","warning");
-                        });
-                    }
-                })
-            }
         }
     }
 </script>

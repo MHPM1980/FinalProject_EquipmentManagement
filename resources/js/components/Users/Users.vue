@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Utilizadores</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <td>{{ user.role.name }}</td>
                                 <td>{{ user.cost.designation }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" @click="deleteItem(user.id)">
@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Utilizador" >
-            <form-comp ></form-comp >
+            <form-comp :edit-form="form"></form-comp >
         </modal-comp>
     </div>
 
@@ -63,7 +63,14 @@
         data(){
             return{
                 users: {},
-                form: new Form({}),
+                form: new Form({
+                    name: '',
+                    role_id: '',
+                    cost_id:'',
+                    phone_number: '',
+                    email: '',
+                    password: ''
+                }),
                 link:'users'
             }
         },
@@ -80,6 +87,14 @@
             formComp,
         },
         methods:{
+            newModal(){
+                $('#addNew').modal('show');
+                this.form.reset();
+            },
+            editModal(user){
+                $('#addNew').modal('show');
+                this.form.fill(user);
+            },
             loadUsers(){
                 axios
                     .get("api/users/")

@@ -1927,18 +1927,26 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompCategories__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompCategories */ "./resources/js/components/Categories/widgets/formCompCategories.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      categories: {}
+      categories: {},
+      form: new Form({
+        name: '',
+        description: ''
+      }),
+      link: 'categories'
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
-    this.loadCategories(); //costum Event to reload DOM
+    this.loadCategories(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadCategories();
@@ -1949,6 +1957,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompCategories: _widgets_formCompCategories__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(category) {
+      $('#addNew').modal('show');
+      this.form.fill(category);
+    },
     loadCategories: function loadCategories() {
       var _this2 = this;
 
@@ -1971,37 +1987,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+  },
   data: function data() {
     return {
+      link: 'categories',
       form: new Form({
         name: '',
         description: ''
       })
     };
   },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
   created: function created() {},
-  methods: {
-    createCategory: function createCategory() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/categories').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Categoria criada com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2482,7 +2488,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.loadUsers(); //costum Event to reload DOM
+    this.loadUsers(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadUsers();
@@ -2722,26 +2728,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.categories, function (category) {
-    return _c("tr", {
-      key: category.id
-    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _vm._m(2, true)]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
-    attrs: {
-      title: "Criar Categoria"
-    }
-  }, [_c("form-comp-categories")], 1)], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
@@ -2749,35 +2736,57 @@ var staticRenderFns = [function () {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
+    on: {
+      click: _vm.newModal
     }
   }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-gears"
-  })])])]);
-}, function () {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body table-responsive p-0"
+  }, [_c("table", {
+    staticClass: "table table-hover text-nowrap"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.categories, function (category) {
+    return _c("tr", {
+      key: category.id
+    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(category);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(category.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
+  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+    attrs: {
+      title: "Criar Categoria"
+    }
+  }, [_c("form-comp-categories", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)], 1);
+};
+
+var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
 }];
 render._withStripped = true;
 
@@ -2803,7 +2812,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createCategory.apply(null, arguments);
+        return _vm.createUser.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -83577,8 +83586,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

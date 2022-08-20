@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createCategory">
+    <form @submit.prevent="createUser">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -20,39 +20,31 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
 
 export default {
+    props:{
+        editForm: Object
+    },
+    mounted() {
+        this.form=this.editForm;
+    },
     data () {
         return {
-
+            link:'categories',
             form: new Form({
                 name: '',
                 description: '',
             })
         }
     },
+    mixins:[createMixin],
     created(){
 
     },
     methods:{
-        createCategory(){
-            this.$Progress.start()
-            this.form.post('api/categories')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Categoria criada com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
-    }
+
+    },
+
 }
 </script>

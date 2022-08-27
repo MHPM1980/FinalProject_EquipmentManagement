@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Centros de Custo</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-euro-sign"></i></button>
                         </div>
                     </div>
@@ -33,10 +33,10 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(cost)">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" @click="deleteItem(cost.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Centro de Custo">
-            <form-comp-costs></form-comp-costs>
+            <form-comp-costs :edit-form="form"></form-comp-costs>
         </modal-comp>
     </div>
 
@@ -57,15 +57,23 @@
 <script>
     import ModalComp from "../widgets/modalComp";
     import formCompCosts from "./widgets/formCompCosts";
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
                 costs: {},
+                form: new Form({
+                    designation: '',
+                    description: '',
+                }),
+                link:'cost'
             }
         },
+        mixins:[deleteMixin],
         created(){
             this.loadCosts();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadCosts();
             });
@@ -75,6 +83,14 @@
             formCompCosts
         },
         methods:{
+            newModal(){
+                $('#addNew').modal('show');
+                this.form.reset();
+            },
+            editModal(user){
+                $('#addNew').modal('show');
+                this.form.fill(cost);
+            },
             loadCosts(){
                 axios
                     .get("api/costs/")

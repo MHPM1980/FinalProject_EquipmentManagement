@@ -2023,18 +2023,26 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompCosts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompCosts */ "./resources/js/components/Costs/widgets/formCompCosts.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      costs: {}
+      costs: {},
+      form: new Form({
+        designation: '',
+        description: ''
+      }),
+      link: 'cost'
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
-    this.loadCosts(); //costum Event to reload DOM
+    this.loadCosts(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadCosts();
@@ -2045,6 +2053,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompCosts: _widgets_formCompCosts__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(user) {
+      $('#addNew').modal('show');
+      this.form.fill(cost);
+    },
     loadCosts: function loadCosts() {
       var _this2 = this;
 
@@ -2067,37 +2083,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+  },
   data: function data() {
     return {
+      link: 'cost',
       form: new Form({
         designation: '',
         description: ''
       })
     };
   },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
   created: function created() {},
-  methods: {
-    createCost: function createCost() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/costs').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Centro de Custo criado com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2931,28 +2937,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.costs, function (cost) {
-    return _c("tr", {
-      key: cost.id
-    }, [_c("td", [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", _vm._l(cost.users, function (users) {
-      return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _vm._m(2, true)]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
-    attrs: {
-      title: "Criar Centro de Custo"
-    }
-  }, [_c("form-comp-costs")], 1)], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
@@ -2960,35 +2945,59 @@ var staticRenderFns = [function () {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
+    on: {
+      click: _vm.newModal
     }
   }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-euro-sign"
-  })])])]);
-}, function () {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body table-responsive p-0"
+  }, [_c("table", {
+    staticClass: "table table-hover text-nowrap"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.costs, function (cost) {
+    return _c("tr", {
+      key: cost.id
+    }, [_c("td", [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", _vm._l(cost.users, function (users) {
+      return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
+    }), 0), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(cost);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(cost.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
+  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+    attrs: {
+      title: "Criar Centro de Custo"
+    }
+  }, [_c("form-comp-costs", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)], 1);
+};
+
+var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Designação")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
 }];
 render._withStripped = true;
 

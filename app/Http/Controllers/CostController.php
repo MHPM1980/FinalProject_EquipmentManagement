@@ -50,19 +50,13 @@ class CostController extends Controller
      */
     public function show(Cost $cost)
     {
-        //
+        try {
+            return response()->json($cost->load(),200);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Cost  $cost
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cost $cost)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -73,7 +67,12 @@ class CostController extends Controller
      */
     public function update(Request $request, Cost $cost)
     {
-        //
+        try {
+            $cost->update($request->all());
+            return response()->json($cost->load(),201);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
     /**
@@ -84,6 +83,11 @@ class CostController extends Controller
      */
     public function destroy(Cost $cost)
     {
-        //
+        //Find cost in DB
+        $cost = Cost::query()->findOrFail($id);
+        //Delete cost in DB
+        $cost->delete();
+
+        return ['message' => 'User Deleted'];
     }
 }

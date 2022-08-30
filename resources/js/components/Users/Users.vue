@@ -63,6 +63,7 @@
         data(){
             return{
                 users: {},
+                editmode: false,
                 form: new Form({
                     name: '',
                     role_id: '',
@@ -77,7 +78,7 @@
         mixins:[deleteMixin],
         created(){
             this.loadUsers();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadUsers();
             });
@@ -88,10 +89,12 @@
         },
         methods:{
             newModal(){
+                this.editmode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
             editModal(user){
+                this.editmode=true;
                 $('#addNew').modal('show');
                 this.form.fill(user);
             },

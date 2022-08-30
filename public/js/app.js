@@ -2534,6 +2534,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      editmode: true,
       roles: {},
       costs: {},
       link: 'users',
@@ -4090,7 +4091,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createUser.apply(null, arguments);
+        _vm.editmode ? _vm.updateUser : _vm.createUser;
       }
     }
   }, [_c("div", {

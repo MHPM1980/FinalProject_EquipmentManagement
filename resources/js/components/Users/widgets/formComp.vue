@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createUser">
+    <form @submit.prevent="editmodez ? updateUser() : createUser()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -48,19 +48,23 @@
 
 <script>
 import {createMixin} from "../../mixins/createMixin";
+import {updateMixin} from "../../mixins/updateMixin";
 
 export default {
     props:{
-        editForm: Object
+        editForm: Object,
+        editmode: Boolean,
     },
     mounted() {
         this.form=this.editForm;
+        this.editmodez=this.editmode;
     },
     data () {
         return {
             roles: {},
             costs:{},
             link:'users',
+            editmodez:false,
             form: new Form({
                 name: '',
                 role_id: '',
@@ -71,7 +75,7 @@ export default {
             })
         }
     },
-    mixins:[createMixin],
+    mixins:[createMixin,updateMixin],
     created(){
         this.loadRoles();
         this.loadCosts();

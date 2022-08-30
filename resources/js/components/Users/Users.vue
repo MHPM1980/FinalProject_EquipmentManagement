@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Utilizador" >
-            <form-comp :edit-form="form"></form-comp >
+            <form-comp :edit-form="form" :edit-mode="mode" ></form-comp >
         </modal-comp>
     </div>
 
@@ -63,7 +63,6 @@
         data(){
             return{
                 users: {},
-                editmode: false,
                 form: new Form({
                     name: '',
                     role_id: '',
@@ -72,7 +71,8 @@
                     email: '',
                     password: ''
                 }),
-                link:'users'
+                link:'users',
+                mode: false
             }
         },
         mixins:[deleteMixin],
@@ -89,12 +89,12 @@
         },
         methods:{
             newModal(){
-                this.editmode=false;
+                this.editMode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
             editModal(user){
-                this.editmode=true;
+                this.editMode=true;
                 $('#addNew').modal('show');
                 this.form.fill(user);
             },

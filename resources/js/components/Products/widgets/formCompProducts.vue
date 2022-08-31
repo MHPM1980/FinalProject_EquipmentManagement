@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createProduct">
+    <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
             <input v-model="form.image" type="text" name="image" placeholder="Imagem"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('image') }">
@@ -49,10 +49,22 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
+import {updateMixin} from "../../mixins/updateMixin";
 
 export default {
+    props:{
+        editForm: Object,
+        editMode: Boolean,
+    },
+    mounted() {
+        this.form=this.editForm;
+        this.mode=this.editMode;
+    },
     data () {
         return {
+            link:'products',
+            mode:this.mode,
             products: {},
             categories: {},
             warehouses: {},
@@ -70,25 +82,15 @@ export default {
         this.loadCategories();
         this.loadWarehouses();
     },
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
+    },
+    mixins:[createMixin, updateMixin],
     methods:{
-        createProduct(){
-            this.$Progress.start()
-            this.form.post('api/products')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Equipamento criado com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
+
         loadCategories(){
             axios
                 .get("api/categories/")

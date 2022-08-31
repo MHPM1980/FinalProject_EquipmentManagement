@@ -90,8 +90,13 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        //Find cost in DB
+        $product = Product::query()->findOrFail($id);
+        //Delete cost in DB
+        $product->delete();
+
+        return ['message' => 'User Deleted'];
     }
 }

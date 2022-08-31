@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Equipamentos</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-screwdriver-wrench"></i></button>
                         </div>
                     </div>
@@ -44,10 +44,10 @@
                                 <td>{{ product.category.name }}</td>
                                 <td>{{ product.warehouse.name }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(product)">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" @click="deleteItem(product.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <modal-comp title="Criar Equipamento">
-            <form-comp-products></form-comp-products>
+            <form-comp-products :edit-form="form" :edit-mode="mode"></form-comp-products>
         </modal-comp>
     </div>
 
@@ -68,15 +68,28 @@
 <script>
     import ModalComp from "../widgets/modalComp";
     import formCompProducts from "./widgets/formCompProducts";
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
                 products: {},
+                form: new Form({
+                    image:'',
+                    name: '',
+                    description: '',
+                    serial_number:'',
+                    category_id: '',
+                    warehouse_id:'',
+                }),
+                link:'products',
+                mode: false,
             }
         },
+        mixins:[deleteMixin],
         created(){
             this.loadProducts();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadProducts();
             });
@@ -86,6 +99,16 @@
             formCompProducts
         },
         methods:{
+            newModal(){
+                this.mode=false;
+                $('#addNew').modal('show');
+                this.form.reset();
+            },
+            editModal(product){
+                this.mode=true;
+                $('#addNew').modal('show');
+                this.form.fill(product);
+            },
             loadProducts(){
                 axios
                     .get("api/products/")

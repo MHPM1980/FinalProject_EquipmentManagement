@@ -77,7 +77,7 @@
         mixins:[deleteMixin],
         created(){
             this.loadEntities();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadEntities();
             });

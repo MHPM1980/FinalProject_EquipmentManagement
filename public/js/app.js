@@ -2181,7 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.loadEntities(); //costum Event to reload DOM
+    this.loadEntities(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadEntities();
@@ -2287,18 +2287,31 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompProducts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompProducts */ "./resources/js/components/Products/widgets/formCompProducts.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: {}
+      products: {},
+      form: new Form({
+        image: '',
+        name: '',
+        description: '',
+        serial_number: '',
+        category_id: '',
+        warehouse_id: ''
+      }),
+      link: 'products',
+      mode: false
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
-    this.loadProducts(); //costum Event to reload DOM
+    this.loadProducts(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadProducts();
@@ -2309,6 +2322,16 @@ __webpack_require__.r(__webpack_exports__);
     formCompProducts: _widgets_formCompProducts__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      this.mode = false;
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(product) {
+      this.mode = true;
+      $('#addNew').modal('show');
+      this.form.fill(product);
+    },
     loadProducts: function loadProducts() {
       var _this2 = this;
 
@@ -2331,9 +2354,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object,
+    editMode: Boolean
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+    this.mode = this.editMode;
+  },
   data: function data() {
     return {
+      link: 'products',
+      mode: this.mode,
       products: {},
       categories: {},
       warehouses: {},
@@ -2351,40 +2388,28 @@ __webpack_require__.r(__webpack_exports__);
     this.loadCategories();
     this.loadWarehouses();
   },
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
+  },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
-    createProduct: function createProduct() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/products').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Equipamento criado com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    },
     loadCategories: function loadCategories() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("api/categories/").then(function (_ref) {
         var data = _ref.data;
-        return _this2.categories = data.data;
+        return _this.categories = data.data;
       });
     },
     loadWarehouses: function loadWarehouses() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.get("api/warehouses/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this3.warehouses = data.data;
+        return _this2.warehouses = data.data;
       });
     }
   }
@@ -3522,26 +3547,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.products, function (product) {
-    return _c("tr", {
-      key: product.id
-    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_vm._v("\n                                " + _vm._s(product.image) + "\n                            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _vm._m(2, true)]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
-    attrs: {
-      title: "Criar Equipamento"
-    }
-  }, [_c("form-comp-products")], 1)], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
@@ -3549,35 +3555,58 @@ var staticRenderFns = [function () {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
+    on: {
+      click: _vm.newModal
     }
   }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-screwdriver-wrench"
-  })])])]);
-}, function () {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body table-responsive p-0"
+  }, [_c("table", {
+    staticClass: "table table-hover text-nowrap"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.products, function (product) {
+    return _c("tr", {
+      key: product.id
+    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_vm._v("\n                                " + _vm._s(product.image) + "\n                            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(product);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(product.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
+  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+    attrs: {
+      title: "Criar Equipamento"
+    }
+  }, [_c("form-comp-products", {
+    attrs: {
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
+    }
+  })], 1)], 1);
+};
+
+var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
 }];
 render._withStripped = true;
 
@@ -3603,7 +3632,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createProduct.apply(null, arguments);
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {

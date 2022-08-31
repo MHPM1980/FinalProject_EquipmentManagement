@@ -48,58 +48,61 @@
             </div>
         </div>
         <modal-comp title="Criar Utilizador" >
-            <form-comp :edit-form="form"></form-comp >
+            <form-comp :edit-form="form" :edit-mode="mode" ></form-comp >
         </modal-comp>
     </div>
 
 </template>
 
 <script>
-    import ModalComp from "../widgets/modalComp";
-    import formComp from "./widgets/formComp";
-    import {deleteMixin} from "../mixins/deleteMixin";
+import ModalComp from "../widgets/modalComp";
+import formComp from "./widgets/formComp";
+import {deleteMixin} from "../mixins/deleteMixin";
 
-    export default {
-        data(){
-            return{
-                users: {},
-                form: new Form({
-                    name: '',
-                    role_id: '',
-                    cost_id:'',
-                    phone_number: '',
-                    email: '',
-                    password: ''
-                }),
-                link:'users'
-            }
-        },
-        mixins:[deleteMixin],
-        created(){
-            this.loadUsers();
-            //custom Event to reload DOM
-            Fire.$on('AfterCreate',()=>{
-                this.loadUsers();
-            });
-        },
-        components: {
-            ModalComp,
-            formComp,
-        },
-        methods:{
-            newModal(){
-                $('#addNew').modal('show');
-                this.form.reset();
-            },
-            editModal(user){
-                $('#addNew').modal('show');
-                this.form.fill(user);
-            },
-            loadUsers(){
-                axios
-                    .get("api/users/")
-                    .then(({ data }) => (this.users = data.data));
-            },
+export default {
+    data(){
+        return{
+            users: {},
+            form: new Form({
+                name: '',
+                role_id: '',
+                cost_id:'',
+                phone_number: '',
+                email: '',
+                password: ''
+            }),
+            link:'users',
+            mode: false,
         }
+    },
+    mixins:[deleteMixin],
+    created(){
+        this.loadUsers();
+        //custom Event to reload DOM
+        Fire.$on('AfterCreate',()=>{
+            this.loadUsers();
+        });
+    },
+    components: {
+        ModalComp,
+        formComp,
+    },
+    methods:{
+        newModal(){
+            this.mode=false;
+            $('#addNew').modal('show');
+            this.form.reset();
+        },
+        editModal(user){
+            this.mode=true;
+            $('#addNew').modal('show');
+            this.form.fill(user);
+        },
+        loadUsers(){
+            axios
+                .get("api/users/")
+                .then(({ data }) => (this.users = data.data));
+        },
     }
+}
 </script>

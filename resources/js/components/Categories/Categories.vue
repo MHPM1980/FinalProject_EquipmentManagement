@@ -42,7 +42,7 @@
             </div>
         </div>
         <modal-comp title="Criar Categoria">
-            <form-comp-categories :edit-form="form"></form-comp-categories>
+            <form-comp-categories :edit-form="form" :edit-mode="mode"></form-comp-categories>
         </modal-comp>
     </div>
 
@@ -61,7 +61,8 @@
                     name: '',
                     description: '',
                 }),
-                link:'categories'
+                link:'categories',
+                mode: false,
             }
         },
         mixins:[deleteMixin],
@@ -78,10 +79,12 @@
         },
         methods:{
             newModal(){
+                this.mode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
             editModal(category){
+                this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(category);
             },

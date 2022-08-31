@@ -5,7 +5,7 @@ export const updateMixin={
         }
     },
     methods:{
-        updateUser(){
+        updateData(){
             console.log('editing data')
         },
     }

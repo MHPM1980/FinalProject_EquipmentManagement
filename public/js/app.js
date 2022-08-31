@@ -1939,7 +1939,8 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         description: ''
       }),
-      link: 'categories'
+      link: 'categories',
+      mode: false
     };
   },
   mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
@@ -1958,10 +1959,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     newModal: function newModal() {
+      this.mode = false;
       $('#addNew').modal('show');
       this.form.reset();
     },
     editModal: function editModal(category) {
+      this.mode = true;
       $('#addNew').modal('show');
       this.form.fill(category);
     },
@@ -1988,24 +1991,35 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    editForm: Object
+    editForm: Object,
+    editMode: Boolean
   },
   mounted: function mounted() {
     this.form = this.editForm;
+    this.mode = this.editMode;
   },
   data: function data() {
     return {
       link: 'categories',
+      mode: this.mode,
       form: new Form({
         name: '',
         description: ''
       })
     };
   },
-  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]]
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
+  },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
 
 /***/ }),
@@ -2542,7 +2556,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
-/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2570,7 +2584,7 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_2__["updateMixin"]],
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   created: function created() {
     this.loadRoles();
     this.loadCosts();
@@ -2800,7 +2814,8 @@ var render = function render() {
     }
   }, [_c("form-comp-categories", {
     attrs: {
-      "edit-form": _vm.form
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
     }
   })], 1)], 1);
 };
@@ -2835,7 +2850,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createNew.apply(null, arguments);
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {
@@ -4129,7 +4144,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        _vm.mode ? _vm.updateUser() : _vm.createNew();
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {
@@ -83544,7 +83559,7 @@ var updateMixin = {
     return {};
   },
   methods: {
-    updateUser: function updateUser() {
+    updateData: function updateData() {
       console.log('editing data');
     }
   }
@@ -83639,8 +83654,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

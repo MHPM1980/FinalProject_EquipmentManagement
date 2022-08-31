@@ -48,7 +48,7 @@
             </div>
         </div>
         <modal-comp title="Criar Centro de Custo">
-            <form-comp-costs :edit-form="form"></form-comp-costs>
+            <form-comp-costs :edit-form="form" :edit-mode="mode"></form-comp-costs>
         </modal-comp>
     </div>
 
@@ -67,7 +67,8 @@
                     designation: '',
                     description: '',
                 }),
-                link:'cost'
+                link:'costs',
+                mode: false,
             }
         },
         mixins:[deleteMixin],
@@ -84,10 +85,12 @@
         },
         methods:{
             newModal(){
+                this.mode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
-            editModal(user){
+            editModal(cost){
+                this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(cost);
             },

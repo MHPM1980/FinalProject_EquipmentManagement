@@ -67,12 +67,7 @@ class CostController extends Controller
      */
     public function update(Request $request, Cost $cost)
     {
-        try {
-            $cost->update($request->all());
-            return response()->json($cost->load(),201);
-        } catch (\Exception $exception) {
-            return response()->json(['error' => $exception], 500);
-        }
+        //
     }
 
     /**
@@ -81,7 +76,7 @@ class CostController extends Controller
      * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cost $cost)
+    public function destroy($id)
     {
         //Find cost in DB
         $cost = Cost::query()->findOrFail($id);

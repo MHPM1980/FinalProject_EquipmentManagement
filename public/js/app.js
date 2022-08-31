@@ -2047,7 +2047,8 @@ __webpack_require__.r(__webpack_exports__);
         designation: '',
         description: ''
       }),
-      link: 'cost'
+      link: 'costs',
+      mode: false
     };
   },
   mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
@@ -2066,10 +2067,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     newModal: function newModal() {
+      this.mode = false;
       $('#addNew').modal('show');
       this.form.reset();
     },
-    editModal: function editModal(user) {
+    editModal: function editModal(cost) {
+      this.mode = true;
       $('#addNew').modal('show');
       this.form.fill(cost);
     },
@@ -2096,26 +2099,35 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    editForm: Object
+    editForm: Object,
+    editMode: Boolean
   },
   mounted: function mounted() {
     this.form = this.editForm;
+    this.mode = this.editMode;
   },
   data: function data() {
     return {
-      link: 'cost',
+      link: 'costs',
+      mode: this.mode,
       form: new Form({
         designation: '',
         description: ''
       })
     };
   },
-  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
-  created: function created() {},
-  methods: {}
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
+  },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
 
 /***/ }),
@@ -3020,7 +3032,8 @@ var render = function render() {
     }
   }, [_c("form-comp-costs", {
     attrs: {
-      "edit-form": _vm.form
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
     }
   })], 1)], 1);
 };
@@ -3055,7 +3068,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createCost.apply(null, arguments);
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {

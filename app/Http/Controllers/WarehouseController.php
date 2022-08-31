@@ -59,16 +59,6 @@ class WarehouseController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Warehouse  $warehouse
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Warehouse $warehouse)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -88,8 +78,13 @@ class WarehouseController extends Controller
      * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Warehouse $warehouse)
+    public function destroy($id)
     {
-        //
+        //Find cost in DB
+        $warehouse = Warehouse::query()->findOrFail($id);
+        //Delete cost in DB
+        $warehouse->delete();
+
+        return ['message' => 'User Deleted'];
     }
 }

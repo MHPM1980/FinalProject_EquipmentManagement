@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createWarehouse">
+    <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -41,11 +41,23 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
+import {updateMixin} from "../../mixins/updateMixin";
 
 export default {
+    props:{
+        editForm: Object,
+        editMode: Boolean,
+    },
+    mounted() {
+        this.form=this.editForm;
+        this.mode=this.editMode;
+    },
     data () {
         return {
             entities: {},
+            link:'warehouses',
+            mode:this.mode,
             form: new Form({
                 name: '',
                 entity_id: '',
@@ -58,25 +70,14 @@ export default {
     created(){
         this.loadEntities();
     },
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
+    },
+    mixins:[createMixin, updateMixin],
     methods:{
-        createWarehouse(){
-            this.$Progress.start()
-            this.form.post('api/warehouses')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Armazém criado com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
         loadEntities(){
             axios
                 .get("api/entities/")

@@ -2464,7 +2464,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.loadRoles(); //costum Event to reload DOM
+    this.loadRoles(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadRoles();
@@ -2691,18 +2691,30 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompWarehouses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompWarehouses */ "./resources/js/components/Warehouses/widgets/formCompWarehouses.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      warehouses: {}
+      warehouses: {},
+      form: new Form({
+        name: '',
+        entity_id: '',
+        description: '',
+        address: '',
+        phone_number: ''
+      }),
+      link: 'warehouses',
+      mode: false
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
-    this.loadWarehouses(); //costum Event to reload DOM
+    this.loadWarehouses(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadWarehouses();
@@ -2713,6 +2725,16 @@ __webpack_require__.r(__webpack_exports__);
     formCompWarehouses: _widgets_formCompWarehouses__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      this.mode = false;
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(warehouse) {
+      this.mode = true;
+      $('#addNew').modal('show');
+      this.form.fill(warehouse);
+    },
     loadWarehouses: function loadWarehouses() {
       var _this2 = this;
 
@@ -2735,10 +2757,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object,
+    editMode: Boolean
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+    this.mode = this.editMode;
+  },
   data: function data() {
     return {
       entities: {},
+      link: 'warehouses',
+      mode: this.mode,
       form: new Form({
         name: '',
         entity_id: '',
@@ -2751,32 +2787,20 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.loadEntities();
   },
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
+  },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
-    createWarehouse: function createWarehouse() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/warehouses').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Armazém criado com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    },
     loadEntities: function loadEntities() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("api/entities/").then(function (_ref) {
         var data = _ref.data;
-        return _this2.entities = data.data;
+        return _this.entities = data.data;
       });
     }
   }
@@ -4481,26 +4505,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.warehouses, function (warehouse) {
-    return _c("tr", {
-      key: warehouse.id
-    }, [_c("td", [_vm._v(_vm._s(warehouse.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.entity.name))]), _vm._v(" "), _vm._m(2, true)]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
-    attrs: {
-      title: "Criar Armazém"
-    }
-  }, [_c("form-comp-warehouses")], 1)], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
@@ -4508,35 +4513,58 @@ var staticRenderFns = [function () {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
+    on: {
+      click: _vm.newModal
     }
   }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-warehouse"
-  })])])]);
-}, function () {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body table-responsive p-0"
+  }, [_c("table", {
+    staticClass: "table table-hover text-nowrap"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.warehouses, function (warehouse) {
+    return _c("tr", {
+      key: warehouse.id
+    }, [_c("td", [_vm._v(_vm._s(warehouse.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.entity.name))]), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(warehouse);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(warehouse.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
+  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+    attrs: {
+      title: "Criar Armazém"
+    }
+  }, [_c("form-comp-warehouses", {
+    attrs: {
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
+    }
+  })], 1)], 1);
+};
+
+var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Entidade")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
 }];
 render._withStripped = true;
 
@@ -4562,7 +4590,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createWarehouse.apply(null, arguments);
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {

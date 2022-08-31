@@ -72,7 +72,7 @@
         mixins:[deleteMixin],
         created(){
             this.loadRoles();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadRoles();
             });

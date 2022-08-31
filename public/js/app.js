@@ -2136,14 +2136,23 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompEntities_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompEntities.vue */ "./resources/js/components/Entities/widgets/formCompEntities.vue");
+/* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      entities: {}
+      entities: {},
+      form: new Form({
+        name: '',
+        address: '',
+        phone_number: ''
+      }),
+      link: 'entities'
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2158,6 +2167,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompEntities: _widgets_formCompEntities_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    newModal: function newModal() {
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(entity) {
+      $('#addNew').modal('show');
+      this.form.fill(entity);
+    },
     loadEntities: function loadEntities() {
       var _this2 = this;
 
@@ -2180,9 +2197,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+  },
   data: function data() {
     return {
+      link: 'entities',
       form: new Form({
         name: '',
         address: '',
@@ -2190,28 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  created: function created() {},
-  methods: {
-    createEntity: function createEntity() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/entities').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Entidade criada com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
-    }
-  }
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]]
 });
 
 /***/ }),
@@ -3183,28 +3188,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body table-responsive p-0"
-  }, [_c("table", {
-    staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.entities, function (entity) {
-    return _c("tr", {
-      key: entity.id
-    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
-      return _c("p", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _vm._m(2, true)]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
-    attrs: {
-      title: "Criar Entidade"
-    }
-  }, [_c("form-comp-entities")], 1)], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
@@ -3212,35 +3196,59 @@ var staticRenderFns = [function () {
     staticClass: "card-tools"
   }, [_c("button", {
     staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
+    on: {
+      click: _vm.newModal
     }
   }, [_vm._v("\n                            Novo "), _c("i", {
     staticClass: "fa-solid fa-building"
-  })])])]);
-}, function () {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body table-responsive p-0"
+  }, [_c("table", {
+    staticClass: "table table-hover text-nowrap"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.entities, function (entity) {
+    return _c("tr", {
+      key: entity.id
+    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
+      return _c("p", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                                ")]);
+    }), 0), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(entity);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(entity.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash text-red"
+    })])])]);
+  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+    attrs: {
+      title: "Criar Entidade"
+    }
+  }, [_c("form-comp-entities", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)], 1);
+};
+
+var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Armazens")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-trash text-red"
-  })])]);
 }];
 render._withStripped = true;
 
@@ -3266,7 +3274,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createEntity.apply(null, arguments);
+        return _vm.createNew.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -4108,7 +4116,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createUser.apply(null, arguments);
+        return _vm.createNew.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -83436,7 +83444,7 @@ var createMixin = {
     };
   },
   methods: {
-    createUser: function createUser() {
+    createNew: function createNew() {
       var _this = this;
 
       this.$Progress.start();
@@ -83595,8 +83603,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

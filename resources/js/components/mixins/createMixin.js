@@ -5,7 +5,7 @@ export const createMixin={
         }
     },
     methods:{
-        createUser(){
+        createNew(){
             this.$Progress.start()
             this.form.post(`api/${this.link}`)
                 .then(()=>{

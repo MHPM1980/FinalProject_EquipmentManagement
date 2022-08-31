@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createEntity">
+    <form @submit.prevent="createNew">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -26,10 +26,18 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
 
 export default {
+    props:{
+        editForm: Object
+    },
+    mounted() {
+        this.form=this.editForm;
+    },
     data () {
         return {
+            link:'entities',
             form: new Form({
                 name: '',
                 address: '',
@@ -37,28 +45,6 @@ export default {
             })
         }
     },
-    created(){
-
-    },
-    methods:{
-        createEntity(){
-            this.$Progress.start()
-            this.form.post('api/entities')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Entidade criada com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
-    }
+    mixins:[createMixin],
 }
 </script>

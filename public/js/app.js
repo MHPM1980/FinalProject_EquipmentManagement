@@ -2005,9 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
-  created: function created() {},
-  methods: {}
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]]
 });
 
 /***/ }),
@@ -2823,7 +2821,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createUser.apply(null, arguments);
+        return _vm.createNew.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -83603,8 +83601,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

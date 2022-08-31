@@ -83,8 +83,13 @@ class EntityController extends Controller
      * @param  \App\Entity  $entity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entity $entity)
+    public function destroy($id)
     {
-        //
+        //Find user in DB
+        $user = Entity::query()->findOrFail($id);
+        //Delete user in DB
+        $user->delete();
+
+        return ['message' => 'User Deleted'];
     }
 }

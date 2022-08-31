@@ -58,10 +58,13 @@
     import {deleteMixin} from "../mixins/deleteMixin";
 
     export default {
+
         data(){
             return{
                 roles: {},
-                form: new Form({}),
+                form: new Form({
+                    name: '',
+                }),
                 link:'roles',
                 mode: false,
             }

@@ -20,39 +20,30 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
 
 export default {
+    props:{
+        editForm: Object
+    },
+    mounted() {
+        this.form=this.editForm;
+    },
     data () {
         return {
-
+            link:'cost',
             form: new Form({
                 designation: '',
                 description: ''
             })
         }
     },
+    mixins:[createMixin],
     created(){
 
     },
     methods:{
-        createCost(){
-            this.$Progress.start()
-            this.form.post('api/costs')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Centro de Custo criado com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
+
     }
 }
 </script>

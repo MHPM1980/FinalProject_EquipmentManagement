@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Categorias Equipamentos</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-gears"></i></button>
                         </div>
                     </div>
@@ -27,10 +27,10 @@
                                 <td>{{ category.name }}</td>
                                 <td>{{ category.description }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(category)">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" @click="deleteItem(category.id)">
                                         <i class="fa fa-trash text-red"></i>
                                     </a>
                                 </td>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <modal-comp title="Criar Categoria">
-            <form-comp-categories></form-comp-categories>
+            <form-comp-categories :edit-form="form"></form-comp-categories>
         </modal-comp>
     </div>
 
@@ -51,15 +51,23 @@
 <script>
     import ModalComp from "../widgets/modalComp";
     import formCompCategories from "./widgets/formCompCategories";
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
                 categories: {},
+                form: new Form({
+                    name: '',
+                    description: '',
+                }),
+                link:'categories'
             }
         },
+        mixins:[deleteMixin],
         created(){
             this.loadCategories();
-            //costum Event to reload DOM
+            //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
                 this.loadCategories();
             });
@@ -69,6 +77,14 @@
             formCompCategories
         },
         methods:{
+            newModal(){
+                $('#addNew').modal('show');
+                this.form.reset();
+            },
+            editModal(category){
+                $('#addNew').modal('show');
+                this.form.fill(category);
+            },
             loadCategories(){
                 axios
                     .get("api/categories/")

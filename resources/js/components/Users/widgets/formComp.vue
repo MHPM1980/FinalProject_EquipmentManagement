@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="mode ? updateUser() : createUser()">
+    <form @submit.prevent="mode ? updateUser() : createNew()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">

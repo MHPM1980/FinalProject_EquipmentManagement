@@ -64,7 +64,7 @@ export default {
             roles: {},
             costs:{},
             link:'users',
-            mode:false,
+            mode:this.mode,
             form: new Form({
                 name: '',
                 role_id: '',
@@ -79,6 +79,12 @@ export default {
     created(){
         this.loadRoles();
         this.loadCosts();
+    },
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
     },
     methods:{
         loadRoles(){

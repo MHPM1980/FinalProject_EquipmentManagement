@@ -2475,14 +2475,15 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         password: ''
       }),
-      link: 'users'
+      link: 'users',
+      mode: false
     };
   },
   mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
-    this.loadUsers(); //costum Event to reload DOM
+    this.loadUsers(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
       _this.loadUsers();
@@ -2494,10 +2495,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     newModal: function newModal() {
+      this.mode = false;
       $('#addNew').modal('show');
       this.form.reset();
     },
     editModal: function editModal(user) {
+      this.mode = true;
       $('#addNew').modal('show');
       this.form.fill(user);
     },
@@ -2524,20 +2527,24 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    editForm: Object
+    editForm: Object,
+    editMode: Boolean
   },
   mounted: function mounted() {
     this.form = this.editForm;
+    this.mode = this.editMode;
   },
   data: function data() {
     return {
-      editmode: true,
       roles: {},
       costs: {},
       link: 'users',
+      mode: this.mode,
       form: new Form({
         name: '',
         role_id: '',
@@ -2548,10 +2555,16 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"]],
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   created: function created() {
     this.loadRoles();
     this.loadCosts();
+  },
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
   },
   methods: {
     loadRoles: function loadRoles() {
@@ -4056,7 +4069,8 @@ var render = function render() {
     }
   }, [_c("form-comp", {
     attrs: {
-      "edit-form": _vm.form
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
     }
   })], 1)], 1);
 };
@@ -4091,7 +4105,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        _vm.editmode ? _vm.updateUser : _vm.createUser;
+        _vm.mode ? _vm.updateUser() : _vm.createUser();
       }
     }
   }, [_c("div", {
@@ -83491,6 +83505,29 @@ var deleteMixin = {
 
 /***/ }),
 
+/***/ "./resources/js/components/mixins/updateMixin.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/mixins/updateMixin.js ***!
+  \*******************************************************/
+/*! exports provided: updateMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMixin", function() { return updateMixin; });
+var updateMixin = {
+  data: function data() {
+    return {};
+  },
+  methods: {
+    updateUser: function updateUser() {
+      console.log('editing data');
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/widgets/modalComp.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/widgets/modalComp.vue ***!
@@ -83578,8 +83615,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

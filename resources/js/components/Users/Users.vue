@@ -72,7 +72,7 @@
                     password: ''
                 }),
                 link:'users',
-                mode: false
+                mode: false,
             }
         },
         mixins:[deleteMixin],
@@ -89,12 +89,12 @@
         },
         methods:{
             newModal(){
-                this.editMode=false;
+                this.mode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
             editModal(user){
-                this.editMode=true;
+                this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(user);
             },

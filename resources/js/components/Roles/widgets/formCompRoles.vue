@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createRole">
+    <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -14,38 +14,33 @@
 </template>
 
 <script>
+import {createMixin} from "../../mixins/createMixin";
+import {updateMixin} from "../../mixins/updateMixin";
 
 export default {
+    props:{
+        editForm: Object,
+        editMode: Boolean,
+    },
+    mounted() {
+        this.form=this.editForm;
+        this.mode=this.editMode;
+    },
     data () {
         return {
-
+            link:'roles',
+            mode:this.mode,
             form: new Form({
                 name: '',
             })
         }
     },
-    created(){
-
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
     },
-    methods:{
-        createRole(){
-            this.$Progress.start()
-            this.form.post('api/roles')
-                .then(()=>{
-                    //costum Event to reload DOM
-                    Fire.$emit('AfterCreate');
-                    //Success toast
-                    $('#addNew').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Permissão criada com sucesso'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(()=>{
-                    this.$Progress.fail()
-                })
-        },
-    }
+    mixins:[createMixin, updateMixin],
 }
 </script>

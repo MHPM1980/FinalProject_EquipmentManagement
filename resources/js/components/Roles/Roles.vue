@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Permissões</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-euro-sign"></i></button>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editModal(role)">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" @click="deleteItem(role.id)">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <modal-comp title="Criar Permissão">
-            <form-comp-roles></form-comp-roles>
+            <form-comp-roles :edit-form="form" :edit-mode="mode"></form-comp-roles>
         </modal-comp>
     </div>
 
@@ -62,9 +62,11 @@
             return{
                 roles: {},
                 form: new Form({}),
-                link:'roles'
+                link:'roles',
+                mode: false,
             }
         },
+        mixins:[deleteMixin],
         created(){
             this.loadRoles();
             //costum Event to reload DOM
@@ -76,8 +78,17 @@
             ModalComp,
             formCompRoles
         },
-        mixins:[deleteMixin],
         methods:{
+            newModal(){
+                this.mode=false;
+                $('#addNew').modal('show');
+                this.form.reset();
+            },
+            editModal(role){
+                this.mode=true;
+                $('#addNew').modal('show');
+                this.form.fill(role);
+            },
             loadRoles(){
                 axios
                     .get("api/roles/")

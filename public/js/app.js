@@ -2454,9 +2454,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       roles: {},
       form: new Form({}),
-      link: 'roles'
+      link: 'roles',
+      mode: false
     };
   },
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2470,8 +2472,17 @@ __webpack_require__.r(__webpack_exports__);
     ModalComp: _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__["default"],
     formCompRoles: _widgets_formCompRoles__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
   methods: {
+    newModal: function newModal() {
+      this.mode = false;
+      $('#addNew').modal('show');
+      this.form.reset();
+    },
+    editModal: function editModal(role) {
+      this.mode = true;
+      $('#addNew').modal('show');
+      this.form.fill(role);
+    },
     loadRoles: function loadRoles() {
       var _this2 = this;
 
@@ -2494,36 +2505,35 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/createMixin */ "./resources/js/components/mixins/createMixin.js");
+/* harmony import */ var _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/updateMixin */ "./resources/js/components/mixins/updateMixin.js");
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object,
+    editMode: Boolean
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+    this.mode = this.editMode;
+  },
   data: function data() {
     return {
+      link: 'roles',
+      mode: this.mode,
       form: new Form({
         name: ''
       })
     };
   },
-  created: function created() {},
-  methods: {
-    createRole: function createRole() {
-      var _this = this;
-
-      this.$Progress.start();
-      this.form.post('api/roles').then(function () {
-        //costum Event to reload DOM
-        Fire.$emit('AfterCreate'); //Success toast
-
-        $('#addNew').modal('hide');
-        toast.fire({
-          icon: 'success',
-          title: 'Permissão criada com sucesso'
-        });
-
-        _this.$Progress.finish();
-      })["catch"](function () {
-        _this.$Progress.fail();
-      });
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
     }
-  }
+  },
+  mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
 
 /***/ }),
@@ -3942,16 +3952,40 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h3", {
+    staticClass: "card-title"
+  }, [_vm._v("Gestão de Permissões")]), _vm._v(" "), _c("div", {
+    staticClass: "card-tools"
+  }, [_c("button", {
+    staticClass: "btn btn-success",
+    on: {
+      click: _vm.newModal
+    }
+  }, [_vm._v("\n                            Novo "), _c("i", {
+    staticClass: "fa-solid fa-euro-sign"
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
     return _c("tr", {
       key: role.id
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_vm._m(2, true), _vm._v(" "), _c("a", {
+    }), 0), _vm._v(" "), _c("td", [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.editModal(role);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("a", {
       attrs: {
         href: "#"
       },
@@ -3967,44 +4001,19 @@ var render = function render() {
     attrs: {
       title: "Criar Permissão"
     }
-  }, [_c("form-comp-roles")], 1)], 1);
+  }, [_c("form-comp-roles", {
+    attrs: {
+      "edit-form": _vm.form,
+      "edit-mode": _vm.mode
+    }
+  })], 1)], 1);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "card-header"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Gestão de Permissões")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("button", {
-    staticClass: "btn btn-success",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#addNew"
-    }
-  }, [_vm._v("\n                            Novo "), _c("i", {
-    staticClass: "fa-solid fa-euro-sign"
-  })])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-edit"
-  })]);
 }];
 render._withStripped = true;
 
@@ -4030,7 +4039,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.createRole.apply(null, arguments);
+        _vm.mode ? _vm.updateData() : _vm.createNew();
       }
     }
   }, [_c("div", {

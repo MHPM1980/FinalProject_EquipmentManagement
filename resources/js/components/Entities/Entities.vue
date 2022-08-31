@@ -50,7 +50,7 @@
             </div>
         </div>
         <modal-comp title="Criar Entidade">
-            <form-comp-entities :edit-form="form"></form-comp-entities >
+            <form-comp-entities :edit-form="form" :edit-mode="mode"></form-comp-entities >
         </modal-comp>
     </div>
 
@@ -70,7 +70,8 @@
                     address: '',
                     phone_number: '',
                 }),
-                link:'entities'
+                link:'entities',
+                mode: false,
             }
         },
         mixins:[deleteMixin],
@@ -87,10 +88,12 @@
         },
         methods:{
             newModal(){
+                this.mode=false;
                 $('#addNew').modal('show');
                 this.form.reset();
             },
             editModal(entity){
+                this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(entity);
             },

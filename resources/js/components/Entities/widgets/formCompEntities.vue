@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="createNew">
+    <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -27,17 +27,21 @@
 
 <script>
 import {createMixin} from "../../mixins/createMixin";
+import {updateMixin} from "../../mixins/updateMixin";
 
 export default {
     props:{
-        editForm: Object
+        editForm: Object,
+        editMode: Boolean,
     },
     mounted() {
         this.form=this.editForm;
+        this.mode=this.editMode;
     },
     data () {
         return {
             link:'entities',
+            mode:this.mode,
             form: new Form({
                 name: '',
                 address: '',
@@ -45,6 +49,12 @@ export default {
             })
         }
     },
-    mixins:[createMixin],
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
+    },
+    mixins:[createMixin, updateMixin],
 }
 </script>

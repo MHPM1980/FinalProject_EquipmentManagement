@@ -65,9 +65,21 @@ class CostController extends Controller
      * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cost $cost)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $cost = Cost::query()->findOrFail($id);
+
+        //Validate new data
+        $this->validate($request,[
+            'designation' => 'required|string|max:191',
+            'description' => 'required|string',
+        ]);
+
+        //update user in DB
+        $cost->update($request->all());
+
+        return ['message'=>'Updated the cost info'];
     }
 
     /**

@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Centro de Custo">
+        <modal-comp title="Gerir Centro de Custo">
             <form-comp-costs :edit-form="form" :edit-mode="mode"></form-comp-costs>
         </modal-comp>
     </div>
@@ -64,6 +64,7 @@
             return{
                 costs: {},
                 form: new Form({
+                    id:'',
                     designation: '',
                     description: '',
                 }),

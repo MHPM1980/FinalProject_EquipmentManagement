@@ -2039,6 +2039,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       costs: {},
       form: new Form({
+        id: '',
         designation: '',
         description: ''
       }),
@@ -3075,7 +3076,7 @@ var render = function render() {
     })])])]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
-      title: "Criar Centro de Custo"
+      title: "Gerir Centro de Custo"
     }
   }, [_c("form-comp-costs", {
     attrs: {
@@ -3184,14 +3185,7 @@ var render = function render() {
       form: _vm.form,
       field: "description"
     }
-  })], 1), _vm._v(" "), _vm._m(0)]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "modal-footer"
   }, [_c("button", {
     staticClass: "btn btn-danger",
@@ -3200,12 +3194,31 @@ var staticRenderFns = [function () {
       "data-dismiss": "modal"
     }
   }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: !_vm.editMode,
+      expression: "!editMode"
+    }],
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Criar")])]);
-}];
+  }, [_vm._v("Criar")]), _vm._v(" "), _c("button", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.editMode,
+      expression: "editMode"
+    }],
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Atualizar")])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 

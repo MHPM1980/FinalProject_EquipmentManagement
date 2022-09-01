@@ -14,7 +14,8 @@
 
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-            <button type="submit" class="btn btn-primary">Criar</button>
+            <button v-show="!editMode" type="submit" class="btn btn-primary">Criar</button>
+            <button v-show="editMode" type="submit" class="btn btn-primary">Atualizar</button>
         </div>
     </form>
 </template>

@@ -58,18 +58,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
+        try {
+            return response()->json($product->load(),200);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
     /**
@@ -79,9 +72,25 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $product = Product::query()->findOrFail($id);
+
+        $this->validate($request,[
+            'image'=> 'required|string|max:191',
+            'name' => 'required|string|max:191',
+            'description' => 'required|string|max:200',
+            'serial_number' => 'required|string',
+            'category_id' => 'required|integer',
+            'warehouse_id' => 'required|integer',
+        ]);
+
+        //update user in DB
+        $product->update($request->all());
+
+        return ['message'=>'Updated the product info'];
+
     }
 
     /**

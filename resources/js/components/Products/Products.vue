@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Equipamento">
+        <modal-comp title="Gerir Equipamento">
             <form-comp-products :edit-form="form" :edit-mode="mode"></form-comp-products>
         </modal-comp>
     </div>
@@ -75,6 +75,7 @@
             return{
                 products: {},
                 form: new Form({
+                    id:'',
                     image:'',
                     name: '',
                     description: '',

@@ -64,6 +64,7 @@ export default {
         return{
             users: {},
             form: new Form({
+                id:'',
                 name: '',
                 role_id: '',
                 cost_id:'',

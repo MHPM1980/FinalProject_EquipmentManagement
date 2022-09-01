@@ -72,16 +72,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        try {
-            $user->update($request->all());
-            $user->roles()->sync($request->roles);
-            $user->cost_centers()->sync($request->cost_centers);
-            return response()->json($user->load(['role','cost']),201);
-        } catch (\Exception $exception) {
-            return response()->json(['error' => $exception], 500);
-        }
+        //Find user in DB
+        $user = User::query()->findOrFail($id);
+
+        //Validate new data
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'role_id' => 'required|integer',
+            'cost_id' => 'required|integer',
+            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+            'phone_number' => 'required|integer',
+            'password' => 'sometimes|string|min:6',
+        ]);
+
+        //update user in DB
+        $user->update($request->all());
+
+       return ['message'=>'Updated the user info'];
     }
 
     /**

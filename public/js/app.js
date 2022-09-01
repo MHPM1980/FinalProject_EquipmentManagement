@@ -2560,6 +2560,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: {},
       form: new Form({
+        id: '',
         name: '',
         role_id: '',
         cost_id: '',
@@ -83588,10 +83589,10 @@ var createMixin = {
         //custom Event to reload DOM
         Fire.$emit('AfterCreate'); //Clear form
 
-        _this.form.reset(); //Success toast
+        _this.form.reset();
 
+        $('#addNew').modal('hide'); //Success toast
 
-        $('#addNew').modal('hide');
         toast.fire({
           icon: 'success',
           title: 'Registo criado com sucesso!'
@@ -83664,11 +83665,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMixin", function() { return updateMixin; });
 var updateMixin = {
   data: function data() {
-    return {};
+    return {
+      link: 'link'
+    };
   },
   methods: {
     updateData: function updateData() {
-      console.log('editing data');
+      var _this = this;
+
+      this.$Progress.start();
+      this.form.put("api/".concat(this.link, "/") + this.form.id).then(function () {
+        $('#addNew').modal('hide');
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this.$Progress.fail();
+
+        Swal.fire("Failed!", "There was something wrong.", "warning");
+      });
     }
   }
 };

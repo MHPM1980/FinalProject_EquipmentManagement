@@ -13,8 +13,8 @@ export const createMixin={
                     Fire.$emit('AfterCreate');
                     //Clear form
                     this.form.reset();
-                    //Success toast
                     $('#addNew').modal('hide');
+                    //Success toast
                     toast.fire({
                         icon: 'success',
                         title: 'Registo criado com sucesso!'

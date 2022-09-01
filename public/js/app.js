@@ -4196,7 +4196,7 @@ var render = function render() {
     })])])]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
-      title: "Criar Utilizador"
+      title: "Gerir Utilizador"
     }
   }, [_c("form-comp", {
     attrs: {
@@ -4455,14 +4455,7 @@ var render = function render() {
       form: _vm.form,
       field: "password"
     }
-  })], 1), _vm._v(" "), _vm._m(0)]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "modal-footer"
   }, [_c("button", {
     staticClass: "btn btn-danger",
@@ -4471,12 +4464,31 @@ var staticRenderFns = [function () {
       "data-dismiss": "modal"
     }
   }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: !_vm.editMode,
+      expression: "!editMode"
+    }],
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Criar")])]);
-}];
+  }, [_vm._v("Criar")]), _vm._v(" "), _c("button", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.editMode,
+      expression: "editMode"
+    }],
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Atualizar")])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -83750,8 +83762,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Utilizador" >
+        <modal-comp title="Gerir Utilizador" >
             <form-comp :edit-form="form" :edit-mode="mode" ></form-comp >
         </modal-comp>
     </div>

@@ -48,19 +48,13 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        try {
+            return response()->json($role->load(),200);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,9 +63,19 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $role = Role::query()->findOrFail($id);
+
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+        ]);
+
+        //update user in DB
+        $role->update($request->all());
+
+        return ['message'=>'Updated the role info'];
     }
 
     /**

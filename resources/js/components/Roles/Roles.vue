@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Permissão">
+        <modal-comp title="Gerir Permissão">
             <form-comp-roles :edit-form="form" :edit-mode="mode"></form-comp-roles>
         </modal-comp>
     </div>
@@ -63,6 +63,7 @@
             return{
                 roles: {},
                 form: new Form({
+                    id:'',
                     name: '',
                 }),
                 link:'roles',

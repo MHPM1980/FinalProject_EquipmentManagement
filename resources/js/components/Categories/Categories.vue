@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Categoria">
+        <modal-comp title="Gerir Categoria">
             <form-comp-categories :edit-form="form" :edit-mode="mode"></form-comp-categories>
         </modal-comp>
     </div>
@@ -58,6 +58,7 @@
             return{
                 categories: {},
                 form: new Form({
+                    id:'',
                     name: '',
                     description: '',
                 }),

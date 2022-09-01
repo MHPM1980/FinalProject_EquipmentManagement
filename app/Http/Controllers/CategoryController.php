@@ -60,9 +60,21 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $category = Category::query()->findOrFail($id);
+
+        //Validate new data
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'description' => 'required|string|max:200',
+        ]);
+
+        //update user in DB
+        $category->update($request->all());
+
+        return ['message'=>'Updated the category info'];
     }
 
     /**

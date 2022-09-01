@@ -82,15 +82,8 @@ export default {
         this.loadCategories();
         this.loadWarehouses();
     },
-    // function that trigger when editmode is changed and update data
-    watch:{
-        editMode: function (val) {
-            this.mode=val
-        }
-    },
     mixins:[createMixin, updateMixin],
     methods:{
-
         loadCategories(){
             axios
                 .get("api/categories/")

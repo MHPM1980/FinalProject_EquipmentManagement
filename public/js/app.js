@@ -2013,12 +2013,6 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
-  },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
 
@@ -2120,12 +2114,6 @@ __webpack_require__.r(__webpack_exports__);
         description: ''
       })
     };
-  },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
@@ -2247,12 +2235,6 @@ __webpack_require__.r(__webpack_exports__);
         phone_number: ''
       })
     };
-  },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
@@ -2387,12 +2369,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.loadCategories();
     this.loadWarehouses();
-  },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
@@ -2529,12 +2505,6 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
-  },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]]
 });
 
@@ -2652,12 +2622,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.loadRoles();
     this.loadCosts();
-  },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
   },
   methods: {
     loadRoles: function loadRoles() {
@@ -2787,12 +2751,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.loadEntities();
-  },
-  // function that trigger when editmode is changed and update data
-  watch: {
-    editMode: function editMode(val) {
-      this.mode = val;
-    }
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
@@ -83668,6 +83626,12 @@ var updateMixin = {
     return {
       link: 'link'
     };
+  },
+  // function that trigger when editmode is changed and update data
+  watch: {
+    editMode: function editMode(val) {
+      this.mode = val;
+    }
   },
   methods: {
     updateData: function updateData() {

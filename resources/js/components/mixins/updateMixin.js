@@ -4,6 +4,12 @@ export const updateMixin={
             link: 'link'
         }
     },
+    // function that trigger when editmode is changed and update data
+    watch:{
+        editMode: function (val) {
+            this.mode=val
+        }
+    },
     methods:{
         updateData(){
             this.$Progress.start()

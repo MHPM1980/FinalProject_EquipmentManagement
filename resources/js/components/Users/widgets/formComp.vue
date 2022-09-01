@@ -81,12 +81,7 @@ export default {
         this.loadRoles();
         this.loadCosts();
     },
-    // function that trigger when editmode is changed and update data
-    watch:{
-        editMode: function (val) {
-            this.mode=val
-        }
-    },
+
     methods:{
         loadRoles(){
             axios

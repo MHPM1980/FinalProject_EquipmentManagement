@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Entidade">
+        <modal-comp title="Gerir Entidade">
             <form-comp-entities :edit-form="form" :edit-mode="mode"></form-comp-entities >
         </modal-comp>
     </div>
@@ -66,6 +66,7 @@
             return{
                 entities: {},
                 form: new Form({
+                    id:'',
                     name: '',
                     address: '',
                     phone_number: '',

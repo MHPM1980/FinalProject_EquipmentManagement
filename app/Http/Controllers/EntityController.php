@@ -51,18 +51,11 @@ class EntityController extends Controller
      */
     public function show(Entity $entity)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Entity  $entity
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Entity $entity)
-    {
-        //
+        try {
+            return response()->json($entity->load(),200);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
     /**
@@ -72,9 +65,22 @@ class EntityController extends Controller
      * @param  \App\Entity  $entity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entity $entity)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $entity = Entity::query()->findOrFail($id);
+
+        //Validate new data
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer',
+        ]);
+
+        //update user in DB
+        $entity->update($request->all());
+
+        return ['message'=>'Updated the entity info'];
     }
 
     /**

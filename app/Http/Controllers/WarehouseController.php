@@ -56,7 +56,11 @@ class WarehouseController extends Controller
      */
     public function show(Warehouse $warehouse)
     {
-        //
+        try {
+            return response()->json($warehouse->load(),200);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
     }
 
 
@@ -67,9 +71,23 @@ class WarehouseController extends Controller
      * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Warehouse $warehouse)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $warehouse = Warehouse::query()->findOrFail($id);
+
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'description' => 'required|string|max:200',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer',
+            'entity_id' => 'required|integer',
+        ]);
+
+        //update user in DB
+        $warehouse->update($request->all());
+
+        return ['message'=>'Updated the role info'];
     }
 
     /**

@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Criar Armazém">
+        <modal-comp title="Gerir Armazém">
             <form-comp-warehouses :edit-form="form" :edit-mode="mode"></form-comp-warehouses>
         </modal-comp>
     </div>
@@ -64,6 +64,7 @@
             return{
                 warehouses: {},
                 form: new Form({
+                    id:'',
                     name: '',
                     entity_id: '',
                     description: '',

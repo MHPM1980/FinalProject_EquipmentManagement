@@ -93,10 +93,12 @@ export default {
             this.mode=false;
             $('#addNew').modal('show');
             this.form.reset();
+            this.form.clear();
         },
         editModal(user){
             this.mode=true;
             $('#addNew').modal('show');
+            this.form.clear();
             this.form.fill(user);
         },
         loadUsers(){

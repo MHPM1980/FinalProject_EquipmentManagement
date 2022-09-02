@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-lg-8 col-sm-10">
                 <div class="bg-transparent">
                     <div class="card-header border-0 bg-transparent text-light">
                         <div class="row align-items-center justify-content-center">
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-7">
+                                <div class="col-lg-8 offset-xl-7 offset-md-6 my-2">
                                     <button class="btn btn-dark">
                                         <a class="text-light" style="text-decoration: none" href="{{ route('login') }}">Login</a>
                                     </button>

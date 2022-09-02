@@ -2,13 +2,13 @@
     <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
-                   class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+                   class="form-control" :class="{ 'is-invalid': form.errors.has('nome') }">
             <has-error :form="form" field="name"></has-error>
         </div>
 
         <div class="form-group">
             <input v-model="form.description" type="text" name="name" placeholder="Descrição"
-                   class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
+                   class="form-control" :class="{ 'is-invalid': form.errors.has('descrição') }">
             <has-error :form="form" field="description"></has-error>
         </div>
 

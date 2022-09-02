@@ -4391,7 +4391,12 @@ var render = function render() {
         _vm.$set(_vm.form, "role_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.roles, function (role) {
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a permissão")]), _vm._v(" "), _vm._l(_vm.roles, function (role) {
     return _c("option", {
       attrs: {
         name: "role_id"
@@ -4400,7 +4405,7 @@ var render = function render() {
         value: role.id
       }
     }, [_vm._v("\n                " + _vm._s(role.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("has-error", {
+  })], 2), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "role_id"
@@ -4433,7 +4438,12 @@ var render = function render() {
         _vm.$set(_vm.form, "cost_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.costs, function (cost) {
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha o centro de custo")]), _vm._v(" "), _vm._l(_vm.costs, function (cost) {
     return _c("option", {
       attrs: {
         name: "cost_id"
@@ -4442,7 +4452,7 @@ var render = function render() {
         value: cost.id
       }
     }, [_vm._v("\n                " + _vm._s(cost.description) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("has-error", {
+  })], 2), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "cost_id"
@@ -83822,8 +83832,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

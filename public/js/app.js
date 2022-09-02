@@ -3136,7 +3136,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("designation")
+      "is-invalid": _vm.form.errors.has("laranja")
     },
     attrs: {
       type: "text",
@@ -3169,7 +3169,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("description")
+      "is-invalid": _vm.form.errors.has("descrição")
     },
     attrs: {
       type: "text",

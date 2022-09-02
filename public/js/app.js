@@ -2566,10 +2566,12 @@ __webpack_require__.r(__webpack_exports__);
       this.mode = false;
       $('#addNew').modal('show');
       this.form.reset();
+      this.form.clear();
     },
     editModal: function editModal(user) {
       this.mode = true;
       $('#addNew').modal('show');
+      this.form.clear();
       this.form.fill(user);
     },
     loadUsers: function loadUsers() {

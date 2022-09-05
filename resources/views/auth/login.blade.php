@@ -3,15 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header bg-lightblue">
-                        <div class="row">
-                            <h1 class="col-6 text-center pt-3">{{ __('Welcome') }}</h1>
-                            <img class="col-6 px-md-5 px-sm-2" src= "https://trainingserver.atec.pt/trainingserver/Controls/ImageRender.aspx?ImageId=5cccaf2a-94ba-47ed-a8bf-0f103aeaf800&ImageType=Normal" alt="" height="80px">
+            <div class="col-lg-8 col-sm-10">
+                <div class="bg-transparent">
+                    <div class="card-header border-0 bg-transparent text-light">
+                        <div class="row align-items-center justify-content-center">
+                            <h1 class="col-md-6 order-2 order-md-1 text-center pt-md-2 pt-4">{{ __('Bem-Vindo') }}</h1>
+                            <img class="order-1 order-md-2" src= "https://trainingserver.atec.pt/trainingserver/Controls/ImageRender.aspx?ImageId=5cccaf2a-94ba-47ed-a8bf-0f103aeaf800&ImageType=Normal" alt="" height="80px">
                         </div>
                     </div>
-                    <div class="card-body bg-gradient-navy">
+                    <div class="card-body bg-transparent text-light">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
@@ -37,9 +37,9 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-7">
+                                <div class="col-lg-8 offset-xl-7 offset-md-6 my-2">
                                     <button class="btn btn-dark">
-                                        <a class="text-light" style="text-decoration: none" href="{{ route('register') }}">Register</a>
+                                        <a class="text-light" style="text-decoration: none" href="{{ route('register') }}">Registar</a>
                                     </button>
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}

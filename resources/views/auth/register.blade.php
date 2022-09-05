@@ -7,8 +7,8 @@
                 <div class="bg-transparent">
                     <div class="card-header border-0 bg-transparent text-light">
                         <div class="row align-items-center justify-content-center">
-                            <h1 class="col-6 text-center ">{{ __('Registar') }}</h1>
-                            <img class="col-6 px-md-5 px-sm-2 atec-logo" src= "https://trainingserver.atec.pt/trainingserver/Controls/ImageRender.aspx?ImageId=5cccaf2a-94ba-47ed-a8bf-0f103aeaf800&ImageType=Normal" alt="">
+                            <h1 class="col-md-6 order-2 order-md-1 text-center mt-md-2 mt-4">{{ __('Registar') }}</h1>
+                            <img class="order-1 order-md-2 pt-md-0 pt-3" src= "https://trainingserver.atec.pt/trainingserver/Controls/ImageRender.aspx?ImageId=5cccaf2a-94ba-47ed-a8bf-0f103aeaf800&ImageType=Normal" alt="">
                         </div>
                     </div>
                     <div class="card-body bg-transparent text-light">

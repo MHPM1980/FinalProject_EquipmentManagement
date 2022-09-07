@@ -4703,7 +4703,12 @@ var render = function render() {
         _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.entities, function (entity) {
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a entidade")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
     return _c("option", {
       attrs: {
         name: "entity_id"
@@ -4712,7 +4717,7 @@ var render = function render() {
         value: entity.id
       }
     }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("has-error", {
+  })], 2), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "entity_id"

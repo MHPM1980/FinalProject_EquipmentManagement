@@ -26,6 +26,7 @@
 
         <div class="form-group">
             <select class="form-control" name="category_id" v-model="form.category_id" :class="{ 'is-invalid': form.errors.has('category_id') }">
+                <option disabled value="">Escolha a categoria</option>
                 <option name="category_id" v-for="category in categories" v-bind:value="category.id">
                     {{category.name}}
                 </option>
@@ -35,6 +36,7 @@
 
         <div class="form-group">
             <select class="form-control" name="warehouse_id" v-model="form.warehouse_id" :class="{ 'is-invalid': form.errors.has('warehouse_id') }">
+                <option disabled value="">Escolha o armazém</option>
                 <option name="warehouse_id" v-for="warehouse in warehouses" v-bind:value="warehouse.id">
                     {{warehouse.name}}
                 </option>

@@ -3834,7 +3834,12 @@ var render = function render() {
         _vm.$set(_vm.form, "category_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.categories, function (category) {
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a categoria")]), _vm._v(" "), _vm._l(_vm.categories, function (category) {
     return _c("option", {
       attrs: {
         name: "category_id"
@@ -3843,7 +3848,7 @@ var render = function render() {
         value: category.id
       }
     }, [_vm._v("\n                " + _vm._s(category.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("has-error", {
+  })], 2), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "category_id"
@@ -3876,7 +3881,12 @@ var render = function render() {
         _vm.$set(_vm.form, "warehouse_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.warehouses, function (warehouse) {
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha o armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
     return _c("option", {
       attrs: {
         name: "warehouse_id"
@@ -3885,7 +3895,7 @@ var render = function render() {
         value: warehouse.id
       }
     }, [_vm._v("\n                " + _vm._s(warehouse.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("has-error", {
+  })], 2), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "warehouse_id"
@@ -83839,8 +83849,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\ProjetoFinal-EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\ProjetoFinal-EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

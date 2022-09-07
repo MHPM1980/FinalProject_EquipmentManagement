@@ -8,6 +8,7 @@
 
         <div class="form-group">
             <select class="form-control" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
+                <option disabled value="">Escolha a entidade</option>
                 <option name="entity_id" v-for="entity in entities" v-bind:value="entity.id">
                     {{entity.name}}
                 </option>

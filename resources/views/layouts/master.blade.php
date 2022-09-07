@@ -7,6 +7,12 @@
     <title>ATEC EM</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css">
+    <style>
+        body{
+            background-color: rgba(12, 48, 72, 1);
+            background: linear-gradient(180deg, rgba(43, 121, 180, 1) 0%, rgba(32, 95, 142, 1) 30%, rgba(12, 48, 72, 1) 60%, rgba(9, 41, 61, 1) 100%);
+        }
+    </style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -48,7 +54,7 @@
 
         <a href="index3.html" class="brand-link">
             <img src="./img/logo.png" alt="atec Logo" class="brand-image" >
-            <span class="brand-text font-weight-light">EM</span>
+            <span class="brand-text font-weight-light">ATEC - GE</span>
         </a>
 
         <div class="sidebar">
@@ -162,7 +168,7 @@
             </nav>
         </div>
     </aside>
-    <div class="content-wrapper">
+    <div class="content-wrapper bg-transparent">
         <div class="content">
             <div class="container-fluid">
                 <router-view></router-view>

@@ -40,9 +40,19 @@
           margin: 4%;
       }
 
-      @media only screen and (max-width: 600px) {
+      .atec-ge-register{
+          width: 65%;
+          margin: 2%;
+      }
+
+      @media only screen and (max-width: 400px) {
           .atec-ge-login{
               width: 85%;
+          }
+
+          .atec-ge-register{
+              width: 85%;
+              margin:10% 10% 0% 10%;
 
           }
       }

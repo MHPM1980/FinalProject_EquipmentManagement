@@ -7,17 +7,17 @@
                 <div class="bg-transparent">
                     <div class="card-header border-0 bg-transparent text-light">
                         <div class="row align-items-center justify-content-center">
-                            <h1 class="col-md-6 order-2 order-md-1 text-center pt-md-2 pt-4">{{ __('Bem-Vindo') }}</h1>
-                            <img class="order-1 order-md-2" src= "https://trainingserver.atec.pt/trainingserver/Controls/ImageRender.aspx?ImageId=5cccaf2a-94ba-47ed-a8bf-0f103aeaf800&ImageType=Normal" alt="" height="80px">
+                            <img class="atec-ge-login" src= "./img/atec-ge-white.png" alt="">
+                            <h1 class="col-md-6 text-center pt-md-2 pt-4">{{ __('Bem-Vindo') }}</h1>
                         </div>
                     </div>
                     <div class="card-body bg-transparent text-light">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail:') }}</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail:') }}</label>
+                                <div class="col-md-7">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="exemplo@edu.atec.pt">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -26,9 +26,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password:') }}</label>
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Password:') }}</label>
+                                <div class="col-md-7">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="********">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

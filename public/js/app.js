@@ -3136,7 +3136,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("laranja")
+      "is-invalid": _vm.form.errors.has("designação")
     },
     attrs: {
       type: "text",
@@ -83834,8 +83834,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121088\ProjetoFinal-EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121088\ProjetoFinal-EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

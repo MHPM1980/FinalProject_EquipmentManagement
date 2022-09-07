@@ -181,7 +181,7 @@
         <div class="float-right d-none d-sm-inline">
             Renato Rodrigues | Márcio Miguel |Tiago Machado
         </div>
-        <strong>Copyright &copy; ATEC <a href="https://www.atec.pt/">atec.pt</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; ATEC <a href="https://www.atec.pt/">atec.pt</a>.</strong> Todos os direitos reservados.
     </footer>
 </div>
 <script src="/js/app.js"></script>

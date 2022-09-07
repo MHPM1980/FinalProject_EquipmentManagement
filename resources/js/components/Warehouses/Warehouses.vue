@@ -21,7 +21,7 @@
                                 <th>Morada</th>
                                 <th>Telefone</th>
                                 <th>Entidade</th>
-                                <th>Tools</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>

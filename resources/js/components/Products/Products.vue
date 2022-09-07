@@ -22,7 +22,7 @@
                                 <th>Número Série</th>
                                 <th>Categoria</th>
                                 <th>Armazém</th>
-                                <th>Tools</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>

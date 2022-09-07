@@ -21,7 +21,7 @@
                                 <th>Contacto</th>
                                 <th>Permissão</th>
                                 <th>Centro Custo</th>
-                                <th>Tools</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>

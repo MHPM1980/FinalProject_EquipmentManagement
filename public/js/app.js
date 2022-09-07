@@ -2878,7 +2878,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -3096,7 +3096,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Designação")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Designação")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -3355,7 +3355,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Armazens")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Armazens")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -3645,7 +3645,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4064,7 +4064,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4247,7 +4247,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4623,7 +4623,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Entidade")]), _vm._v(" "), _c("th", [_vm._v("Tools")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Entidade")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 

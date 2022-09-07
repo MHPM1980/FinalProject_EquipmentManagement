@@ -18,7 +18,7 @@
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>Utilizadores</th>
-                                <th>Tools</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -20,7 +20,7 @@
                                 <th>Morada</th>
                                 <th>Telefone</th>
                                 <th>Armazens</th>
-                                <th>Tools</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -27,7 +27,7 @@ export const deleteMixin={
                             Fire.$emit('AfterCreate');
                     })
                         .catch(()=>{
-                            Swal.fire("Failed!","There was something wrong.","warning");
+                            Swal.fire("Erro!","Não é possível apagar o registo.","warning");
                     });
                 }
             })

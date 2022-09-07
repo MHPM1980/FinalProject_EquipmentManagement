@@ -27,7 +27,7 @@ export const updateMixin={
                 })
                 .catch(()=>{
                     this.$Progress.fail()
-                    Swal.fire("Failed!","There was something wrong.","warning");
+                    Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                 })
         },
     }

@@ -4287,7 +4287,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("name")
+      "is-invalid": _vm.form.errors.has("nome")
     },
     attrs: {
       type: "text",
@@ -4353,7 +4353,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("phone_number")
+      "is-invalid": _vm.form.errors.has("contacto")
     },
     attrs: {
       type: "text",
@@ -4386,7 +4386,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("role_id")
+      "is-invalid": _vm.form.errors.has("permissão")
     },
     attrs: {
       name: "role_id"
@@ -4433,7 +4433,7 @@ var render = function render() {
     }],
     staticClass: "form-control",
     "class": {
-      "is-invalid": _vm.form.errors.has("cost_id")
+      "is-invalid": _vm.form.errors.has("centro custo")
     },
     attrs: {
       name: "cost_id"
@@ -83706,7 +83706,7 @@ var deleteMixin = {
             Swal.fire('Apagado!', 'O registo foi apagado.', 'success');
             Fire.$emit('AfterCreate');
           })["catch"](function () {
-            Swal.fire("Failed!", "There was something wrong.", "warning");
+            Swal.fire("Erro!", "Não é possível apagar o registo.", "warning");
           });
         }
       });
@@ -83754,7 +83754,7 @@ var updateMixin = {
       })["catch"](function () {
         _this.$Progress.fail();
 
-        Swal.fire("Failed!", "There was something wrong.", "warning");
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
     }
   }

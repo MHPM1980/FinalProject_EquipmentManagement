@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ATEC EM</title>
+    <title>ATEC - GE</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css">
+
+    <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
     <style>
         body{
             background-color: rgba(12, 48, 72, 1);
@@ -52,7 +54,7 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-        <a href="index3.html" class="brand-link">
+        <a href="/dashboard" class="brand-link">
             <img src="./img/logo.png" alt="atec Logo" class="brand-image" >
             <span class="brand-text font-weight-light">ATEC - GE</span>
         </a>

@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('serial_number');
             $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

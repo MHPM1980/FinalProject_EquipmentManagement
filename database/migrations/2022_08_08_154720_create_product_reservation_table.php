@@ -19,6 +19,7 @@ class CreateProductReservationTable extends Migration
             $table->foreignId('reservation_id')->constrained();
             $table->integer('quantity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

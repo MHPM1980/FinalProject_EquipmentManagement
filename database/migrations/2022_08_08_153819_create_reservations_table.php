@@ -23,6 +23,7 @@ class CreateReservationsTable extends Migration
             $table->boolean('delivered');
             $table->boolean('returned');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

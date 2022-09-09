@@ -60,7 +60,7 @@ let routes = [
     { path: '/dashboard',
         component: require('./components/Dashboard.vue').default},
     { path: '/profile',
-        component: require('./components/Profile.vue').default },
+        component: require('./components/Profile/Profile.vue').default },
     { path: '/users',
         component: require('./components/Users/Users.vue').default },
     { path: '/entities',

@@ -46,6 +46,10 @@
           margin: 2%;
       }
 
+      .vertical-align{
+          vertical-align: top;
+      }
+
       @media only screen and (max-width: 400px) {
           .atec-ge-login{
               width: 85%;

@@ -15,8 +15,8 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail:') }}</label>
-                                <div class="col-md-7">
+                                <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail:') }}</label>
+                                <div class="col-md-8">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="exemplo@edu.atec.pt">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -26,8 +26,8 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Password:') }}</label>
-                                <div class="col-md-7">
+                                <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password:') }}</label>
+                                <div class="col-md-8">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="********">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <div class="col-lg-8 offset-xl-7 offset-md-6 my-2">
+                                <div class="col-md-8 my-2 d-flex justify-content-between offset-md-2">
                                     <button class="btn btn-dark">
                                         <a class="text-light" style="text-decoration: none" href="{{ route('register') }}">Registar</a>
                                     </button>

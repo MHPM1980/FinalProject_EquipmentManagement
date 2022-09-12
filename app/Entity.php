@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
 class Entity extends Model
 {
-    use SoftDeletes;
+    use HasApiTokens, SoftDeletes;
 
     public function warehouses()
     {

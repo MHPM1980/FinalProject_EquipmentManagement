@@ -75,7 +75,24 @@ let routes = [
         component: require('./components/Categories/Categories.vue').default },
     { path: '/equipments',
         component: require('./components/Products/Products.vue').default },
+    { path: '/developer',
+        component: require('./components/Developer.vue').default },
 ]
+
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+)
+
+
 
 const router = new VueRouter({
     mode:'history',

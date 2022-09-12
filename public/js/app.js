@@ -2428,12 +2428,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: new Form({
+        id: '',
+        name: '',
+        cost_id: '',
+        phone_number: '',
+        email: '',
+        password: ''
+      })
+    };
+  },
   components: {
     formCompInfo: _widgets_formCompInfo__WEBPACK_IMPORTED_MODULE_0__["default"],
     formCompPassword: _widgets_formCompPassword__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {},
+  created: function created() {
+    var _this = this;
+
+    axios.get("api/profile").then(function (_ref) {
+      var data = _ref.data;
+      return _this.form.fill(data);
+    });
   }
 });
 
@@ -2449,8 +2467,20 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    editForm: Object
+  },
+  mounted: function mounted() {
+    this.form = this.editForm;
+  },
   data: function data() {
-    return {};
+    return {
+      form: new Form({
+        name: '',
+        phone_number: '',
+        email: ''
+      })
+    };
   },
   components: {}
 });
@@ -4430,7 +4460,11 @@ var render = function render() {
     staticClass: "card profile-card"
   }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("form-comp-info")], 1)])]), _vm._v(" "), _c("div", {
+  }, [_c("form-comp-info", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
       id: "password",
@@ -4440,7 +4474,11 @@ var render = function render() {
     staticClass: "card profile-card"
   }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("form-comp-password")], 1)])])])])])]), _vm._v(" "), _c("br")])])])])]);
+  }, [_c("form-comp-password", {
+    attrs: {
+      "edit-form": _vm.form
+    }
+  })], 1)])])])])])]), _vm._v(" "), _c("br")])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -4514,48 +4552,120 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("form", [_c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.name,
+      expression: "form.name"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("nome")
+    },
+    attrs: {
+      type: "text",
+      name: "name",
+      placeholder: "Nome"
+    },
+    domProps: {
+      value: _vm.form.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "name", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "name"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.phone_number,
+      expression: "form.phone_number"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("contacto")
+    },
+    attrs: {
+      type: "text",
+      name: "phone_number",
+      placeholder: "Contacto"
+    },
+    domProps: {
+      value: _vm.form.phone_number
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "phone_number", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "phone_number"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.email,
+      expression: "form.email"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("email")
+    },
+    attrs: {
+      type: "email",
+      name: "email",
+      placeholder: "Email"
+    },
+    domProps: {
+      value: _vm.form.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "email", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "email"
+    }
+  })], 1), _vm._v(" "), _vm._m(0)]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("form", [_c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "inputFirstName",
-      placeholder: "Nome"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "inputFirstName",
-      placeholder: "Contacto"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "email",
-      id: "inputEmail4",
-      placeholder: "Email"
-    }
-  })]), _vm._v(" "), _c("div", {
+  return _c("div", {
     staticClass: "modal-footer pb-0"
   }, [_c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("\n        Atualizar\n    ")])])]);
+  }, [_vm._v("\n        Atualizar\n    ")])]);
 }];
 render._withStripped = true;
 

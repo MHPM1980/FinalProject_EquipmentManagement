@@ -25,3 +25,4 @@ Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
 Route::apiResource('categories','CategoryController');
 Route::apiResource('products','ProductController');
+Route::get('profile','UserController@profile');

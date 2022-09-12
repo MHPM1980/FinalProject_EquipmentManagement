@@ -61,13 +61,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function profile()
     {
-        try {
-            return response()->json($user->load(['role','cost']),200);
-        } catch (\Exception $exception) {
-            return response()->json(['error' => $exception], 500);
-        }
+        return auth('api')->user();
     }
 
     /**

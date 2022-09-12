@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="mode ? updateData() : createNew()">
         <div class="form-group">
-            <input v-model="form.image" type="text" name="image" placeholder="Imagem"
-                   class="form-control" :class="{ 'is-invalid': form.errors.has('image') }">
+            <input type="file" @change="insertImage" name="image" placeholder="Imagem"
+                   class="form-input">
             <has-error :form="form" field="image"></has-error>
         </div>
 
@@ -99,6 +99,16 @@ export default {
                 .then(({ data }) => (this.warehouses = data.data))
             ;
         },
+        insertImage(e){
+            let file= e.target.files[0];
+            //console.log(file);
+            let reader= new FileReader();
+            reader.onloadend= (file) => {
+                //console.log('RESULT',reader.result)
+                this.form.image = reader.result;
+            }
+            reader.readAsDataURL(file);
+        }
     }
 }
 </script>

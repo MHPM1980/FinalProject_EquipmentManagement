@@ -103,7 +103,7 @@ export default {
             let file= e.target.files[0];
             //console.log(file);
             let reader= new FileReader();
-            reader.onloadend= (file) => {
+            reader.onloadend = (file) => {
                 //console.log('RESULT',reader.result)
                 this.form.image = reader.result;
             }

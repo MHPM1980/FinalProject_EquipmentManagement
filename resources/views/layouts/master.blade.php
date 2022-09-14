@@ -100,7 +100,7 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/equipments" class="nav-link">
+                        <router-link to="#" class="nav-link">
                             <i class="fas fa-solid fa-screwdriver-wrench nav-icon"></i>
                             <p>Equipamentos</p>
                         </router-link>
@@ -109,6 +109,14 @@
                         <router-link to="/reservations" class="nav-link">
                             <i class="fas fa-regular fa-calendar-check nav-icon"></i>
                             <p>Reservas</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/profile" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Perfil
+                            </p>
                         </router-link>
                     </li>
                     <li class="nav-item">
@@ -130,6 +138,12 @@
                                 <router-link to="/roles" class="nav-link">
                                     <i class="fas fa-solid fa-lock nav-icon"></i>
                                     <p>Permissões Utilizador</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/equipments" class="nav-link">
+                                    <i class="fas fa-solid fa-screwdriver-wrench nav-icon"></i>
+                                    <p>Equipamentos</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
@@ -157,22 +171,6 @@
                                 </router-link>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/profile" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Perfil
-                            </p>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/developer" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Developer
-                            </p>
-                        </router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"

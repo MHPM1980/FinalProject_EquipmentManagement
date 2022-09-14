@@ -29,7 +29,7 @@
                             <tr v-for="product in products" :key="product.id">
                                 <td>{{ product.id }}</td>
                                 <td>
-                                    <img class="w-25 img-responsive" src="asset('storage/products/'product.image)" alt="" title="">
+                                    <img class="w-25 img-responsive" :src="'img/products/'+ product.image " alt="" title="">
                                 </td>
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.description }}</td>

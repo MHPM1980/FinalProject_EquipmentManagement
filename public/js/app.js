@@ -4096,7 +4096,14 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.products, function (product) {
     return _c("tr", {
       key: product.id
-    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _vm._m(1, true), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_c("img", {
+      staticClass: "w-25 img-responsive",
+      attrs: {
+        src: "img/products/" + product.image,
+        alt: "",
+        title: ""
+      }
+    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4136,18 +4143,6 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", [_c("img", {
-    staticClass: "w-25 img-responsive",
-    attrs: {
-      src: "asset('storage/products/'product.image)",
-      alt: "",
-      title: ""
-    }
-  })]);
 }];
 render._withStripped = true;
 
@@ -86471,8 +86466,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

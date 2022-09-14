@@ -33,7 +33,7 @@ class EntityController extends Controller
         $this->validate($request,[
             'name' => 'required|string|max:191',
             'address' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|digits:9',
         ]);
 
         try{
@@ -79,7 +79,7 @@ class EntityController extends Controller
         $this->validate($request,[
             'name' => 'required|string|max:191',
             'address' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|digits:9',
         ]);
 
         //update user in DB

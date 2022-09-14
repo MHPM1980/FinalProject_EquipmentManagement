@@ -3954,6 +3954,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("phone_number")
     },
     attrs: {
+      maxlength: "9",
       type: "text",
       name: "phone_number",
       placeholder: "Contacto"

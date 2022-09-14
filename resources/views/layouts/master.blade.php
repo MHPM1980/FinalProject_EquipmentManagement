@@ -63,7 +63,20 @@
 
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+                    @switch(Auth::user()->role->name)
+                        @case(Auth::user()->role->name=='ADMIN')
+                            <img src="./img/roles/Admin.png" class="img-circle elevation-2" alt="User Image">
+                        @break
+                        @case(Auth::user()->role->name=='GESTOR')
+                            <img src="./img/roles/Gestor.png" class="img-circle elevation-2" alt="User Image">
+                        @break
+                        @case(Auth::user()->role->name=='FORMADOR')
+                            <img src="./img/roles/Formador.png" class="img-circle elevation-2" alt="User Image">
+                        @break
+                        @case(Auth::user()->role->name=='FORMANDO')
+                            <img src="./img/roles/Formando.png" class="img-circle elevation-2" alt="User Image">
+                        @break
+                    @endswitch
                 </div>
                 <div class="info">
                     <a href="#" class="d-block h5">

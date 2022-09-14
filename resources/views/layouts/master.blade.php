@@ -212,6 +212,14 @@
         <strong>Copyright &copy; ATEC <a href="https://www.atec.pt/">atec.pt</a>.</strong> Todos os direitos reservados.
     </footer>
 </div>
+
+@auth
+    <script>
+        window.user = @json(auth()->user())
+    </script>
+@endauth
+
+
 <script src="/js/app.js"></script>
 </body>
 </html>

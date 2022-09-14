@@ -15,8 +15,8 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Imagem</th>
+                                <th class="text-center">ID</th>
+                                <th class="th-imagem text-center">Imagem</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Número Série</th>
@@ -26,17 +26,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="product in products" :key="product.id">
-                                <td>{{ product.id }}</td>
-                                <td>
-                                    <img class="w-25 img-responsive" :src="'img/products/'+ product.image " alt="" title="">
+                            <tr v-for="product in products" :key="product.id" class="altura-row">
+                                <td class="align-middle text-center">{{ product.id }}</td>
+                                <td class="td-imagem align-middle">
+                                    <img class="imagem-equipamento" :src="'img/products/'+ product.image " alt="" title="">
                                 </td>
-                                <td>{{ product.name }}</td>
-                                <td>{{ product.description }}</td>
-                                <td>{{ product.serial_number }}</td>
-                                <td>{{ product.category.name }}</td>
-                                <td>{{ product.warehouse.name }}</td>
-                                <td>
+                                <td class="align-middle">{{ product.name }}</td>
+                                <td class="align-middle">{{ product.description }}</td>
+                                <td class="align-middle">{{ product.serial_number }}</td>
+                                <td class="align-middle">{{ product.category.name }}</td>
+                                <td class="align-middle">{{ product.warehouse.name }}</td>
+                                <td class="align-middle">
                                     <a href="#" @click="editModal(product)">
                                         <i class="fa fa-edit"></i>
                                     </a>

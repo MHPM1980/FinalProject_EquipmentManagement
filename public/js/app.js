@@ -4763,51 +4763,16 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Gestão de Permissões")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("button", {
-    staticClass: "btn btn-success",
-    on: {
-      click: _vm.newModal
-    }
-  }, [_vm._v("\n                            Novo "), _c("i", {
-    staticClass: "fa-solid fa-euro-sign"
-  })])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
     return _c("tr", {
       key: role.id
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
-      return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_c("a", {
-      attrs: {
-        href: "#"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.editModal(role);
-        }
-      }
-    }, [_c("i", {
-      staticClass: "fa fa-edit"
-    })]), _vm._v(" "), _c("a", {
-      attrs: {
-        href: "#"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.deleteItem(role.id);
-        }
-      }
-    }, [_c("i", {
-      staticClass: "fa fa-trash text-red"
-    })])])]);
+      return _c("p", [_vm._v("\n                                        " + _vm._s(users.name) + "\n                                    ")]);
+    }), 0), _vm._v(" "), _c("td")]);
   }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Permissão"
@@ -4824,7 +4789,18 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("div", {
+    staticClass: "card-header"
+  }, [_c("h3", {
+    staticClass: "card-title"
+  }, [_vm._v("Gestão de Permissões")]), _vm._v(" "), _c("div", {
+    staticClass: "card-tools"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Descrição")])])]);
 }];
 render._withStripped = true;
 
@@ -86467,8 +86443,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -90,7 +90,7 @@
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                    @cannot('isFormando')
                     <li class="nav-item">
                         <router-link to="/dashboard" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -99,18 +99,21 @@
                             </p>
                         </router-link>
                     </li>
+                    @endcannot
                     <li class="nav-item">
                         <router-link to="#" class="nav-link">
                             <i class="fas fa-solid fa-screwdriver-wrench nav-icon"></i>
                             <p>Equipamentos</p>
                         </router-link>
                     </li>
+                    @cannot('isFormando')
                     <li class="nav-item">
                         <router-link to="/reservations" class="nav-link">
                             <i class="fas fa-regular fa-calendar-check nav-icon"></i>
                             <p>Reservas</p>
                         </router-link>
                     </li>
+                    @endcannot
                     <li class="nav-item">
                         <router-link to="/profile" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
@@ -119,6 +122,7 @@
                             </p>
                         </router-link>
                     </li>
+                    @canany(['isAdmin', 'isGestor'])
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-cog"></i>
@@ -164,14 +168,17 @@
                                     <p>Armazéns</p>
                                 </router-link>
                             </li>
+                            @can('isAdmin')
                             <li class="nav-item">
                                 <router-link to="/costs" class="nav-link">
                                     <i class="fas fa-solid fa-euro-sign nav-icon"></i>
                                     <p>Centro Custos</p>
                                 </router-link>
                             </li>
+                            @endcan
                         </ul>
                     </li>
+                    @endcanany
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

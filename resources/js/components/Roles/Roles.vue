@@ -6,8 +6,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Permissões</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" @click="newModal">
-                                Novo <i class="fa-solid fa-euro-sign"></i></button>
+<!--                            <button class="btn btn-success" @click="newModal">
+                                Novo <i class="fa-solid fa-euro-sign"></i></button>-->
                         </div>
                     </div>
 
@@ -18,7 +18,7 @@
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>Utilizadores</th>
-                                <th>Ação</th>
+                                <th>Descrição</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,12 +31,12 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <a href="#" @click="editModal(role)">
+<!--                                    <a href="#" @click="editModal(role)">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" @click="deleteItem(role.id)">
                                         <i class="fa fa-trash text-red"></i>
-                                    </a>
+                                    </a>-->
                                 </td>
                             </tr>
                             </tbody>

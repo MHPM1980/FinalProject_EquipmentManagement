@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'image'=> 'required|string|max:191',
+            'image'=> 'required|string',
             'name' => 'required|string|max:191',
             'description' => 'required|string|max:200',
             'serial_number' => 'required|string',
@@ -40,9 +40,15 @@ class ProductController extends Controller
             'warehouse_id' => 'required|integer',
         ]);
 
+        if($request->image){
+            $name =time().'.'.explode('/',explode(':', substr($request->image,0,strpos($request->image,';')))[1])[1];
+            \Image::make($request->image)->save(public_path('img/products/').$name);
+
+        }
+
         try{
             return Product::create([
-                'image' => $request['image'],
+                'image' => $name,
                 'name' => $request['name'],
                 'description' => $request['description'],
                 'serial_number' => $request['serial_number'],

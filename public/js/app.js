@@ -2408,6 +2408,20 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref2.data;
         return _this2.warehouses = data.data;
       });
+    },
+    insertImage: function insertImage(e) {
+      var _this3 = this;
+
+      var file = e.target.files[0]; //console.log(file);
+
+      var reader = new FileReader();
+
+      reader.onloadend = function (file) {
+        //console.log('RESULT',reader.result)
+        _this3.form.image = reader.result;
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 });
@@ -4082,7 +4096,14 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.products, function (product) {
     return _c("tr", {
       key: product.id
-    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_vm._v("\n                                " + _vm._s(product.image) + "\n                            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_c("img", {
+      staticClass: "w-25 img-responsive",
+      attrs: {
+        src: "img/products/" + product.image,
+        alt: "",
+        title: ""
+      }
+    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4153,30 +4174,14 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.image,
-      expression: "form.image"
-    }],
-    staticClass: "form-control",
-    "class": {
-      "is-invalid": _vm.form.errors.has("image")
-    },
+    staticClass: "form-input",
     attrs: {
-      type: "text",
+      type: "file",
       name: "image",
       placeholder: "Imagem"
     },
-    domProps: {
-      value: _vm.form.image
-    },
     on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "image", $event.target.value);
-      }
+      change: _vm.insertImage
     }
   }), _vm._v(" "), _c("has-error", {
     attrs: {
@@ -86461,8 +86466,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

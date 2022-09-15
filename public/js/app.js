@@ -4095,12 +4095,25 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
-    staticClass: "col-md-10 mt-4"
-  }, [_c("h3", [_vm._v("Página não encontrada")]), _vm._v(" "), _c("img", {
+    staticClass: "mainbox"
+  }, [_c("div", {
+    staticClass: "err"
+  }, [_vm._v("\n                4\n            ")]), _vm._v(" "), _c("i", {
+    staticClass: "far fa-question-circle fa-spin"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "err2"
+  }, [_vm._v("\n                4\n            ")]), _vm._v(" "), _c("div", {
+    staticClass: "msg"
+  }, [_c("h2", [_vm._v("Oops... A página que procura não foi encontrada!")]), _vm._v(" "), _c("p", [_vm._v("Clique "), _c("a", {
+    staticClass: "not-found-link",
     attrs: {
-      width: "600",
-      height: "100%",
-      src: "/img/notfound.png"
+      href: "/dashboard"
+    }
+  }, [_vm._v("aqui")]), _vm._v(" para voltar ao dashboard.")])]), _vm._v(" "), _c("img", {
+    staticClass: "img-not-found",
+    attrs: {
+      src: "img/atec-ge-white.png",
+      alt: "ATEC-GE"
     }
   })])])]);
 }];
@@ -87263,8 +87276,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> feature/NotFoundComponent
 
 
 /***/ })

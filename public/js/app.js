@@ -4581,7 +4581,11 @@ var render = function render() {
 
   return _c("form", [_c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Nome"
+    }
+  }, [_vm._v("Nome: ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4593,6 +4597,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("nome")
     },
     attrs: {
+      id: "Nome",
       type: "text",
       name: "name",
       placeholder: "Nome"
@@ -4614,7 +4619,11 @@ var render = function render() {
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Contacto"
+    }
+  }, [_vm._v("Contacto:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4626,6 +4635,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("contacto")
     },
     attrs: {
+      id: "Contacto",
       type: "text",
       name: "phone_number",
       placeholder: "Contacto"
@@ -4647,7 +4657,11 @@ var render = function render() {
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Email"
+    }
+  }, [_vm._v("Email:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4659,6 +4673,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("email")
     },
     attrs: {
+      id: "Email",
       type: "email",
       name: "email",
       placeholder: "Email"
@@ -4723,16 +4738,11 @@ var staticRenderFns = [function () {
 
   return _c("form", [_c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
-    staticClass: "form-control",
+  }, [_c("label", {
     attrs: {
-      type: "password",
-      id: "inputPasswordCurrent",
-      placeholder: "Password Atual"
+      "for": "inputPasswordNew"
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  }, [_vm._v("Nova Password:")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "password",
@@ -4741,7 +4751,11 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "inputPasswordNew2"
+    }
+  }, [_vm._v("Confirmar Password:")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "password",
@@ -86490,8 +86504,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

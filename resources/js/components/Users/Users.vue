@@ -1,6 +1,6 @@
 <template>
     <div class="container" >
-        <div class="row mt-3" v-if="$gate.isAdmin()">
+        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -102,9 +102,11 @@ export default {
             this.form.fill(user);
         },
         loadUsers(){
-            axios
-                .get("api/users/")
-                .then(({ data }) => (this.users = data.data));
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                axios
+                    .get("api/users/")
+                    .then(({ data }) => (this.users = data.data));
+            }
         },
     }
 }

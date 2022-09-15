@@ -103,17 +103,6 @@
 
 /***/ }),
 
-/***/ "./node_modules/admin-lte/plugins/uplot/uPlot.esm.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/admin-lte/plugins/uplot/uPlot.esm.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected token (1885:31)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n| \n| function linear(opts) {\n> \tconst alignGaps = ifNull(opts?.alignGaps, 0);\n| \n| \treturn (u, seriesIdx, idx0, idx1) => {");
-
-/***/ }),
-
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2693,10 +2682,12 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this2 = this;
 
-      axios.get("api/users/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.users = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/users/").then(function (_ref) {
+          var data = _ref.data;
+          return _this2.users = data.data;
+        });
+      }
     }
   }
 });
@@ -4929,7 +4920,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_vm.$gate.isAdmin() ? _c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -84468,27 +84459,23 @@ var Gate = /*#__PURE__*/function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var admin_lte_plugins_uplot_uPlot_esm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! admin-lte/plugins/uplot/uPlot.esm */ "./node_modules/admin-lte/plugins/uplot/uPlot.esm.js");
-/* harmony import */ var admin_lte_plugins_uplot_uPlot_esm__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(admin_lte_plugins_uplot_uPlot_esm__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
-/* harmony import */ var vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vform/src/components/bootstrap5 */ "./node_modules/vform/src/components/bootstrap5/index.js");
-/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
+/* harmony import */ var vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vform/src/components/bootstrap5 */ "./node_modules/vform/src/components/bootstrap5/index.js");
+/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
-
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -84497,40 +84484,40 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_4__["default"](window.user);
-window.Form = vform__WEBPACK_IMPORTED_MODULE_2__["default"];
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["Button"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["Button"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["HasError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["HasError"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertError"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertErrors"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertErrors"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertSuccess"]); //Vue
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_3__["default"](window.user);
+window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["default"];
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"]); //Vue
 
  //VueRouter implementation
 
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]); //Progress bar implementation
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]); //Progress bar implementation
 
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default.a, {
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default.a, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
   height: '5px'
 }); //Sweetalert2 implementation
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a;
-var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a;
+var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
   didOpen: function didOpen(toast) {
-    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.stopTimer);
-    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.resumeTimer);
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.resumeTimer);
   }
 });
-window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a; //VueRoutes implementation
+window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a; //VueRoutes implementation
 
 var routes = [{
   path: '/dashboard',
@@ -84563,22 +84550,22 @@ var routes = [{
   path: '/developer',
   component: __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue")["default"]
 }];
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
   mode: 'history',
   routes: routes
 }); //Uppercase the first letter, how to use -> ( text | upText )
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.filter('upText', function (text) {
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.filter('upText', function (text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }); // Format date to (16/08/2022)
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.filter('myDate', function (date) {
-  return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format('L');
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.filter('myDate', function (date) {
+  return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('L');
 });
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_5___default.a();
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_4___default.a();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -84589,14 +84576,14 @@ window.Fire = new vue__WEBPACK_IMPORTED_MODULE_5___default.a();
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_5___default.a({
+var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   el: '#app',
   router: router
 });
@@ -86513,8 +86500,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

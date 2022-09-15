@@ -1,7 +1,7 @@
 export default class Gate {
 
     constructor(user) {
-        this.user = user;
+        this.user=user;
     }
 
     isAdmin(){
@@ -16,5 +16,4 @@ export default class Gate {
     isFormando(){
         return this.user.role_id === 4;
     }
-
 }

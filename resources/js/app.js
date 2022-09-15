@@ -4,8 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import win from "admin-lte/plugins/uplot/uPlot.esm";
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -20,9 +18,8 @@ import {
     AlertSuccess
 } from 'vform/src/components/bootstrap5'
 
-import Gate from "./Gate"
+import Gate from "./Gate";
 Vue.prototype.$gate = new Gate(window.user);
-
 
 window.Form=Form;
 Vue.component(Button.name, Button)

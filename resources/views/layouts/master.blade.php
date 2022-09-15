@@ -78,7 +78,7 @@
                     @endswitch
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block h5">
+                    <a href="/profile" class="d-block h5">
                         {{ Auth::user()->name }}
                     </a>
                     <p class="d-block text-white h6">

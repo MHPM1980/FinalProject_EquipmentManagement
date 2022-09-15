@@ -66,10 +66,10 @@
                             </div>
                             <div class="form-group row my-0">
                                 <div class="col-md-8 offset-md-2 my-2 d-flex justify-content-between">
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-dark">
                                         <a class="text-light" style="text-decoration: none" href="{{ route('login') }}">Login</a>
                                     </button>
-                                    <button type="submit" class="btn btn-success">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Registar') }}
                                     </button>
                                 </div>

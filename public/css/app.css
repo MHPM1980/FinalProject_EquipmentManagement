@@ -53117,6 +53117,72 @@ a.text-muted:hover {
   }
 }
 
+.mainbox {
+  margin: auto;
+  height: 85vh;
+  width: 80vw;
+  position: relative;
+}
+
+.err {
+  color: #ffffff;
+  font-size: 11rem;
+  position: absolute;
+  left: 32%;
+  top: 8%;
+}
+
+.far {
+  color: #ffffff;
+  position: absolute;
+  font-size: 8.5rem;
+  left: 45%;
+  top: 16%;
+}
+
+.err2 {
+  color: #ffffff;
+  font-size: 11rem;
+  position: absolute;
+  left: 60%;
+  top: 8%;
+}
+
+.msg {
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 16%;
+  top: 45%;
+  width: 75%;
+}
+
+.img-not-found {
+  position: absolute;
+  color: white;
+  top: 70%;
+  left: 33%;
+  width: 35%;
+}
+
+.msg h2 {
+  font-size: 2.2rem;
+}
+
+.msg p {
+  font-size: 1.5rem;
+}
+
+.not-found-link {
+  text-decoration: none;
+  color: black;
+}
+
+.not-found-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

@@ -1,18 +1,28 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 mt-4">
-                <h3>Página não encontrada</h3>
-                <img width="600" height="100%" src="/img/notfound.png">
+            <div class="mainbox">
+                <div class="err">
+                    4
+                </div>
+                <i class="far fa-question-circle fa-spin"></i>
+                <div class="err2">
+                    4
+                </div>
+                <div class="msg">
+                    <h2>Oops... A página que procura não foi encontrada!</h2>
+                    <p>Clique <a class="not-found-link" href="/dashboard">aqui</a> para voltar ao dashboard.</p>
+                </div>
+                    <img class="img-not-found" src="img/atec-ge-white.png" alt="ATEC-GE">
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
+export default {
+    mounted() {
 
-        }
     }
+}
 </script>

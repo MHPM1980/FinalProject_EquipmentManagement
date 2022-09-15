@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/app.css">
 
     <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
+
+    <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
     <style>
         body{
             background-color: rgba(12, 48, 72, 1);

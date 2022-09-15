@@ -97,7 +97,11 @@ Vue.component(
 Vue.component(
     'not-found',
     require('./components/NotFound').default
-)
+);
+Vue.component(
+    'pagination',
+    require('laravel-vue-pagination')
+);
 
 
 

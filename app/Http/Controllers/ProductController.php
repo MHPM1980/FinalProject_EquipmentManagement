@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(15);
+        return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(5);
     }
 
 

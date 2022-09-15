@@ -26,7 +26,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="product in products" :key="product.id" class="altura-row">
+                            <tr v-for="product in products.data" :key="product.id" class="altura-row">
                                 <td class="align-middle text-center">{{ product.id }}</td>
                                 <td class="td-imagem align-middle">
                                     <img class="imagem-equipamento" :src="'img/products/'+ product.image " alt="" title="">
@@ -47,6 +47,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -93,6 +96,13 @@
             formCompProducts
         },
         methods:{
+            getResults(page = 1){
+                axios
+                    .get('api/products?page=' + page)
+                    .then(response => {
+                        this.products = response.data;
+                    });
+            },
             newModal(){
                 this.mode=false;
                 $('#addNew').modal('show');
@@ -106,7 +116,7 @@
             loadProducts(){
                 axios
                     .get("api/products/")
-                    .then(({ data }) => (this.products = data.data));
+                    .then(({ data }) => (this.products = data));
             },
         }
     }

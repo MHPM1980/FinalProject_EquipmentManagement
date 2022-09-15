@@ -18,4 +18,13 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($role) {
+            if ($role->users()->exists()) {
+                throw new \Exception('Related products found');
+            }
+        });
+    }
 }

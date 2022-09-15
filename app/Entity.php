@@ -20,4 +20,13 @@ class Entity extends Model
         'address',
         'phone_number',
     ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($entity) {
+            if ($entity->warehouses()->exists()) {
+                throw new \Exception('Related entities found');
+            }
+        });
+    }
 }

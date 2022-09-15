@@ -19,4 +19,13 @@ class Category extends Model
         'name',
         'description',
     ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($category) {
+            if ($category->products()->exists()) {
+                throw new \Exception('Related products found');
+            }
+        });
+    }
 }

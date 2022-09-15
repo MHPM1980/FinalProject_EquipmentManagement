@@ -18,4 +18,13 @@ class Cost extends Model
     protected $fillable = [
         'designation','description',
     ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($cost) {
+            if ($cost->users()->exists()) {
+                throw new \Exception('Related users found');
+            }
+        });
+    }
 }

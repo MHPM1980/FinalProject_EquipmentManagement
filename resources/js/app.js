@@ -18,6 +18,9 @@ import {
     AlertSuccess
 } from 'vform/src/components/bootstrap5'
 
+import Gate from "./Gate";
+Vue.prototype.$gate = new Gate(window.user);
+
 window.Form=Form;
 Vue.component(Button.name, Button)
 Vue.component(HasError.name, HasError)
@@ -90,6 +93,10 @@ Vue.component(
 Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue').default
+);
+Vue.component(
+    'not-found',
+    require('./components/NotFound').default
 )
 
 

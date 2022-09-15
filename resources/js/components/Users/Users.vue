@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row mt-3">
+    <div class="container" >
+        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -47,7 +47,10 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Gerir Utilizador" >
+        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
+            <not-found></not-found>
+        </div>
+        <modal-comp v-if="$gate.isAdmin() || $gate.isGestor()" title="Gerir Utilizador" >
             <form-comp :edit-form="form" :edit-mode="mode" ></form-comp >
         </modal-comp>
     </div>
@@ -102,9 +105,11 @@ export default {
             this.form.fill(user);
         },
         loadUsers(){
-            axios
-                .get("api/users/")
-                .then(({ data }) => (this.users = data.data));
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                axios
+                    .get("api/users/")
+                    .then(({ data }) => (this.users = data.data));
+            }
         },
     }
 }

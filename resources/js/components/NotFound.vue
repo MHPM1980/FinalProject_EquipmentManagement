@@ -1,8 +1,9 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <not-found></not-found>
+            <div class="col-md-10 mt-4">
+                <h3>Página não encontrada</h3>
+                <img width="600" height="100%" src="/img/notfound.png">
             </div>
         </div>
     </div>
@@ -11,7 +12,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+
         }
     }
 </script>

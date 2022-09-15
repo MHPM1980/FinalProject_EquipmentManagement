@@ -93,6 +93,10 @@ Vue.component(
 Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue').default
+);
+Vue.component(
+    'not-found',
+    require('./components/NotFound').default
 )
 
 

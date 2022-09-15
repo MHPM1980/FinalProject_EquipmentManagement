@@ -47,7 +47,10 @@
                 </div>
             </div>
         </div>
-        <modal-comp title="Gerir Utilizador" >
+        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
+            <not-found></not-found>
+        </div>
+        <modal-comp v-if="$gate.isAdmin() || $gate.isGestor()" title="Gerir Utilizador" >
             <form-comp :edit-form="form" :edit-mode="mode" ></form-comp >
         </modal-comp>
     </div>

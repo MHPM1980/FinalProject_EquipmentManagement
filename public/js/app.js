@@ -3960,6 +3960,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("phone_number")
     },
     attrs: {
+      maxlength: "9",
       type: "text",
       name: "phone_number",
       placeholder: "Contacto"
@@ -4142,15 +4143,32 @@ var render = function render() {
     staticClass: "table table-hover text-nowrap"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.products, function (product) {
     return _c("tr", {
-      key: product.id
-    }, [_c("td", [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", [_c("img", {
-      staticClass: "w-25 img-responsive",
+      key: product.id,
+      staticClass: "altura-row"
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(product.id))]), _vm._v(" "), _c("td", {
+      staticClass: "td-imagem align-middle"
+    }, [_c("img", {
+      staticClass: "imagem-equipamento",
       attrs: {
         src: "img/products/" + product.image,
         alt: "",
         title: ""
       }
-    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", [_c("a", {
+    })]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4189,7 +4207,11 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "th-imagem text-center"
+  }, [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4606,7 +4628,11 @@ var render = function render() {
 
   return _c("form", [_c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Nome"
+    }
+  }, [_vm._v("Nome: ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4618,6 +4644,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("nome")
     },
     attrs: {
+      id: "Nome",
       type: "text",
       name: "name",
       placeholder: "Nome"
@@ -4639,7 +4666,11 @@ var render = function render() {
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Contacto"
+    }
+  }, [_vm._v("Contacto:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4651,6 +4682,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("contacto")
     },
     attrs: {
+      id: "Contacto",
       type: "text",
       name: "phone_number",
       placeholder: "Contacto"
@@ -4672,7 +4704,11 @@ var render = function render() {
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "Email"
+    }
+  }, [_vm._v("Email:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4684,6 +4720,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("email")
     },
     attrs: {
+      id: "Email",
       type: "email",
       name: "email",
       placeholder: "Email"
@@ -4748,16 +4785,11 @@ var staticRenderFns = [function () {
 
   return _c("form", [_c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
-    staticClass: "form-control",
+  }, [_c("label", {
     attrs: {
-      type: "password",
-      id: "inputPasswordCurrent",
-      placeholder: "Password Atual"
+      "for": "inputPasswordNew"
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("input", {
+  }, [_vm._v("Nova Password:")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "password",
@@ -4766,7 +4798,11 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("input", {
+  }, [_c("label", {
+    attrs: {
+      "for": "inputPasswordNew2"
+    }
+  }, [_vm._v("Confirmar Password:")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "password",
@@ -5596,6 +5632,7 @@ var render = function render() {
       "is-invalid": _vm.form.errors.has("phone_number")
     },
     attrs: {
+      maxlength: "9",
       type: "text",
       name: "phone_number",
       placeholder: "Contacto"

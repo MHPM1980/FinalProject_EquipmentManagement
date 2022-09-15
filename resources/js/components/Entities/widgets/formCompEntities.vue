@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group">
-            <input v-model="form.phone_number" type="text" name="phone_number" placeholder="Contacto"
+            <input v-model="form.phone_number" maxlength="9" type="text" name="phone_number" placeholder="Contacto"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
             <has-error :form="form" field="phone_number"></has-error>
         </div>

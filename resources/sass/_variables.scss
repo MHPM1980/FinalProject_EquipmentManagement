@@ -48,3 +48,75 @@ $cyan: #6cb2eb;
 .text-cyan{
     color:$cyan;
 }
+
+@media only screen and (max-width: 600px) {
+    .altura-row{
+        height: 76px;
+        overflow: hidden;
+    }
+
+    .th-imagem{
+       // background-color: green;
+        width: 76px;
+    }
+
+    .td-imagem{
+     //   background-color: blue;
+        width: 76px;
+    }
+    .imagem-equipamento{
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .altura-row{
+        height: 90px;
+        overflow: hidden;
+    }
+
+    .th-imagem{
+       // background-color: orange;
+        width: 90px;
+    }
+
+    .td-imagem{
+      //  background-color: salmon;
+        width: 90px;
+    }
+    .imagem-equipamento{
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+    }
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    .altura-row{
+        height: 110px;
+        overflow: hidden;
+    }
+
+    .th-imagem{
+     //   background-color: red;
+        width: 110px;
+    }
+
+    .td-imagem{
+        width: 110px;
+      //  background-color: yellowgreen;
+    }
+
+    .imagem-equipamento{
+        width: 85px;
+        height: 85px;
+        object-fit: cover;
+    }
+}
+
+
+

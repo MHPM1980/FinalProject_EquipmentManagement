@@ -35,7 +35,7 @@ class WarehouseController extends Controller
             'name' => 'required|string|max:191',
             'description' => 'required|string|max:200',
             'address' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|digits:9',
             'entity_id' => 'required|integer',
         ]);
 
@@ -85,7 +85,7 @@ class WarehouseController extends Controller
             'name' => 'required|string|max:191',
             'description' => 'required|string|max:200',
             'address' => 'required|string',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|integer|digits:9',
             'entity_id' => 'required|integer',
         ]);
 

@@ -1,18 +1,21 @@
 <template>
     <form>
         <div class="form-group">
-            <input v-model="form.name" type="text" name="name" placeholder="Nome"
+            <label for="Nome">Nome: </label>
+            <input id="Nome" v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('nome') }">
             <has-error :form="form" field="name"></has-error>
         </div>
         <div class="form-group">
-            <input v-model="form.phone_number" type="text" name="phone_number" placeholder="Contacto"
+            <label for="Contacto">Contacto:</label>
+            <input id="Contacto" v-model="form.phone_number" type="text" name="phone_number" placeholder="Contacto"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('contacto') }">
             <has-error :form="form" field="phone_number"></has-error>
         </div>
 
         <div class="form-group">
-            <input v-model="form.email" type="email" name="email" placeholder="Email"
+            <label for="Email">Email:</label>
+            <input id="Email" v-model="form.email" type="email" name="email" placeholder="Email"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
             <has-error :form="form" field="email"></has-error>
         </div>

@@ -53051,6 +53051,72 @@ a.text-muted:hover {
   color: #6cb2eb;
 }
 
+@media only screen and (max-width: 600px) {
+  .altura-row {
+    height: 76px;
+    overflow: hidden;
+  }
+
+  .th-imagem {
+    width: 76px;
+  }
+
+  .td-imagem {
+    width: 76px;
+  }
+
+  .imagem-equipamento {
+    width: 50px;
+    height: 50px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .altura-row {
+    height: 90px;
+    overflow: hidden;
+  }
+
+  .th-imagem {
+    width: 90px;
+  }
+
+  .td-imagem {
+    width: 90px;
+  }
+
+  .imagem-equipamento {
+    width: 65px;
+    height: 65px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .altura-row {
+    height: 110px;
+    overflow: hidden;
+  }
+
+  .th-imagem {
+    width: 110px;
+  }
+
+  .td-imagem {
+    width: 110px;
+  }
+
+  .imagem-equipamento {
+    width: 85px;
+    height: 85px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

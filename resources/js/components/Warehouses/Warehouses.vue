@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-3">
+        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -49,6 +49,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
+            <not-found></not-found>
         </div>
         <modal-comp title="Gerir Armazém">
             <form-comp-warehouses :edit-form="form" :edit-mode="mode"></form-comp-warehouses>
@@ -109,9 +112,11 @@
                 this.form.fill(warehouse);
             },
             loadWarehouses(){
+                if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/warehouses/")
-                    .then(({ data }) => (this.warehouses = data));
+                    .then(({ data }) => (this.warehouses = data))
+                };
             },
         }
     }

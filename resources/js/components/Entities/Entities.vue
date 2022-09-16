@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-3">
+        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -51,6 +51,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
+            <not-found></not-found>
         </div>
         <modal-comp title="Gerir Entidade">
             <form-comp-entities :edit-form="form" :edit-mode="mode"></form-comp-entities >
@@ -109,9 +112,11 @@
                 this.form.fill(entity);
             },
             loadEntities(){
+                if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/entities/")
-                    .then(({ data }) => (this.entities = data));
+                    .then(({ data }) => (this.entities = data))
+                };
             },
         }
     }

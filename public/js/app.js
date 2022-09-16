@@ -1959,6 +1959,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompCategories: _widgets_formCompCategories__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/categories?page=' + page).then(function (response) {
+        _this2.categories = response.data;
+      });
+    },
     newModal: function newModal() {
       this.mode = false;
       $('#addNew').modal('show');
@@ -1970,12 +1978,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(category);
     },
     loadCategories: function loadCategories() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("api/categories/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.categories = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/categories/").then(function (_ref) {
+          var data = _ref.data;
+          return _this3.categories = data;
+        });
+      }
     }
   }
 });
@@ -2062,6 +2072,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompCosts: _widgets_formCompCosts__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/costs?page=' + page).then(function (response) {
+        _this2.costs = response.data;
+      });
+    },
     newModal: function newModal() {
       this.mode = false;
       $('#addNew').modal('show');
@@ -2073,12 +2091,16 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(cost);
     },
     loadCosts: function loadCosts() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("api/costs/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.costs = data.data;
-      });
+      if (this.$gate.isAdmin()) {
+        axios.get("api/costs/").then(function (_ref) {
+          var data = _ref.data;
+          return _this3.costs = data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -2200,6 +2222,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompEntities: _widgets_formCompEntities_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/entities?page=' + page).then(function (response) {
+        _this2.entities = response.data;
+      });
+    },
     newModal: function newModal() {
       this.mode = false;
       $('#addNew').modal('show');
@@ -2211,12 +2241,16 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(entity);
     },
     loadEntities: function loadEntities() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("api/entities/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.entities = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/entities/").then(function (_ref) {
+          var data = _ref.data;
+          return _this3.entities = data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -2361,10 +2395,14 @@ __webpack_require__.r(__webpack_exports__);
     loadProducts: function loadProducts() {
       var _this3 = this;
 
-      axios.get("api/products/").then(function (_ref) {
-        var data = _ref.data;
-        return _this3.products = data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/products/").then(function (_ref) {
+          var data = _ref.data;
+          return _this3.products = data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -2597,10 +2635,14 @@ __webpack_require__.r(__webpack_exports__);
     loadRoles: function loadRoles() {
       var _this2 = this;
 
-      axios.get("api/roles/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.roles = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/roles/").then(function (_ref) {
+          var data = _ref.data;
+          return _this2.roles = data.data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -2690,6 +2732,14 @@ __webpack_require__.r(__webpack_exports__);
     formComp: _widgets_formComp__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/users?page=' + page).then(function (response) {
+        _this2.users = response.data;
+      });
+    },
     newModal: function newModal() {
       this.mode = false;
       $('#addNew').modal('show');
@@ -2703,12 +2753,12 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(user);
     },
     loadUsers: function loadUsers() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.$gate.isAdmin() || this.$gate.isGestor()) {
         axios.get("api/users/").then(function (_ref) {
           var data = _ref.data;
-          return _this2.users = data.data;
+          return _this3.users = data;
         });
       }
     }
@@ -2828,6 +2878,14 @@ __webpack_require__.r(__webpack_exports__);
     formCompWarehouses: _widgets_formCompWarehouses__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/warehouses?page=' + page).then(function (response) {
+        _this2.warehouses = response.data;
+      });
+    },
     newModal: function newModal() {
       this.mode = false;
       $('#addNew').modal('show');
@@ -2839,12 +2897,16 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(warehouse);
     },
     loadWarehouses: function loadWarehouses() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("api/warehouses/").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.warehouses = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/warehouses/").then(function (_ref) {
+          var data = _ref.data;
+          return _this3.warehouses = data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -3298,7 +3360,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -3321,7 +3383,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.categories, function (category) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.categories.data, function (category) {
     return _c("tr", {
       key: category.id
     }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", [_c("a", {
@@ -3347,7 +3409,16 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa fa-trash text-red"
     })])])]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.categories
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Categoria"
     }
@@ -3514,7 +3585,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -3537,7 +3608,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.costs, function (cost) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.costs.data, function (cost) {
     return _c("tr", {
       key: cost.id
     }, [_c("td", [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", _vm._l(cost.users, function (users) {
@@ -3565,7 +3636,16 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa fa-trash text-red"
     })])])]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.costs
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Centro de Custo"
     }
@@ -3792,7 +3872,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -3815,7 +3895,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.entities, function (entity) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.entities.data, function (entity) {
     return _c("tr", {
       key: entity.id
     }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
@@ -3843,7 +3923,16 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa fa-trash text-red"
     })])])]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.entities
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Entidade"
     }
@@ -4139,7 +4228,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -4221,7 +4310,7 @@ var render = function render() {
     on: {
       "pagination-change-page": _vm.getResults
     }
-  })], 1)])])]), _vm._v(" "), _c("modal-comp", {
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Equipamento"
     }
@@ -4870,7 +4959,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -4886,7 +4975,7 @@ var render = function render() {
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                        " + _vm._s(users.name) + "\n                                    ")]);
     }), 0), _vm._v(" "), _c("td")]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+  }), 0)])])])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Permissão"
     }
@@ -5054,7 +5143,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users.data, function (user) {
     return _c("tr", {
       key: user.id
     }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_c("a", {
@@ -5080,7 +5169,16 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa fa-trash text-red"
     })])])]);
-  }), 0)])])])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("modal-comp", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.users
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("modal-comp", {
     attrs: {
       title: "Gerir Utilizador"
     }
@@ -5408,7 +5506,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -5431,7 +5529,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.warehouses, function (warehouse) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.warehouses.data, function (warehouse) {
     return _c("tr", {
       key: warehouse.id
     }, [_c("td", [_vm._v(_vm._s(warehouse.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.description))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(warehouse.entity.name))]), _vm._v(" "), _c("td", [_c("a", {
@@ -5457,7 +5555,16 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa fa-trash text-red"
     })])])]);
-  }), 0)])])])])]), _vm._v(" "), _c("modal-comp", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.warehouses
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  })], 1)])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Armazém"
     }
@@ -87276,8 +87383,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

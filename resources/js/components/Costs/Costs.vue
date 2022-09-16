@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-3">
+        <div class="row mt-3" v-if="$gate.isAdmin()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -49,6 +49,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-if="!$gate.isAdmin()">
+            <not-found></not-found>
         </div>
         <modal-comp title="Gerir Centro de Custo">
             <form-comp-costs :edit-form="form" :edit-mode="mode"></form-comp-costs>
@@ -106,9 +109,11 @@
                 this.form.fill(cost);
             },
             loadCosts(){
+                if(this.$gate.isAdmin()){
                 axios
                     .get("api/costs/")
-                    .then(({ data }) => (this.costs = data));
+                    .then(({ data }) => (this.costs = data))
+                };
             },
         }
     }

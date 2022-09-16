@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-3">
+        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -43,6 +43,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
+            <not-found></not-found>
         </div>
         <modal-comp title="Gerir Categoria">
             <form-comp-categories :edit-form="form" :edit-mode="mode"></form-comp-categories>
@@ -100,9 +103,10 @@
                 this.form.fill(category);
             },
             loadCategories(){
+                if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/categories/")
-                    .then(({ data }) => (this.categories = data));
+                    .then(({ data }) => (this.categories = data));}
             },
         }
     }

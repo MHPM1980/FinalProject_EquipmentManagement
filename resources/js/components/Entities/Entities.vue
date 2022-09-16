@@ -24,7 +24,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="entity in entities" :key="entity.id">
+                            <tr v-for="entity in entities.data" :key="entity.id">
                                 <td>{{ entity.id }}</td>
                                 <td>{{ entity.name }}</td>
                                 <td>{{ entity.address }}</td>
@@ -45,6 +45,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="entities" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -88,6 +91,13 @@
             formCompEntities
         },
         methods:{
+            getResults(page = 1){
+                axios
+                    .get('api/entities?page=' + page)
+                    .then(response => {
+                        this.entities = response.data;
+                    });
+            },
             newModal(){
                 this.mode=false;
                 $('#addNew').modal('show');
@@ -101,7 +111,7 @@
             loadEntities(){
                 axios
                     .get("api/entities/")
-                    .then(({ data }) => (this.entities = data.data));
+                    .then(({ data }) => (this.entities = data));
             },
         }
     }

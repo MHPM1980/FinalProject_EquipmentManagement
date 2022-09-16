@@ -23,7 +23,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="cost in costs" :key="cost.id">
+                            <tr v-for="cost in costs.data" :key="cost.id">
                                 <td>{{ cost.id }}</td>
                                 <td>{{ cost.designation }}</td>
                                 <td>{{ cost.description }}</td>
@@ -43,6 +43,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="costs" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -85,6 +88,13 @@
             formCompCosts
         },
         methods:{
+            getResults(page = 1){
+                axios
+                    .get('api/costs?page=' + page)
+                    .then(response => {
+                        this.costs = response.data;
+                    });
+            },
             newModal(){
                 this.mode=false;
                 $('#addNew').modal('show');
@@ -98,7 +108,7 @@
             loadCosts(){
                 axios
                     .get("api/costs/")
-                    .then(({ data }) => (this.costs = data.data));
+                    .then(({ data }) => (this.costs = data));
             },
         }
     }

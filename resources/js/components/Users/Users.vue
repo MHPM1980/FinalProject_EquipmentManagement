@@ -25,7 +25,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="user in users" :key="user.id">
+                            <tr v-for="user in users.data" :key="user.id">
                                 <td>{{ user.id }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
@@ -43,6 +43,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="users" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -92,6 +95,13 @@ export default {
         formComp,
     },
     methods:{
+        getResults(page = 1){
+            axios
+                .get('api/users?page=' + page)
+                .then(response => {
+                    this.users = response.data;
+                });
+        },
         newModal(){
             this.mode=false;
             $('#addNew').modal('show');
@@ -108,7 +118,7 @@ export default {
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/users/")
-                    .then(({ data }) => (this.users = data.data));
+                    .then(({ data }) => (this.users = data));
             }
         },
     }

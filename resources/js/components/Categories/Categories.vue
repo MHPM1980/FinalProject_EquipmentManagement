@@ -22,7 +22,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="category in categories" :key="category.id">
+                            <tr v-for="category in categories.data" :key="category.id">
                                 <td>{{ category.id }}</td>
                                 <td>{{ category.name }}</td>
                                 <td>{{ category.description }}</td>
@@ -37,6 +37,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="categories" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -79,6 +82,13 @@
             formCompCategories
         },
         methods:{
+            getResults(page = 1){
+                axios
+                    .get('api/categories?page=' + page)
+                    .then(response => {
+                        this.categories = response.data;
+                    });
+            },
             newModal(){
                 this.mode=false;
                 $('#addNew').modal('show');
@@ -92,7 +102,7 @@
             loadCategories(){
                 axios
                     .get("api/categories/")
-                    .then(({ data }) => (this.categories = data.data));
+                    .then(({ data }) => (this.categories = data));
             },
         }
     }

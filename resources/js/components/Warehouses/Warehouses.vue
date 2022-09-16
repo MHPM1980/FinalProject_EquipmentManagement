@@ -25,7 +25,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="warehouse in warehouses" :key="warehouse.id">
+                            <tr v-for="warehouse in warehouses.data" :key="warehouse.id">
                                 <td>{{ warehouse.id }}</td>
                                 <td>{{ warehouse.name }}</td>
                                 <td>{{ warehouse.description }}</td>
@@ -43,6 +43,9 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="warehouses" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
             </div>
@@ -88,6 +91,13 @@
             formCompWarehouses
         },
         methods:{
+            getResults(page = 1){
+                axios
+                    .get('api/warehouses?page=' + page)
+                    .then(response => {
+                        this.warehouses = response.data;
+                    });
+            },
             newModal(){
                 this.mode=false;
                 $('#addNew').modal('show');
@@ -101,7 +111,7 @@
             loadWarehouses(){
                 axios
                     .get("api/warehouses/")
-                    .then(({ data }) => (this.warehouses = data.data));
+                    .then(({ data }) => (this.warehouses = data));
             },
         }
     }

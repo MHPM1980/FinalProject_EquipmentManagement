@@ -85,11 +85,17 @@ class UserController extends Controller
             'cost_id' => 'required|integer',
             'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
             'phone_number' => 'required|integer|digits:9',
-            'password' => 'sometimes|string|min:6',
+            'password' => 'sometimes|min:6',
         ]);
 
         //update user in DB
-        $user->update($request->all());
+        $user->name = $request->name;
+        $user->role_id = $request->role_id;
+        $user->cost_id = $request->cost_id;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->password = bcrypt($request->password);
+        $user->save();
 
        return ['message'=>'Updated the user info'];
     }

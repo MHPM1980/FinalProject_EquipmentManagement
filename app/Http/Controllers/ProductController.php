@@ -89,7 +89,7 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id);
 
         $this->validate($request,[
-            'image'=> 'required|string|max:191',
+            'image'=> 'sometimes|string',
             'name' => 'required|string|max:191',
             'description' => 'required|string|max:200',
             'serial_number' => 'required|string',
@@ -97,10 +97,32 @@ class ProductController extends Controller
             'warehouse_id' => 'required|integer',
         ]);
 
-        //update user in DB
-        $product->update($request->all());
+        $currentImage = $product->image;
+        if($request->image != $currentImage){
+            $name =time().'.'.explode('/',explode(':',
+                    substr($request->image,0,strpos($request->image,';')))[1])[1];
+            \Image::make($request->image)->save(public_path
+                ('img/products/').$name);
 
-        return ['message'=>'Updated the product info'];
+            $request->merge(['image' => $name]);
+
+            $productImage=public_path('img/products/'.$currentImage);
+
+            if(file_exists($productImage)){
+                @unlink($productImage);
+            }
+        }
+
+        try {
+
+            //update user in DB
+            $product->update($request->all());
+
+            return ['message'=>'Updated the product info'];
+
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
 
     }
 

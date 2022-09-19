@@ -103,11 +103,21 @@ export default {
             let file= e.target.files[0];
             //console.log(file);
             let reader= new FileReader();
-            reader.onloadend = (file) => {
-                //console.log('RESULT',reader.result)
-                this.form.image = reader.result;
+
+            if(file['size'] < 211117755){
+                reader.onloadend = (file) => {
+                    //console.log('RESULT',reader.result)
+                    this.form.image = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }else{
+                swal({
+                    type: 'error',
+                    title: 'Ooops...',
+                    text: 'Imagem inválida'
+                })
             }
-            reader.readAsDataURL(file);
+
         }
     }
 }

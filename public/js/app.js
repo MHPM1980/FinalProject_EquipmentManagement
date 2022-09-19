@@ -2477,12 +2477,20 @@ __webpack_require__.r(__webpack_exports__);
 
       var reader = new FileReader();
 
-      reader.onloadend = function (file) {
-        //console.log('RESULT',reader.result)
-        _this3.form.image = reader.result;
-      };
+      if (file['size'] < 211117755) {
+        reader.onloadend = function (file) {
+          //console.log('RESULT',reader.result)
+          _this3.form.image = reader.result;
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        swal({
+          type: 'error',
+          title: 'Ooops...',
+          text: 'Imagem inválida'
+        });
+      }
     }
   }
 });

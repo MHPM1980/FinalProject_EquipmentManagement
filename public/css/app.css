@@ -53051,6 +53051,16 @@ a.text-muted:hover {
   color: #6cb2eb;
 }
 
+body {
+  overflow: hidden;
+}
+
+footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+}
+
 @media screen and (max-width: 450px) {
   .mainbox {
     margin: auto;

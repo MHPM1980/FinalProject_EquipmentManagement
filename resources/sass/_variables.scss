@@ -48,6 +48,14 @@ $cyan: #6cb2eb;
 .text-cyan{
     color:$cyan;
 }
+body{
+    overflow: hidden;
+}
+
+footer{
+    position: sticky;
+    bottom: 0;
+}
 
 @media screen and (max-width: 450px){
     // PÁGINA DE ERRO 404

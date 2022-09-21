@@ -2729,6 +2729,12 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    Fire.$on('searching', function () {
+      var query = _this.$parent.search;
+      axios.get('api/findUser?q=' + query).then(function (data) {
+        _this.users = data.data;
+      })["catch"](function () {});
+    });
     this.loadUsers(); //custom Event to reload DOM
 
     Fire.$on('AfterCreate', function () {
@@ -85407,7 +85413,15 @@ vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('example-component', __webp
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   el: '#app',
-  router: router
+  router: router,
+  data: {
+    search: ''
+  },
+  methods: {
+    searchit: function searchit() {
+      Fire.$emit('searching');
+    }
+  }
 });
 
 /***/ }),
@@ -87391,8 +87405,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

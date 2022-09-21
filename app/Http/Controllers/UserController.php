@@ -23,6 +23,18 @@ class UserController extends Controller
        return User::with(['role','cost'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $users = User::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                        ->orWhere('email','LIKE',"%$search%");
+            })->paginate(15);
+        }
+
+        return $users;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

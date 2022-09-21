@@ -20,14 +20,16 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
-        "vue": "^2.5.17",
+        "vue": "^2.7.10",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.1.2",
+        "@vue/composition-api": "^1.7.0",
         "admin-lte": "3.2",
         "laravel-vue-pagination": "^2.3.1",
         "moment": "^2.29.4",
+        "pinia": "^2.0.22",
         "sweetalert2": "^11.4.26",
         "vform": "^2.1.2",
         "vue-progressbar": "^0.7.5",

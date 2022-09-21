@@ -86,6 +86,387 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/api.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/api.js ***!
+  \***********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/app.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/app.js ***!
+  \***********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/component.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/component.js ***!
+  \*****************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/context.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/context.js ***!
+  \***************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/hooks.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/hooks.js ***!
+  \*************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/index.js ***!
+  \*************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api.js */ "./node_modules/@vue/devtools-api/lib/esm/api/api.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.js */ "./node_modules/@vue/devtools-api/lib/esm/api/app.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _component_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.js */ "./node_modules/@vue/devtools-api/lib/esm/api/component.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.js */ "./node_modules/@vue/devtools-api/lib/esm/api/context.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _hooks_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks.js */ "./node_modules/@vue/devtools-api/lib/esm/api/hooks.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util.js */ "./node_modules/@vue/devtools-api/lib/esm/api/util.js");
+/* empty/unused harmony star reexport */
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/api/util.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/api/util.js ***!
+  \************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/const.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/const.js ***!
+  \*********************************************************/
+/*! exports provided: HOOK_SETUP, HOOK_PLUGIN_SETTINGS_SET */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HOOK_SETUP", function() { return HOOK_SETUP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HOOK_PLUGIN_SETTINGS_SET", function() { return HOOK_PLUGIN_SETTINGS_SET; });
+const HOOK_SETUP = 'devtools-plugin:setup';
+const HOOK_PLUGIN_SETTINGS_SET = 'plugin:settings:set';
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/env.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/env.js ***!
+  \*******************************************************/
+/*! exports provided: getDevtoolsGlobalHook, getTarget, isProxyAvailable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDevtoolsGlobalHook", function() { return getDevtoolsGlobalHook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTarget", function() { return getTarget; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProxyAvailable", function() { return isProxyAvailable; });
+function getDevtoolsGlobalHook() {
+    return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function getTarget() {
+    // @ts-ignore
+    return (typeof navigator !== 'undefined' && typeof window !== 'undefined')
+        ? window
+        : typeof global !== 'undefined'
+            ? global
+            : {};
+}
+const isProxyAvailable = typeof Proxy === 'function';
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/index.js ***!
+  \*********************************************************/
+/*! exports provided: isPerformanceSupported, now, setupDevtoolsPlugin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setupDevtoolsPlugin", function() { return setupDevtoolsPlugin; });
+/* harmony import */ var _env_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./env.js */ "./node_modules/@vue/devtools-api/lib/esm/env.js");
+/* harmony import */ var _const_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const.js */ "./node_modules/@vue/devtools-api/lib/esm/const.js");
+/* harmony import */ var _proxy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./proxy.js */ "./node_modules/@vue/devtools-api/lib/esm/proxy.js");
+/* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api/index.js */ "./node_modules/@vue/devtools-api/lib/esm/api/index.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _plugin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./plugin.js */ "./node_modules/@vue/devtools-api/lib/esm/plugin.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _time_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./time.js */ "./node_modules/@vue/devtools-api/lib/esm/time.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isPerformanceSupported", function() { return _time_js__WEBPACK_IMPORTED_MODULE_5__["isPerformanceSupported"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "now", function() { return _time_js__WEBPACK_IMPORTED_MODULE_5__["now"]; });
+
+
+
+
+
+
+
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
+    const descriptor = pluginDescriptor;
+    const target = Object(_env_js__WEBPACK_IMPORTED_MODULE_0__["getTarget"])();
+    const hook = Object(_env_js__WEBPACK_IMPORTED_MODULE_0__["getDevtoolsGlobalHook"])();
+    const enableProxy = _env_js__WEBPACK_IMPORTED_MODULE_0__["isProxyAvailable"] && descriptor.enableEarlyProxy;
+    if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) {
+        hook.emit(_const_js__WEBPACK_IMPORTED_MODULE_1__["HOOK_SETUP"], pluginDescriptor, setupFn);
+    }
+    else {
+        const proxy = enableProxy ? new _proxy_js__WEBPACK_IMPORTED_MODULE_2__["ApiProxy"](descriptor, hook) : null;
+        const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
+        list.push({
+            pluginDescriptor: descriptor,
+            setupFn,
+            proxy,
+        });
+        if (proxy)
+            setupFn(proxy.proxiedTarget);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/plugin.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/plugin.js ***!
+  \**********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/proxy.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/proxy.js ***!
+  \*********************************************************/
+/*! exports provided: ApiProxy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiProxy", function() { return ApiProxy; });
+/* harmony import */ var _const_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const.js */ "./node_modules/@vue/devtools-api/lib/esm/const.js");
+/* harmony import */ var _time_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time.js */ "./node_modules/@vue/devtools-api/lib/esm/time.js");
+
+
+class ApiProxy {
+    constructor(plugin, hook) {
+        this.target = null;
+        this.targetQueue = [];
+        this.onQueue = [];
+        this.plugin = plugin;
+        this.hook = hook;
+        const defaultSettings = {};
+        if (plugin.settings) {
+            for (const id in plugin.settings) {
+                const item = plugin.settings[id];
+                defaultSettings[id] = item.defaultValue;
+            }
+        }
+        const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
+        let currentSettings = Object.assign({}, defaultSettings);
+        try {
+            const raw = localStorage.getItem(localSettingsSaveId);
+            const data = JSON.parse(raw);
+            Object.assign(currentSettings, data);
+        }
+        catch (e) {
+            // noop
+        }
+        this.fallbacks = {
+            getSettings() {
+                return currentSettings;
+            },
+            setSettings(value) {
+                try {
+                    localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
+                }
+                catch (e) {
+                    // noop
+                }
+                currentSettings = value;
+            },
+            now() {
+                return Object(_time_js__WEBPACK_IMPORTED_MODULE_1__["now"])();
+            },
+        };
+        if (hook) {
+            hook.on(_const_js__WEBPACK_IMPORTED_MODULE_0__["HOOK_PLUGIN_SETTINGS_SET"], (pluginId, value) => {
+                if (pluginId === this.plugin.id) {
+                    this.fallbacks.setSettings(value);
+                }
+            });
+        }
+        this.proxiedOn = new Proxy({}, {
+            get: (_target, prop) => {
+                if (this.target) {
+                    return this.target.on[prop];
+                }
+                else {
+                    return (...args) => {
+                        this.onQueue.push({
+                            method: prop,
+                            args,
+                        });
+                    };
+                }
+            },
+        });
+        this.proxiedTarget = new Proxy({}, {
+            get: (_target, prop) => {
+                if (this.target) {
+                    return this.target[prop];
+                }
+                else if (prop === 'on') {
+                    return this.proxiedOn;
+                }
+                else if (Object.keys(this.fallbacks).includes(prop)) {
+                    return (...args) => {
+                        this.targetQueue.push({
+                            method: prop,
+                            args,
+                            resolve: () => { },
+                        });
+                        return this.fallbacks[prop](...args);
+                    };
+                }
+                else {
+                    return (...args) => {
+                        return new Promise(resolve => {
+                            this.targetQueue.push({
+                                method: prop,
+                                args,
+                                resolve,
+                            });
+                        });
+                    };
+                }
+            },
+        });
+    }
+    async setRealTarget(target) {
+        this.target = target;
+        for (const item of this.onQueue) {
+            this.target.on[item.method](...item.args);
+        }
+        for (const item of this.targetQueue) {
+            item.resolve(await this.target[item.method](...item.args));
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@vue/devtools-api/lib/esm/time.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@vue/devtools-api/lib/esm/time.js ***!
+  \********************************************************/
+/*! exports provided: isPerformanceSupported, now */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPerformanceSupported", function() { return isPerformanceSupported; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "now", function() { return now; });
+let supported;
+let perf;
+function isPerformanceSupported() {
+    var _a;
+    if (supported !== undefined) {
+        return supported;
+    }
+    if (typeof window !== 'undefined' && window.performance) {
+        supported = true;
+        perf = window.performance;
+    }
+    else if (typeof global !== 'undefined' && ((_a = global.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
+        supported = true;
+        perf = global.perf_hooks.performance;
+    }
+    else {
+        supported = false;
+    }
+    return supported;
+}
+function now() {
+    return isPerformanceSupported() ? perf.now() : Date.now();
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/admin-lte/dist/js/adminlte.min.js":
 /*!********************************************************!*\
   !*** ./node_modules/admin-lte/dist/js/adminlte.min.js ***!
@@ -2705,13 +3086,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formComp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formComp */ "./resources/js/components/Users/widgets/formComp.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var _store_users__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/users */ "./resources/js/store/users.js");
 
 
 
+
+var store = Object(_store_users__WEBPACK_IMPORTED_MODULE_3__["useUserStore"])();
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: {},
+      users: [],
       form: new Form({
         id: '',
         name: '',
@@ -2722,7 +3106,8 @@ __webpack_require__.r(__webpack_exports__);
         password: ''
       }),
       link: 'users',
-      mode: false
+      mode: false,
+      usersList: []
     };
   },
   mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
@@ -2732,7 +3117,8 @@ __webpack_require__.r(__webpack_exports__);
     Fire.$on('searching', function () {
       var query = _this.$parent.search;
       axios.get('api/findUser?q=' + query).then(function (data) {
-        _this.users = data.data;
+        console.log(data);
+        store.$onAction();
       })["catch"](function () {});
     });
     this.loadUsers(); //custom Event to reload DOM
@@ -2772,7 +3158,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$gate.isAdmin() || this.$gate.isGestor()) {
         axios.get("api/users/").then(function (_ref) {
           var data = _ref.data;
-          return _this3.users = data;
+          return _this3.usersList = data.data.data;
         });
       }
     }
@@ -5157,7 +5543,7 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users.data, function (user) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.usersList, function (user) {
     return _c("tr", {
       key: user.id
     }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.cost.designation))]), _vm._v(" "), _c("td", [_c("a", {
@@ -11061,7 +11447,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.6.0
+ * jQuery JavaScript Library v3.6.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -11071,7 +11457,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2021-03-02T17:08Z
+ * Date: 2022-08-26T17:52Z
  */
 ( function( global, factory ) {
 
@@ -11085,7 +11471,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
-		// See ticket #14549 for more info.
+		// See ticket trac-14549 for more info.
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
@@ -11213,7 +11599,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.6.0",
+	version = "3.6.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -14191,8 +14577,8 @@ jQuery.fn.extend( {
 var rootjQuery,
 
 	// A simple way to check for HTML strings
-	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
-	// Strict HTML recognition (#11290: must start with <)
+	// Prioritize #id over <tag> to avoid XSS via location.hash (trac-9521)
+	// Strict HTML recognition (trac-11290: must start with <)
 	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
@@ -15149,7 +15535,7 @@ jQuery.extend( {
 	isReady: false,
 
 	// A counter to track how many items to wait for before
-	// the ready event fires. See #6781
+	// the ready event fires. See trac-6781
 	readyWait: 1,
 
 	// Handle when the DOM is ready
@@ -15277,7 +15663,7 @@ function fcamelCase( _all, letter ) {
 
 // Convert dashed to camelCase; used by the css and data modules
 // Support: IE <=9 - 11, Edge 12 - 15
-// Microsoft forgot to hump their vendor prefix (#9572)
+// Microsoft forgot to hump their vendor prefix (trac-9572)
 function camelCase( string ) {
 	return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 }
@@ -15313,7 +15699,7 @@ Data.prototype = {
 			value = {};
 
 			// We can accept data for non-element nodes in modern browsers,
-			// but we should not, see #8335.
+			// but we should not, see trac-8335.
 			// Always return an empty object.
 			if ( acceptData( owner ) ) {
 
@@ -15552,7 +15938,7 @@ jQuery.fn.extend( {
 					while ( i-- ) {
 
 						// Support: IE 11 only
-						// The attrs elements can be null (#14894)
+						// The attrs elements can be null (trac-14894)
 						if ( attrs[ i ] ) {
 							name = attrs[ i ].name;
 							if ( name.indexOf( "data-" ) === 0 ) {
@@ -15975,9 +16361,9 @@ var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 		input = document.createElement( "input" );
 
 	// Support: Android 4.0 - 4.3 only
-	// Check state lost if the name is set (#11217)
+	// Check state lost if the name is set (trac-11217)
 	// Support: Windows Web Apps (WWA)
-	// `name` and `type` must use .setAttribute for WWA (#14901)
+	// `name` and `type` must use .setAttribute for WWA (trac-14901)
 	input.setAttribute( "type", "radio" );
 	input.setAttribute( "checked", "checked" );
 	input.setAttribute( "name", "t" );
@@ -16001,7 +16387,7 @@ var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 } )();
 
 
-// We have to close these tags to support XHTML (#13200)
+// We have to close these tags to support XHTML (trac-13200)
 var wrapMap = {
 
 	// XHTML parsers do not magically insert elements in the
@@ -16027,7 +16413,7 @@ if ( !support.option ) {
 function getAll( context, tag ) {
 
 	// Support: IE <=9 - 11 only
-	// Use typeof to avoid zero-argument method invocation on host objects (#15151)
+	// Use typeof to avoid zero-argument method invocation on host objects (trac-15151)
 	var ret;
 
 	if ( typeof context.getElementsByTagName !== "undefined" ) {
@@ -16110,7 +16496,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				// Remember the top-level container
 				tmp = fragment.firstChild;
 
-				// Ensure the created nodes are orphaned (#12392)
+				// Ensure the created nodes are orphaned (trac-12392)
 				tmp.textContent = "";
 			}
 		}
@@ -16531,15 +16917,15 @@ jQuery.event = {
 
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
 
-				// Don't check non-elements (#13208)
-				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
+				// Don't check non-elements (trac-13208)
+				// Don't process clicks on disabled elements (trac-6911, trac-8165, trac-11382, trac-11764)
 				if ( cur.nodeType === 1 && !( event.type === "click" && cur.disabled === true ) ) {
 					matchedHandlers = [];
 					matchedSelectors = {};
 					for ( i = 0; i < delegateCount; i++ ) {
 						handleObj = handlers[ i ];
 
-						// Don't conflict with Object.prototype properties (#13203)
+						// Don't conflict with Object.prototype properties (trac-13203)
 						sel = handleObj.selector + " ";
 
 						if ( matchedSelectors[ sel ] === undefined ) {
@@ -16793,7 +17179,7 @@ jQuery.Event = function( src, props ) {
 
 		// Create target properties
 		// Support: Safari <=6 - 7 only
-		// Target should not be a text node (#504, #13143)
+		// Target should not be a text node (trac-504, trac-13143)
 		this.target = ( src.target && src.target.nodeType === 3 ) ?
 			src.target.parentNode :
 			src.target;
@@ -16916,10 +17302,10 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 			return true;
 		},
 
-		// Suppress native focus or blur as it's already being fired
-		// in leverageNative.
-		_default: function() {
-			return true;
+		// Suppress native focus or blur if we're currently inside
+		// a leveraged native-event stack
+		_default: function( event ) {
+			return dataPriv.get( event.target, type );
 		},
 
 		delegateType: delegateType
@@ -17018,7 +17404,8 @@ var
 
 	// checked="checked" or checked
 	rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i,
-	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
+
+	rcleanScript = /^\s*<!\[CDATA\[|\]\]>\s*$/g;
 
 // Prefer a tbody over its parent table for containing new rows
 function manipulationTarget( elem, content ) {
@@ -17132,7 +17519,7 @@ function domManip( collection, args, callback, ignored ) {
 
 			// Use the original fragment for the last item
 			// instead of the first because it can end up
-			// being emptied incorrectly in certain situations (#8070).
+			// being emptied incorrectly in certain situations (trac-8070).
 			for ( ; i < l; i++ ) {
 				node = fragment;
 
@@ -17173,6 +17560,12 @@ function domManip( collection, args, callback, ignored ) {
 								}, doc );
 							}
 						} else {
+
+							// Unwrap a CDATA section containing script contents. This shouldn't be
+							// needed as in XML documents they're already not visible when
+							// inspecting element contents and in HTML documents they have no
+							// meaning but we're preserving that logic for backwards compatibility.
+							// This will be removed completely in 4.0. See gh-4904.
 							DOMEval( node.textContent.replace( rcleanScript, "" ), node, doc );
 						}
 					}
@@ -17455,9 +17848,12 @@ jQuery.each( {
 } );
 var rnumnonpx = new RegExp( "^(" + pnum + ")(?!px)[a-z%]+$", "i" );
 
+var rcustomProp = /^--/;
+
+
 var getStyles = function( elem ) {
 
-		// Support: IE <=11 only, Firefox <=30 (#15098, #14150)
+		// Support: IE <=11 only, Firefox <=30 (trac-15098, trac-14150)
 		// IE throws on elements created in popups
 		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
 		var view = elem.ownerDocument.defaultView;
@@ -17491,6 +17887,15 @@ var swap = function( elem, options, callback ) {
 
 
 var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
+
+var whitespace = "[\\x20\\t\\r\\n\\f]";
+
+
+var rtrimCSS = new RegExp(
+	"^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$",
+	"g"
+);
+
 
 
 
@@ -17557,7 +17962,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 	}
 
 	// Support: IE <=9 - 11 only
-	// Style of cloned element affects source element cloned (#8908)
+	// Style of cloned element affects source element cloned (trac-8908)
 	div.style.backgroundClip = "content-box";
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
@@ -17637,6 +18042,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 function curCSS( elem, name, computed ) {
 	var width, minWidth, maxWidth, ret,
+		isCustomProp = rcustomProp.test( name ),
 
 		// Support: Firefox 51+
 		// Retrieving style before computed somehow
@@ -17647,10 +18053,21 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 
 	// getPropertyValue is needed for:
-	//   .css('filter') (IE 9 only, #12537)
-	//   .css('--customProperty) (#3144)
+	//   .css('filter') (IE 9 only, trac-12537)
+	//   .css('--customProperty) (gh-3144)
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
+
+		// trim whitespace for custom property (issue gh-4926)
+		if ( isCustomProp ) {
+
+			// rtrim treats U+000D CARRIAGE RETURN and U+000C FORM FEED
+			// as whitespace while CSS does not, but this is not a problem
+			// because CSS preprocessing replaces them with U+000A LINE FEED
+			// (which *is* CSS whitespace)
+			// https://www.w3.org/TR/css-syntax-3/#input-preprocessing
+			ret = ret.replace( rtrimCSS, "$1" );
+		}
 
 		if ( ret === "" && !isAttached( elem ) ) {
 			ret = jQuery.style( elem, name );
@@ -17747,7 +18164,6 @@ var
 	// except "table", "table-cell", or "table-caption"
 	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
-	rcustomProp = /^--/,
 	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
 	cssNormalTransform = {
 		letterSpacing: "0",
@@ -17983,15 +18399,15 @@ jQuery.extend( {
 		if ( value !== undefined ) {
 			type = typeof value;
 
-			// Convert "+=" or "-=" to relative numbers (#7345)
+			// Convert "+=" or "-=" to relative numbers (trac-7345)
 			if ( type === "string" && ( ret = rcssNum.exec( value ) ) && ret[ 1 ] ) {
 				value = adjustCSS( elem, name, ret );
 
-				// Fixes bug #9237
+				// Fixes bug trac-9237
 				type = "number";
 			}
 
-			// Make sure that null and NaN values aren't set (#7116)
+			// Make sure that null and NaN values aren't set (trac-7116)
 			if ( value == null || value !== value ) {
 				return;
 			}
@@ -18615,7 +19031,7 @@ function Animation( elem, properties, options ) {
 				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
 
 				// Support: Android 2.3 only
-				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
+				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (trac-12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
 				index = 0,
@@ -19005,7 +19421,6 @@ jQuery.fx.speeds = {
 
 
 // Based off of the plugin by Clint Helfers, with permission.
-// https://web.archive.org/web/20100324014747/http://blindsignals.com/index.php/2009/07/jquery-delay/
 jQuery.fn.delay = function( time, type ) {
 	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
 	type = type || "fx";
@@ -19230,8 +19645,7 @@ jQuery.extend( {
 				// Support: IE <=9 - 11 only
 				// elem.tabIndex doesn't always return the
 				// correct value when it hasn't been explicitly set
-				// https://web.archive.org/web/20141116233347/http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
-				// Use proper attribute retrieval(#12072)
+				// Use proper attribute retrieval (trac-12072)
 				var tabindex = jQuery.find.attr( elem, "tabindex" );
 
 				if ( tabindex ) {
@@ -19335,8 +19749,7 @@ function classesToArray( value ) {
 
 jQuery.fn.extend( {
 	addClass: function( value ) {
-		var classes, elem, cur, curValue, clazz, j, finalValue,
-			i = 0;
+		var classNames, cur, curValue, className, i, finalValue;
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
@@ -19344,36 +19757,35 @@ jQuery.fn.extend( {
 			} );
 		}
 
-		classes = classesToArray( value );
+		classNames = classesToArray( value );
 
-		if ( classes.length ) {
-			while ( ( elem = this[ i++ ] ) ) {
-				curValue = getClass( elem );
-				cur = elem.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
+		if ( classNames.length ) {
+			return this.each( function() {
+				curValue = getClass( this );
+				cur = this.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
 
 				if ( cur ) {
-					j = 0;
-					while ( ( clazz = classes[ j++ ] ) ) {
-						if ( cur.indexOf( " " + clazz + " " ) < 0 ) {
-							cur += clazz + " ";
+					for ( i = 0; i < classNames.length; i++ ) {
+						className = classNames[ i ];
+						if ( cur.indexOf( " " + className + " " ) < 0 ) {
+							cur += className + " ";
 						}
 					}
 
 					// Only assign if different to avoid unneeded rendering.
 					finalValue = stripAndCollapse( cur );
 					if ( curValue !== finalValue ) {
-						elem.setAttribute( "class", finalValue );
+						this.setAttribute( "class", finalValue );
 					}
 				}
-			}
+			} );
 		}
 
 		return this;
 	},
 
 	removeClass: function( value ) {
-		var classes, elem, cur, curValue, clazz, j, finalValue,
-			i = 0;
+		var classNames, cur, curValue, className, i, finalValue;
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
@@ -19385,44 +19797,41 @@ jQuery.fn.extend( {
 			return this.attr( "class", "" );
 		}
 
-		classes = classesToArray( value );
+		classNames = classesToArray( value );
 
-		if ( classes.length ) {
-			while ( ( elem = this[ i++ ] ) ) {
-				curValue = getClass( elem );
+		if ( classNames.length ) {
+			return this.each( function() {
+				curValue = getClass( this );
 
 				// This expression is here for better compressibility (see addClass)
-				cur = elem.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
+				cur = this.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
 
 				if ( cur ) {
-					j = 0;
-					while ( ( clazz = classes[ j++ ] ) ) {
+					for ( i = 0; i < classNames.length; i++ ) {
+						className = classNames[ i ];
 
 						// Remove *all* instances
-						while ( cur.indexOf( " " + clazz + " " ) > -1 ) {
-							cur = cur.replace( " " + clazz + " ", " " );
+						while ( cur.indexOf( " " + className + " " ) > -1 ) {
+							cur = cur.replace( " " + className + " ", " " );
 						}
 					}
 
 					// Only assign if different to avoid unneeded rendering.
 					finalValue = stripAndCollapse( cur );
 					if ( curValue !== finalValue ) {
-						elem.setAttribute( "class", finalValue );
+						this.setAttribute( "class", finalValue );
 					}
 				}
-			}
+			} );
 		}
 
 		return this;
 	},
 
 	toggleClass: function( value, stateVal ) {
-		var type = typeof value,
+		var classNames, className, i, self,
+			type = typeof value,
 			isValidValue = type === "string" || Array.isArray( value );
-
-		if ( typeof stateVal === "boolean" && isValidValue ) {
-			return stateVal ? this.addClass( value ) : this.removeClass( value );
-		}
 
 		if ( isFunction( value ) ) {
 			return this.each( function( i ) {
@@ -19433,17 +19842,20 @@ jQuery.fn.extend( {
 			} );
 		}
 
-		return this.each( function() {
-			var className, i, self, classNames;
+		if ( typeof stateVal === "boolean" && isValidValue ) {
+			return stateVal ? this.addClass( value ) : this.removeClass( value );
+		}
 
+		classNames = classesToArray( value );
+
+		return this.each( function() {
 			if ( isValidValue ) {
 
 				// Toggle individual class names
-				i = 0;
 				self = jQuery( this );
-				classNames = classesToArray( value );
 
-				while ( ( className = classNames[ i++ ] ) ) {
+				for ( i = 0; i < classNames.length; i++ ) {
+					className = classNames[ i ];
 
 					// Check each className given, space separated list
 					if ( self.hasClass( className ) ) {
@@ -19577,7 +19989,7 @@ jQuery.extend( {
 					val :
 
 					// Support: IE <=10 - 11 only
-					// option.text throws exceptions (#14686, #14858)
+					// option.text throws exceptions (trac-14686, trac-14858)
 					// Strip and collapse whitespace
 					// https://html.spec.whatwg.org/#strip-and-collapse-whitespace
 					stripAndCollapse( jQuery.text( elem ) );
@@ -19604,7 +20016,7 @@ jQuery.extend( {
 					option = options[ i ];
 
 					// Support: IE <=9 only
-					// IE8-9 doesn't update selected after form reset (#2551)
+					// IE8-9 doesn't update selected after form reset (trac-2551)
 					if ( ( option.selected || i === index ) &&
 
 							// Don't return options that are disabled or in a disabled optgroup
@@ -19747,8 +20159,8 @@ jQuery.extend( jQuery.event, {
 			return;
 		}
 
-		// Determine event propagation path in advance, per W3C events spec (#9951)
-		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
+		// Determine event propagation path in advance, per W3C events spec (trac-9951)
+		// Bubble up to document, then to window; watch for a global ownerDocument var (trac-9724)
 		if ( !onlyHandlers && !special.noBubble && !isWindow( elem ) ) {
 
 			bubbleType = special.delegateType || type;
@@ -19800,7 +20212,7 @@ jQuery.extend( jQuery.event, {
 				acceptData( elem ) ) {
 
 				// Call a native DOM method on the target with the same name as the event.
-				// Don't do default actions on window, that's where global variables be (#6170)
+				// Don't do default actions on window, that's where global variables be (trac-6170)
 				if ( ontype && isFunction( elem[ type ] ) && !isWindow( elem ) ) {
 
 					// Don't re-trigger an onFOO event when we call its FOO() method
@@ -20074,7 +20486,7 @@ var
 	rantiCache = /([?&])_=[^&]*/,
 	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
 
-	// #7653, #8125, #8152: local protocol detection
+	// trac-7653, trac-8125, trac-8152: local protocol detection
 	rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
 	rnoContent = /^(?:GET|HEAD)$/,
 	rprotocol = /^\/\//,
@@ -20097,7 +20509,7 @@ var
 	 */
 	transports = {},
 
-	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
+	// Avoid comment-prolog char sequence (trac-10098); must appease lint and evade compression
 	allTypes = "*/".concat( "*" ),
 
 	// Anchor tag for parsing the document origin
@@ -20168,7 +20580,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 
 // A special extend for ajax options
 // that takes "flat" options (not to be deep extended)
-// Fixes #9887
+// Fixes trac-9887
 function ajaxExtend( target, src ) {
 	var key, deep,
 		flatOptions = jQuery.ajaxSettings.flatOptions || {};
@@ -20579,12 +20991,12 @@ jQuery.extend( {
 		deferred.promise( jqXHR );
 
 		// Add protocol if not provided (prefilters might expect it)
-		// Handle falsy url in the settings object (#10093: consistency with old signature)
+		// Handle falsy url in the settings object (trac-10093: consistency with old signature)
 		// We also use the url parameter if available
 		s.url = ( ( url || s.url || location.href ) + "" )
 			.replace( rprotocol, location.protocol + "//" );
 
-		// Alias method option to type as per ticket #12004
+		// Alias method option to type as per ticket trac-12004
 		s.type = options.method || options.type || s.method || s.type;
 
 		// Extract dataTypes list
@@ -20627,7 +21039,7 @@ jQuery.extend( {
 		}
 
 		// We can fire global events as of now if asked to
-		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
+		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (trac-15118)
 		fireGlobals = jQuery.event && s.global;
 
 		// Watch for a new set of requests
@@ -20656,7 +21068,7 @@ jQuery.extend( {
 			if ( s.data && ( s.processData || typeof s.data === "string" ) ) {
 				cacheURL += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data;
 
-				// #9682: remove data so that it's not used in an eventual retry
+				// trac-9682: remove data so that it's not used in an eventual retry
 				delete s.data;
 			}
 
@@ -20929,7 +21341,7 @@ jQuery._evalUrl = function( url, options, doc ) {
 	return jQuery.ajax( {
 		url: url,
 
-		// Make this explicit, since user can override this through ajaxSetup (#11264)
+		// Make this explicit, since user can override this through ajaxSetup (trac-11264)
 		type: "GET",
 		dataType: "script",
 		cache: true,
@@ -21038,7 +21450,7 @@ var xhrSuccessStatus = {
 		0: 200,
 
 		// Support: IE <=9 only
-		// #1450: sometimes IE returns 1223 when it should be 204
+		// trac-1450: sometimes IE returns 1223 when it should be 204
 		1223: 204
 	},
 	xhrSupported = jQuery.ajaxSettings.xhr();
@@ -21110,7 +21522,7 @@ jQuery.ajaxTransport( function( options ) {
 								} else {
 									complete(
 
-										// File: protocol always yields status 0; see #8605, #14207
+										// File: protocol always yields status 0; see trac-8605, trac-14207
 										xhr.status,
 										xhr.statusText
 									);
@@ -21171,7 +21583,7 @@ jQuery.ajaxTransport( function( options ) {
 					xhr.send( options.hasContent && options.data || null );
 				} catch ( e ) {
 
-					// #14683: Only rethrow if this hasn't been notified as an error yet
+					// trac-14683: Only rethrow if this hasn't been notified as an error yet
 					if ( callback ) {
 						throw e;
 					}
@@ -21815,7 +22227,9 @@ jQuery.each(
 
 // Support: Android <=4.0 only
 // Make sure we trim BOM and NBSP
-var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+// Require that the "whitespace run" starts from a non-whitespace
+// to avoid O(N^2) behavior when the engine would try matching "\s+$" at each space position.
+var rtrim = /^[\s\uFEFF\xA0]+|([^\s\uFEFF\xA0])[\s\uFEFF\xA0]+$/g;
 
 // Bind a function to a context, optionally partially applying any
 // arguments.
@@ -21882,7 +22296,7 @@ jQuery.isNumeric = function( obj ) {
 jQuery.trim = function( text ) {
 	return text == null ?
 		"" :
-		( text + "" ).replace( rtrim, "" );
+		( text + "" ).replace( rtrim, "$1" );
 };
 
 
@@ -21931,8 +22345,8 @@ jQuery.noConflict = function( deep ) {
 };
 
 // Expose jQuery and $ identifiers, even in AMD
-// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
-// and CommonJS for browser emulators (#13566)
+// (trac-7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// and CommonJS for browser emulators (trac-13566)
 if ( typeof noGlobal === "undefined" ) {
 	window.jQuery = window.$ = jQuery;
 }
@@ -61479,6 +61893,2024 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
+/***/ "./node_modules/pinia/dist/pinia.mjs":
+/*!*******************************************!*\
+  !*** ./node_modules/pinia/dist/pinia.mjs ***!
+  \*******************************************/
+/*! exports provided: MutationType, PiniaVuePlugin, acceptHMRUpdate, createPinia, defineStore, getActivePinia, mapActions, mapGetters, mapState, mapStores, mapWritableState, setActivePinia, setMapStoreSuffix, skipHydrate, storeToRefs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutationType", function() { return MutationType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PiniaVuePlugin", function() { return PiniaVuePlugin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "acceptHMRUpdate", function() { return acceptHMRUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPinia", function() { return createPinia; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defineStore", function() { return defineStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActivePinia", function() { return getActivePinia; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapStores", function() { return mapStores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapWritableState", function() { return mapWritableState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setActivePinia", function() { return setActivePinia; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setMapStoreSuffix", function() { return setMapStoreSuffix; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skipHydrate", function() { return skipHydrate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeToRefs", function() { return storeToRefs; });
+/* harmony import */ var vue_demi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-demi */ "./node_modules/vue-demi/lib/index.cjs");
+/* harmony import */ var vue_demi__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_demi__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/devtools-api */ "./node_modules/@vue/devtools-api/lib/esm/index.js");
+/*!
+  * pinia v2.0.22
+  * (c) 2022 Eduardo San Martin Morote
+  * @license MIT
+  */
+
+
+
+/**
+ * setActivePinia must be called to handle SSR at the top of functions like
+ * `fetch`, `setup`, `serverPrefetch` and others
+ */
+let activePinia;
+/**
+ * Sets or unsets the active pinia. Used in SSR and internally when calling
+ * actions and getters
+ *
+ * @param pinia - Pinia instance
+ */
+const setActivePinia = (pinia) => (activePinia = pinia);
+/**
+ * Get the currently active pinia if there is any.
+ */
+const getActivePinia = () => (Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["getCurrentInstance"])() && Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["inject"])(piniaSymbol)) || activePinia;
+const piniaSymbol = (( true) ? Symbol('pinia') : /* istanbul ignore next */ undefined);
+
+function isPlainObject(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+o) {
+    return (o &&
+        typeof o === 'object' &&
+        Object.prototype.toString.call(o) === '[object Object]' &&
+        typeof o.toJSON !== 'function');
+}
+// type DeepReadonly<T> = { readonly [P in keyof T]: DeepReadonly<T[P]> }
+// TODO: can we change these to numbers?
+/**
+ * Possible types for SubscriptionCallback
+ */
+var MutationType;
+(function (MutationType) {
+    /**
+     * Direct mutation of the state:
+     *
+     * - `store.name = 'new name'`
+     * - `store.$state.name = 'new name'`
+     * - `store.list.push('new item')`
+     */
+    MutationType["direct"] = "direct";
+    /**
+     * Mutated the state with `$patch` and an object
+     *
+     * - `store.$patch({ name: 'newName' })`
+     */
+    MutationType["patchObject"] = "patch object";
+    /**
+     * Mutated the state with `$patch` and a function
+     *
+     * - `store.$patch(state => state.name = 'newName')`
+     */
+    MutationType["patchFunction"] = "patch function";
+    // maybe reset? for $state = {} and $reset
+})(MutationType || (MutationType = {}));
+
+const IS_CLIENT = typeof window !== 'undefined';
+/**
+ * Should we add the devtools plugins.
+ * - only if dev mode or forced through the prod devtools flag
+ * - not in test
+ * - only if window exists (could change in the future)
+ */
+const USE_DEVTOOLS =  true && IS_CLIENT;
+
+/*
+ * FileSaver.js A saveAs() FileSaver implementation.
+ *
+ * Originally by Eli Grey, adapted as an ESM module by Eduardo San Martin
+ * Morote.
+ *
+ * License : MIT
+ */
+// The one and only way of getting global scope in all environments
+// https://stackoverflow.com/q/3277182/1008999
+const _global = /*#__PURE__*/ (() => typeof window === 'object' && window.window === window
+    ? window
+    : typeof self === 'object' && self.self === self
+        ? self
+        : typeof global === 'object' && global.global === global
+            ? global
+            : typeof globalThis === 'object'
+                ? globalThis
+                : { HTMLElement: null })();
+function bom(blob, { autoBom = false } = {}) {
+    // prepend BOM for UTF-8 XML and text/* types (including HTML)
+    // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+    if (autoBom &&
+        /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+        return new Blob([String.fromCharCode(0xfeff), blob], { type: blob.type });
+    }
+    return blob;
+}
+function download(url, name, opts) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+        saveAs(xhr.response, name, opts);
+    };
+    xhr.onerror = function () {
+        console.error('could not download file');
+    };
+    xhr.send();
+}
+function corsEnabled(url) {
+    const xhr = new XMLHttpRequest();
+    // use sync to avoid popup blocker
+    xhr.open('HEAD', url, false);
+    try {
+        xhr.send();
+    }
+    catch (e) { }
+    return xhr.status >= 200 && xhr.status <= 299;
+}
+// `a.click()` doesn't work for all browsers (#465)
+function click(node) {
+    try {
+        node.dispatchEvent(new MouseEvent('click'));
+    }
+    catch (e) {
+        const evt = document.createEvent('MouseEvents');
+        evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null);
+        node.dispatchEvent(evt);
+    }
+}
+const _navigator = 
+ typeof navigator === 'object' ? navigator : { userAgent: '' };
+// Detect WebView inside a native macOS app by ruling out all browsers
+// We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
+// https://www.whatismybrowser.com/guides/the-latest-user-agent/macos
+const isMacOSWebView = /*#__PURE__*/ (() => /Macintosh/.test(_navigator.userAgent) &&
+    /AppleWebKit/.test(_navigator.userAgent) &&
+    !/Safari/.test(_navigator.userAgent))();
+const saveAs = !IS_CLIENT
+    ? () => { } // noop
+    : // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
+        typeof HTMLAnchorElement !== 'undefined' &&
+            'download' in HTMLAnchorElement.prototype &&
+            !isMacOSWebView
+            ? downloadSaveAs
+            : // Use msSaveOrOpenBlob as a second approach
+                'msSaveOrOpenBlob' in _navigator
+                    ? msSaveAs
+                    : // Fallback to using FileReader and a popup
+                        fileSaverSaveAs;
+function downloadSaveAs(blob, name = 'download', opts) {
+    const a = document.createElement('a');
+    a.download = name;
+    a.rel = 'noopener'; // tabnabbing
+    // TODO: detect chrome extensions & packaged apps
+    // a.target = '_blank'
+    if (typeof blob === 'string') {
+        // Support regular links
+        a.href = blob;
+        if (a.origin !== location.origin) {
+            if (corsEnabled(a.href)) {
+                download(blob, name, opts);
+            }
+            else {
+                a.target = '_blank';
+                click(a);
+            }
+        }
+        else {
+            click(a);
+        }
+    }
+    else {
+        // Support blobs
+        a.href = URL.createObjectURL(blob);
+        setTimeout(function () {
+            URL.revokeObjectURL(a.href);
+        }, 4e4); // 40s
+        setTimeout(function () {
+            click(a);
+        }, 0);
+    }
+}
+function msSaveAs(blob, name = 'download', opts) {
+    if (typeof blob === 'string') {
+        if (corsEnabled(blob)) {
+            download(blob, name, opts);
+        }
+        else {
+            const a = document.createElement('a');
+            a.href = blob;
+            a.target = '_blank';
+            setTimeout(function () {
+                click(a);
+            });
+        }
+    }
+    else {
+        // @ts-ignore: works on windows
+        navigator.msSaveOrOpenBlob(bom(blob, opts), name);
+    }
+}
+function fileSaverSaveAs(blob, name, opts, popup) {
+    // Open a popup immediately do go around popup blocker
+    // Mostly only available on user interaction and the fileReader is async so...
+    popup = popup || open('', '_blank');
+    if (popup) {
+        popup.document.title = popup.document.body.innerText = 'downloading...';
+    }
+    if (typeof blob === 'string')
+        return download(blob, name, opts);
+    const force = blob.type === 'application/octet-stream';
+    const isSafari = /constructor/i.test(String(_global.HTMLElement)) || 'safari' in _global;
+    const isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent);
+    if ((isChromeIOS || (force && isSafari) || isMacOSWebView) &&
+        typeof FileReader !== 'undefined') {
+        // Safari doesn't allow downloading of blob URLs
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            let url = reader.result;
+            if (typeof url !== 'string') {
+                popup = null;
+                throw new Error('Wrong reader.result type');
+            }
+            url = isChromeIOS
+                ? url
+                : url.replace(/^data:[^;]*;/, 'data:attachment/file;');
+            if (popup) {
+                popup.location.href = url;
+            }
+            else {
+                location.assign(url);
+            }
+            popup = null; // reverse-tabnabbing #460
+        };
+        reader.readAsDataURL(blob);
+    }
+    else {
+        const url = URL.createObjectURL(blob);
+        if (popup)
+            popup.location.assign(url);
+        else
+            location.href = url;
+        popup = null; // reverse-tabnabbing #460
+        setTimeout(function () {
+            URL.revokeObjectURL(url);
+        }, 4e4); // 40s
+    }
+}
+
+/**
+ * Shows a toast or console.log
+ *
+ * @param message - message to log
+ * @param type - different color of the tooltip
+ */
+function toastMessage(message, type) {
+    const piniaMessage = '🍍 ' + message;
+    if (typeof __VUE_DEVTOOLS_TOAST__ === 'function') {
+        __VUE_DEVTOOLS_TOAST__(piniaMessage, type);
+    }
+    else if (type === 'error') {
+        console.error(piniaMessage);
+    }
+    else if (type === 'warn') {
+        console.warn(piniaMessage);
+    }
+    else {
+        console.log(piniaMessage);
+    }
+}
+function isPinia(o) {
+    return '_a' in o && 'install' in o;
+}
+
+function checkClipboardAccess() {
+    if (!('clipboard' in navigator)) {
+        toastMessage(`Your browser doesn't support the Clipboard API`, 'error');
+        return true;
+    }
+}
+function checkNotFocusedError(error) {
+    if (error instanceof Error &&
+        error.message.toLowerCase().includes('document is not focused')) {
+        toastMessage('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', 'warn');
+        return true;
+    }
+    return false;
+}
+async function actionGlobalCopyState(pinia) {
+    if (checkClipboardAccess())
+        return;
+    try {
+        await navigator.clipboard.writeText(JSON.stringify(pinia.state.value));
+        toastMessage('Global state copied to clipboard.');
+    }
+    catch (error) {
+        if (checkNotFocusedError(error))
+            return;
+        toastMessage(`Failed to serialize the state. Check the console for more details.`, 'error');
+        console.error(error);
+    }
+}
+async function actionGlobalPasteState(pinia) {
+    if (checkClipboardAccess())
+        return;
+    try {
+        pinia.state.value = JSON.parse(await navigator.clipboard.readText());
+        toastMessage('Global state pasted from clipboard.');
+    }
+    catch (error) {
+        if (checkNotFocusedError(error))
+            return;
+        toastMessage(`Failed to deserialize the state from clipboard. Check the console for more details.`, 'error');
+        console.error(error);
+    }
+}
+async function actionGlobalSaveState(pinia) {
+    try {
+        saveAs(new Blob([JSON.stringify(pinia.state.value)], {
+            type: 'text/plain;charset=utf-8',
+        }), 'pinia-state.json');
+    }
+    catch (error) {
+        toastMessage(`Failed to export the state as JSON. Check the console for more details.`, 'error');
+        console.error(error);
+    }
+}
+let fileInput;
+function getFileOpener() {
+    if (!fileInput) {
+        fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.json';
+    }
+    function openFile() {
+        return new Promise((resolve, reject) => {
+            fileInput.onchange = async () => {
+                const files = fileInput.files;
+                if (!files)
+                    return resolve(null);
+                const file = files.item(0);
+                if (!file)
+                    return resolve(null);
+                return resolve({ text: await file.text(), file });
+            };
+            // @ts-ignore: TODO: changed from 4.3 to 4.4
+            fileInput.oncancel = () => resolve(null);
+            fileInput.onerror = reject;
+            fileInput.click();
+        });
+    }
+    return openFile;
+}
+async function actionGlobalOpenStateFile(pinia) {
+    try {
+        const open = await getFileOpener();
+        const result = await open();
+        if (!result)
+            return;
+        const { text, file } = result;
+        pinia.state.value = JSON.parse(text);
+        toastMessage(`Global state imported from "${file.name}".`);
+    }
+    catch (error) {
+        toastMessage(`Failed to export the state as JSON. Check the console for more details.`, 'error');
+        console.error(error);
+    }
+}
+
+function formatDisplay(display) {
+    return {
+        _custom: {
+            display,
+        },
+    };
+}
+const PINIA_ROOT_LABEL = '🍍 Pinia (root)';
+const PINIA_ROOT_ID = '_root';
+function formatStoreForInspectorTree(store) {
+    return isPinia(store)
+        ? {
+            id: PINIA_ROOT_ID,
+            label: PINIA_ROOT_LABEL,
+        }
+        : {
+            id: store.$id,
+            label: store.$id,
+        };
+}
+function formatStoreForInspectorState(store) {
+    if (isPinia(store)) {
+        const storeNames = Array.from(store._s.keys());
+        const storeMap = store._s;
+        const state = {
+            state: storeNames.map((storeId) => ({
+                editable: true,
+                key: storeId,
+                value: store.state.value[storeId],
+            })),
+            getters: storeNames
+                .filter((id) => storeMap.get(id)._getters)
+                .map((id) => {
+                const store = storeMap.get(id);
+                return {
+                    editable: false,
+                    key: id,
+                    value: store._getters.reduce((getters, key) => {
+                        getters[key] = store[key];
+                        return getters;
+                    }, {}),
+                };
+            }),
+        };
+        return state;
+    }
+    const state = {
+        state: Object.keys(store.$state).map((key) => ({
+            editable: true,
+            key,
+            value: store.$state[key],
+        })),
+    };
+    // avoid adding empty getters
+    if (store._getters && store._getters.length) {
+        state.getters = store._getters.map((getterName) => ({
+            editable: false,
+            key: getterName,
+            value: store[getterName],
+        }));
+    }
+    if (store._customProperties.size) {
+        state.customProperties = Array.from(store._customProperties).map((key) => ({
+            editable: true,
+            key,
+            value: store[key],
+        }));
+    }
+    return state;
+}
+function formatEventData(events) {
+    if (!events)
+        return {};
+    if (Array.isArray(events)) {
+        // TODO: handle add and delete for arrays and objects
+        return events.reduce((data, event) => {
+            data.keys.push(event.key);
+            data.operations.push(event.type);
+            data.oldValue[event.key] = event.oldValue;
+            data.newValue[event.key] = event.newValue;
+            return data;
+        }, {
+            oldValue: {},
+            keys: [],
+            operations: [],
+            newValue: {},
+        });
+    }
+    else {
+        return {
+            operation: formatDisplay(events.type),
+            key: formatDisplay(events.key),
+            oldValue: events.oldValue,
+            newValue: events.newValue,
+        };
+    }
+}
+function formatMutationType(type) {
+    switch (type) {
+        case MutationType.direct:
+            return 'mutation';
+        case MutationType.patchFunction:
+            return '$patch';
+        case MutationType.patchObject:
+            return '$patch';
+        default:
+            return 'unknown';
+    }
+}
+
+// timeline can be paused when directly changing the state
+let isTimelineActive = true;
+const componentStateTypes = [];
+const MUTATIONS_LAYER_ID = 'pinia:mutations';
+const INSPECTOR_ID = 'pinia';
+/**
+ * Gets the displayed name of a store in devtools
+ *
+ * @param id - id of the store
+ * @returns a formatted string
+ */
+const getStoreType = (id) => '🍍 ' + id;
+/**
+ * Add the pinia plugin without any store. Allows displaying a Pinia plugin tab
+ * as soon as it is added to the application.
+ *
+ * @param app - Vue application
+ * @param pinia - pinia instance
+ */
+function registerPiniaDevtools(app, pinia) {
+    Object(_vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__["setupDevtoolsPlugin"])({
+        id: 'dev.esm.pinia',
+        label: 'Pinia 🍍',
+        logo: 'https://pinia.vuejs.org/logo.svg',
+        packageName: 'pinia',
+        homepage: 'https://pinia.vuejs.org',
+        componentStateTypes,
+        app,
+    }, (api) => {
+        if (typeof api.now !== 'function') {
+            toastMessage('You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html.');
+        }
+        api.addTimelineLayer({
+            id: MUTATIONS_LAYER_ID,
+            label: `Pinia 🍍`,
+            color: 0xe5df88,
+        });
+        api.addInspector({
+            id: INSPECTOR_ID,
+            label: 'Pinia 🍍',
+            icon: 'storage',
+            treeFilterPlaceholder: 'Search stores',
+            actions: [
+                {
+                    icon: 'content_copy',
+                    action: () => {
+                        actionGlobalCopyState(pinia);
+                    },
+                    tooltip: 'Serialize and copy the state',
+                },
+                {
+                    icon: 'content_paste',
+                    action: async () => {
+                        await actionGlobalPasteState(pinia);
+                        api.sendInspectorTree(INSPECTOR_ID);
+                        api.sendInspectorState(INSPECTOR_ID);
+                    },
+                    tooltip: 'Replace the state with the content of your clipboard',
+                },
+                {
+                    icon: 'save',
+                    action: () => {
+                        actionGlobalSaveState(pinia);
+                    },
+                    tooltip: 'Save the state as a JSON file',
+                },
+                {
+                    icon: 'folder_open',
+                    action: async () => {
+                        await actionGlobalOpenStateFile(pinia);
+                        api.sendInspectorTree(INSPECTOR_ID);
+                        api.sendInspectorState(INSPECTOR_ID);
+                    },
+                    tooltip: 'Import the state from a JSON file',
+                },
+            ],
+            nodeActions: [
+                {
+                    icon: 'restore',
+                    tooltip: 'Reset the state (option store only)',
+                    action: (nodeId) => {
+                        const store = pinia._s.get(nodeId);
+                        if (!store) {
+                            toastMessage(`Cannot reset "${nodeId}" store because it wasn't found.`, 'warn');
+                        }
+                        else if (!store._isOptionsAPI) {
+                            toastMessage(`Cannot reset "${nodeId}" store because it's a setup store.`, 'warn');
+                        }
+                        else {
+                            store.$reset();
+                            toastMessage(`Store "${nodeId}" reset.`);
+                        }
+                    },
+                },
+            ],
+        });
+        api.on.inspectComponent((payload, ctx) => {
+            const proxy = (payload.componentInstance &&
+                payload.componentInstance.proxy);
+            if (proxy && proxy._pStores) {
+                const piniaStores = payload.componentInstance.proxy._pStores;
+                Object.values(piniaStores).forEach((store) => {
+                    payload.instanceData.state.push({
+                        type: getStoreType(store.$id),
+                        key: 'state',
+                        editable: true,
+                        value: store._isOptionsAPI
+                            ? {
+                                _custom: {
+                                    value: Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRaw"])(store.$state),
+                                    actions: [
+                                        {
+                                            icon: 'restore',
+                                            tooltip: 'Reset the state of this store',
+                                            action: () => store.$reset(),
+                                        },
+                                    ],
+                                },
+                            }
+                            : // NOTE: workaround to unwrap transferred refs
+                                Object.keys(store.$state).reduce((state, key) => {
+                                    state[key] = store.$state[key];
+                                    return state;
+                                }, {}),
+                    });
+                    if (store._getters && store._getters.length) {
+                        payload.instanceData.state.push({
+                            type: getStoreType(store.$id),
+                            key: 'getters',
+                            editable: false,
+                            value: store._getters.reduce((getters, key) => {
+                                try {
+                                    getters[key] = store[key];
+                                }
+                                catch (error) {
+                                    // @ts-expect-error: we just want to show it in devtools
+                                    getters[key] = error;
+                                }
+                                return getters;
+                            }, {}),
+                        });
+                    }
+                });
+            }
+        });
+        api.on.getInspectorTree((payload) => {
+            if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+                let stores = [pinia];
+                stores = stores.concat(Array.from(pinia._s.values()));
+                payload.rootNodes = (payload.filter
+                    ? stores.filter((store) => '$id' in store
+                        ? store.$id
+                            .toLowerCase()
+                            .includes(payload.filter.toLowerCase())
+                        : PINIA_ROOT_LABEL.toLowerCase().includes(payload.filter.toLowerCase()))
+                    : stores).map(formatStoreForInspectorTree);
+            }
+        });
+        api.on.getInspectorState((payload) => {
+            if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+                const inspectedStore = payload.nodeId === PINIA_ROOT_ID
+                    ? pinia
+                    : pinia._s.get(payload.nodeId);
+                if (!inspectedStore) {
+                    // this could be the selected store restored for a different project
+                    // so it's better not to say anything here
+                    return;
+                }
+                if (inspectedStore) {
+                    payload.state = formatStoreForInspectorState(inspectedStore);
+                }
+            }
+        });
+        api.on.editInspectorState((payload, ctx) => {
+            if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+                const inspectedStore = payload.nodeId === PINIA_ROOT_ID
+                    ? pinia
+                    : pinia._s.get(payload.nodeId);
+                if (!inspectedStore) {
+                    return toastMessage(`store "${payload.nodeId}" not found`, 'error');
+                }
+                const { path } = payload;
+                if (!isPinia(inspectedStore)) {
+                    // access only the state
+                    if (path.length !== 1 ||
+                        !inspectedStore._customProperties.has(path[0]) ||
+                        path[0] in inspectedStore.$state) {
+                        path.unshift('$state');
+                    }
+                }
+                else {
+                    // Root access, we can omit the `.value` because the devtools API does it for us
+                    path.unshift('state');
+                }
+                isTimelineActive = false;
+                payload.set(inspectedStore, path, payload.state.value);
+                isTimelineActive = true;
+            }
+        });
+        api.on.editComponentState((payload) => {
+            if (payload.type.startsWith('🍍')) {
+                const storeId = payload.type.replace(/^🍍\s*/, '');
+                const store = pinia._s.get(storeId);
+                if (!store) {
+                    return toastMessage(`store "${storeId}" not found`, 'error');
+                }
+                const { path } = payload;
+                if (path[0] !== 'state') {
+                    return toastMessage(`Invalid path for store "${storeId}":\n${path}\nOnly state can be modified.`);
+                }
+                // rewrite the first entry to be able to directly set the state as
+                // well as any other path
+                path[0] = '$state';
+                isTimelineActive = false;
+                payload.set(store, path, payload.state.value);
+                isTimelineActive = true;
+            }
+        });
+    });
+}
+function addStoreToDevtools(app, store) {
+    if (!componentStateTypes.includes(getStoreType(store.$id))) {
+        componentStateTypes.push(getStoreType(store.$id));
+    }
+    Object(_vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__["setupDevtoolsPlugin"])({
+        id: 'dev.esm.pinia',
+        label: 'Pinia 🍍',
+        logo: 'https://pinia.vuejs.org/logo.svg',
+        packageName: 'pinia',
+        homepage: 'https://pinia.vuejs.org',
+        componentStateTypes,
+        app,
+        settings: {
+            logStoreChanges: {
+                label: 'Notify about new/deleted stores',
+                type: 'boolean',
+                defaultValue: true,
+            },
+            // useEmojis: {
+            //   label: 'Use emojis in messages ⚡️',
+            //   type: 'boolean',
+            //   defaultValue: true,
+            // },
+        },
+    }, (api) => {
+        // gracefully handle errors
+        const now = typeof api.now === 'function' ? api.now.bind(api) : Date.now;
+        store.$onAction(({ after, onError, name, args }) => {
+            const groupId = runningActionId++;
+            api.addTimelineEvent({
+                layerId: MUTATIONS_LAYER_ID,
+                event: {
+                    time: now(),
+                    title: '🛫 ' + name,
+                    subtitle: 'start',
+                    data: {
+                        store: formatDisplay(store.$id),
+                        action: formatDisplay(name),
+                        args,
+                    },
+                    groupId,
+                },
+            });
+            after((result) => {
+                activeAction = undefined;
+                api.addTimelineEvent({
+                    layerId: MUTATIONS_LAYER_ID,
+                    event: {
+                        time: now(),
+                        title: '🛬 ' + name,
+                        subtitle: 'end',
+                        data: {
+                            store: formatDisplay(store.$id),
+                            action: formatDisplay(name),
+                            args,
+                            result,
+                        },
+                        groupId,
+                    },
+                });
+            });
+            onError((error) => {
+                activeAction = undefined;
+                api.addTimelineEvent({
+                    layerId: MUTATIONS_LAYER_ID,
+                    event: {
+                        time: now(),
+                        logType: 'error',
+                        title: '💥 ' + name,
+                        subtitle: 'end',
+                        data: {
+                            store: formatDisplay(store.$id),
+                            action: formatDisplay(name),
+                            args,
+                            error,
+                        },
+                        groupId,
+                    },
+                });
+            });
+        }, true);
+        store._customProperties.forEach((name) => {
+            Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["watch"])(() => Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["unref"])(store[name]), (newValue, oldValue) => {
+                api.notifyComponentUpdate();
+                api.sendInspectorState(INSPECTOR_ID);
+                if (isTimelineActive) {
+                    api.addTimelineEvent({
+                        layerId: MUTATIONS_LAYER_ID,
+                        event: {
+                            time: now(),
+                            title: 'Change',
+                            subtitle: name,
+                            data: {
+                                newValue,
+                                oldValue,
+                            },
+                            groupId: activeAction,
+                        },
+                    });
+                }
+            }, { deep: true });
+        });
+        store.$subscribe(({ events, type }, state) => {
+            api.notifyComponentUpdate();
+            api.sendInspectorState(INSPECTOR_ID);
+            if (!isTimelineActive)
+                return;
+            // rootStore.state[store.id] = state
+            const eventData = {
+                time: now(),
+                title: formatMutationType(type),
+                data: {
+                    store: formatDisplay(store.$id),
+                    ...formatEventData(events),
+                },
+                groupId: activeAction,
+            };
+            // reset for the next mutation
+            activeAction = undefined;
+            if (type === MutationType.patchFunction) {
+                eventData.subtitle = '⤵️';
+            }
+            else if (type === MutationType.patchObject) {
+                eventData.subtitle = '🧩';
+            }
+            else if (events && !Array.isArray(events)) {
+                eventData.subtitle = events.type;
+            }
+            if (events) {
+                eventData.data['rawEvent(s)'] = {
+                    _custom: {
+                        display: 'DebuggerEvent',
+                        type: 'object',
+                        tooltip: 'raw DebuggerEvent[]',
+                        value: events,
+                    },
+                };
+            }
+            api.addTimelineEvent({
+                layerId: MUTATIONS_LAYER_ID,
+                event: eventData,
+            });
+        }, { detached: true, flush: 'sync' });
+        const hotUpdate = store._hotUpdate;
+        store._hotUpdate = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])((newStore) => {
+            hotUpdate(newStore);
+            api.addTimelineEvent({
+                layerId: MUTATIONS_LAYER_ID,
+                event: {
+                    time: now(),
+                    title: '🔥 ' + store.$id,
+                    subtitle: 'HMR update',
+                    data: {
+                        store: formatDisplay(store.$id),
+                        info: formatDisplay(`HMR update`),
+                    },
+                },
+            });
+            // update the devtools too
+            api.notifyComponentUpdate();
+            api.sendInspectorTree(INSPECTOR_ID);
+            api.sendInspectorState(INSPECTOR_ID);
+        });
+        const { $dispose } = store;
+        store.$dispose = () => {
+            $dispose();
+            api.notifyComponentUpdate();
+            api.sendInspectorTree(INSPECTOR_ID);
+            api.sendInspectorState(INSPECTOR_ID);
+            api.getSettings().logStoreChanges &&
+                toastMessage(`Disposed "${store.$id}" store 🗑`);
+        };
+        // trigger an update so it can display new registered stores
+        api.notifyComponentUpdate();
+        api.sendInspectorTree(INSPECTOR_ID);
+        api.sendInspectorState(INSPECTOR_ID);
+        api.getSettings().logStoreChanges &&
+            toastMessage(`"${store.$id}" store installed 🆕`);
+    });
+}
+let runningActionId = 0;
+let activeAction;
+/**
+ * Patches a store to enable action grouping in devtools by wrapping the store with a Proxy that is passed as the
+ * context of all actions, allowing us to set `runningAction` on each access and effectively associating any state
+ * mutation to the action.
+ *
+ * @param store - store to patch
+ * @param actionNames - list of actionst to patch
+ */
+function patchActionForGrouping(store, actionNames) {
+    // original actions of the store as they are given by pinia. We are going to override them
+    const actions = actionNames.reduce((storeActions, actionName) => {
+        // use toRaw to avoid tracking #541
+        storeActions[actionName] = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRaw"])(store)[actionName];
+        return storeActions;
+    }, {});
+    for (const actionName in actions) {
+        store[actionName] = function () {
+            // setActivePinia(store._p)
+            // the running action id is incremented in a before action hook
+            const _actionId = runningActionId;
+            const trackedStore = new Proxy(store, {
+                get(...args) {
+                    activeAction = _actionId;
+                    return Reflect.get(...args);
+                },
+                set(...args) {
+                    activeAction = _actionId;
+                    return Reflect.set(...args);
+                },
+            });
+            return actions[actionName].apply(trackedStore, arguments);
+        };
+    }
+}
+/**
+ * pinia.use(devtoolsPlugin)
+ */
+function devtoolsPlugin({ app, store, options }) {
+    // HMR module
+    if (store.$id.startsWith('__hot:')) {
+        return;
+    }
+    // detect option api vs setup api
+    if (options.state) {
+        store._isOptionsAPI = true;
+    }
+    // only wrap actions in option-defined stores as this technique relies on
+    // wrapping the context of the action with a proxy
+    if (typeof options.state === 'function') {
+        patchActionForGrouping(
+        // @ts-expect-error: can cast the store...
+        store, Object.keys(options.actions));
+        const originalHotUpdate = store._hotUpdate;
+        // Upgrade the HMR to also update the new actions
+        Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRaw"])(store)._hotUpdate = function (newStore) {
+            originalHotUpdate.apply(this, arguments);
+            patchActionForGrouping(store, Object.keys(newStore._hmrPayload.actions));
+        };
+    }
+    addStoreToDevtools(app, 
+    // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
+    store);
+}
+
+/**
+ * Creates a Pinia instance to be used by the application
+ */
+function createPinia() {
+    const scope = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["effectScope"])(true);
+    // NOTE: here we could check the window object for a state and directly set it
+    // if there is anything like it with Vue 3 SSR
+    const state = scope.run(() => Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["ref"])({}));
+    let _p = [];
+    // plugins added before calling app.use(pinia)
+    let toBeInstalled = [];
+    const pinia = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])({
+        install(app) {
+            // this allows calling useStore() outside of a component setup after
+            // installing pinia's plugin
+            setActivePinia(pinia);
+            if (!vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                pinia._a = app;
+                app.provide(piniaSymbol, pinia);
+                app.config.globalProperties.$pinia = pinia;
+                /* istanbul ignore else */
+                if (USE_DEVTOOLS) {
+                    registerPiniaDevtools(app, pinia);
+                }
+                toBeInstalled.forEach((plugin) => _p.push(plugin));
+                toBeInstalled = [];
+            }
+        },
+        use(plugin) {
+            if (!this._a && !vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                toBeInstalled.push(plugin);
+            }
+            else {
+                _p.push(plugin);
+            }
+            return this;
+        },
+        _p,
+        // it's actually undefined here
+        // @ts-expect-error
+        _a: null,
+        _e: scope,
+        _s: new Map(),
+        state,
+    });
+    // pinia devtools rely on dev only features so they cannot be forced unless
+    // the dev build of Vue is used. Avoid old browsers like IE11.
+    if (USE_DEVTOOLS && typeof Proxy !== 'undefined') {
+        pinia.use(devtoolsPlugin);
+    }
+    return pinia;
+}
+
+/**
+ * Checks if a function is a `StoreDefinition`.
+ *
+ * @param fn - object to test
+ * @returns true if `fn` is a StoreDefinition
+ */
+const isUseStore = (fn) => {
+    return typeof fn === 'function' && typeof fn.$id === 'string';
+};
+/**
+ * Mutates in place `newState` with `oldState` to _hot update_ it. It will
+ * remove any key not existing in `newState` and recursively merge plain
+ * objects.
+ *
+ * @param newState - new state object to be patched
+ * @param oldState - old state that should be used to patch newState
+ * @returns - newState
+ */
+function patchObject(newState, oldState) {
+    // no need to go through symbols because they cannot be serialized anyway
+    for (const key in oldState) {
+        const subPatch = oldState[key];
+        // skip the whole sub tree
+        if (!(key in newState)) {
+            continue;
+        }
+        const targetValue = newState[key];
+        if (isPlainObject(targetValue) &&
+            isPlainObject(subPatch) &&
+            !Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(subPatch) &&
+            !Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isReactive"])(subPatch)) {
+            newState[key] = patchObject(targetValue, subPatch);
+        }
+        else {
+            // objects are either a bit more complex (e.g. refs) or primitives, so we
+            // just set the whole thing
+            if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(newState, key, subPatch);
+            }
+            else {
+                newState[key] = subPatch;
+            }
+        }
+    }
+    return newState;
+}
+/**
+ * Creates an _accept_ function to pass to `import.meta.hot` in Vite applications.
+ *
+ * @example
+ * ```js
+ * const useUser = defineStore(...)
+ * if (import.meta.hot) {
+ *   import.meta.hot.accept(acceptHMRUpdate(useUser, import.meta.hot))
+ * }
+ * ```
+ *
+ * @param initialUseStore - return of the defineStore to hot update
+ * @param hot - `import.meta.hot`
+ */
+function acceptHMRUpdate(initialUseStore, hot) {
+    // strip as much as possible from iife.prod
+    if (false) {}
+    return (newModule) => {
+        const pinia = hot.data.pinia || initialUseStore._pinia;
+        if (!pinia) {
+            // this store is still not used
+            return;
+        }
+        // preserve the pinia instance across loads
+        hot.data.pinia = pinia;
+        // console.log('got data', newStore)
+        for (const exportName in newModule) {
+            const useStore = newModule[exportName];
+            // console.log('checking for', exportName)
+            if (isUseStore(useStore) && pinia._s.has(useStore.$id)) {
+                // console.log('Accepting update for', useStore.$id)
+                const id = useStore.$id;
+                if (id !== initialUseStore.$id) {
+                    console.warn(`The id of the store changed from "${initialUseStore.$id}" to "${id}". Reloading.`);
+                    // return import.meta.hot.invalidate()
+                    return hot.invalidate();
+                }
+                const existingStore = pinia._s.get(id);
+                if (!existingStore) {
+                    console.log(`[Pinia]: skipping hmr because store doesn't exist yet`);
+                    return;
+                }
+                useStore(pinia, existingStore);
+            }
+        }
+    };
+}
+
+const noop = () => { };
+function addSubscription(subscriptions, callback, detached, onCleanup = noop) {
+    subscriptions.push(callback);
+    const removeSubscription = () => {
+        const idx = subscriptions.indexOf(callback);
+        if (idx > -1) {
+            subscriptions.splice(idx, 1);
+            onCleanup();
+        }
+    };
+    if (!detached && Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["getCurrentInstance"])()) {
+        Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["onUnmounted"])(removeSubscription);
+    }
+    return removeSubscription;
+}
+function triggerSubscriptions(subscriptions, ...args) {
+    subscriptions.slice().forEach((callback) => {
+        callback(...args);
+    });
+}
+
+function mergeReactiveObjects(target, patchToApply) {
+    // Handle Map instances
+    if (target instanceof Map && patchToApply instanceof Map) {
+        patchToApply.forEach((value, key) => target.set(key, value));
+    }
+    // Handle Set instances
+    if (target instanceof Set && patchToApply instanceof Set) {
+        patchToApply.forEach(target.add, target);
+    }
+    // no need to go through symbols because they cannot be serialized anyway
+    for (const key in patchToApply) {
+        if (!patchToApply.hasOwnProperty(key))
+            continue;
+        const subPatch = patchToApply[key];
+        const targetValue = target[key];
+        if (isPlainObject(targetValue) &&
+            isPlainObject(subPatch) &&
+            target.hasOwnProperty(key) &&
+            !Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(subPatch) &&
+            !Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isReactive"])(subPatch)) {
+            // NOTE: here I wanted to warn about inconsistent types but it's not possible because in setup stores one might
+            // start the value of a property as a certain type e.g. a Map, and then for some reason, during SSR, change that
+            // to `undefined`. When trying to hydrate, we want to override the Map with `undefined`.
+            target[key] = mergeReactiveObjects(targetValue, subPatch);
+        }
+        else {
+            // @ts-expect-error: subPatch is a valid value
+            target[key] = subPatch;
+        }
+    }
+    return target;
+}
+const skipHydrateSymbol = ( true)
+    ? Symbol('pinia:skipHydration')
+    : /* istanbul ignore next */ undefined;
+const skipHydrateMap = /*#__PURE__*/ new WeakMap();
+/**
+ * Tells Pinia to skip the hydration process of a given object. This is useful in setup stores (only) when you return a
+ * stateful object in the store but it isn't really state. e.g. returning a router instance in a setup store.
+ *
+ * @param obj - target object
+ * @returns obj
+ */
+function skipHydrate(obj) {
+    return vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]
+        ? // in @vue/composition-api, the refs are sealed so defineProperty doesn't work...
+            /* istanbul ignore next */ skipHydrateMap.set(obj, 1) && obj
+        : Object.defineProperty(obj, skipHydrateSymbol, {});
+}
+function shouldHydrate(obj) {
+    return vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]
+        ? /* istanbul ignore next */ !skipHydrateMap.has(obj)
+        : !isPlainObject(obj) || !obj.hasOwnProperty(skipHydrateSymbol);
+}
+const { assign } = Object;
+function isComputed(o) {
+    return !!(Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(o) && o.effect);
+}
+function createOptionsStore(id, options, pinia, hot) {
+    const { state, actions, getters } = options;
+    const initialState = pinia.state.value[id];
+    let store;
+    function setup() {
+        if (!initialState && ( false || !hot)) {
+            /* istanbul ignore if */
+            if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(pinia.state.value, id, state ? state() : {});
+            }
+            else {
+                pinia.state.value[id] = state ? state() : {};
+            }
+        }
+        // avoid creating a state in pinia.state.value
+        const localState = ( true) && hot
+            ? // use ref() to unwrap refs inside state TODO: check if this is still necessary
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRefs"])(Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["ref"])(state ? state() : {}).value)
+            : Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRefs"])(pinia.state.value[id]);
+        return assign(localState, actions, Object.keys(getters || {}).reduce((computedGetters, name) => {
+            if (( true) && name in localState) {
+                console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${name}" in store "${id}".`);
+            }
+            computedGetters[name] = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])(Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["computed"])(() => {
+                setActivePinia(pinia);
+                // it was created just before
+                const store = pinia._s.get(id);
+                // allow cross using stores
+                /* istanbul ignore next */
+                if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"] && !store._r)
+                    return;
+                // @ts-expect-error
+                // return getters![name].call(context, context)
+                // TODO: avoid reading the getter while assigning with a global variable
+                return getters[name].call(store, store);
+            }));
+            return computedGetters;
+        }, {}));
+    }
+    store = createSetupStore(id, setup, options, pinia, hot, true);
+    store.$reset = function $reset() {
+        const newState = state ? state() : {};
+        // we use a patch to group all changes into one single subscription
+        this.$patch(($state) => {
+            assign($state, newState);
+        });
+    };
+    return store;
+}
+function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) {
+    let scope;
+    const optionsForPlugin = assign({ actions: {} }, options);
+    /* istanbul ignore if */
+    // @ts-expect-error: active is an internal property
+    if (( true) && !pinia._e.active) {
+        throw new Error('Pinia destroyed');
+    }
+    // watcher options for $subscribe
+    const $subscribeOptions = {
+        deep: true,
+        // flush: 'post',
+    };
+    /* istanbul ignore else */
+    if (( true) && !vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+        $subscribeOptions.onTrigger = (event) => {
+            /* istanbul ignore else */
+            if (isListening) {
+                debuggerEvents = event;
+                // avoid triggering this while the store is being built and the state is being set in pinia
+            }
+            else if (isListening == false && !store._hotUpdating) {
+                // let patch send all the events together later
+                /* istanbul ignore else */
+                if (Array.isArray(debuggerEvents)) {
+                    debuggerEvents.push(event);
+                }
+                else {
+                    console.error('🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug.');
+                }
+            }
+        };
+    }
+    // internal state
+    let isListening; // set to true at the end
+    let isSyncListening; // set to true at the end
+    let subscriptions = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])([]);
+    let actionSubscriptions = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])([]);
+    let debuggerEvents;
+    const initialState = pinia.state.value[$id];
+    // avoid setting the state for option stores if it is set
+    // by the setup
+    if (!isOptionsStore && !initialState && ( false || !hot)) {
+        /* istanbul ignore if */
+        if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+            Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(pinia.state.value, $id, {});
+        }
+        else {
+            pinia.state.value[$id] = {};
+        }
+    }
+    const hotState = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["ref"])({});
+    // avoid triggering too many listeners
+    // https://github.com/vuejs/pinia/issues/1129
+    let activeListener;
+    function $patch(partialStateOrMutator) {
+        let subscriptionMutation;
+        isListening = isSyncListening = false;
+        // reset the debugger events since patches are sync
+        /* istanbul ignore else */
+        if ((true)) {
+            debuggerEvents = [];
+        }
+        if (typeof partialStateOrMutator === 'function') {
+            partialStateOrMutator(pinia.state.value[$id]);
+            subscriptionMutation = {
+                type: MutationType.patchFunction,
+                storeId: $id,
+                events: debuggerEvents,
+            };
+        }
+        else {
+            mergeReactiveObjects(pinia.state.value[$id], partialStateOrMutator);
+            subscriptionMutation = {
+                type: MutationType.patchObject,
+                payload: partialStateOrMutator,
+                storeId: $id,
+                events: debuggerEvents,
+            };
+        }
+        const myListenerId = (activeListener = Symbol());
+        Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["nextTick"])().then(() => {
+            if (activeListener === myListenerId) {
+                isListening = true;
+            }
+        });
+        isSyncListening = true;
+        // because we paused the watcher, we need to manually call the subscriptions
+        triggerSubscriptions(subscriptions, subscriptionMutation, pinia.state.value[$id]);
+    }
+    /* istanbul ignore next */
+    const $reset = ( true)
+        ? () => {
+            throw new Error(`🍍: Store "${$id}" is built using the setup syntax and does not implement $reset().`);
+        }
+        : undefined;
+    function $dispose() {
+        scope.stop();
+        subscriptions = [];
+        actionSubscriptions = [];
+        pinia._s.delete($id);
+    }
+    /**
+     * Wraps an action to handle subscriptions.
+     *
+     * @param name - name of the action
+     * @param action - action to wrap
+     * @returns a wrapped action to handle subscriptions
+     */
+    function wrapAction(name, action) {
+        return function () {
+            setActivePinia(pinia);
+            const args = Array.from(arguments);
+            const afterCallbackList = [];
+            const onErrorCallbackList = [];
+            function after(callback) {
+                afterCallbackList.push(callback);
+            }
+            function onError(callback) {
+                onErrorCallbackList.push(callback);
+            }
+            // @ts-expect-error
+            triggerSubscriptions(actionSubscriptions, {
+                args,
+                name,
+                store,
+                after,
+                onError,
+            });
+            let ret;
+            try {
+                ret = action.apply(this && this.$id === $id ? this : store, args);
+                // handle sync errors
+            }
+            catch (error) {
+                triggerSubscriptions(onErrorCallbackList, error);
+                throw error;
+            }
+            if (ret instanceof Promise) {
+                return ret
+                    .then((value) => {
+                    triggerSubscriptions(afterCallbackList, value);
+                    return value;
+                })
+                    .catch((error) => {
+                    triggerSubscriptions(onErrorCallbackList, error);
+                    return Promise.reject(error);
+                });
+            }
+            // allow the afterCallback to override the return value
+            triggerSubscriptions(afterCallbackList, ret);
+            return ret;
+        };
+    }
+    const _hmrPayload = /*#__PURE__*/ Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])({
+        actions: {},
+        getters: {},
+        state: [],
+        hotState,
+    });
+    const partialStore = {
+        _p: pinia,
+        // _s: scope,
+        $id,
+        $onAction: addSubscription.bind(null, actionSubscriptions),
+        $patch,
+        $reset,
+        $subscribe(callback, options = {}) {
+            const removeSubscription = addSubscription(subscriptions, callback, options.detached, () => stopWatcher());
+            const stopWatcher = scope.run(() => Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["watch"])(() => pinia.state.value[$id], (state) => {
+                if (options.flush === 'sync' ? isSyncListening : isListening) {
+                    callback({
+                        storeId: $id,
+                        type: MutationType.direct,
+                        events: debuggerEvents,
+                    }, state);
+                }
+            }, assign({}, $subscribeOptions, options)));
+            return removeSubscription;
+        },
+        $dispose,
+    };
+    /* istanbul ignore if */
+    if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+        // start as non ready
+        partialStore._r = false;
+    }
+    const store = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["reactive"])(assign(( true) && IS_CLIENT
+        ? // devtools custom properties
+            {
+                _customProperties: Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])(new Set()),
+                _hmrPayload,
+            }
+        : {}, partialStore
+    // must be added later
+    // setupStore
+    ));
+    // store the partial store now so the setup of stores can instantiate each other before they are finished without
+    // creating infinite loops.
+    pinia._s.set($id, store);
+    // TODO: idea create skipSerialize that marks properties as non serializable and they are skipped
+    const setupStore = pinia._e.run(() => {
+        scope = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["effectScope"])();
+        return scope.run(() => setup());
+    });
+    // overwrite existing actions to support $onAction
+    for (const key in setupStore) {
+        const prop = setupStore[key];
+        if ((Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(prop) && !isComputed(prop)) || Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isReactive"])(prop)) {
+            // mark it as a piece of state to be serialized
+            if (( true) && hot) {
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(hotState.value, key, Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRef"])(setupStore, key));
+                // createOptionStore directly sets the state in pinia.state.value so we
+                // can just skip that
+            }
+            else if (!isOptionsStore) {
+                // in setup stores we must hydrate the state and sync pinia state tree with the refs the user just created
+                if (initialState && shouldHydrate(prop)) {
+                    if (Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(prop)) {
+                        prop.value = initialState[key];
+                    }
+                    else {
+                        // probably a reactive object, lets recursively assign
+                        mergeReactiveObjects(prop, initialState[key]);
+                    }
+                }
+                // transfer the ref to the pinia state to keep everything in sync
+                /* istanbul ignore if */
+                if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                    Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(pinia.state.value[$id], key, prop);
+                }
+                else {
+                    pinia.state.value[$id][key] = prop;
+                }
+            }
+            /* istanbul ignore else */
+            if ((true)) {
+                _hmrPayload.state.push(key);
+            }
+            // action
+        }
+        else if (typeof prop === 'function') {
+            // @ts-expect-error: we are overriding the function we avoid wrapping if
+            const actionValue = ( true) && hot ? prop : wrapAction(key, prop);
+            // this a hot module replacement store because the hotUpdate method needs
+            // to do it with the right context
+            /* istanbul ignore if */
+            if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(setupStore, key, actionValue);
+            }
+            else {
+                // @ts-expect-error
+                setupStore[key] = actionValue;
+            }
+            /* istanbul ignore else */
+            if ((true)) {
+                _hmrPayload.actions[key] = prop;
+            }
+            // list actions so they can be used in plugins
+            // @ts-expect-error
+            optionsForPlugin.actions[key] = prop;
+        }
+        else if ((true)) {
+            // add getters for devtools
+            if (isComputed(prop)) {
+                _hmrPayload.getters[key] = isOptionsStore
+                    ? // @ts-expect-error
+                        options.getters[key]
+                    : prop;
+                if (IS_CLIENT) {
+                    const getters = 
+                    // @ts-expect-error: it should be on the store
+                    setupStore._getters || (setupStore._getters = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])([]));
+                    getters.push(key);
+                }
+            }
+        }
+    }
+    // add the state, getters, and action properties
+    /* istanbul ignore if */
+    if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+        Object.keys(setupStore).forEach((key) => {
+            Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(store, key, 
+            // @ts-expect-error: valid key indexing
+            setupStore[key]);
+        });
+    }
+    else {
+        assign(store, setupStore);
+        // allows retrieving reactive objects with `storeToRefs()`. Must be called after assigning to the reactive object.
+        // Make `storeToRefs()` work with `reactive()` #799
+        assign(Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRaw"])(store), setupStore);
+    }
+    // use this instead of a computed with setter to be able to create it anywhere
+    // without linking the computed lifespan to wherever the store is first
+    // created.
+    Object.defineProperty(store, '$state', {
+        get: () => (( true) && hot ? hotState.value : pinia.state.value[$id]),
+        set: (state) => {
+            /* istanbul ignore if */
+            if (( true) && hot) {
+                throw new Error('cannot set hotState');
+            }
+            $patch(($state) => {
+                assign($state, state);
+            });
+        },
+    });
+    // add the hotUpdate before plugins to allow them to override it
+    /* istanbul ignore else */
+    if ((true)) {
+        store._hotUpdate = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["markRaw"])((newStore) => {
+            store._hotUpdating = true;
+            newStore._hmrPayload.state.forEach((stateKey) => {
+                if (stateKey in store.$state) {
+                    const newStateTarget = newStore.$state[stateKey];
+                    const oldStateSource = store.$state[stateKey];
+                    if (typeof newStateTarget === 'object' &&
+                        isPlainObject(newStateTarget) &&
+                        isPlainObject(oldStateSource)) {
+                        patchObject(newStateTarget, oldStateSource);
+                    }
+                    else {
+                        // transfer the ref
+                        newStore.$state[stateKey] = oldStateSource;
+                    }
+                }
+                // patch direct access properties to allow store.stateProperty to work as
+                // store.$state.stateProperty
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(store, stateKey, Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRef"])(newStore.$state, stateKey));
+            });
+            // remove deleted state properties
+            Object.keys(store.$state).forEach((stateKey) => {
+                if (!(stateKey in newStore.$state)) {
+                    Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["del"])(store, stateKey);
+                }
+            });
+            // avoid devtools logging this as a mutation
+            isListening = false;
+            isSyncListening = false;
+            pinia.state.value[$id] = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRef"])(newStore._hmrPayload, 'hotState');
+            isSyncListening = true;
+            Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["nextTick"])().then(() => {
+                isListening = true;
+            });
+            for (const actionName in newStore._hmrPayload.actions) {
+                const action = newStore[actionName];
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(store, actionName, wrapAction(actionName, action));
+            }
+            // TODO: does this work in both setup and option store?
+            for (const getterName in newStore._hmrPayload.getters) {
+                const getter = newStore._hmrPayload.getters[getterName];
+                const getterValue = isOptionsStore
+                    ? // special handling of options api
+                        Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["computed"])(() => {
+                            setActivePinia(pinia);
+                            return getter.call(store, store);
+                        })
+                    : getter;
+                Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["set"])(store, getterName, getterValue);
+            }
+            // remove deleted getters
+            Object.keys(store._hmrPayload.getters).forEach((key) => {
+                if (!(key in newStore._hmrPayload.getters)) {
+                    Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["del"])(store, key);
+                }
+            });
+            // remove old actions
+            Object.keys(store._hmrPayload.actions).forEach((key) => {
+                if (!(key in newStore._hmrPayload.actions)) {
+                    Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["del"])(store, key);
+                }
+            });
+            // update the values used in devtools and to allow deleting new properties later on
+            store._hmrPayload = newStore._hmrPayload;
+            store._getters = newStore._getters;
+            store._hotUpdating = false;
+        });
+        const nonEnumerable = {
+            writable: true,
+            configurable: true,
+            // avoid warning on devtools trying to display this property
+            enumerable: false,
+        };
+        if (IS_CLIENT) {
+            ['_p', '_hmrPayload', '_getters', '_customProperties'].forEach((p) => {
+                Object.defineProperty(store, p, {
+                    value: store[p],
+                    ...nonEnumerable,
+                });
+            });
+        }
+    }
+    /* istanbul ignore if */
+    if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+        // mark the store as ready before plugins
+        store._r = true;
+    }
+    // apply all plugins
+    pinia._p.forEach((extender) => {
+        /* istanbul ignore else */
+        if (( true) && IS_CLIENT) {
+            const extensions = scope.run(() => extender({
+                store,
+                app: pinia._a,
+                pinia,
+                options: optionsForPlugin,
+            }));
+            Object.keys(extensions || {}).forEach((key) => store._customProperties.add(key));
+            assign(store, extensions);
+        }
+        else {
+            assign(store, scope.run(() => extender({
+                store,
+                app: pinia._a,
+                pinia,
+                options: optionsForPlugin,
+            })));
+        }
+    });
+    if (( true) &&
+        store.$state &&
+        typeof store.$state === 'object' &&
+        typeof store.$state.constructor === 'function' &&
+        !store.$state.constructor.toString().includes('[native code]')) {
+        console.warn(`[🍍]: The "state" must be a plain object. It cannot be\n` +
+            `\tstate: () => new MyClass()\n` +
+            `Found in store "${store.$id}".`);
+    }
+    // only apply hydrate to option stores with an initial state in pinia
+    if (initialState &&
+        isOptionsStore &&
+        options.hydrate) {
+        options.hydrate(store.$state, initialState);
+    }
+    isListening = true;
+    isSyncListening = true;
+    return store;
+}
+function defineStore(
+// TODO: add proper types from above
+idOrOptions, setup, setupOptions) {
+    let id;
+    let options;
+    const isSetupStore = typeof setup === 'function';
+    if (typeof idOrOptions === 'string') {
+        id = idOrOptions;
+        // the option store setup will contain the actual options in this case
+        options = isSetupStore ? setupOptions : setup;
+    }
+    else {
+        options = idOrOptions;
+        id = idOrOptions.id;
+    }
+    function useStore(pinia, hot) {
+        const currentInstance = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["getCurrentInstance"])();
+        pinia =
+            // in test mode, ignore the argument provided as we can always retrieve a
+            // pinia instance with getActivePinia()
+            ( false ? undefined : pinia) ||
+                (currentInstance && Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["inject"])(piniaSymbol));
+        if (pinia)
+            setActivePinia(pinia);
+        if (( true) && !activePinia) {
+            throw new Error(`[🍍]: getActivePinia was called with no active Pinia. Did you forget to install pinia?\n` +
+                `\tconst pinia = createPinia()\n` +
+                `\tapp.use(pinia)\n` +
+                `This will fail in production.`);
+        }
+        pinia = activePinia;
+        if (!pinia._s.has(id)) {
+            // creating the store registers it in `pinia._s`
+            if (isSetupStore) {
+                createSetupStore(id, setup, options, pinia);
+            }
+            else {
+                createOptionsStore(id, options, pinia);
+            }
+            /* istanbul ignore else */
+            if ((true)) {
+                // @ts-expect-error: not the right inferred type
+                useStore._pinia = pinia;
+            }
+        }
+        const store = pinia._s.get(id);
+        if (( true) && hot) {
+            const hotId = '__hot:' + id;
+            const newStore = isSetupStore
+                ? createSetupStore(hotId, setup, options, pinia, true)
+                : createOptionsStore(hotId, assign({}, options), pinia, true);
+            hot._hotUpdate(newStore);
+            // cleanup the state properties and the store from the cache
+            delete pinia.state.value[hotId];
+            pinia._s.delete(hotId);
+        }
+        // save stores in instances to access them devtools
+        if (( true) &&
+            IS_CLIENT &&
+            currentInstance &&
+            currentInstance.proxy &&
+            // avoid adding stores that are just built for hot module replacement
+            !hot) {
+            const vm = currentInstance.proxy;
+            const cache = '_pStores' in vm ? vm._pStores : (vm._pStores = {});
+            cache[id] = store;
+        }
+        // StoreGeneric cannot be casted towards Store
+        return store;
+    }
+    useStore.$id = id;
+    return useStore;
+}
+
+let mapStoreSuffix = 'Store';
+/**
+ * Changes the suffix added by `mapStores()`. Can be set to an empty string.
+ * Defaults to `"Store"`. Make sure to extend the MapStoresCustomization
+ * interface if you are using TypeScript.
+ *
+ * @param suffix - new suffix
+ */
+function setMapStoreSuffix(suffix // could be 'Store' but that would be annoying for JS
+) {
+    mapStoreSuffix = suffix;
+}
+/**
+ * Allows using stores without the composition API (`setup()`) by generating an
+ * object to be spread in the `computed` field of a component. It accepts a list
+ * of store definitions.
+ *
+ * @example
+ * ```js
+ * export default {
+ *   computed: {
+ *     // other computed properties
+ *     ...mapStores(useUserStore, useCartStore)
+ *   },
+ *
+ *   created() {
+ *     this.userStore // store with id "user"
+ *     this.cartStore // store with id "cart"
+ *   }
+ * }
+ * ```
+ *
+ * @param stores - list of stores to map to an object
+ */
+function mapStores(...stores) {
+    if (( true) && Array.isArray(stores[0])) {
+        console.warn(`[🍍]: Directly pass all stores to "mapStores()" without putting them in an array:\n` +
+            `Replace\n` +
+            `\tmapStores([useAuthStore, useCartStore])\n` +
+            `with\n` +
+            `\tmapStores(useAuthStore, useCartStore)\n` +
+            `This will fail in production if not fixed.`);
+        stores = stores[0];
+    }
+    return stores.reduce((reduced, useStore) => {
+        // @ts-expect-error: $id is added by defineStore
+        reduced[useStore.$id + mapStoreSuffix] = function () {
+            return useStore(this.$pinia);
+        };
+        return reduced;
+    }, {});
+}
+/**
+ * Allows using state and getters from one store without using the composition
+ * API (`setup()`) by generating an object to be spread in the `computed` field
+ * of a component.
+ *
+ * @param useStore - store to map from
+ * @param keysOrMapper - array or object
+ */
+function mapState(useStore, keysOrMapper) {
+    return Array.isArray(keysOrMapper)
+        ? keysOrMapper.reduce((reduced, key) => {
+            reduced[key] = function () {
+                return useStore(this.$pinia)[key];
+            };
+            return reduced;
+        }, {})
+        : Object.keys(keysOrMapper).reduce((reduced, key) => {
+            // @ts-expect-error
+            reduced[key] = function () {
+                const store = useStore(this.$pinia);
+                const storeKey = keysOrMapper[key];
+                // for some reason TS is unable to infer the type of storeKey to be a
+                // function
+                return typeof storeKey === 'function'
+                    ? storeKey.call(this, store)
+                    : store[storeKey];
+            };
+            return reduced;
+        }, {});
+}
+/**
+ * Alias for `mapState()`. You should use `mapState()` instead.
+ * @deprecated use `mapState()` instead.
+ */
+const mapGetters = mapState;
+/**
+ * Allows directly using actions from your store without using the composition
+ * API (`setup()`) by generating an object to be spread in the `methods` field
+ * of a component.
+ *
+ * @param useStore - store to map from
+ * @param keysOrMapper - array or object
+ */
+function mapActions(useStore, keysOrMapper) {
+    return Array.isArray(keysOrMapper)
+        ? keysOrMapper.reduce((reduced, key) => {
+            // @ts-expect-error
+            reduced[key] = function (...args) {
+                return useStore(this.$pinia)[key](...args);
+            };
+            return reduced;
+        }, {})
+        : Object.keys(keysOrMapper).reduce((reduced, key) => {
+            // @ts-expect-error
+            reduced[key] = function (...args) {
+                return useStore(this.$pinia)[keysOrMapper[key]](...args);
+            };
+            return reduced;
+        }, {});
+}
+/**
+ * Allows using state and getters from one store without using the composition
+ * API (`setup()`) by generating an object to be spread in the `computed` field
+ * of a component.
+ *
+ * @param useStore - store to map from
+ * @param keysOrMapper - array or object
+ */
+function mapWritableState(useStore, keysOrMapper) {
+    return Array.isArray(keysOrMapper)
+        ? keysOrMapper.reduce((reduced, key) => {
+            // @ts-ignore
+            reduced[key] = {
+                get() {
+                    return useStore(this.$pinia)[key];
+                },
+                set(value) {
+                    // it's easier to type it here as any
+                    return (useStore(this.$pinia)[key] = value);
+                },
+            };
+            return reduced;
+        }, {})
+        : Object.keys(keysOrMapper).reduce((reduced, key) => {
+            // @ts-ignore
+            reduced[key] = {
+                get() {
+                    return useStore(this.$pinia)[keysOrMapper[key]];
+                },
+                set(value) {
+                    // it's easier to type it here as any
+                    return (useStore(this.$pinia)[keysOrMapper[key]] = value);
+                },
+            };
+            return reduced;
+        }, {});
+}
+
+/**
+ * Creates an object of references with all the state, getters, and plugin-added
+ * state properties of the store. Similar to `toRefs()` but specifically
+ * designed for Pinia stores so methods and non reactive properties are
+ * completely ignored.
+ *
+ * @param store - store to extract the refs from
+ */
+function storeToRefs(store) {
+    // See https://github.com/vuejs/pinia/issues/852
+    // It's easier to just use toRefs() even if it includes more stuff
+    if (vue_demi__WEBPACK_IMPORTED_MODULE_0__["isVue2"]) {
+        // @ts-expect-error: toRefs include methods and others
+        return Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRefs"])(store);
+    }
+    else {
+        store = Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRaw"])(store);
+        const refs = {};
+        for (const key in store) {
+            const value = store[key];
+            if (Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isRef"])(value) || Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["isReactive"])(value)) {
+                // @ts-expect-error: the key is state or getter
+                refs[key] =
+                    // ---
+                    Object(vue_demi__WEBPACK_IMPORTED_MODULE_0__["toRef"])(store, key);
+            }
+        }
+        return refs;
+    }
+}
+
+/**
+ * Vue 2 Plugin that must be installed for pinia to work. Note **you don't need
+ * this plugin if you are using Nuxt.js**. Use the `buildModule` instead:
+ * https://pinia.vuejs.org/ssr/nuxt.html.
+ *
+ * @example
+ * ```js
+ * import Vue from 'vue'
+ * import { PiniaVuePlugin, createPinia } from 'pinia'
+ *
+ * Vue.use(PiniaVuePlugin)
+ * const pinia = createPinia()
+ *
+ * new Vue({
+ *   el: '#app',
+ *   // ...
+ *   pinia,
+ * })
+ * ```
+ *
+ * @param _Vue - `Vue` imported from 'vue'.
+ */
+const PiniaVuePlugin = function (_Vue) {
+    // Equivalent of
+    // app.config.globalProperties.$pinia = pinia
+    _Vue.mixin({
+        beforeCreate() {
+            const options = this.$options;
+            if (options.pinia) {
+                const pinia = options.pinia;
+                // HACK: taken from provide(): https://github.com/vuejs/composition-api/blob/main/src/apis/inject.ts#L31
+                /* istanbul ignore else */
+                if (!this._provided) {
+                    const provideCache = {};
+                    Object.defineProperty(this, '_provided', {
+                        get: () => provideCache,
+                        set: (v) => Object.assign(provideCache, v),
+                    });
+                }
+                this._provided[piniaSymbol] = pinia;
+                // propagate the pinia instance in an SSR friendly way
+                // avoid adding it to nuxt twice
+                /* istanbul ignore else */
+                if (!this.$pinia) {
+                    this.$pinia = pinia;
+                }
+                pinia._a = this;
+                if (IS_CLIENT) {
+                    // this allows calling useStore() outside of a component setup after
+                    // installing pinia's plugin
+                    setActivePinia(pinia);
+                }
+                if (USE_DEVTOOLS) {
+                    registerPiniaDevtools(pinia._a, pinia);
+                }
+            }
+            else if (!this.$pinia && options.parent && options.parent.$pinia) {
+                this.$pinia = options.parent.$pinia;
+            }
+        },
+        destroyed() {
+            delete this._pStores;
+        },
+    });
+};
+
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -65109,13 +67541,47 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v11.4.26
+* sweetalert2 v11.4.33
 * Released under the MIT License.
 */
 (function (global, factory) {
    true ? module.exports = factory() :
   undefined;
 }(this, function () { 'use strict';
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateProps = {
+    awaitingPromise: new WeakMap(),
+    promise: new WeakMap(),
+    innerParams: new WeakMap(),
+    domCache: new WeakMap()
+  };
+
+  const swalPrefix = 'swal2-';
+  /**
+   * @param {string[]} items
+   * @returns {object}
+   */
+
+  const prefix = items => {
+    const result = {};
+
+    for (const i in items) {
+      result[items[i]] = swalPrefix + items[i];
+    }
+
+    return result;
+  };
+  const swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'show', 'hide', 'close', 'title', 'html-container', 'actions', 'confirm', 'deny', 'cancel', 'default-outline', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'input-label', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loader', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error', 'no-war']);
+  const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
   const consolePrefix = 'SweetAlert2:';
   /**
@@ -65225,198 +67691,6 @@ module.exports = function (css) {
    */
 
   const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
-
-  const defaultParams = {
-    title: '',
-    titleText: '',
-    text: '',
-    html: '',
-    footer: '',
-    icon: undefined,
-    iconColor: undefined,
-    iconHtml: undefined,
-    template: undefined,
-    toast: false,
-    showClass: {
-      popup: 'swal2-show',
-      backdrop: 'swal2-backdrop-show',
-      icon: 'swal2-icon-show'
-    },
-    hideClass: {
-      popup: 'swal2-hide',
-      backdrop: 'swal2-backdrop-hide',
-      icon: 'swal2-icon-hide'
-    },
-    customClass: {},
-    target: 'body',
-    color: undefined,
-    backdrop: true,
-    heightAuto: true,
-    allowOutsideClick: true,
-    allowEscapeKey: true,
-    allowEnterKey: true,
-    stopKeydownPropagation: true,
-    keydownListenerCapture: false,
-    showConfirmButton: true,
-    showDenyButton: false,
-    showCancelButton: false,
-    preConfirm: undefined,
-    preDeny: undefined,
-    confirmButtonText: 'OK',
-    confirmButtonAriaLabel: '',
-    confirmButtonColor: undefined,
-    denyButtonText: 'No',
-    denyButtonAriaLabel: '',
-    denyButtonColor: undefined,
-    cancelButtonText: 'Cancel',
-    cancelButtonAriaLabel: '',
-    cancelButtonColor: undefined,
-    buttonsStyling: true,
-    reverseButtons: false,
-    focusConfirm: true,
-    focusDeny: false,
-    focusCancel: false,
-    returnFocus: true,
-    showCloseButton: false,
-    closeButtonHtml: '&times;',
-    closeButtonAriaLabel: 'Close this dialog',
-    loaderHtml: '',
-    showLoaderOnConfirm: false,
-    showLoaderOnDeny: false,
-    imageUrl: undefined,
-    imageWidth: undefined,
-    imageHeight: undefined,
-    imageAlt: '',
-    timer: undefined,
-    timerProgressBar: false,
-    width: undefined,
-    padding: undefined,
-    background: undefined,
-    input: undefined,
-    inputPlaceholder: '',
-    inputLabel: '',
-    inputValue: '',
-    inputOptions: {},
-    inputAutoTrim: true,
-    inputAttributes: {},
-    inputValidator: undefined,
-    returnInputValueOnDeny: false,
-    validationMessage: undefined,
-    grow: false,
-    position: 'center',
-    progressSteps: [],
-    currentProgressStep: undefined,
-    progressStepsDistance: undefined,
-    willOpen: undefined,
-    didOpen: undefined,
-    didRender: undefined,
-    willClose: undefined,
-    didClose: undefined,
-    didDestroy: undefined,
-    scrollbarPadding: true
-  };
-  const updatableParams = ['allowEscapeKey', 'allowOutsideClick', 'background', 'buttonsStyling', 'cancelButtonAriaLabel', 'cancelButtonColor', 'cancelButtonText', 'closeButtonAriaLabel', 'closeButtonHtml', 'color', 'confirmButtonAriaLabel', 'confirmButtonColor', 'confirmButtonText', 'currentProgressStep', 'customClass', 'denyButtonAriaLabel', 'denyButtonColor', 'denyButtonText', 'didClose', 'didDestroy', 'footer', 'hideClass', 'html', 'icon', 'iconColor', 'iconHtml', 'imageAlt', 'imageHeight', 'imageUrl', 'imageWidth', 'preConfirm', 'preDeny', 'progressSteps', 'returnFocus', 'reverseButtons', 'showCancelButton', 'showCloseButton', 'showConfirmButton', 'showDenyButton', 'text', 'title', 'titleText', 'willClose'];
-  const deprecatedParams = {};
-  const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
-  /**
-   * Is valid parameter
-   *
-   * @param {string} paramName
-   * @returns {boolean}
-   */
-
-  const isValidParameter = paramName => {
-    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
-  };
-  /**
-   * Is valid parameter for Swal.update() method
-   *
-   * @param {string} paramName
-   * @returns {boolean}
-   */
-
-  const isUpdatableParameter = paramName => {
-    return updatableParams.indexOf(paramName) !== -1;
-  };
-  /**
-   * Is deprecated parameter
-   *
-   * @param {string} paramName
-   * @returns {string | undefined}
-   */
-
-  const isDeprecatedParameter = paramName => {
-    return deprecatedParams[paramName];
-  };
-  /**
-   * @param {string} param
-   */
-
-  const checkIfParamIsValid = param => {
-    if (!isValidParameter(param)) {
-      warn("Unknown parameter \"".concat(param, "\""));
-    }
-  };
-  /**
-   * @param {string} param
-   */
-
-
-  const checkIfToastParamIsValid = param => {
-    if (toastIncompatibleParams.includes(param)) {
-      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
-    }
-  };
-  /**
-   * @param {string} param
-   */
-
-
-  const checkIfParamIsDeprecated = param => {
-    if (isDeprecatedParameter(param)) {
-      warnAboutDeprecation(param, isDeprecatedParameter(param));
-    }
-  };
-  /**
-   * Show relevant warnings for given params
-   *
-   * @param {SweetAlertOptions} params
-   */
-
-
-  const showWarningsForParams = params => {
-    if (!params.backdrop && params.allowOutsideClick) {
-      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
-    }
-
-    for (const param in params) {
-      checkIfParamIsValid(param);
-
-      if (params.toast) {
-        checkIfToastParamIsValid(param);
-      }
-
-      checkIfParamIsDeprecated(param);
-    }
-  };
-
-  const swalPrefix = 'swal2-';
-  /**
-   * @param {string[]} items
-   * @returns {object}
-   */
-
-  const prefix = items => {
-    const result = {};
-
-    for (const i in items) {
-      result[items[i]] = swalPrefix + items[i];
-    }
-
-    return result;
-  };
-  const swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'show', 'hide', 'close', 'title', 'html-container', 'actions', 'confirm', 'deny', 'cancel', 'default-outline', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'input-label', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loader', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error', 'no-war']);
-  const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
   /**
    * Gets the popup container which contains the backdrop and the popup itself.
@@ -65869,13 +68143,6 @@ module.exports = function (css) {
     timerProgressBar.style.width = "".concat(timerProgressBarPercent, "%");
   };
 
-  /**
-   * Detect Node env
-   *
-   * @returns {boolean}
-   */
-  const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';
-
   const RESTORE_FOCUS_TIMEOUT = 100;
 
   /** @type {GlobalState} */
@@ -65914,6 +68181,13 @@ module.exports = function (css) {
       window.scrollTo(x, y);
     });
   };
+
+  /**
+   * Detect Node env
+   *
+   * @returns {boolean}
+   */
+  const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';
 
   const sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses['html-container'], "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n   <div class=\"").concat(swalClasses.icon, "\"></div>\n   <img class=\"").concat(swalClasses.image, "\" />\n   <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n   <div class=\"").concat(swalClasses['html-container'], "\" id=\"").concat(swalClasses['html-container'], "\"></div>\n   <input class=\"").concat(swalClasses.input, "\" />\n   <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n   <div class=\"").concat(swalClasses.range, "\">\n     <input type=\"range\" />\n     <output></output>\n   </div>\n   <select class=\"").concat(swalClasses.select, "\"></select>\n   <div class=\"").concat(swalClasses.radio, "\"></div>\n   <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n     <input type=\"checkbox\" />\n     <span class=\"").concat(swalClasses.label, "\"></span>\n   </label>\n   <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n   <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <div class=\"").concat(swalClasses.loader, "\"></div>\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.deny, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\"></div>\n   <div class=\"").concat(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").concat(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
   /**
@@ -66228,6 +68502,20 @@ module.exports = function (css) {
    * @param {SweetAlertOptions} params
    */
 
+  const renderCloseButton = (instance, params) => {
+    const closeButton = getCloseButton();
+    setInnerHtml(closeButton, params.closeButtonHtml); // Custom class
+
+    applyCustomClass(closeButton, params, 'closeButton');
+    toggle(closeButton, params.showCloseButton);
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
   const renderContainer = (instance, params) => {
     const container = getContainer();
 
@@ -66282,22 +68570,6 @@ module.exports = function (css) {
       }
     }
   }
-
-  /**
-   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
-   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
-   * This is the approach that Babel will probably take to implement private methods/fields
-   *   https://github.com/tc39/proposal-private-methods
-   *   https://github.com/babel/babel/pull/7555
-   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
-   *   then we can use that language feature.
-   */
-  var privateProps = {
-    awaitingPromise: new WeakMap(),
-    promise: new WeakMap(),
-    innerParams: new WeakMap(),
-    domCache: new WeakMap()
-  };
 
   /// <reference path="../../../../sweetalert2.d.ts"/>
   /** @type {InputClass[]} */
@@ -66633,20 +68905,6 @@ module.exports = function (css) {
    * @param {SweetAlertOptions} params
    */
 
-  const renderCloseButton = (instance, params) => {
-    const closeButton = getCloseButton();
-    setInnerHtml(closeButton, params.closeButtonHtml); // Custom class
-
-    applyCustomClass(closeButton, params, 'closeButton');
-    toggle(closeButton, params.showCloseButton);
-    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
-  };
-
-  /**
-   * @param {SweetAlert2} instance
-   * @param {SweetAlertOptions} params
-   */
-
   const renderIcon = (instance, params) => {
     const innerParams = privateProps.innerParams.get(instance);
     const icon = getIcon(); // if the given icon already rendered, apply the styling without re-rendering the icon
@@ -66798,6 +69056,69 @@ module.exports = function (css) {
    * @param {SweetAlertOptions} params
    */
 
+  const renderPopup = (instance, params) => {
+    const container = getContainer();
+    const popup = getPopup(); // Width
+    // https://github.com/sweetalert2/sweetalert2/issues/2170
+
+    if (params.toast) {
+      applyNumericalStyle(container, 'width', params.width);
+      popup.style.width = '100%';
+      popup.insertBefore(getLoader(), getIcon());
+    } else {
+      applyNumericalStyle(popup, 'width', params.width);
+    } // Padding
+
+
+    applyNumericalStyle(popup, 'padding', params.padding); // Color
+
+    if (params.color) {
+      popup.style.color = params.color;
+    } // Background
+
+
+    if (params.background) {
+      popup.style.background = params.background;
+    }
+
+    hide(getValidationMessage()); // Classes
+
+    addClasses(popup, params);
+  };
+  /**
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} params
+   */
+
+  const addClasses = (popup, params) => {
+    // Default Class + showClass when updating Swal.update({})
+    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
+
+    if (params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
+      addClass(popup, swalClasses.toast);
+    } else {
+      addClass(popup, swalClasses.modal);
+    } // Custom class
+
+
+    applyCustomClass(popup, params, 'popup');
+
+    if (typeof params.customClass === 'string') {
+      addClass(popup, params.customClass);
+    } // Icon class (#1842)
+
+
+    if (params.icon) {
+      addClass(popup, swalClasses["icon-".concat(params.icon)]);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
   const renderProgressSteps = (instance, params) => {
     const progressStepsContainer = getProgressSteps();
 
@@ -66880,69 +69201,6 @@ module.exports = function (css) {
    * @param {SweetAlertOptions} params
    */
 
-  const renderPopup = (instance, params) => {
-    const container = getContainer();
-    const popup = getPopup(); // Width
-    // https://github.com/sweetalert2/sweetalert2/issues/2170
-
-    if (params.toast) {
-      applyNumericalStyle(container, 'width', params.width);
-      popup.style.width = '100%';
-      popup.insertBefore(getLoader(), getIcon());
-    } else {
-      applyNumericalStyle(popup, 'width', params.width);
-    } // Padding
-
-
-    applyNumericalStyle(popup, 'padding', params.padding); // Color
-
-    if (params.color) {
-      popup.style.color = params.color;
-    } // Background
-
-
-    if (params.background) {
-      popup.style.background = params.background;
-    }
-
-    hide(getValidationMessage()); // Classes
-
-    addClasses(popup, params);
-  };
-  /**
-   * @param {HTMLElement} popup
-   * @param {SweetAlertOptions} params
-   */
-
-  const addClasses = (popup, params) => {
-    // Default Class + showClass when updating Swal.update({})
-    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
-
-    if (params.toast) {
-      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
-      addClass(popup, swalClasses.toast);
-    } else {
-      addClass(popup, swalClasses.modal);
-    } // Custom class
-
-
-    applyCustomClass(popup, params, 'popup');
-
-    if (typeof params.customClass === 'string') {
-      addClass(popup, params.customClass);
-    } // Icon class (#1842)
-
-
-    if (params.icon) {
-      addClass(popup, swalClasses["icon-".concat(params.icon)]);
-    }
-  };
-
-  /**
-   * @param {SweetAlert2} instance
-   * @param {SweetAlertOptions} params
-   */
-
   const render = (instance, params) => {
     renderPopup(instance, params);
     renderContainer(instance, params);
@@ -66960,6 +69218,86 @@ module.exports = function (css) {
     }
   };
 
+  /**
+   * Hides loader and shows back the button which was hidden by .showLoading()
+   */
+
+  function hideLoading() {
+    // do nothing if popup is closed
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      return;
+    }
+
+    const domCache = privateProps.domCache.get(this);
+    hide(domCache.loader);
+
+    if (isToast()) {
+      if (innerParams.icon) {
+        show(getIcon());
+      }
+    } else {
+      showRelatedButton(domCache);
+    }
+
+    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+    domCache.popup.removeAttribute('aria-busy');
+    domCache.popup.removeAttribute('data-loading');
+    domCache.confirmButton.disabled = false;
+    domCache.denyButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+
+  const showRelatedButton = domCache => {
+    const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'));
+
+    if (buttonToReplace.length) {
+      show(buttonToReplace[0], 'inline-block');
+    } else if (allButtonsAreHidden()) {
+      hide(domCache.actions);
+    }
+  };
+
+  /**
+   * Gets the input DOM node, this method works with input parameter.
+   * @returns {HTMLElement | null}
+   */
+
+  function getInput$1(instance) {
+    const innerParams = privateProps.innerParams.get(instance || this);
+    const domCache = privateProps.domCache.get(instance || this);
+
+    if (!domCache) {
+      return null;
+    }
+
+    return getInput(domCache.popup, innerParams.input);
+  }
+
+  /*
+   * Global function to determine if SweetAlert2 popup is shown
+   */
+
+  const isVisible$1 = () => {
+    return isVisible(getPopup());
+  };
+  /*
+   * Global function to click 'Confirm' button
+   */
+
+  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
+  /*
+   * Global function to click 'Deny' button
+   */
+
+  const clickDeny = () => getDenyButton() && getDenyButton().click();
+  /*
+   * Global function to click 'Cancel' button
+   */
+
+  const clickCancel = () => getCancelButton() && getCancelButton().click();
+
   const DismissReason = Object.freeze({
     cancel: 'cancel',
     backdrop: 'backdrop',
@@ -66967,6 +69305,216 @@ module.exports = function (css) {
     esc: 'esc',
     timer: 'timer'
   });
+
+  /**
+   * @param {GlobalState} globalState
+   */
+
+  const removeKeydownHandler = globalState => {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+  };
+  /**
+   * @param {SweetAlert2} instance
+   * @param {GlobalState} globalState
+   * @param {SweetAlertOptions} innerParams
+   * @param {*} dismissWith
+   */
+
+  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+    removeKeydownHandler(globalState);
+
+    if (!innerParams.toast) {
+      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
+
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = true;
+    }
+  };
+  /**
+   * @param {SweetAlertOptions} innerParams
+   * @param {number} index
+   * @param {number} increment
+   */
+
+  const setFocus = (innerParams, index, increment) => {
+    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
+
+    if (focusableElements.length) {
+      index = index + increment; // rollover to first item
+
+      if (index === focusableElements.length) {
+        index = 0; // go to last item
+      } else if (index === -1) {
+        index = focusableElements.length - 1;
+      }
+
+      return focusableElements[index].focus();
+    } // no visible focusable elements, focus the popup
+
+
+    getPopup().focus();
+  };
+  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
+  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} e
+   * @param {function} dismissWith
+   */
+
+  const keydownHandler = (instance, e, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams) {
+      return; // This instance has already been destroyed
+    } // Ignore keydown during IME composition
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
+    // https://github.com/sweetalert2/sweetalert2/issues/720
+    // https://github.com/sweetalert2/sweetalert2/issues/2406
+
+
+    if (e.isComposing || e.keyCode === 229) {
+      return;
+    }
+
+    if (innerParams.stopKeydownPropagation) {
+      e.stopPropagation();
+    } // ENTER
+
+
+    if (e.key === 'Enter') {
+      handleEnter(instance, e, innerParams);
+    } // TAB
+    else if (e.key === 'Tab') {
+      handleTab(e, innerParams);
+    } // ARROWS - switch focus between buttons
+    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+      handleArrows(e.key);
+    } // ESC
+    else if (e.key === 'Escape') {
+      handleEsc(e, innerParams, dismissWith);
+    }
+  };
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   */
+
+
+  const handleEnter = (instance, e, innerParams) => {
+    // https://github.com/sweetalert2/sweetalert2/issues/2386
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return;
+    }
+
+    if (e.target && instance.getInput() && e.target instanceof HTMLElement && e.target.outerHTML === instance.getInput().outerHTML) {
+      if (['textarea', 'file'].includes(innerParams.input)) {
+        return; // do not submit
+      }
+
+      clickConfirm();
+      e.preventDefault();
+    }
+  };
+  /**
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   */
+
+
+  const handleTab = (e, innerParams) => {
+    const targetElement = e.target;
+    const focusableElements = getFocusableElements();
+    let btnIndex = -1;
+
+    for (let i = 0; i < focusableElements.length; i++) {
+      if (targetElement === focusableElements[i]) {
+        btnIndex = i;
+        break;
+      }
+    } // Cycle to the next button
+
+
+    if (!e.shiftKey) {
+      setFocus(innerParams, btnIndex, 1);
+    } // Cycle to the prev button
+    else {
+      setFocus(innerParams, btnIndex, -1);
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+  /**
+   * @param {string} key
+   */
+
+
+  const handleArrows = key => {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton();
+
+    if (document.activeElement instanceof HTMLElement && ![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
+      return;
+    }
+
+    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
+    let buttonToFocus = document.activeElement;
+
+    for (let i = 0; i < getActions().children.length; i++) {
+      buttonToFocus = buttonToFocus[sibling];
+
+      if (!buttonToFocus) {
+        return;
+      }
+
+      if (buttonToFocus instanceof HTMLButtonElement && isVisible(buttonToFocus)) {
+        break;
+      }
+    }
+
+    if (buttonToFocus instanceof HTMLButtonElement) {
+      buttonToFocus.focus();
+    }
+  };
+  /**
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   * @param {function} dismissWith
+   */
+
+
+  const handleEsc = (e, innerParams, dismissWith) => {
+    if (callIfFunction(innerParams.allowEscapeKey)) {
+      e.preventDefault();
+      dismissWith(DismissReason.esc);
+    }
+  };
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateMethods = {
+    swalPromiseResolve: new WeakMap(),
+    swalPromiseReject: new WeakMap()
+  };
 
   // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
   // elements not within the active modal dialog will not be surfaced if a user opens a screen
@@ -66996,376 +69544,6 @@ module.exports = function (css) {
         el.removeAttribute('aria-hidden');
       }
     });
-  };
-
-  const swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
-  const getTemplateParams = params => {
-    const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template;
-
-    if (!template) {
-      return {};
-    }
-    /** @type {DocumentFragment} */
-
-
-    const templateContent = template.content;
-    showWarningsForElements(templateContent);
-    const result = Object.assign(getSwalParams(templateContent), getSwalButtons(templateContent), getSwalImage(templateContent), getSwalIcon(templateContent), getSwalInput(templateContent), getSwalStringParams(templateContent, swalStringParams));
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-  const getSwalParams = templateContent => {
-    const result = {};
-    /** @type {HTMLElement[]} */
-
-    const swalParams = Array.from(templateContent.querySelectorAll('swal-param'));
-    swalParams.forEach(param => {
-      showWarningsForAttributes(param, ['name', 'value']);
-      const paramName = param.getAttribute('name');
-      const value = param.getAttribute('value');
-
-      if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
-        result[paramName] = false;
-      }
-
-      if (typeof defaultParams[paramName] === 'object') {
-        result[paramName] = JSON.parse(value);
-      }
-    });
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalButtons = templateContent => {
-    const result = {};
-    /** @type {HTMLElement[]} */
-
-    const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'));
-    swalButtons.forEach(button => {
-      showWarningsForAttributes(button, ['type', 'color', 'aria-label']);
-      const type = button.getAttribute('type');
-      result["".concat(type, "ButtonText")] = button.innerHTML;
-      result["show".concat(capitalizeFirstLetter(type), "Button")] = true;
-
-      if (button.hasAttribute('color')) {
-        result["".concat(type, "ButtonColor")] = button.getAttribute('color');
-      }
-
-      if (button.hasAttribute('aria-label')) {
-        result["".concat(type, "ButtonAriaLabel")] = button.getAttribute('aria-label');
-      }
-    });
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalImage = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const image = templateContent.querySelector('swal-image');
-
-    if (image) {
-      showWarningsForAttributes(image, ['src', 'width', 'height', 'alt']);
-
-      if (image.hasAttribute('src')) {
-        result.imageUrl = image.getAttribute('src');
-      }
-
-      if (image.hasAttribute('width')) {
-        result.imageWidth = image.getAttribute('width');
-      }
-
-      if (image.hasAttribute('height')) {
-        result.imageHeight = image.getAttribute('height');
-      }
-
-      if (image.hasAttribute('alt')) {
-        result.imageAlt = image.getAttribute('alt');
-      }
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalIcon = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const icon = templateContent.querySelector('swal-icon');
-
-    if (icon) {
-      showWarningsForAttributes(icon, ['type', 'color']);
-
-      if (icon.hasAttribute('type')) {
-        result.icon = icon.getAttribute('type');
-      }
-
-      if (icon.hasAttribute('color')) {
-        result.iconColor = icon.getAttribute('color');
-      }
-
-      result.iconHtml = icon.innerHTML;
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalInput = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const input = templateContent.querySelector('swal-input');
-
-    if (input) {
-      showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value']);
-      result.input = input.getAttribute('type') || 'text';
-
-      if (input.hasAttribute('label')) {
-        result.inputLabel = input.getAttribute('label');
-      }
-
-      if (input.hasAttribute('placeholder')) {
-        result.inputPlaceholder = input.getAttribute('placeholder');
-      }
-
-      if (input.hasAttribute('value')) {
-        result.inputValue = input.getAttribute('value');
-      }
-    }
-    /** @type {HTMLElement[]} */
-
-
-    const inputOptions = Array.from(templateContent.querySelectorAll('swal-input-option'));
-
-    if (inputOptions.length) {
-      result.inputOptions = {};
-      inputOptions.forEach(option => {
-        showWarningsForAttributes(option, ['value']);
-        const optionValue = option.getAttribute('value');
-        const optionName = option.innerHTML;
-        result.inputOptions[optionValue] = optionName;
-      });
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   * @param {string[]} paramNames
-   */
-
-
-  const getSwalStringParams = (templateContent, paramNames) => {
-    const result = {};
-
-    for (const i in paramNames) {
-      const paramName = paramNames[i];
-      /** @type {HTMLElement} */
-
-      const tag = templateContent.querySelector(paramName);
-
-      if (tag) {
-        showWarningsForAttributes(tag, []);
-        result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim();
-      }
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const showWarningsForElements = templateContent => {
-    const allowedElements = swalStringParams.concat(['swal-param', 'swal-button', 'swal-image', 'swal-icon', 'swal-input', 'swal-input-option']);
-    Array.from(templateContent.children).forEach(el => {
-      const tagName = el.tagName.toLowerCase();
-
-      if (allowedElements.indexOf(tagName) === -1) {
-        warn("Unrecognized element <".concat(tagName, ">"));
-      }
-    });
-  };
-  /**
-   * @param {HTMLElement} el
-   * @param {string[]} allowedAttributes
-   */
-
-
-  const showWarningsForAttributes = (el, allowedAttributes) => {
-    Array.from(el.attributes).forEach(attribute => {
-      if (allowedAttributes.indexOf(attribute.name) === -1) {
-        warn(["Unrecognized attribute \"".concat(attribute.name, "\" on <").concat(el.tagName.toLowerCase(), ">."), "".concat(allowedAttributes.length ? "Allowed attributes are: ".concat(allowedAttributes.join(', ')) : 'To set the value, use HTML within the element.')]);
-      }
-    });
-  };
-
-  var defaultInputValidators = {
-    /**
-     * @param {string} string
-     * @param {string} validationMessage
-     * @returns {Promise<void | string>}
-     */
-    email: (string, validationMessage) => {
-      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
-    },
-
-    /**
-     * @param {string} string
-     * @param {string} validationMessage
-     * @returns {Promise<void | string>}
-     */
-    url: (string, validationMessage) => {
-      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
-      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
-    }
-  };
-
-  /**
-   * @param {SweetAlertOptions} params
-   */
-
-  function setDefaultInputValidators(params) {
-    // Use default `inputValidator` for supported input types if not provided
-    if (!params.inputValidator) {
-      Object.keys(defaultInputValidators).forEach(key => {
-        if (params.input === key) {
-          params.inputValidator = defaultInputValidators[key];
-        }
-      });
-    }
-  }
-  /**
-   * @param {SweetAlertOptions} params
-   */
-
-
-  function validateCustomTargetElement(params) {
-    // Determine if the custom target element is valid
-    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
-      warn('Target parameter is not valid, defaulting to "body"');
-      params.target = 'body';
-    }
-  }
-  /**
-   * Set type, text and actions on popup
-   *
-   * @param {SweetAlertOptions} params
-   */
-
-
-  function setParameters(params) {
-    setDefaultInputValidators(params); // showLoaderOnConfirm && preConfirm
-
-    if (params.showLoaderOnConfirm && !params.preConfirm) {
-      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
-    }
-
-    validateCustomTargetElement(params); // Replace newlines with <br> in title
-
-    if (typeof params.title === 'string') {
-      params.title = params.title.split('\n').join('<br />');
-    }
-
-    init(params);
-  }
-
-  class Timer {
-    constructor(callback, delay) {
-      this.callback = callback;
-      this.remaining = delay;
-      this.running = false;
-      this.start();
-    }
-
-    start() {
-      if (!this.running) {
-        this.running = true;
-        this.started = new Date();
-        this.id = setTimeout(this.callback, this.remaining);
-      }
-
-      return this.remaining;
-    }
-
-    stop() {
-      if (this.running) {
-        this.running = false;
-        clearTimeout(this.id);
-        this.remaining -= new Date().getTime() - this.started.getTime();
-      }
-
-      return this.remaining;
-    }
-
-    increase(n) {
-      const running = this.running;
-
-      if (running) {
-        this.stop();
-      }
-
-      this.remaining += n;
-
-      if (running) {
-        this.start();
-      }
-
-      return this.remaining;
-    }
-
-    getTimerLeft() {
-      if (this.running) {
-        this.stop();
-        this.start();
-      }
-
-      return this.remaining;
-    }
-
-    isRunning() {
-      return this.running;
-    }
-
-  }
-
-  const fixScrollbar = () => {
-    // for queues, do not do this more than once
-    if (states.previousBodyPadding !== null) {
-      return;
-    } // if the body has overflow
-
-
-    if (document.body.scrollHeight > window.innerHeight) {
-      // add padding so the content doesn't shift after removal of scrollbar
-      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
-    }
-  };
-  const undoScrollbar = () => {
-    if (states.previousBodyPadding !== null) {
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
-      states.previousBodyPadding = null;
-    }
   };
 
   /* istanbul ignore file */
@@ -67408,10 +69586,17 @@ module.exports = function (css) {
   const lockBodyScroll = () => {
     const container = getContainer();
     let preventTouchMove;
+    /**
+     * @param {TouchEvent} e
+     */
 
     container.ontouchstart = e => {
       preventTouchMove = shouldPreventTouchMove(e);
     };
+    /**
+     * @param {TouchEvent} e
+     */
+
 
     container.ontouchmove = e => {
       if (preventTouchMove) {
@@ -67420,6 +69605,11 @@ module.exports = function (css) {
       }
     };
   };
+  /**
+   * @param {TouchEvent} event
+   * @returns {boolean}
+   */
+
 
   const shouldPreventTouchMove = event => {
     const target = event.target;
@@ -67433,7 +69623,7 @@ module.exports = function (css) {
       return true;
     }
 
-    if (!isScrollable(container) && target.tagName !== 'INPUT' && // #1603
+    if (!isScrollable(container) && target instanceof HTMLElement && target.tagName !== 'INPUT' && // #1603
     target.tagName !== 'TEXTAREA' && // #2266
     !(isScrollable(getHtmlContainer()) && // #1944
     getHtmlContainer().contains(target))) {
@@ -67474,97 +69664,566 @@ module.exports = function (css) {
     }
   };
 
-  const SHOW_CLASS_TIMEOUT = 10;
-  /**
-   * Open popup, add necessary classes and styles, fix scrollbar
-   *
-   * @param params
+  const fixScrollbar = () => {
+    // for queues, do not do this more than once
+    if (states.previousBodyPadding !== null) {
+      return;
+    } // if the body has overflow
+
+
+    if (document.body.scrollHeight > window.innerHeight) {
+      // add padding so the content doesn't shift after removal of scrollbar
+      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
+    }
+  };
+  const undoScrollbar = () => {
+    if (states.previousBodyPadding !== null) {
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
+      states.previousBodyPadding = null;
+    }
+  };
+
+  /*
+   * Instance method to close sweetAlert
    */
 
-  const openPopup = params => {
-    const container = getContainer();
-    const popup = getPopup();
-
-    if (typeof params.willOpen === 'function') {
-      params.willOpen(popup);
+  function removePopupAndResetState(instance, container, returnFocus, didClose) {
+    if (isToast()) {
+      triggerDidCloseAndDispose(instance, didClose);
+    } else {
+      restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose));
+      removeKeydownHandler(globalState);
     }
 
-    const bodyStyles = window.getComputedStyle(document.body);
-    const initialBodyOverflow = bodyStyles.overflowY;
-    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // workaround for #2088
+    // for some reason removing the container in Safari will scroll the document to bottom
 
-    setTimeout(() => {
-      setScrollingVisibility(container, popup);
-    }, SHOW_CLASS_TIMEOUT);
+    if (isSafari) {
+      container.setAttribute('style', 'display:none !important');
+      container.removeAttribute('class');
+      container.innerHTML = '';
+    } else {
+      container.remove();
+    }
 
     if (isModal()) {
-      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
-      setAriaHidden();
+      undoScrollbar();
+      undoIOSfix();
+      unsetAriaHidden();
     }
 
-    if (!isToast() && !globalState.previousActiveElement) {
-      globalState.previousActiveElement = document.activeElement;
+    removeBodyClasses();
+  }
+
+  function removeBodyClasses() {
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]);
+  }
+
+  function close(resolveValue) {
+    resolveValue = prepareResolveValue(resolveValue);
+    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
+    const didClose = triggerClosePopup(this);
+
+    if (this.isAwaitingPromise()) {
+      // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
+      if (!resolveValue.isDismissed) {
+        handleAwaitingPromise(this);
+        swalPromiseResolve(resolveValue);
+      }
+    } else if (didClose) {
+      // Resolve Swal promise
+      swalPromiseResolve(resolveValue);
     }
+  }
+  function isAwaitingPromise() {
+    return !!privateProps.awaitingPromise.get(this);
+  }
 
-    if (typeof params.didOpen === 'function') {
-      setTimeout(() => params.didOpen(popup));
-    }
-
-    removeClass(container, swalClasses['no-transition']);
-  };
-
-  const swalOpenAnimationFinished = event => {
+  const triggerClosePopup = instance => {
     const popup = getPopup();
 
-    if (event.target !== popup) {
-      return;
+    if (!popup) {
+      return false;
     }
 
-    const container = getContainer();
-    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
-    container.style.overflowY = 'auto';
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
+      return false;
+    }
+
+    removeClass(popup, innerParams.showClass.popup);
+    addClass(popup, innerParams.hideClass.popup);
+    const backdrop = getContainer();
+    removeClass(backdrop, innerParams.showClass.backdrop);
+    addClass(backdrop, innerParams.hideClass.backdrop);
+    handlePopupAnimation(instance, popup, innerParams);
+    return true;
   };
 
-  const setScrollingVisibility = (container, popup) => {
-    if (animationEndEvent && hasCssAnimation(popup)) {
-      container.style.overflowY = 'hidden';
-      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
+  function rejectPromise(error) {
+    const rejectPromise = privateMethods.swalPromiseReject.get(this);
+    handleAwaitingPromise(this);
+
+    if (rejectPromise) {
+      // Reject Swal promise
+      rejectPromise(error);
+    }
+  }
+  const handleAwaitingPromise = instance => {
+    if (instance.isAwaitingPromise()) {
+      privateProps.awaitingPromise.delete(instance); // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
+
+      if (!privateProps.innerParams.get(instance)) {
+        instance._destroy();
+      }
+    }
+  };
+
+  const prepareResolveValue = resolveValue => {
+    // When user calls Swal.close()
+    if (typeof resolveValue === 'undefined') {
+      return {
+        isConfirmed: false,
+        isDenied: false,
+        isDismissed: true
+      };
+    }
+
+    return Object.assign({
+      isConfirmed: false,
+      isDenied: false,
+      isDismissed: false
+    }, resolveValue);
+  };
+
+  const handlePopupAnimation = (instance, popup, innerParams) => {
+    const container = getContainer(); // If animation is supported, animate
+
+    const animationIsSupported = animationEndEvent && hasCssAnimation(popup);
+
+    if (typeof innerParams.willClose === 'function') {
+      innerParams.willClose(popup);
+    }
+
+    if (animationIsSupported) {
+      animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose);
     } else {
-      container.style.overflowY = 'auto';
+      // Otherwise, remove immediately
+      removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose);
     }
   };
 
-  const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
-    iOSfix();
-
-    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
-      fixScrollbar();
-    } // sweetalert2/issues/1247
-
-
-    setTimeout(() => {
-      container.scrollTop = 0;
+  const animatePopup = (instance, popup, container, returnFocus, didClose) => {
+    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose);
+    popup.addEventListener(animationEndEvent, function (e) {
+      if (e.target === popup) {
+        globalState.swalCloseEventFinishedCallback();
+        delete globalState.swalCloseEventFinishedCallback;
+      }
     });
   };
 
-  const addClasses$1 = (container, popup, params) => {
-    addClass(container, params.showClass.backdrop); // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
-
-    popup.style.setProperty('opacity', '0', 'important');
-    show(popup, 'grid');
+  const triggerDidCloseAndDispose = (instance, didClose) => {
     setTimeout(() => {
-      // Animate popup right after showing it
-      addClass(popup, params.showClass.popup); // and remove the opacity workaround
+      if (typeof didClose === 'function') {
+        didClose.bind(instance.params)();
+      }
 
-      popup.style.removeProperty('opacity');
-    }, SHOW_CLASS_TIMEOUT); // 10ms in order to fix #2062
+      instance._destroy();
+    });
+  };
 
-    addClass([document.documentElement, document.body], swalClasses.shown);
+  /**
+   * @param {SweetAlert2} instance
+   * @param {string[]} buttons
+   * @param {boolean} disabled
+   */
 
-    if (params.heightAuto && params.backdrop && !params.toast) {
-      addClass([document.documentElement, document.body], swalClasses['height-auto']);
+  function setButtonsDisabled(instance, buttons, disabled) {
+    const domCache = privateProps.domCache.get(instance);
+    buttons.forEach(button => {
+      domCache[button].disabled = disabled;
+    });
+  }
+  /**
+   * @param {HTMLInputElement} input
+   * @param {boolean} disabled
+   */
+
+
+  function setInputDisabled(input, disabled) {
+    if (!input) {
+      return;
+    }
+
+    if (input.type === 'radio') {
+      const radiosContainer = input.parentNode.parentNode;
+      const radios = radiosContainer.querySelectorAll('input');
+
+      for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = disabled;
+      }
+    } else {
+      input.disabled = disabled;
+    }
+  }
+
+  function enableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
+  }
+  function disableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
+  }
+  function enableInput() {
+    setInputDisabled(this.getInput(), false);
+  }
+  function disableInput() {
+    setInputDisabled(this.getInput(), true);
+  }
+
+  function showValidationMessage(error) {
+    const domCache = privateProps.domCache.get(this);
+    const params = privateProps.innerParams.get(this);
+    setInnerHtml(domCache.validationMessage, error);
+    domCache.validationMessage.className = swalClasses['validation-message'];
+
+    if (params.customClass && params.customClass.validationMessage) {
+      addClass(domCache.validationMessage, params.customClass.validationMessage);
+    }
+
+    show(domCache.validationMessage);
+    const input = this.getInput();
+
+    if (input) {
+      input.setAttribute('aria-invalid', true);
+      input.setAttribute('aria-describedby', swalClasses['validation-message']);
+      focusInput(input);
+      addClass(input, swalClasses.inputerror);
+    }
+  } // Hide block with validation message
+
+  function resetValidationMessage$1() {
+    const domCache = privateProps.domCache.get(this);
+
+    if (domCache.validationMessage) {
+      hide(domCache.validationMessage);
+    }
+
+    const input = this.getInput();
+
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
+      removeClass(input, swalClasses.inputerror);
+    }
+  }
+
+  function getProgressSteps$1() {
+    const domCache = privateProps.domCache.get(this);
+    return domCache.progressSteps;
+  }
+
+  const defaultParams = {
+    title: '',
+    titleText: '',
+    text: '',
+    html: '',
+    footer: '',
+    icon: undefined,
+    iconColor: undefined,
+    iconHtml: undefined,
+    template: undefined,
+    toast: false,
+    showClass: {
+      popup: 'swal2-show',
+      backdrop: 'swal2-backdrop-show',
+      icon: 'swal2-icon-show'
+    },
+    hideClass: {
+      popup: 'swal2-hide',
+      backdrop: 'swal2-backdrop-hide',
+      icon: 'swal2-icon-hide'
+    },
+    customClass: {},
+    target: 'body',
+    color: undefined,
+    backdrop: true,
+    heightAuto: true,
+    allowOutsideClick: true,
+    allowEscapeKey: true,
+    allowEnterKey: true,
+    stopKeydownPropagation: true,
+    keydownListenerCapture: false,
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: false,
+    preConfirm: undefined,
+    preDeny: undefined,
+    confirmButtonText: 'OK',
+    confirmButtonAriaLabel: '',
+    confirmButtonColor: undefined,
+    denyButtonText: 'No',
+    denyButtonAriaLabel: '',
+    denyButtonColor: undefined,
+    cancelButtonText: 'Cancel',
+    cancelButtonAriaLabel: '',
+    cancelButtonColor: undefined,
+    buttonsStyling: true,
+    reverseButtons: false,
+    focusConfirm: true,
+    focusDeny: false,
+    focusCancel: false,
+    returnFocus: true,
+    showCloseButton: false,
+    closeButtonHtml: '&times;',
+    closeButtonAriaLabel: 'Close this dialog',
+    loaderHtml: '',
+    showLoaderOnConfirm: false,
+    showLoaderOnDeny: false,
+    imageUrl: undefined,
+    imageWidth: undefined,
+    imageHeight: undefined,
+    imageAlt: '',
+    timer: undefined,
+    timerProgressBar: false,
+    width: undefined,
+    padding: undefined,
+    background: undefined,
+    input: undefined,
+    inputPlaceholder: '',
+    inputLabel: '',
+    inputValue: '',
+    inputOptions: {},
+    inputAutoTrim: true,
+    inputAttributes: {},
+    inputValidator: undefined,
+    returnInputValueOnDeny: false,
+    validationMessage: undefined,
+    grow: false,
+    position: 'center',
+    progressSteps: [],
+    currentProgressStep: undefined,
+    progressStepsDistance: undefined,
+    willOpen: undefined,
+    didOpen: undefined,
+    didRender: undefined,
+    willClose: undefined,
+    didClose: undefined,
+    didDestroy: undefined,
+    scrollbarPadding: true
+  };
+  const updatableParams = ['allowEscapeKey', 'allowOutsideClick', 'background', 'buttonsStyling', 'cancelButtonAriaLabel', 'cancelButtonColor', 'cancelButtonText', 'closeButtonAriaLabel', 'closeButtonHtml', 'color', 'confirmButtonAriaLabel', 'confirmButtonColor', 'confirmButtonText', 'currentProgressStep', 'customClass', 'denyButtonAriaLabel', 'denyButtonColor', 'denyButtonText', 'didClose', 'didDestroy', 'footer', 'hideClass', 'html', 'icon', 'iconColor', 'iconHtml', 'imageAlt', 'imageHeight', 'imageUrl', 'imageWidth', 'preConfirm', 'preDeny', 'progressSteps', 'returnFocus', 'reverseButtons', 'showCancelButton', 'showCloseButton', 'showConfirmButton', 'showDenyButton', 'text', 'title', 'titleText', 'willClose'];
+  const deprecatedParams = {};
+  const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
+  /**
+   * Is valid parameter
+   *
+   * @param {string} paramName
+   * @returns {boolean}
+   */
+
+  const isValidParameter = paramName => {
+    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
+  };
+  /**
+   * Is valid parameter for Swal.update() method
+   *
+   * @param {string} paramName
+   * @returns {boolean}
+   */
+
+  const isUpdatableParameter = paramName => {
+    return updatableParams.indexOf(paramName) !== -1;
+  };
+  /**
+   * Is deprecated parameter
+   *
+   * @param {string} paramName
+   * @returns {string | undefined}
+   */
+
+  const isDeprecatedParameter = paramName => {
+    return deprecatedParams[paramName];
+  };
+  /**
+   * @param {string} param
+   */
+
+  const checkIfParamIsValid = param => {
+    if (!isValidParameter(param)) {
+      warn("Unknown parameter \"".concat(param, "\""));
     }
   };
+  /**
+   * @param {string} param
+   */
+
+
+  const checkIfToastParamIsValid = param => {
+    if (toastIncompatibleParams.includes(param)) {
+      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
+    }
+  };
+  /**
+   * @param {string} param
+   */
+
+
+  const checkIfParamIsDeprecated = param => {
+    if (isDeprecatedParameter(param)) {
+      warnAboutDeprecation(param, isDeprecatedParameter(param));
+    }
+  };
+  /**
+   * Show relevant warnings for given params
+   *
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const showWarningsForParams = params => {
+    if (!params.backdrop && params.allowOutsideClick) {
+      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
+    }
+
+    for (const param in params) {
+      checkIfParamIsValid(param);
+
+      if (params.toast) {
+        checkIfToastParamIsValid(param);
+      }
+
+      checkIfParamIsDeprecated(param);
+    }
+  };
+
+  /**
+   * Updates popup parameters.
+   */
+
+  function update(params) {
+    const popup = getPopup();
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
+      return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
+    }
+
+    const validUpdatableParams = filterValidParams(params);
+    const updatedParams = Object.assign({}, innerParams, validUpdatableParams);
+    render(this, updatedParams);
+    privateProps.innerParams.set(this, updatedParams);
+    Object.defineProperties(this, {
+      params: {
+        value: Object.assign({}, this.params, params),
+        writable: false,
+        enumerable: true
+      }
+    });
+  }
+
+  const filterValidParams = params => {
+    const validUpdatableParams = {};
+    Object.keys(params).forEach(param => {
+      if (isUpdatableParameter(param)) {
+        validUpdatableParams[param] = params[param];
+      } else {
+        warn("Invalid parameter to update: ".concat(param));
+      }
+    });
+    return validUpdatableParams;
+  };
+
+  function _destroy() {
+    const domCache = privateProps.domCache.get(this);
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      disposeWeakMaps(this); // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
+
+      return; // This instance has already been destroyed
+    } // Check if there is another Swal closing
+
+
+    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
+      globalState.swalCloseEventFinishedCallback();
+      delete globalState.swalCloseEventFinishedCallback;
+    }
+
+    if (typeof innerParams.didDestroy === 'function') {
+      innerParams.didDestroy();
+    }
+
+    disposeSwal(this);
+  }
+  /**
+   * @param {SweetAlert2} instance
+   */
+
+  const disposeSwal = instance => {
+    disposeWeakMaps(instance); // Unset this.params so GC will dispose it (#1569)
+    // @ts-ignore
+
+    delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
+
+    delete globalState.keydownHandler;
+    delete globalState.keydownTarget; // Unset currentInstance
+
+    delete globalState.currentInstance;
+  };
+  /**
+   * @param {SweetAlert2} instance
+   */
+
+
+  const disposeWeakMaps = instance => {
+    // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
+    // @ts-ignore
+    if (instance.isAwaitingPromise()) {
+      unsetWeakMaps(privateProps, instance);
+      privateProps.awaitingPromise.set(instance, true);
+    } else {
+      unsetWeakMaps(privateMethods, instance);
+      unsetWeakMaps(privateProps, instance);
+    }
+  };
+  /**
+   * @param {object} obj
+   * @param {SweetAlert2} instance
+   */
+
+
+  const unsetWeakMaps = (obj, instance) => {
+    for (const i in obj) {
+      obj[i].delete(instance);
+    }
+  };
+
+
+
+  var instanceMethods = /*#__PURE__*/Object.freeze({
+    hideLoading: hideLoading,
+    disableLoading: hideLoading,
+    getInput: getInput$1,
+    close: close,
+    isAwaitingPromise: isAwaitingPromise,
+    rejectPromise: rejectPromise,
+    handleAwaitingPromise: handleAwaitingPromise,
+    closePopup: close,
+    closeModal: close,
+    closeToast: close,
+    enableButtons: enableButtons,
+    disableButtons: disableButtons,
+    enableInput: enableInput,
+    disableInput: disableInput,
+    showValidationMessage: showValidationMessage,
+    resetValidationMessage: resetValidationMessage$1,
+    getProgressSteps: getProgressSteps$1,
+    update: update,
+    _destroy: _destroy
+  });
 
   /**
    * Shows loader (spinner), this is useful with AJAX requests.
@@ -67784,652 +70443,6 @@ module.exports = function (css) {
   const isSelected = (optionValue, inputValue) => {
     return inputValue && inputValue.toString() === optionValue.toString();
   };
-
-  /**
-   * Hides loader and shows back the button which was hidden by .showLoading()
-   */
-
-  function hideLoading() {
-    // do nothing if popup is closed
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!innerParams) {
-      return;
-    }
-
-    const domCache = privateProps.domCache.get(this);
-    hide(domCache.loader);
-
-    if (isToast()) {
-      if (innerParams.icon) {
-        show(getIcon());
-      }
-    } else {
-      showRelatedButton(domCache);
-    }
-
-    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
-    domCache.popup.removeAttribute('aria-busy');
-    domCache.popup.removeAttribute('data-loading');
-    domCache.confirmButton.disabled = false;
-    domCache.denyButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-
-  const showRelatedButton = domCache => {
-    const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'));
-
-    if (buttonToReplace.length) {
-      show(buttonToReplace[0], 'inline-block');
-    } else if (allButtonsAreHidden()) {
-      hide(domCache.actions);
-    }
-  };
-
-  /**
-   * Gets the input DOM node, this method works with input parameter.
-   * @returns {HTMLElement | null}
-   */
-
-  function getInput$1(instance) {
-    const innerParams = privateProps.innerParams.get(instance || this);
-    const domCache = privateProps.domCache.get(instance || this);
-
-    if (!domCache) {
-      return null;
-    }
-
-    return getInput(domCache.popup, innerParams.input);
-  }
-
-  /**
-   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
-   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
-   * This is the approach that Babel will probably take to implement private methods/fields
-   *   https://github.com/tc39/proposal-private-methods
-   *   https://github.com/babel/babel/pull/7555
-   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
-   *   then we can use that language feature.
-   */
-  var privateMethods = {
-    swalPromiseResolve: new WeakMap(),
-    swalPromiseReject: new WeakMap()
-  };
-
-  /*
-   * Global function to determine if SweetAlert2 popup is shown
-   */
-
-  const isVisible$1 = () => {
-    return isVisible(getPopup());
-  };
-  /*
-   * Global function to click 'Confirm' button
-   */
-
-  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
-  /*
-   * Global function to click 'Deny' button
-   */
-
-  const clickDeny = () => getDenyButton() && getDenyButton().click();
-  /*
-   * Global function to click 'Cancel' button
-   */
-
-  const clickCancel = () => getCancelButton() && getCancelButton().click();
-
-  /**
-   * @param {GlobalState} globalState
-   */
-
-  const removeKeydownHandler = globalState => {
-    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = false;
-    }
-  };
-  /**
-   * @param {SweetAlert2} instance
-   * @param {GlobalState} globalState
-   * @param {SweetAlertOptions} innerParams
-   * @param {*} dismissWith
-   */
-
-  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
-    removeKeydownHandler(globalState);
-
-    if (!innerParams.toast) {
-      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
-
-      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
-      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
-      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = true;
-    }
-  };
-  /**
-   * @param {SweetAlertOptions} innerParams
-   * @param {number} index
-   * @param {number} increment
-   */
-
-  const setFocus = (innerParams, index, increment) => {
-    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
-
-    if (focusableElements.length) {
-      index = index + increment; // rollover to first item
-
-      if (index === focusableElements.length) {
-        index = 0; // go to last item
-      } else if (index === -1) {
-        index = focusableElements.length - 1;
-      }
-
-      return focusableElements[index].focus();
-    } // no visible focusable elements, focus the popup
-
-
-    getPopup().focus();
-  };
-  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
-  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
-  /**
-   * @param {SweetAlert2} instance
-   * @param {KeyboardEvent} e
-   * @param {function} dismissWith
-   */
-
-  const keydownHandler = (instance, e, dismissWith) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams) {
-      return; // This instance has already been destroyed
-    } // Ignore keydown during IME composition
-    // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
-    // https://github.com/sweetalert2/sweetalert2/issues/720
-    // https://github.com/sweetalert2/sweetalert2/issues/2406
-
-
-    if (e.isComposing || e.keyCode === 229) {
-      return;
-    }
-
-    if (innerParams.stopKeydownPropagation) {
-      e.stopPropagation();
-    } // ENTER
-
-
-    if (e.key === 'Enter') {
-      handleEnter(instance, e, innerParams);
-    } // TAB
-    else if (e.key === 'Tab') {
-      handleTab(e, innerParams);
-    } // ARROWS - switch focus between buttons
-    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
-      handleArrows(e.key);
-    } // ESC
-    else if (e.key === 'Escape') {
-      handleEsc(e, innerParams, dismissWith);
-    }
-  };
-  /**
-   * @param {SweetAlert2} instance
-   * @param {KeyboardEvent} e
-   * @param {SweetAlertOptions} innerParams
-   */
-
-
-  const handleEnter = (instance, e, innerParams) => {
-    // https://github.com/sweetalert2/sweetalert2/issues/2386
-    if (!callIfFunction(innerParams.allowEnterKey)) {
-      return;
-    }
-
-    if (e.target && instance.getInput() && e.target instanceof HTMLElement && e.target.outerHTML === instance.getInput().outerHTML) {
-      if (['textarea', 'file'].includes(innerParams.input)) {
-        return; // do not submit
-      }
-
-      clickConfirm();
-      e.preventDefault();
-    }
-  };
-  /**
-   * @param {KeyboardEvent} e
-   * @param {SweetAlertOptions} innerParams
-   */
-
-
-  const handleTab = (e, innerParams) => {
-    const targetElement = e.target;
-    const focusableElements = getFocusableElements();
-    let btnIndex = -1;
-
-    for (let i = 0; i < focusableElements.length; i++) {
-      if (targetElement === focusableElements[i]) {
-        btnIndex = i;
-        break;
-      }
-    } // Cycle to the next button
-
-
-    if (!e.shiftKey) {
-      setFocus(innerParams, btnIndex, 1);
-    } // Cycle to the prev button
-    else {
-      setFocus(innerParams, btnIndex, -1);
-    }
-
-    e.stopPropagation();
-    e.preventDefault();
-  };
-  /**
-   * @param {string} key
-   */
-
-
-  const handleArrows = key => {
-    const confirmButton = getConfirmButton();
-    const denyButton = getDenyButton();
-    const cancelButton = getCancelButton();
-
-    if (document.activeElement instanceof HTMLElement && ![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
-      return;
-    }
-
-    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
-    let buttonToFocus = document.activeElement;
-
-    for (let i = 0; i < getActions().children.length; i++) {
-      buttonToFocus = buttonToFocus[sibling];
-
-      if (!buttonToFocus) {
-        return;
-      }
-
-      if (buttonToFocus instanceof HTMLButtonElement && isVisible(buttonToFocus)) {
-        break;
-      }
-    }
-
-    if (buttonToFocus instanceof HTMLButtonElement) {
-      buttonToFocus.focus();
-    }
-  };
-  /**
-   * @param {KeyboardEvent} e
-   * @param {SweetAlertOptions} innerParams
-   * @param {function} dismissWith
-   */
-
-
-  const handleEsc = (e, innerParams, dismissWith) => {
-    if (callIfFunction(innerParams.allowEscapeKey)) {
-      e.preventDefault();
-      dismissWith(DismissReason.esc);
-    }
-  };
-
-  /*
-   * Instance method to close sweetAlert
-   */
-
-  function removePopupAndResetState(instance, container, returnFocus, didClose) {
-    if (isToast()) {
-      triggerDidCloseAndDispose(instance, didClose);
-    } else {
-      restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose));
-      removeKeydownHandler(globalState);
-    }
-
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // workaround for #2088
-    // for some reason removing the container in Safari will scroll the document to bottom
-
-    if (isSafari) {
-      container.setAttribute('style', 'display:none !important');
-      container.removeAttribute('class');
-      container.innerHTML = '';
-    } else {
-      container.remove();
-    }
-
-    if (isModal()) {
-      undoScrollbar();
-      undoIOSfix();
-      unsetAriaHidden();
-    }
-
-    removeBodyClasses();
-  }
-
-  function removeBodyClasses() {
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]);
-  }
-
-  function close(resolveValue) {
-    resolveValue = prepareResolveValue(resolveValue);
-    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
-    const didClose = triggerClosePopup(this);
-
-    if (this.isAwaitingPromise()) {
-      // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
-      if (!resolveValue.isDismissed) {
-        handleAwaitingPromise(this);
-        swalPromiseResolve(resolveValue);
-      }
-    } else if (didClose) {
-      // Resolve Swal promise
-      swalPromiseResolve(resolveValue);
-    }
-  }
-  function isAwaitingPromise() {
-    return !!privateProps.awaitingPromise.get(this);
-  }
-
-  const triggerClosePopup = instance => {
-    const popup = getPopup();
-
-    if (!popup) {
-      return false;
-    }
-
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
-      return false;
-    }
-
-    removeClass(popup, innerParams.showClass.popup);
-    addClass(popup, innerParams.hideClass.popup);
-    const backdrop = getContainer();
-    removeClass(backdrop, innerParams.showClass.backdrop);
-    addClass(backdrop, innerParams.hideClass.backdrop);
-    handlePopupAnimation(instance, popup, innerParams);
-    return true;
-  };
-
-  function rejectPromise(error) {
-    const rejectPromise = privateMethods.swalPromiseReject.get(this);
-    handleAwaitingPromise(this);
-
-    if (rejectPromise) {
-      // Reject Swal promise
-      rejectPromise(error);
-    }
-  }
-  const handleAwaitingPromise = instance => {
-    if (instance.isAwaitingPromise()) {
-      privateProps.awaitingPromise.delete(instance); // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
-
-      if (!privateProps.innerParams.get(instance)) {
-        instance._destroy();
-      }
-    }
-  };
-
-  const prepareResolveValue = resolveValue => {
-    // When user calls Swal.close()
-    if (typeof resolveValue === 'undefined') {
-      return {
-        isConfirmed: false,
-        isDenied: false,
-        isDismissed: true
-      };
-    }
-
-    return Object.assign({
-      isConfirmed: false,
-      isDenied: false,
-      isDismissed: false
-    }, resolveValue);
-  };
-
-  const handlePopupAnimation = (instance, popup, innerParams) => {
-    const container = getContainer(); // If animation is supported, animate
-
-    const animationIsSupported = animationEndEvent && hasCssAnimation(popup);
-
-    if (typeof innerParams.willClose === 'function') {
-      innerParams.willClose(popup);
-    }
-
-    if (animationIsSupported) {
-      animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose);
-    } else {
-      // Otherwise, remove immediately
-      removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose);
-    }
-  };
-
-  const animatePopup = (instance, popup, container, returnFocus, didClose) => {
-    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose);
-    popup.addEventListener(animationEndEvent, function (e) {
-      if (e.target === popup) {
-        globalState.swalCloseEventFinishedCallback();
-        delete globalState.swalCloseEventFinishedCallback;
-      }
-    });
-  };
-
-  const triggerDidCloseAndDispose = (instance, didClose) => {
-    setTimeout(() => {
-      if (typeof didClose === 'function') {
-        didClose.bind(instance.params)();
-      }
-
-      instance._destroy();
-    });
-  };
-
-  function setButtonsDisabled(instance, buttons, disabled) {
-    const domCache = privateProps.domCache.get(instance);
-    buttons.forEach(button => {
-      domCache[button].disabled = disabled;
-    });
-  }
-
-  function setInputDisabled(input, disabled) {
-    if (!input) {
-      return false;
-    }
-
-    if (input.type === 'radio') {
-      const radiosContainer = input.parentNode.parentNode;
-      const radios = radiosContainer.querySelectorAll('input');
-
-      for (let i = 0; i < radios.length; i++) {
-        radios[i].disabled = disabled;
-      }
-    } else {
-      input.disabled = disabled;
-    }
-  }
-
-  function enableButtons() {
-    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
-  }
-  function disableButtons() {
-    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
-  }
-  function enableInput() {
-    return setInputDisabled(this.getInput(), false);
-  }
-  function disableInput() {
-    return setInputDisabled(this.getInput(), true);
-  }
-
-  function showValidationMessage(error) {
-    const domCache = privateProps.domCache.get(this);
-    const params = privateProps.innerParams.get(this);
-    setInnerHtml(domCache.validationMessage, error);
-    domCache.validationMessage.className = swalClasses['validation-message'];
-
-    if (params.customClass && params.customClass.validationMessage) {
-      addClass(domCache.validationMessage, params.customClass.validationMessage);
-    }
-
-    show(domCache.validationMessage);
-    const input = this.getInput();
-
-    if (input) {
-      input.setAttribute('aria-invalid', true);
-      input.setAttribute('aria-describedby', swalClasses['validation-message']);
-      focusInput(input);
-      addClass(input, swalClasses.inputerror);
-    }
-  } // Hide block with validation message
-
-  function resetValidationMessage$1() {
-    const domCache = privateProps.domCache.get(this);
-
-    if (domCache.validationMessage) {
-      hide(domCache.validationMessage);
-    }
-
-    const input = this.getInput();
-
-    if (input) {
-      input.removeAttribute('aria-invalid');
-      input.removeAttribute('aria-describedby');
-      removeClass(input, swalClasses.inputerror);
-    }
-  }
-
-  function getProgressSteps$1() {
-    const domCache = privateProps.domCache.get(this);
-    return domCache.progressSteps;
-  }
-
-  /**
-   * Updates popup parameters.
-   */
-
-  function update(params) {
-    const popup = getPopup();
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
-      return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
-    }
-
-    const validUpdatableParams = filterValidParams(params);
-    const updatedParams = Object.assign({}, innerParams, validUpdatableParams);
-    render(this, updatedParams);
-    privateProps.innerParams.set(this, updatedParams);
-    Object.defineProperties(this, {
-      params: {
-        value: Object.assign({}, this.params, params),
-        writable: false,
-        enumerable: true
-      }
-    });
-  }
-
-  const filterValidParams = params => {
-    const validUpdatableParams = {};
-    Object.keys(params).forEach(param => {
-      if (isUpdatableParameter(param)) {
-        validUpdatableParams[param] = params[param];
-      } else {
-        warn("Invalid parameter to update: ".concat(param));
-      }
-    });
-    return validUpdatableParams;
-  };
-
-  function _destroy() {
-    const domCache = privateProps.domCache.get(this);
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!innerParams) {
-      disposeWeakMaps(this); // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
-
-      return; // This instance has already been destroyed
-    } // Check if there is another Swal closing
-
-
-    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
-      globalState.swalCloseEventFinishedCallback();
-      delete globalState.swalCloseEventFinishedCallback;
-    }
-
-    if (typeof innerParams.didDestroy === 'function') {
-      innerParams.didDestroy();
-    }
-
-    disposeSwal(this);
-  }
-  /**
-   * @param {SweetAlert2} instance
-   */
-
-  const disposeSwal = instance => {
-    disposeWeakMaps(instance); // Unset this.params so GC will dispose it (#1569)
-    // @ts-ignore
-
-    delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
-
-    delete globalState.keydownHandler;
-    delete globalState.keydownTarget; // Unset currentInstance
-
-    delete globalState.currentInstance;
-  };
-  /**
-   * @param {SweetAlert2} instance
-   */
-
-
-  const disposeWeakMaps = instance => {
-    // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
-    // @ts-ignore
-    if (instance.isAwaitingPromise()) {
-      unsetWeakMaps(privateProps, instance);
-      privateProps.awaitingPromise.set(instance, true);
-    } else {
-      unsetWeakMaps(privateMethods, instance);
-      unsetWeakMaps(privateProps, instance);
-    }
-  };
-  /**
-   * @param {object} obj
-   * @param {SweetAlert2} instance
-   */
-
-
-  const unsetWeakMaps = (obj, instance) => {
-    for (const i in obj) {
-      obj[i].delete(instance);
-    }
-  };
-
-
-
-  var instanceMethods = /*#__PURE__*/Object.freeze({
-    hideLoading: hideLoading,
-    disableLoading: hideLoading,
-    getInput: getInput$1,
-    close: close,
-    isAwaitingPromise: isAwaitingPromise,
-    rejectPromise: rejectPromise,
-    handleAwaitingPromise: handleAwaitingPromise,
-    closePopup: close,
-    closeModal: close,
-    closeToast: close,
-    enableButtons: enableButtons,
-    disableButtons: disableButtons,
-    enableInput: enableInput,
-    disableInput: disableInput,
-    showValidationMessage: showValidationMessage,
-    resetValidationMessage: resetValidationMessage$1,
-    getProgressSteps: getProgressSteps$1,
-    update: update,
-    _destroy: _destroy
-  });
 
   /**
    * @param {SweetAlert2} instance
@@ -68881,6 +70894,489 @@ module.exports = function (css) {
     bindClickHandler: bindClickHandler
   });
 
+  class Timer {
+    /**
+     * @param {Function} callback
+     * @param {number} delay
+     */
+    constructor(callback, delay) {
+      this.callback = callback;
+      this.remaining = delay;
+      this.running = false;
+      this.start();
+    }
+
+    start() {
+      if (!this.running) {
+        this.running = true;
+        this.started = new Date();
+        this.id = setTimeout(this.callback, this.remaining);
+      }
+
+      return this.remaining;
+    }
+
+    stop() {
+      if (this.running) {
+        this.running = false;
+        clearTimeout(this.id);
+        this.remaining -= new Date().getTime() - this.started.getTime();
+      }
+
+      return this.remaining;
+    }
+
+    increase(n) {
+      const running = this.running;
+
+      if (running) {
+        this.stop();
+      }
+
+      this.remaining += n;
+
+      if (running) {
+        this.start();
+      }
+
+      return this.remaining;
+    }
+
+    getTimerLeft() {
+      if (this.running) {
+        this.stop();
+        this.start();
+      }
+
+      return this.remaining;
+    }
+
+    isRunning() {
+      return this.running;
+    }
+
+  }
+
+  const swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
+  /**
+   * @param {SweetAlertOptions} params
+   * @returns {SweetAlertOptions}
+   */
+
+  const getTemplateParams = params => {
+    /** @type {HTMLTemplateElement} */
+    const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template;
+
+    if (!template) {
+      return {};
+    }
+    /** @type {DocumentFragment} */
+
+
+    const templateContent = template.content;
+    showWarningsForElements(templateContent);
+    const result = Object.assign(getSwalParams(templateContent), getSwalButtons(templateContent), getSwalImage(templateContent), getSwalIcon(templateContent), getSwalInput(templateContent), getSwalStringParams(templateContent, swalStringParams));
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+
+  const getSwalParams = templateContent => {
+    const result = {};
+    /** @type {HTMLElement[]} */
+
+    const swalParams = Array.from(templateContent.querySelectorAll('swal-param'));
+    swalParams.forEach(param => {
+      showWarningsForAttributes(param, ['name', 'value']);
+      const paramName = param.getAttribute('name');
+      const value = param.getAttribute('value');
+
+      if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
+        result[paramName] = false;
+      }
+
+      if (typeof defaultParams[paramName] === 'object') {
+        result[paramName] = JSON.parse(value);
+      }
+    });
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+
+
+  const getSwalButtons = templateContent => {
+    const result = {};
+    /** @type {HTMLElement[]} */
+
+    const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'));
+    swalButtons.forEach(button => {
+      showWarningsForAttributes(button, ['type', 'color', 'aria-label']);
+      const type = button.getAttribute('type');
+      result["".concat(type, "ButtonText")] = button.innerHTML;
+      result["show".concat(capitalizeFirstLetter(type), "Button")] = true;
+
+      if (button.hasAttribute('color')) {
+        result["".concat(type, "ButtonColor")] = button.getAttribute('color');
+      }
+
+      if (button.hasAttribute('aria-label')) {
+        result["".concat(type, "ButtonAriaLabel")] = button.getAttribute('aria-label');
+      }
+    });
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+
+
+  const getSwalImage = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const image = templateContent.querySelector('swal-image');
+
+    if (image) {
+      showWarningsForAttributes(image, ['src', 'width', 'height', 'alt']);
+
+      if (image.hasAttribute('src')) {
+        result.imageUrl = image.getAttribute('src');
+      }
+
+      if (image.hasAttribute('width')) {
+        result.imageWidth = image.getAttribute('width');
+      }
+
+      if (image.hasAttribute('height')) {
+        result.imageHeight = image.getAttribute('height');
+      }
+
+      if (image.hasAttribute('alt')) {
+        result.imageAlt = image.getAttribute('alt');
+      }
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+
+
+  const getSwalIcon = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const icon = templateContent.querySelector('swal-icon');
+
+    if (icon) {
+      showWarningsForAttributes(icon, ['type', 'color']);
+
+      if (icon.hasAttribute('type')) {
+        /** @type {SweetAlertIcon} */
+        // @ts-ignore
+        result.icon = icon.getAttribute('type');
+      }
+
+      if (icon.hasAttribute('color')) {
+        result.iconColor = icon.getAttribute('color');
+      }
+
+      result.iconHtml = icon.innerHTML;
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+
+
+  const getSwalInput = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const input = templateContent.querySelector('swal-input');
+
+    if (input) {
+      showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value']);
+      /** @type {SweetAlertInput} */
+      // @ts-ignore
+
+      result.input = input.getAttribute('type') || 'text';
+
+      if (input.hasAttribute('label')) {
+        result.inputLabel = input.getAttribute('label');
+      }
+
+      if (input.hasAttribute('placeholder')) {
+        result.inputPlaceholder = input.getAttribute('placeholder');
+      }
+
+      if (input.hasAttribute('value')) {
+        result.inputValue = input.getAttribute('value');
+      }
+    }
+    /** @type {HTMLElement[]} */
+
+
+    const inputOptions = Array.from(templateContent.querySelectorAll('swal-input-option'));
+
+    if (inputOptions.length) {
+      result.inputOptions = {};
+      inputOptions.forEach(option => {
+        showWarningsForAttributes(option, ['value']);
+        const optionValue = option.getAttribute('value');
+        const optionName = option.innerHTML;
+        result.inputOptions[optionValue] = optionName;
+      });
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @param {string[]} paramNames
+   * @returns {SweetAlertOptions}
+   */
+
+
+  const getSwalStringParams = (templateContent, paramNames) => {
+    const result = {};
+
+    for (const i in paramNames) {
+      const paramName = paramNames[i];
+      /** @type {HTMLElement} */
+
+      const tag = templateContent.querySelector(paramName);
+
+      if (tag) {
+        showWarningsForAttributes(tag, []);
+        result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim();
+      }
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const showWarningsForElements = templateContent => {
+    const allowedElements = swalStringParams.concat(['swal-param', 'swal-button', 'swal-image', 'swal-icon', 'swal-input', 'swal-input-option']);
+    Array.from(templateContent.children).forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+
+      if (!allowedElements.includes(tagName)) {
+        warn("Unrecognized element <".concat(tagName, ">"));
+      }
+    });
+  };
+  /**
+   * @param {HTMLElement} el
+   * @param {string[]} allowedAttributes
+   */
+
+
+  const showWarningsForAttributes = (el, allowedAttributes) => {
+    Array.from(el.attributes).forEach(attribute => {
+      if (allowedAttributes.indexOf(attribute.name) === -1) {
+        warn(["Unrecognized attribute \"".concat(attribute.name, "\" on <").concat(el.tagName.toLowerCase(), ">."), "".concat(allowedAttributes.length ? "Allowed attributes are: ".concat(allowedAttributes.join(', ')) : 'To set the value, use HTML within the element.')]);
+      }
+    });
+  };
+
+  const SHOW_CLASS_TIMEOUT = 10;
+  /**
+   * Open popup, add necessary classes and styles, fix scrollbar
+   *
+   * @param {SweetAlertOptions} params
+   */
+
+  const openPopup = params => {
+    const container = getContainer();
+    const popup = getPopup();
+
+    if (typeof params.willOpen === 'function') {
+      params.willOpen(popup);
+    }
+
+    const bodyStyles = window.getComputedStyle(document.body);
+    const initialBodyOverflow = bodyStyles.overflowY;
+    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
+
+    setTimeout(() => {
+      setScrollingVisibility(container, popup);
+    }, SHOW_CLASS_TIMEOUT);
+
+    if (isModal()) {
+      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
+      setAriaHidden();
+    }
+
+    if (!isToast() && !globalState.previousActiveElement) {
+      globalState.previousActiveElement = document.activeElement;
+    }
+
+    if (typeof params.didOpen === 'function') {
+      setTimeout(() => params.didOpen(popup));
+    }
+
+    removeClass(container, swalClasses['no-transition']);
+  };
+  /**
+   * @param {AnimationEvent} event
+   */
+
+  const swalOpenAnimationFinished = event => {
+    const popup = getPopup();
+
+    if (event.target !== popup) {
+      return;
+    }
+
+    const container = getContainer();
+    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
+    container.style.overflowY = 'auto';
+  };
+  /**
+   * @param {HTMLElement} container
+   * @param {HTMLElement} popup
+   */
+
+
+  const setScrollingVisibility = (container, popup) => {
+    if (animationEndEvent && hasCssAnimation(popup)) {
+      container.style.overflowY = 'hidden';
+      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
+    } else {
+      container.style.overflowY = 'auto';
+    }
+  };
+  /**
+   * @param {HTMLElement} container
+   * @param {boolean} scrollbarPadding
+   * @param {string} initialBodyOverflow
+   */
+
+
+  const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
+    iOSfix();
+
+    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
+      fixScrollbar();
+    } // sweetalert2/issues/1247
+
+
+    setTimeout(() => {
+      container.scrollTop = 0;
+    });
+  };
+  /**
+   * @param {HTMLElement} container
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const addClasses$1 = (container, popup, params) => {
+    addClass(container, params.showClass.backdrop); // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
+
+    popup.style.setProperty('opacity', '0', 'important');
+    show(popup, 'grid');
+    setTimeout(() => {
+      // Animate popup right after showing it
+      addClass(popup, params.showClass.popup); // and remove the opacity workaround
+
+      popup.style.removeProperty('opacity');
+    }, SHOW_CLASS_TIMEOUT); // 10ms in order to fix #2062
+
+    addClass([document.documentElement, document.body], swalClasses.shown);
+
+    if (params.heightAuto && params.backdrop && !params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['height-auto']);
+    }
+  };
+
+  var defaultInputValidators = {
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    email: (string, validationMessage) => {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
+    },
+
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    url: (string, validationMessage) => {
+      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+  function setDefaultInputValidators(params) {
+    // Use default `inputValidator` for supported input types if not provided
+    if (!params.inputValidator) {
+      Object.keys(defaultInputValidators).forEach(key => {
+        if (params.input === key) {
+          params.inputValidator = defaultInputValidators[key];
+        }
+      });
+    }
+  }
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function validateCustomTargetElement(params) {
+    // Determine if the custom target element is valid
+    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
+      warn('Target parameter is not valid, defaulting to "body"');
+      params.target = 'body';
+    }
+  }
+  /**
+   * Set type, text and actions on popup
+   *
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function setParameters(params) {
+    setDefaultInputValidators(params); // showLoaderOnConfirm && preConfirm
+
+    if (params.showLoaderOnConfirm && !params.preConfirm) {
+      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
+    }
+
+    validateCustomTargetElement(params); // Replace newlines with <br> in title
+
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />');
+    }
+
+    init(params);
+  }
+
   let currentInstance;
 
   class SweetAlert {
@@ -68954,12 +71450,24 @@ module.exports = function (css) {
     }
 
   }
+  /**
+   * @param {SweetAlert2} instance
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   * @returns {Promise}
+   */
+
 
   const swalPromise = (instance, domCache, innerParams) => {
     return new Promise((resolve, reject) => {
       // functions to handle all closings/dismissals
+
+      /**
+       * @param {DismissReason} dismiss
+       */
       const dismissWith = dismiss => {
-        instance.closePopup({
+        // @ts-ignore
+        instance.close({
           isDismissed: true,
           dismiss
         });
@@ -68968,13 +71476,22 @@ module.exports = function (css) {
       privateMethods.swalPromiseResolve.set(instance, resolve);
       privateMethods.swalPromiseReject.set(instance, reject);
 
-      domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance);
+      domCache.confirmButton.onclick = () => {
+        handleConfirmButtonClick(instance);
+      };
 
-      domCache.denyButton.onclick = () => handleDenyButtonClick(instance);
+      domCache.denyButton.onclick = () => {
+        handleDenyButtonClick(instance);
+      };
 
-      domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith);
+      domCache.cancelButton.onclick = () => {
+        handleCancelButtonClick(instance, dismissWith);
+      };
 
-      domCache.closeButton.onclick = () => dismissWith(DismissReason.close);
+      domCache.closeButton.onclick = () => {
+        // @ts-ignore
+        dismissWith(DismissReason.close);
+      };
 
       handlePopupClick(instance, domCache, dismissWith);
       addKeydownHandler(instance, globalState, innerParams, dismissWith);
@@ -68988,6 +71505,12 @@ module.exports = function (css) {
       });
     });
   };
+  /**
+   * @param {SweetAlertOptions} userParams
+   * @param {SweetAlertOptions} mixinParams
+   * @returns {SweetAlertOptions}
+   */
+
 
   const prepareParams = (userParams, mixinParams) => {
     const templateParams = getTemplateParams(userParams);
@@ -69022,7 +71545,7 @@ module.exports = function (css) {
   /**
    * @param {GlobalState} globalState
    * @param {SweetAlertOptions} innerParams
-   * @param {function} dismissWith
+   * @param {Function} dismissWith
    */
 
 
@@ -69060,7 +71583,8 @@ module.exports = function (css) {
     }
 
     if (!callIfFunction(innerParams.allowEnterKey)) {
-      return blurActiveElement();
+      blurActiveElement();
+      return;
     }
 
     if (!focusButton(domCache, innerParams)) {
@@ -69132,6 +71656,10 @@ module.exports = function (css) {
   Object.assign(SweetAlert, staticMethods); // Proxy to instance methods to constructor, for now, for backwards compatibility
 
   Object.keys(instanceMethods).forEach(key => {
+    /**
+     * @param {...any} args
+     * @returns {any}
+     */
     SweetAlert[key] = function () {
       if (currentInstance) {
         return currentInstance[key](...arguments);
@@ -69139,7 +71667,7 @@ module.exports = function (css) {
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.4.26';
+  SweetAlert.version = '11.4.33';
 
   const Swal = SweetAlert; // @ts-ignore
 
@@ -69150,7 +71678,7 @@ module.exports = function (css) {
 }));
 if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
 
-"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4!important;grid-row:1/4!important;grid-template-columns:1fr 99fr 1fr;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px hsla(0deg,0%,0%,.075),0 1px 2px hsla(0deg,0%,0%,.075),1px 2px 4px hsla(0deg,0%,0%,.075),1px 3px 8px hsla(0deg,0%,0%,.075),2px 4px 16px hsla(0deg,0%,0%,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:\"top-start     top            top-end\" \"center-start  center         center-end\" \"bottom-start  bottom-center  bottom-end\";grid-template-rows:minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-bottom-start,.swal2-container.swal2-center-start,.swal2-container.swal2-top-start{grid-template-columns:minmax(0,1fr) auto auto}.swal2-container.swal2-bottom,.swal2-container.swal2-center,.swal2-container.swal2-top{grid-template-columns:auto minmax(0,1fr) auto}.swal2-container.swal2-bottom-end,.swal2-container.swal2-center-end,.swal2-container.swal2-top-end{grid-template-columns:auto auto minmax(0,1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-left>.swal2-popup,.swal2-container.swal2-center-start>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-left>.swal2-popup,.swal2-container.swal2-bottom-start>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-fullscreen>.swal2-popup,.swal2-container.swal2-grow-row>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none!important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0,100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 transparent #2778c4 transparent}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px transparent;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:0}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto!important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:0 0;color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close:focus{outline:0;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em 2em 3px}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:0 0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px transparent;color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:0 0;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:0 0;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid transparent;border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .5s;animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .8s;animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-question-mark .8s;animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:0 0;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.leave-russia-now-and-apply-your-skills-to-the-world{display:flex;position:fixed;z-index:1939;top:0;right:0;bottom:0;left:0;flex-direction:column;align-items:center;justify-content:center;padding:25px 0 20px;background:#20232a;color:#fff;text-align:center}.leave-russia-now-and-apply-your-skills-to-the-world div{max-width:560px;margin:10px;line-height:146%}.leave-russia-now-and-apply-your-skills-to-the-world iframe{max-width:100%;max-height:55.5555555556vmin;margin:16px auto}.leave-russia-now-and-apply-your-skills-to-the-world strong{border-bottom:2px dashed #fff}.leave-russia-now-and-apply-your-skills-to-the-world button{display:flex;position:fixed;z-index:1940;top:0;right:0;align-items:center;justify-content:center;width:48px;height:48px;margin-right:10px;margin-bottom:-10px;border:none;background:0 0;color:#aaa;font-size:48px;font-weight:700;cursor:pointer}.leave-russia-now-and-apply-your-skills-to-the-world button:hover{color:#fff}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@-webkit-keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{background-color:transparent!important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:transparent;pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}");
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4!important;grid-row:1/4!important;grid-template-columns:1fr 99fr 1fr;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px hsla(0deg,0%,0%,.075),0 1px 2px hsla(0deg,0%,0%,.075),1px 2px 4px hsla(0deg,0%,0%,.075),1px 3px 8px hsla(0deg,0%,0%,.075),2px 4px 16px hsla(0deg,0%,0%,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:\"top-start     top            top-end\" \"center-start  center         center-end\" \"bottom-start  bottom-center  bottom-end\";grid-template-rows:minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-bottom-start,.swal2-container.swal2-center-start,.swal2-container.swal2-top-start{grid-template-columns:minmax(0,1fr) auto auto}.swal2-container.swal2-bottom,.swal2-container.swal2-center,.swal2-container.swal2-top{grid-template-columns:auto minmax(0,1fr) auto}.swal2-container.swal2-bottom-end,.swal2-container.swal2-center-end,.swal2-container.swal2-top-end{grid-template-columns:auto auto minmax(0,1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-left>.swal2-popup,.swal2-container.swal2-center-start>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-left>.swal2-popup,.swal2-container.swal2-bottom-start>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-fullscreen>.swal2-popup,.swal2-container.swal2-grow-row>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none!important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0,100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 transparent #2778c4 transparent}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px transparent;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:0}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto!important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:0 0;color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close:focus{outline:0;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em 2em 3px}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:0 0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px transparent;color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:0 0;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:0 0;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid transparent;border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .5s;animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .8s;animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-question-mark .8s;animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:0 0;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.leave-russia-now-and-apply-your-skills-to-the-world{display:flex;position:fixed;z-index:1939;top:0;right:0;bottom:0;left:0;flex-direction:column;align-items:center;justify-content:center;padding:25px 0 20px;background:#20232a;color:#fff;text-align:center}.leave-russia-now-and-apply-your-skills-to-the-world div{max-width:560px;margin:10px;line-height:146%}.leave-russia-now-and-apply-your-skills-to-the-world iframe{max-width:100%;max-height:55.5555555556vmin;margin:16px auto}.leave-russia-now-and-apply-your-skills-to-the-world strong{border-bottom:2px dashed #fff}.leave-russia-now-and-apply-your-skills-to-the-world button{display:flex;position:fixed;z-index:1940;top:0;right:0;align-items:center;justify-content:center;width:48px;height:48px;margin-right:10px;margin-bottom:-10px;border:none;background:0 0;color:#aaa;font-size:48px;font-weight:700;cursor:pointer}.leave-russia-now-and-apply-your-skills-to-the-world button:hover{color:#fff}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@-webkit-keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{background-color:transparent!important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:transparent;pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}");
 
 /***/ }),
 
@@ -69762,6 +72290,72 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-demi/lib/index.cjs":
+/*!*********************************************!*\
+  !*** ./node_modules/vue-demi/lib/index.cjs ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var VueModule = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js")
+
+// get the real Vue https://github.com/vueuse/vue-demi/issues/192
+var Vue = VueModule.default || VueModule
+
+exports.Vue = Vue
+exports.Vue2 = Vue
+exports.isVue2 = true
+exports.isVue3 = false
+exports.install = function () {}
+exports.warn = Vue.util.warn
+
+// createApp polyfill
+exports.createApp = function (rootComponent, rootProps) {
+  var vm
+  var provide = {}
+  var app = {
+    config: Vue.config,
+    use: Vue.use.bind(Vue),
+    mixin: Vue.mixin.bind(Vue),
+    component: Vue.component.bind(Vue),
+    provide: function (key, value) {
+      provide[key] = value
+      return this
+    },
+    directive: function (name, dir) {
+      if (dir) {
+        Vue.directive(name, dir)
+        return app
+      } else {
+        return Vue.directive(name)
+      }
+    },
+    mount: function (el, hydrating) {
+      if (!vm) {
+        vm = new Vue(Object.assign({ propsData: rootProps }, rootComponent, { provide: Object.assign(provide, rootComponent.provide) }))
+        vm.$mount(el, hydrating)
+        return vm
+      } else {
+        return vm
+      }
+    },
+    unmount: function () {
+      if (vm) {
+        vm.$destroy()
+        vm = undefined
+      }
+    },
+  }
+  return app
+}
+
+Object.keys(VueModule).forEach(function (key) {
+  exports[key] = VueModule[key]
+})
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vform/src/components/bootstrap5/AlertError.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vform/src/components/bootstrap5/AlertError.vue?vue&type=script&lang=js& ***!
@@ -70239,13 +72833,20 @@ function normalizeComponent(
 /*!********************************************************!*\
   !*** ./node_modules/vue-router/dist/vue-router.esm.js ***!
   \********************************************************/
-/*! exports provided: default */
+/*! exports provided: NavigationFailureType, RouterLink, RouterView, START_LOCATION, default, isNavigationFailure, version */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavigationFailureType", function() { return NavigationFailureType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouterLink", function() { return Link; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouterView", function() { return View; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "START_LOCATION", function() { return START; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return VueRouter$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNavigationFailure", function() { return isNavigationFailure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "version", function() { return version; });
 /*!
-  * vue-router v3.5.4
+  * vue-router v3.6.5
   * (c) 2022 Evan You
   * @license MIT
   */
@@ -71336,7 +73937,7 @@ var Link = {
     }
   },
   render: function render (h) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var router = this.$router;
     var current = this.$route;
@@ -71379,7 +73980,7 @@ var Link = {
 
     var handler = function (e) {
       if (guardEvent(e)) {
-        if (this$1.replace) {
+        if (this$1$1.replace) {
           router.replace(location, noop);
         } else {
           router.push(location, noop);
@@ -72239,25 +74840,6 @@ function replaceState (url) {
   pushState(url, true);
 }
 
-/*  */
-
-function runQueue (queue, fn, cb) {
-  var step = function (index) {
-    if (index >= queue.length) {
-      cb();
-    } else {
-      if (queue[index]) {
-        fn(queue[index], function () {
-          step(index + 1);
-        });
-      } else {
-        step(index + 1);
-      }
-    }
-  };
-  step(0);
-}
-
 // When changing thing, also edit router.d.ts
 var NavigationFailureType = {
   redirected: 2,
@@ -72339,6 +74921,25 @@ function isNavigationFailure (err, errorType) {
     err._isRouter &&
     (errorType == null || err.type === errorType)
   )
+}
+
+/*  */
+
+function runQueue (queue, fn, cb) {
+  var step = function (index) {
+    if (index >= queue.length) {
+      cb();
+    } else {
+      if (queue[index]) {
+        fn(queue[index], function () {
+          step(index + 1);
+        });
+      } else {
+        step(index + 1);
+      }
+    }
+  };
+  step(0);
 }
 
 /*  */
@@ -72489,7 +75090,7 @@ History.prototype.transitionTo = function transitionTo (
   onComplete,
   onAbort
 ) {
-    var this$1 = this;
+    var this$1$1 = this;
 
   var route;
   // catch redirect option https://github.com/vuejs/vue-router/issues/3201
@@ -72506,17 +75107,17 @@ History.prototype.transitionTo = function transitionTo (
   this.confirmTransition(
     route,
     function () {
-      this$1.updateRoute(route);
+      this$1$1.updateRoute(route);
       onComplete && onComplete(route);
-      this$1.ensureURL();
-      this$1.router.afterHooks.forEach(function (hook) {
+      this$1$1.ensureURL();
+      this$1$1.router.afterHooks.forEach(function (hook) {
         hook && hook(route, prev);
       });
 
       // fire ready cbs once
-      if (!this$1.ready) {
-        this$1.ready = true;
-        this$1.readyCbs.forEach(function (cb) {
+      if (!this$1$1.ready) {
+        this$1$1.ready = true;
+        this$1$1.readyCbs.forEach(function (cb) {
           cb(route);
         });
       }
@@ -72525,14 +75126,14 @@ History.prototype.transitionTo = function transitionTo (
       if (onAbort) {
         onAbort(err);
       }
-      if (err && !this$1.ready) {
+      if (err && !this$1$1.ready) {
         // Initial redirection should not mark the history as ready yet
         // because it's triggered by the redirection instead
         // https://github.com/vuejs/vue-router/issues/3225
         // https://github.com/vuejs/vue-router/issues/3331
         if (!isNavigationFailure(err, NavigationFailureType.redirected) || prev !== START) {
-          this$1.ready = true;
-          this$1.readyErrorCbs.forEach(function (cb) {
+          this$1$1.ready = true;
+          this$1$1.readyErrorCbs.forEach(function (cb) {
             cb(err);
           });
         }
@@ -72542,7 +75143,7 @@ History.prototype.transitionTo = function transitionTo (
 };
 
 History.prototype.confirmTransition = function confirmTransition (route, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
   var current = this.current;
   this.pending = route;
@@ -72551,8 +75152,8 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
     // https://github.com/vuejs/vue-router/pull/3047 before that change,
     // redirect and aborted navigation would produce an err == null
     if (!isNavigationFailure(err) && isError(err)) {
-      if (this$1.errorCbs.length) {
-        this$1.errorCbs.forEach(function (cb) {
+      if (this$1$1.errorCbs.length) {
+        this$1$1.errorCbs.forEach(function (cb) {
           cb(err);
         });
       } else {
@@ -72601,17 +75202,17 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
   );
 
   var iterator = function (hook, next) {
-    if (this$1.pending !== route) {
+    if (this$1$1.pending !== route) {
       return abort(createNavigationCancelledError(current, route))
     }
     try {
       hook(route, current, function (to) {
         if (to === false) {
           // next(false) -> abort navigation, ensure current URL
-          this$1.ensureURL(true);
+          this$1$1.ensureURL(true);
           abort(createNavigationAbortedError(current, route));
         } else if (isError(to)) {
-          this$1.ensureURL(true);
+          this$1$1.ensureURL(true);
           abort(to);
         } else if (
           typeof to === 'string' ||
@@ -72621,9 +75222,9 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
           // next('/') or next({ path: '/' }) -> redirect
           abort(createNavigationRedirectedError(current, route));
           if (typeof to === 'object' && to.replace) {
-            this$1.replace(to);
+            this$1$1.replace(to);
           } else {
-            this$1.push(to);
+            this$1$1.push(to);
           }
         } else {
           // confirm transition and pass on the value
@@ -72639,15 +75240,15 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
     // wait until async components are resolved before
     // extracting in-component enter guards
     var enterGuards = extractEnterGuards(activated);
-    var queue = enterGuards.concat(this$1.router.resolveHooks);
+    var queue = enterGuards.concat(this$1$1.router.resolveHooks);
     runQueue(queue, iterator, function () {
-      if (this$1.pending !== route) {
+      if (this$1$1.pending !== route) {
         return abort(createNavigationCancelledError(current, route))
       }
-      this$1.pending = null;
+      this$1$1.pending = null;
       onComplete(route);
-      if (this$1.router.app) {
-        this$1.router.app.$nextTick(function () {
+      if (this$1$1.router.app) {
+        this$1$1.router.app.$nextTick(function () {
           handleRouteEntered(route);
         });
       }
@@ -72804,7 +75405,7 @@ var HTML5History = /*@__PURE__*/(function (History) {
   HTML5History.prototype.constructor = HTML5History;
 
   HTML5History.prototype.setupListeners = function setupListeners () {
-    var this$1 = this;
+    var this$1$1 = this;
 
     if (this.listeners.length > 0) {
       return
@@ -72819,16 +75420,16 @@ var HTML5History = /*@__PURE__*/(function (History) {
     }
 
     var handleRoutingEvent = function () {
-      var current = this$1.current;
+      var current = this$1$1.current;
 
       // Avoiding first `popstate` event dispatched in some browsers but first
       // history route not updated since async guard at the same time.
-      var location = getLocation(this$1.base);
-      if (this$1.current === START && location === this$1._startLocation) {
+      var location = getLocation(this$1$1.base);
+      if (this$1$1.current === START && location === this$1$1._startLocation) {
         return
       }
 
-      this$1.transitionTo(location, function (route) {
+      this$1$1.transitionTo(location, function (route) {
         if (supportsScroll) {
           handleScroll(router, route, current, true);
         }
@@ -72845,25 +75446,25 @@ var HTML5History = /*@__PURE__*/(function (History) {
   };
 
   HTML5History.prototype.push = function push (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var ref = this;
     var fromRoute = ref.current;
     this.transitionTo(location, function (route) {
-      pushState(cleanPath(this$1.base + route.fullPath));
-      handleScroll(this$1.router, route, fromRoute, false);
+      pushState(cleanPath(this$1$1.base + route.fullPath));
+      handleScroll(this$1$1.router, route, fromRoute, false);
       onComplete && onComplete(route);
     }, onAbort);
   };
 
   HTML5History.prototype.replace = function replace (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var ref = this;
     var fromRoute = ref.current;
     this.transitionTo(location, function (route) {
-      replaceState(cleanPath(this$1.base + route.fullPath));
-      handleScroll(this$1.router, route, fromRoute, false);
+      replaceState(cleanPath(this$1$1.base + route.fullPath));
+      handleScroll(this$1$1.router, route, fromRoute, false);
       onComplete && onComplete(route);
     }, onAbort);
   };
@@ -72915,7 +75516,7 @@ var HashHistory = /*@__PURE__*/(function (History) {
   // this is delayed until the app mounts
   // to avoid the hashchange listener being fired too early
   HashHistory.prototype.setupListeners = function setupListeners () {
-    var this$1 = this;
+    var this$1$1 = this;
 
     if (this.listeners.length > 0) {
       return
@@ -72930,13 +75531,13 @@ var HashHistory = /*@__PURE__*/(function (History) {
     }
 
     var handleRoutingEvent = function () {
-      var current = this$1.current;
+      var current = this$1$1.current;
       if (!ensureSlash()) {
         return
       }
-      this$1.transitionTo(getHash(), function (route) {
+      this$1$1.transitionTo(getHash(), function (route) {
         if (supportsScroll) {
-          handleScroll(this$1.router, route, current, true);
+          handleScroll(this$1$1.router, route, current, true);
         }
         if (!supportsPushState) {
           replaceHash(route.fullPath);
@@ -72954,7 +75555,7 @@ var HashHistory = /*@__PURE__*/(function (History) {
   };
 
   HashHistory.prototype.push = function push (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var ref = this;
     var fromRoute = ref.current;
@@ -72962,7 +75563,7 @@ var HashHistory = /*@__PURE__*/(function (History) {
       location,
       function (route) {
         pushHash(route.fullPath);
-        handleScroll(this$1.router, route, fromRoute, false);
+        handleScroll(this$1$1.router, route, fromRoute, false);
         onComplete && onComplete(route);
       },
       onAbort
@@ -72970,7 +75571,7 @@ var HashHistory = /*@__PURE__*/(function (History) {
   };
 
   HashHistory.prototype.replace = function replace (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var ref = this;
     var fromRoute = ref.current;
@@ -72978,7 +75579,7 @@ var HashHistory = /*@__PURE__*/(function (History) {
       location,
       function (route) {
         replaceHash(route.fullPath);
-        handleScroll(this$1.router, route, fromRoute, false);
+        handleScroll(this$1$1.router, route, fromRoute, false);
         onComplete && onComplete(route);
       },
       onAbort
@@ -73070,13 +75671,13 @@ var AbstractHistory = /*@__PURE__*/(function (History) {
   AbstractHistory.prototype.constructor = AbstractHistory;
 
   AbstractHistory.prototype.push = function push (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     this.transitionTo(
       location,
       function (route) {
-        this$1.stack = this$1.stack.slice(0, this$1.index + 1).concat(route);
-        this$1.index++;
+        this$1$1.stack = this$1$1.stack.slice(0, this$1$1.index + 1).concat(route);
+        this$1$1.index++;
         onComplete && onComplete(route);
       },
       onAbort
@@ -73084,12 +75685,12 @@ var AbstractHistory = /*@__PURE__*/(function (History) {
   };
 
   AbstractHistory.prototype.replace = function replace (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     this.transitionTo(
       location,
       function (route) {
-        this$1.stack = this$1.stack.slice(0, this$1.index).concat(route);
+        this$1$1.stack = this$1$1.stack.slice(0, this$1$1.index).concat(route);
         onComplete && onComplete(route);
       },
       onAbort
@@ -73097,7 +75698,7 @@ var AbstractHistory = /*@__PURE__*/(function (History) {
   };
 
   AbstractHistory.prototype.go = function go (n) {
-    var this$1 = this;
+    var this$1$1 = this;
 
     var targetIndex = this.index + n;
     if (targetIndex < 0 || targetIndex >= this.stack.length) {
@@ -73107,16 +75708,16 @@ var AbstractHistory = /*@__PURE__*/(function (History) {
     this.confirmTransition(
       route,
       function () {
-        var prev = this$1.current;
-        this$1.index = targetIndex;
-        this$1.updateRoute(route);
-        this$1.router.afterHooks.forEach(function (hook) {
+        var prev = this$1$1.current;
+        this$1$1.index = targetIndex;
+        this$1$1.updateRoute(route);
+        this$1$1.router.afterHooks.forEach(function (hook) {
           hook && hook(route, prev);
         });
       },
       function (err) {
         if (isNavigationFailure(err, NavigationFailureType.duplicated)) {
-          this$1.index = targetIndex;
+          this$1$1.index = targetIndex;
         }
       }
     );
@@ -73135,6 +75736,8 @@ var AbstractHistory = /*@__PURE__*/(function (History) {
 }(History));
 
 /*  */
+
+
 
 var VueRouter = function VueRouter (options) {
   if ( options === void 0 ) options = {};
@@ -73189,7 +75792,7 @@ prototypeAccessors.currentRoute.get = function () {
 };
 
 VueRouter.prototype.init = function init (app /* Vue component instance */) {
-    var this$1 = this;
+    var this$1$1 = this;
 
    true &&
     assert(
@@ -73204,13 +75807,13 @@ VueRouter.prototype.init = function init (app /* Vue component instance */) {
   // https://github.com/vuejs/vue-router/issues/2639
   app.$once('hook:destroyed', function () {
     // clean out app from this.apps array once destroyed
-    var index = this$1.apps.indexOf(app);
-    if (index > -1) { this$1.apps.splice(index, 1); }
+    var index = this$1$1.apps.indexOf(app);
+    if (index > -1) { this$1$1.apps.splice(index, 1); }
     // ensure we still have a main app or null if no apps
     // we do not release the router so it can be reused
-    if (this$1.app === app) { this$1.app = this$1.apps[0] || null; }
+    if (this$1$1.app === app) { this$1$1.app = this$1$1.apps[0] || null; }
 
-    if (!this$1.app) { this$1.history.teardown(); }
+    if (!this$1$1.app) { this$1$1.history.teardown(); }
   });
 
   // main app previously initialized
@@ -73226,11 +75829,11 @@ VueRouter.prototype.init = function init (app /* Vue component instance */) {
   if (history instanceof HTML5History || history instanceof HashHistory) {
     var handleInitialScroll = function (routeOrError) {
       var from = history.current;
-      var expectScroll = this$1.options.scrollBehavior;
+      var expectScroll = this$1$1.options.scrollBehavior;
       var supportsScroll = supportsPushState && expectScroll;
 
       if (supportsScroll && 'fullPath' in routeOrError) {
-        handleScroll(this$1, routeOrError, from, false);
+        handleScroll(this$1$1, routeOrError, from, false);
       }
     };
     var setupListeners = function (routeOrError) {
@@ -73245,7 +75848,7 @@ VueRouter.prototype.init = function init (app /* Vue component instance */) {
   }
 
   history.listen(function (route) {
-    this$1.apps.forEach(function (app) {
+    this$1$1.apps.forEach(function (app) {
       app._route = route;
     });
   });
@@ -73272,12 +75875,12 @@ VueRouter.prototype.onError = function onError (errorCb) {
 };
 
 VueRouter.prototype.push = function push (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
   // $flow-disable-line
   if (!onComplete && !onAbort && typeof Promise !== 'undefined') {
     return new Promise(function (resolve, reject) {
-      this$1.history.push(location, resolve, reject);
+      this$1$1.history.push(location, resolve, reject);
     })
   } else {
     this.history.push(location, onComplete, onAbort);
@@ -73285,12 +75888,12 @@ VueRouter.prototype.push = function push (location, onComplete, onAbort) {
 };
 
 VueRouter.prototype.replace = function replace (location, onComplete, onAbort) {
-    var this$1 = this;
+    var this$1$1 = this;
 
   // $flow-disable-line
   if (!onComplete && !onAbort && typeof Promise !== 'undefined') {
     return new Promise(function (resolve, reject) {
-      this$1.history.replace(location, resolve, reject);
+      this$1$1.history.replace(location, resolve, reject);
     })
   } else {
     this.history.replace(location, onComplete, onAbort);
@@ -73372,6 +75975,8 @@ VueRouter.prototype.addRoutes = function addRoutes (routes) {
 
 Object.defineProperties( VueRouter.prototype, prototypeAccessors );
 
+var VueRouter$1 = VueRouter;
+
 function registerHook (list, fn) {
   list.push(fn);
   return function () {
@@ -73385,8 +75990,9 @@ function createHref (base, fullPath, mode) {
   return base ? cleanPath(base + '/' + path) : path
 }
 
+// We cannot remove this as it would be a breaking change
 VueRouter.install = install;
-VueRouter.version = '3.5.4';
+VueRouter.version = '3.6.5';
 VueRouter.isNavigationFailure = isNavigationFailure;
 VueRouter.NavigationFailureType = NavigationFailureType;
 VueRouter.START_LOCATION = START;
@@ -73395,7 +76001,9 @@ if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (VueRouter);
+var version = '3.6.5';
+
+
 
 
 /***/ }),
@@ -73409,7 +76017,7 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.7.8
+ * Vue.js v2.7.10
  * (c) 2014-2022 Evan You
  * Released under the MIT License.
  */
@@ -74053,13 +76661,13 @@ let initProxy;
             'referenced during render. Make sure that this property is reactive, ' +
             'either in the data option, or for class-based components, by ' +
             'initializing the property. ' +
-            'See: https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.', target);
+            'See: https://v2.vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.', target);
     };
     const warnReservedPrefix = (target, key) => {
         warn$2(`Property "${key}" must be accessed with "$data.${key}" because ` +
             'properties starting with "$" or "_" are not proxied in the Vue instance to ' +
             'prevent conflicts with Vue internals. ' +
-            'See: https://vuejs.org/v2/api/#data', target);
+            'See: https://v2.vuejs.org/v2/api/#data', target);
     };
     const hasProxy = typeof Proxy !== 'undefined' && isNative(Proxy);
     if (hasProxy) {
@@ -76181,8 +78789,13 @@ function lifecycleMixin(Vue) {
             vm.$el.__vue__ = vm;
         }
         // if parent is an HOC, update its $el as well
-        if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
-            vm.$parent.$el = vm.$el;
+        let wrapper = vm;
+        while (wrapper &&
+            wrapper.$vnode &&
+            wrapper.$parent &&
+            wrapper.$vnode === wrapper.$parent._vnode) {
+            wrapper.$parent.$el = wrapper.$el;
+            wrapper = wrapper.$parent;
         }
         // updated hook is called by the scheduler to ensure that children are
         // updated in a parent's updated hook.
@@ -76735,8 +79348,7 @@ function doWatch(source, cb, { immediate, deep, flush = 'pre', onTrack, onTrigge
     let oldValue = isMultiSource ? [] : INITIAL_WATCHER_VALUE;
     // overwrite default run
     watcher.run = () => {
-        if (!watcher.active &&
-            !(flush === 'pre' && instance && instance._isBeingDestroyed)) {
+        if (!watcher.active) {
             return;
         }
         if (cb) {
@@ -77297,17 +79909,20 @@ const onBeforeUpdate = createLifeCycle('beforeUpdate');
 const onUpdated = createLifeCycle('updated');
 const onBeforeUnmount = createLifeCycle('beforeDestroy');
 const onUnmounted = createLifeCycle('destroyed');
-const onErrorCaptured = createLifeCycle('errorCaptured');
 const onActivated = createLifeCycle('activated');
 const onDeactivated = createLifeCycle('deactivated');
 const onServerPrefetch = createLifeCycle('serverPrefetch');
 const onRenderTracked = createLifeCycle('renderTracked');
 const onRenderTriggered = createLifeCycle('renderTriggered');
+const injectErrorCapturedHook = createLifeCycle('errorCaptured');
+function onErrorCaptured(hook, target = currentInstance) {
+    injectErrorCapturedHook(hook, target);
+}
 
 /**
  * Note: also update dist/vue.runtime.mjs when adding new exports to this file.
  */
-const version = '2.7.8';
+const version = '2.7.10';
 /**
  * @internal type is manually declared in <root>/types/v3-define-component.d.ts
  */
@@ -77367,12 +79982,12 @@ var vca = /*#__PURE__*/Object.freeze({
   onUpdated: onUpdated,
   onBeforeUnmount: onBeforeUnmount,
   onUnmounted: onUnmounted,
-  onErrorCaptured: onErrorCaptured,
   onActivated: onActivated,
   onDeactivated: onDeactivated,
   onServerPrefetch: onServerPrefetch,
   onRenderTracked: onRenderTracked,
-  onRenderTriggered: onRenderTriggered
+  onRenderTriggered: onRenderTriggered,
+  onErrorCaptured: onErrorCaptured
 });
 
 const seenObjects = new _Set();
@@ -77426,11 +80041,16 @@ let uid$1 = 0;
  */
 class Watcher {
     constructor(vm, expOrFn, cb, options, isRenderWatcher) {
-        recordEffectScope(this, activeEffectScope || (vm ? vm._scope : undefined));
-        if ((this.vm = vm)) {
-            if (isRenderWatcher) {
-                vm._watcher = this;
-            }
+        recordEffectScope(this, 
+        // if the active effect scope is manually created (not a component scope),
+        // prioritize it
+        activeEffectScope && !activeEffectScope._vm
+            ? activeEffectScope
+            : vm
+                ? vm._scope
+                : undefined);
+        if ((this.vm = vm) && isRenderWatcher) {
+            vm._watcher = this;
         }
         // options
         if (options) {
@@ -77694,7 +80314,7 @@ function initData(vm) {
     if (!isPlainObject(data)) {
         data = {};
         warn$2('data functions should return an object:\n' +
-                'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function', vm);
+                'https://v2.vuejs.org/v2/guide/components.html#data-Must-Be-a-Function', vm);
     }
     // proxy data on instance
     const keys = Object.keys(data);
@@ -77990,6 +80610,7 @@ function initMixin$1(Vue) {
         vm.__v_skip = true;
         // effect scope
         vm._scope = new EffectScope(true /* detached */);
+        vm._scope._vm = true;
         // merge options
         if (options && options._isComponent) {
             // optimize internal component instantiation
@@ -80525,7 +83146,16 @@ function normalizeDirectives(dirs, vm) {
         }
         res[getRawDirName(dir)] = dir;
         if (vm._setupState && vm._setupState.__sfc) {
-            dir.def = dir.def || resolveAsset(vm, '_setupState', 'v-' + dir.name);
+            const setupDef = dir.def || resolveAsset(vm, '_setupState', 'v-' + dir.name);
+            if (typeof setupDef === 'function') {
+                dir.def = {
+                    bind: setupDef,
+                    update: setupDef,
+                };
+            }
+            else {
+                dir.def = setupDef;
+            }
         }
         dir.def = dir.def || resolveAsset(vm.$options, 'directives', dir.name, true);
     }
@@ -85285,18 +87915,19 @@ var Gate = /*#__PURE__*/function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
-/* harmony import */ var vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vform/src/components/bootstrap5 */ "./node_modules/vform/src/components/bootstrap5/index.js");
-/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
+/* harmony import */ var vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vform/src/components/bootstrap5 */ "./node_modules/vform/src/components/bootstrap5/index.js");
+/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -85305,45 +87936,46 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
  // Vform implementation
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_3__["default"](window.user);
-window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["default"];
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["Button"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["HasError"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertError"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertErrors"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_2__["AlertSuccess"]); //Vue
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_4__["default"](window.user);
+window.Form = vform__WEBPACK_IMPORTED_MODULE_2__["default"];
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["Button"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["Button"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["HasError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["HasError"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertError"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertError"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertErrors"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertErrors"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component(vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertSuccess"].name, vform_src_components_bootstrap5__WEBPACK_IMPORTED_MODULE_3__["AlertSuccess"]); //Vue
 
  //VueRouter implementation
 
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]); //Progress bar implementation
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]); //Progress bar implementation
 
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_6___default.a, {
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_7___default.a, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
   height: '5px'
 }); //Sweetalert2 implementation
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a;
-var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a;
+var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
   didOpen: function didOpen(toast) {
-    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.stopTimer);
-    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.resumeTimer);
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.resumeTimer);
   }
 });
-window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a; //VueRoutes implementation
+window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a; //VueRoutes implementation
 
 var routes = [{
   path: '/dashboard',
@@ -85376,24 +88008,24 @@ var routes = [{
   path: '/developer',
   component: __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue")["default"]
 }];
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('not-found', __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('not-found', __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
   mode: 'history',
   routes: routes
 }); //Uppercase the first letter, how to use -> ( text | upText )
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.filter('upText', function (text) {
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.filter('upText', function (text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }); // Format date to (16/08/2022)
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.filter('myDate', function (date) {
-  return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('L');
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.filter('myDate', function (date) {
+  return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format('L');
 });
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_4___default.a();
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_5___default.a();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -85404,16 +88036,19 @@ window.Fire = new vue__WEBPACK_IMPORTED_MODULE_4___default.a();
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
+vue__WEBPACK_IMPORTED_MODULE_5___default.a.use(pinia__WEBPACK_IMPORTED_MODULE_0__["PiniaVuePlugin"]);
+var pinia = Object(pinia__WEBPACK_IMPORTED_MODULE_0__["createPinia"])();
+var app = new vue__WEBPACK_IMPORTED_MODULE_5___default.a({
   el: '#app',
   router: router,
+  pinia: pinia,
   data: {
     search: ''
   },
@@ -87384,6 +90019,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_modalComp_vue_vue_type_template_id_ae9af97e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/store/users.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/users.js ***!
+  \*************************************/
+/*! exports provided: useUserStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useUserStore", function() { return useUserStore; });
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
+ // You can name the return value of `defineStore()` anything you want,
+// but it's best to use the name of the store and surround it with `use`
+// and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
+// the first argument is a unique id of the store across your application
+
+var useUserStore = Object(pinia__WEBPACK_IMPORTED_MODULE_0__["defineStore"])('users', {
+  state: function state() {
+    return {
+      users: []
+    };
+  },
+  getters: {
+    getUsers: function getUsers(state) {
+      return state.users;
+    }
+  },
+  actions: {
+    setUsers: function setUsers(usersList) {
+      this.users = usersList;
+    }
+  }
+});
 
 /***/ }),
 

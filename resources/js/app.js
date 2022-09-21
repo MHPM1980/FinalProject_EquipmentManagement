@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { createPinia, PiniaVuePlugin } from 'pinia';
+
 import moment from 'moment'
 // Vform implementation
 import Form from 'vform'
@@ -140,9 +142,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.use(PiniaVuePlugin)
+const pinia = createPinia()
+
 const app = new Vue({
     el: '#app',
     router,
+    pinia,
     data:{
         search: ''
     },

@@ -25,7 +25,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="user in users.data" :key="user.id">
+                            <tr v-for="user in usersList" :key="user.id">
                                 <td>{{ user.id }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
@@ -64,11 +64,14 @@
 import ModalComp from "../widgets/modalComp";
 import formComp from "./widgets/formComp";
 import {deleteMixin} from "../mixins/deleteMixin";
+import {useUserStore} from "../../store/users";
+
+const store = useUserStore();
 
 export default {
     data(){
         return{
-            users: {},
+            users: [],
             form: new Form({
                 id:'',
                 name: '',
@@ -80,6 +83,7 @@ export default {
             }),
             link:'users',
             mode: false,
+            usersList: []
         }
     },
     mixins:[deleteMixin],
@@ -88,8 +92,10 @@ export default {
             let query = this.$parent.search;
             axios
                 .get('api/findUser?q='+ query)
-                .then((data) => {
-                    this.users = data.data
+                .then(( data ) => {
+                    console.log(data)
+                    store.$onAction()
+
                 })
                 .catch(() => {
 
@@ -129,7 +135,7 @@ export default {
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/users/")
-                    .then(({ data }) => (this.users = data));
+                    .then(({ data }) => (this.usersList = data.data.data));
             }
         },
     }

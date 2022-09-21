@@ -20,6 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
+
+
        return User::with(['role','cost'])->orderBy('id','asc')->paginate(15);
     }
 
@@ -30,9 +32,12 @@ class UserController extends Controller
                 $query->where('name','LIKE',"%$search%")
                         ->orWhere('email','LIKE',"%$search%");
             })->paginate(15);
-        }
 
+        }else{
+            return User::with(['role','cost'])->orderBy('id','asc')->paginate(15);
+        }
         return $users;
+
     }
 
     /**

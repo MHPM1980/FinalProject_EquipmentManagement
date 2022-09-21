@@ -26,7 +26,6 @@
             </li>
         </ul>
 
-{{--        <form class="form-inline ml-3">--}}
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" @keyup.enter="searchit" v-model="search"
                        type="search" placeholder="Pesquisar" aria-label="Search">
@@ -36,7 +35,6 @@
                     </button>
                 </div>
             </div>
-{{--        </form>--}}
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">

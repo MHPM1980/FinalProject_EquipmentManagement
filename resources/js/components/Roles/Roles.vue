@@ -30,6 +30,37 @@
                                         {{ users.name }}
                                     </p>
                                 </td>
+                                <td v-switch="role.name">
+                                    <div v-case="'ADMIN'">
+                                        <p>Visualizar equipamentos</p>
+                                        <p>Criar reservas de equipamentos</p>
+                                        <p>Gerir as próprias reservas</p>
+                                        <p>Gerir utilizadores</p>
+                                        <p>Gerir equipamentos</p>
+                                        <p>Gerir categorias de equipamentos</p>
+                                        <p>Gerir entidades</p>
+                                        <p>Gerir armazéns</p>
+                                        <p>Gerir centros de custo</p>
+                                    </div>
+                                    <div v-case="'GESTOR'">
+                                        <p>Visualizar equipamentos</p>
+                                        <p>Criar reservas de equipamentos</p>
+                                        <p>Gerir as próprias reservas</p>
+                                        <p>Gerir utilizadores</p>
+                                        <p>Gerir equipamentos</p>
+                                        <p>Gerir categorias de equipamentos</p>
+                                        <p>Gerir entidades</p>
+                                        <p>Gerir armazéns</p>
+                                    </div>
+                                    <div v-case="'FORMADOR'">
+                                        <p>Visualizar equipamentos</p>
+                                        <p>Criar reservas de equipamentos</p>
+                                        <p>Gerir as próprias reservas</p>
+                                    </div>
+                                    <div v-case="'FORMANDO'">
+                                        <p>Visualizar equipamentos</p>
+                                    </div>
+                                </td>
                                 <td>
 <!--                                    <a href="#" @click="editModal(role)">
                                         <i class="fa fa-edit"></i>
@@ -59,6 +90,11 @@
     import ModalComp from "../widgets/modalComp";
     import formCompRoles from "./widgets/formCompRoles";
     import {deleteMixin} from "../mixins/deleteMixin";
+
+    import Vue from 'vue'
+    import VSwitch from 'v-switch-case'
+
+    Vue.use(VSwitch)
 
     export default {
 

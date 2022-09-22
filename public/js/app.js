@@ -2600,9 +2600,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompRoles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompRoles */ "./resources/js/components/Roles/widgets/formCompRoles.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var v_switch_case__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! v-switch-case */ "./node_modules/v-switch-case/dist/v-switch.js");
+/* harmony import */ var v_switch_case__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(v_switch_case__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
+
+
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(v_switch_case__WEBPACK_IMPORTED_MODULE_4___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5116,7 +5123,42 @@ var render = function render() {
       key: role.id
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                        " + _vm._s(users.name) + "\n                                    ")]);
-    }), 0), _vm._v(" "), _c("td")]);
+    }), 0), _vm._v(" "), _c("td", {
+      directives: [{
+        name: "switch",
+        rawName: "v-switch",
+        value: role.name,
+        expression: "role.name"
+      }]
+    }, [_c("div", {
+      directives: [{
+        name: "case",
+        rawName: "v-case",
+        value: "ADMIN",
+        expression: "'ADMIN'"
+      }]
+    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")]), _vm._v(" "), _c("p", [_vm._v("Gerir utilizadores")]), _vm._v(" "), _c("p", [_vm._v("Gerir equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir categorias de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir entidades")]), _vm._v(" "), _c("p", [_vm._v("Gerir armazéns")]), _vm._v(" "), _c("p", [_vm._v("Gerir centros de custo")])]), _vm._v(" "), _c("div", {
+      directives: [{
+        name: "case",
+        rawName: "v-case",
+        value: "GESTOR",
+        expression: "'GESTOR'"
+      }]
+    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")]), _vm._v(" "), _c("p", [_vm._v("Gerir utilizadores")]), _vm._v(" "), _c("p", [_vm._v("Gerir equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir categorias de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir entidades")]), _vm._v(" "), _c("p", [_vm._v("Gerir armazéns")])]), _vm._v(" "), _c("div", {
+      directives: [{
+        name: "case",
+        rawName: "v-case",
+        value: "FORMADOR",
+        expression: "'FORMADOR'"
+      }]
+    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")])]), _vm._v(" "), _c("div", {
+      directives: [{
+        name: "case",
+        rawName: "v-case",
+        value: "FORMANDO",
+        expression: "'FORMANDO'"
+      }]
+    }, [_c("p", [_vm._v("Visualizar equipamentos")])])]), _vm._v(" "), _c("td")]);
   }), 0)])])])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Permissão"
@@ -69357,6 +69399,17 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/v-switch-case/dist/v-switch.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/v-switch-case/dist/v-switch.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports=function(t){var e={};function n(r){if(e[r])return e[r].exports;var i=e[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var i in t)n.d(r,i,function(e){return t[e]}.bind(null,i));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e,n){"use strict";n.r(e),n.d(e,"containsDirective",function(){return o}),n.d(e,"vSwitch",function(){return s}),n.d(e,"vCase",function(){return f}),n.d(e,"vDefault",function(){return p});const r={};function i(t,e){t[e.expression]=e.value}function o(t=[],e){for(let n in t)if(t[n].name===e)return t[n];return!1}const u=(t=[])=>o(t,"case"),l=(t=[])=>o(t,"default");function a(t,e,{show:n}){const r=e.children;for(let t of r)if(t.data&&l(t.data.directives)){const e=n?t.elm.getAttribute("data-initial-display"):"none";t.elm.style.display=e}}function c(t){const e=t.getAttribute("data-initial-display");t.style.display="none"!==e?e:"block"}function d(t,e,n,r){let i=!1;const o=n.children;for(let t of o)if(t.data){const o=u(t.data.directives,"case");o&&(o.value===r[e.expression]?(c(t.elm),a(0,n,{show:!1}),i=!0):t.elm.style.display="none")}i||a(0,n,{show:!0})}const s={bind(t,e){i(r,e)},inserted(t,e,n){!function(t){for(let e of t)e.setAttribute("data-initial-display",e.style.display)}(t.children),d(0,e,n,r)},update(t,e){i(r,e)},componentUpdated(t,e,n){d(0,e,n,r)}},f=()=>{},p=()=>{};e.default={install(t,e){t.directive("switch",s),t.directive("case",f),t.directive("default",p)}}}]);
+
+/***/ }),
+
 /***/ "./node_modules/vform/dist/vform.es.js":
 /*!*********************************************!*\
   !*** ./node_modules/vform/dist/vform.es.js ***!
@@ -87589,13 +87642,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> feature/ProductComponent
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

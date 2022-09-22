@@ -80,6 +80,9 @@ let routes = [
         component: require('./components/Products/Products.vue').default },
     { path: '/developer',
         component: require('./components/Developer.vue').default },
+    { path: '/equipmentdetails',
+        component: require('./components/Products/ProductDetail.vue').default },
+
 ]
 
 Vue.component(

@@ -6,8 +6,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Permissões</h3>
                         <div class="card-tools">
-<!--                            <button class="btn btn-success" @click="newModal">
-                                Novo <i class="fa-solid fa-euro-sign"></i></button>-->
+                            <!--                            <button class="btn btn-success" @click="newModal">
+                                                            Novo <i class="fa-solid fa-euro-sign"></i></button>-->
                         </div>
                     </div>
 
@@ -30,44 +30,16 @@
                                         {{ users.name }}
                                     </p>
                                 </td>
-                                <td v-switch="role.name">
-                                    <div v-case="'ADMIN'">
-                                        <p>Visualizar equipamentos</p>
-                                        <p>Criar reservas de equipamentos</p>
-                                        <p>Gerir as próprias reservas</p>
-                                        <p>Gerir utilizadores</p>
-                                        <p>Gerir equipamentos</p>
-                                        <p>Gerir categorias de equipamentos</p>
-                                        <p>Gerir entidades</p>
-                                        <p>Gerir armazéns</p>
-                                        <p>Gerir centros de custo</p>
-                                    </div>
-                                    <div v-case="'GESTOR'">
-                                        <p>Visualizar equipamentos</p>
-                                        <p>Criar reservas de equipamentos</p>
-                                        <p>Gerir as próprias reservas</p>
-                                        <p>Gerir utilizadores</p>
-                                        <p>Gerir equipamentos</p>
-                                        <p>Gerir categorias de equipamentos</p>
-                                        <p>Gerir entidades</p>
-                                        <p>Gerir armazéns</p>
-                                    </div>
-                                    <div v-case="'FORMADOR'">
-                                        <p>Visualizar equipamentos</p>
-                                        <p>Criar reservas de equipamentos</p>
-                                        <p>Gerir as próprias reservas</p>
-                                    </div>
-                                    <div v-case="'FORMANDO'">
-                                        <p>Visualizar equipamentos</p>
-                                    </div>
+                                <td>
+                                    <p v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
                                 </td>
                                 <td>
-<!--                                    <a href="#" @click="editModal(role)">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" @click="deleteItem(role.id)">
-                                        <i class="fa fa-trash text-red"></i>
-                                    </a>-->
+                                    <!--                                    <a href="#" @click="editModal(role)">
+                                                                            <i class="fa fa-edit"></i>
+                                                                        </a>
+                                                                        <a href="#" @click="deleteItem(role.id)">
+                                                                            <i class="fa fa-trash text-red"></i>
+                                                                        </a>-->
                                 </td>
                             </tr>
                             </tbody>
@@ -87,58 +59,85 @@
 </template>
 
 <script>
-    import ModalComp from "../widgets/modalComp";
-    import formCompRoles from "./widgets/formCompRoles";
-    import {deleteMixin} from "../mixins/deleteMixin";
+import ModalComp from "../widgets/modalComp";
+import formCompRoles from "./widgets/formCompRoles";
+import {deleteMixin} from "../mixins/deleteMixin";
 
-    import Vue from 'vue'
-    import VSwitch from 'v-switch-case'
+import Vue from 'vue'
+import VSwitch from 'v-switch-case'
 
-    Vue.use(VSwitch)
+Vue.use(VSwitch)
 
-    export default {
+export default {
 
-        data(){
-            return{
-                roles: {},
-                form: new Form({
-                    id:'',
-                    name: '',
-                }),
-                link:'roles',
-                mode: false,
+    data(){
+        return{
+            roles: {},
+            form: new Form({
+                id:'',
+                name: '',
+            }),
+            link:'roles',
+            mode: false,
+            permissions:{
+                1:[ "Visualizar equipamentos",
+                    "Criar reservas de equipamentos",
+                    "Gerir as próprias reservas",
+                    "Gerir utilizadores",
+                    "Gerir equipamentos",
+                    "Gerir categorias de equipamentos",
+                    "Gerir entidades",
+                    "Gerir armazéns",
+                    "Gerir centros de custo"
+                ],
+                2:[ "Visualizar equipamentos",
+                    "Criar reservas de equipamentos",
+                    "Gerir as próprias reservas",
+                    "Gerir utilizadores",
+                    "Gerir equipamentos",
+                    "Gerir categorias de equipamentos",
+                    "Gerir entidades",
+                    "Gerir armazéns"
+                ],
+                3:[ "Visualizar equipamentos",
+                    "Criar reservas de equipamentos",
+                    "Gerir as próprias reservas"
+                ],
+                4:[ "Visualizar equipamentos"
+                ]
             }
-        },
-        mixins:[deleteMixin],
-        created(){
+        }
+    },
+    mixins:[deleteMixin],
+    created(){
+        this.loadRoles();
+        //custom Event to reload DOM
+        Fire.$on('AfterCreate',()=>{
             this.loadRoles();
-            //custom Event to reload DOM
-            Fire.$on('AfterCreate',()=>{
-                this.loadRoles();
-            });
+        });
+    },
+    components: {
+        ModalComp,
+        formCompRoles
+    },
+    methods:{
+        newModal(){
+            this.mode=false;
+            $('#addNew').modal('show');
+            this.form.reset();
         },
-        components: {
-            ModalComp,
-            formCompRoles
+        editModal(role){
+            this.mode=true;
+            $('#addNew').modal('show');
+            this.form.fill(role);
         },
-        methods:{
-            newModal(){
-                this.mode=false;
-                $('#addNew').modal('show');
-                this.form.reset();
-            },
-            editModal(role){
-                this.mode=true;
-                $('#addNew').modal('show');
-                this.form.fill(role);
-            },
-            loadRoles(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
+        loadRoles(){
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/roles/")
                     .then(({ data }) => (this.roles = data.data))
-                };
-            },
-        }
+            };
+        },
     }
+}
 </script>

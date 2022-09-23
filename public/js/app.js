@@ -2634,7 +2634,13 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(v_switch_case__WEBPACK_IMPORTED_M
         name: ''
       }),
       link: 'roles',
-      mode: false
+      mode: false,
+      permissions: {
+        1: ["Visualizar equipamentos", "Criar reservas de equipamentos", "Gerir as próprias reservas", "Gerir utilizadores", "Gerir equipamentos", "Gerir categorias de equipamentos", "Gerir entidades", "Gerir armazéns", "Gerir centros de custo"],
+        2: ["Visualizar equipamentos", "Criar reservas de equipamentos", "Gerir as próprias reservas", "Gerir utilizadores", "Gerir equipamentos", "Gerir categorias de equipamentos", "Gerir entidades", "Gerir armazéns"],
+        3: ["Visualizar equipamentos", "Criar reservas de equipamentos", "Gerir as próprias reservas"],
+        4: ["Visualizar equipamentos"]
+      }
     };
   },
   mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
@@ -5191,43 +5197,12 @@ var render = function render() {
     return _c("tr", {
       key: role.id
     }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
-      return _c("p", [_vm._v("\n                                        " + _vm._s(users.name) + "\n                                    ")]);
-    }), 0), _vm._v(" "), _c("td", {
-      directives: [{
-        name: "switch",
-        rawName: "v-switch",
-        value: role.name,
-        expression: "role.name"
-      }]
-    }, [_c("div", {
-      directives: [{
-        name: "case",
-        rawName: "v-case",
-        value: "ADMIN",
-        expression: "'ADMIN'"
-      }]
-    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")]), _vm._v(" "), _c("p", [_vm._v("Gerir utilizadores")]), _vm._v(" "), _c("p", [_vm._v("Gerir equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir categorias de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir entidades")]), _vm._v(" "), _c("p", [_vm._v("Gerir armazéns")]), _vm._v(" "), _c("p", [_vm._v("Gerir centros de custo")])]), _vm._v(" "), _c("div", {
-      directives: [{
-        name: "case",
-        rawName: "v-case",
-        value: "GESTOR",
-        expression: "'GESTOR'"
-      }]
-    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")]), _vm._v(" "), _c("p", [_vm._v("Gerir utilizadores")]), _vm._v(" "), _c("p", [_vm._v("Gerir equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir categorias de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir entidades")]), _vm._v(" "), _c("p", [_vm._v("Gerir armazéns")])]), _vm._v(" "), _c("div", {
-      directives: [{
-        name: "case",
-        rawName: "v-case",
-        value: "FORMADOR",
-        expression: "'FORMADOR'"
-      }]
-    }, [_c("p", [_vm._v("Visualizar equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Criar reservas de equipamentos")]), _vm._v(" "), _c("p", [_vm._v("Gerir as próprias reservas")])]), _vm._v(" "), _c("div", {
-      directives: [{
-        name: "case",
-        rawName: "v-case",
-        value: "FORMANDO",
-        expression: "'FORMANDO'"
-      }]
-    }, [_c("p", [_vm._v("Visualizar equipamentos")])])]), _vm._v(" "), _c("td")]);
+      return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
+    }), 0), _vm._v(" "), _c("td", _vm._l(_vm.permissions[role.id], function (permission, index) {
+      return _c("p", {
+        key: index
+      }, [_vm._v(_vm._s(permission))]);
+    }), 0), _vm._v(" "), _c("td")]);
   }), 0)])])])])]) : _vm._e(), _vm._v(" "), !_vm.$gate.isAdmin() && !_vm.$gate.isGestor() ? _c("div", [_c("not-found")], 1) : _vm._e(), _vm._v(" "), _c("modal-comp", {
     attrs: {
       title: "Gerir Permissão"
@@ -87783,8 +87758,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

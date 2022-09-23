@@ -4277,11 +4277,11 @@ var staticRenderFns = [function () {
     staticClass: "mainbox"
   }, [_c("div", {
     staticClass: "err"
-  }, [_vm._v("\n                4\n            ")]), _vm._v(" "), _c("i", {
-    staticClass: "far fa-question-circle fa-spin"
-  }), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                    4\n                ")]), _vm._v(" "), _c("div", {
+    staticClass: "err3"
+  }, [_vm._v("\n                    0\n                ")]), _vm._v(" "), _c("div", {
     staticClass: "err2"
-  }, [_vm._v("\n                4\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                    4\n                ")]), _vm._v(" "), _c("div", {
     staticClass: "msg"
   }, [_c("h2", [_vm._v("Oops... A página que procura não foi encontrada!")]), _vm._v(" "), _c("p", [_vm._v("Clique "), _c("a", {
     staticClass: "not-found-link",

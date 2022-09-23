@@ -83,6 +83,9 @@ let routes = [
     { path: '/equipmentdetails',
         component: require('./components/Products/ProductDetail.vue').default },
 
+    { path: '/error',
+        component: require('./components/Error500.vue').default },
+
 ]
 
 Vue.component(

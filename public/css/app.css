@@ -53052,7 +53052,7 @@ a.text-muted:hover {
 }
 
 body {
-  overflow: hidden;
+  overflow: auto;
 }
 
 footer {

@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Utilizadores</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" @click="newModal">
+                            <button class="btn btn-success" @click="newModal">>
                                 Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>
@@ -30,8 +30,8 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.phone_number }}</td>
-                                <td>{{ user.role.name }}</td>
-                                <td>{{ user.cost.designation }}</td>
+                                <td>{{ user.role?.name }}</td>
+                                <td>{{ user.cost?.designation }}</td>
                                 <td>
                                     <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
@@ -66,6 +66,7 @@ import formComp from "./widgets/formComp";
 import {deleteMixin} from "../mixins/deleteMixin";
 
 export default {
+    name: 'Users',
     data(){
         return{
             users: {},
@@ -88,11 +89,11 @@ export default {
             let query = this.$parent.search;
             axios
                 .get('api/findUser?q='+ query)
-                .then((data) => {
-                    this.users = data.data
+                .then(response => {
+                    this.users = response.data
                 })
-                .catch(() => {
-
+                .catch((error) => {
+                    console.log(error)
                 })
         })
         this.loadUsers();
@@ -104,6 +105,12 @@ export default {
     components: {
         ModalComp,
         formComp,
+    },
+    computed: {
+        userList(){
+            return this.users.data
+
+        }
     },
     methods:{
         getResults(page = 1){

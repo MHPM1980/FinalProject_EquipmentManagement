@@ -4322,13 +4322,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
     staticClass: "container pt-3"
   }, [_c("div", {
@@ -4339,7 +4332,37 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_vm._v("Detalhes de Equipamento")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "text-center",
+    staticStyle: {
+      width: "100%",
+      height: "330px",
+      border: "solid black 1px"
+    }
+  }, [_vm._v("\n                    IMPLEMENTAR CALENDÁRIO\n                ")]), _vm._v(" "), _c("div", {
+    staticClass: "text-right pt-3"
+  }, [_c("button", {
+    staticClass: "btn btn-danger",
+    on: {
+      click: function click($event) {
+        return _vm.$router.push("equipments");
+      }
+    }
+  }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary",
+    on: {
+      click: function click($event) {
+        return _vm.$router.push("reservations");
+      }
+    }
+  }, [_vm._v("Reservar")])])])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-12 col-lg-6"
@@ -4428,7 +4451,7 @@ var staticRenderFns = [function () {
       type: "text",
       disabled: ""
     }
-  })])])])])])])]);
+  })])])]);
 }];
 render._withStripped = true;
 
@@ -87758,8 +87781,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121088\EquipmentManagement - ProjetoFinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

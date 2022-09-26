@@ -27,6 +27,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="text-center" style="width: 100%; height: 330px; border: solid black 1px;">
+                        IMPLEMENTAR CALENDÁRIO
+                    </div>
+                    <div class="text-right pt-3">
+                        <button class="btn btn-danger" @click="$router.push('equipments')">Fechar</button>
+                        <button class="btn btn-primary" @click="$router.push('reservations')">Reservar</button>
+                    </div>
                 </div>
             </div>
         </div>

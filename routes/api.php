@@ -26,4 +26,5 @@ Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
 Route::apiResource('categories','CategoryController');
 Route::apiResource('products','ProductController');
+Route::apiResource('reservations','ReservationController');
 Route::get('profile','UserController@profile');

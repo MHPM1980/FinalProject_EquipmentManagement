@@ -20,8 +20,12 @@ class Reservation extends Model
         'returned',
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasOne(Product::class);
+    }
+    public function user()
+    {
+        return $this->hasOne(User::class);
     }
 }

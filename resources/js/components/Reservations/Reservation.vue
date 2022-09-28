@@ -49,13 +49,18 @@
 
 <script>
     export default {
+        data(){
+            return{
+                reservations: {},
+            }
+        },
         methods:{
-            loadRoles(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
+            loadReservations(){
+
                     axios
-                        .get("api/roles/")
-                        .then(({ data }) => (this.roles = data.data))
-                };
+                        .get("api/reservations/")
+                        .then(({ data }) => (this.reservations = data.data))
+
             },
         }
     }

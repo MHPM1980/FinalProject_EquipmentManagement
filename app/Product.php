@@ -27,6 +27,7 @@ class Product extends Model
         'serial_number',
         'category_id',
         'warehouse_id',
+        'status',
     ];
 
     public function reservations()

@@ -87,6 +87,8 @@ let routes = [
 
     { path: '/error',
         component: require('./components/Error500.vue').default },
+    { path: '/reservations',
+        component: require('./components/Reservations/Reservation').default },
 
 ]
 

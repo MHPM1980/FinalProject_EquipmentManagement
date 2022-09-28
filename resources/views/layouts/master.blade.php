@@ -87,7 +87,7 @@
                     </li>
                     @endcannot
                     <li class="nav-item">
-                        <router-link to="#" class="nav-link">
+                        <router-link to="/equipmentsView" class="nav-link">
                             <i class="fas fa-solid fa-screwdriver-wrench nav-icon"></i>
                             <p>Equipamentos</p>
                         </router-link>

@@ -2563,6 +2563,9 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref2.data;
         return _this2.entities = data.data;
       });
+    },
+    hideModal: function hideModal() {
+      $('#addNew').modal('hide');
     }
   }
 });
@@ -5112,9 +5115,7 @@ var render = function render() {
   }, [_c("button", {
     staticClass: "btn btn-danger",
     on: {
-      click: function click($event) {
-        return _vm.$router.push("equipments");
-      }
+      click: _vm.hideModal
     }
   }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",

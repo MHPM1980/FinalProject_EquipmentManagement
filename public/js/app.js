@@ -5186,7 +5186,11 @@ var render = function render() {
       staticClass: "align-middle"
     }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.status))]), _vm._v(" "), _c("td", {
+    }, [product.status == 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_c("a", {
       staticClass: "btn-primary btn",
@@ -5727,7 +5731,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h3", {
     staticClass: "card-title"
-  }, [_vm._v("Gestão de Equipamentos")])]);
+  }, [_vm._v("Listagem de Reservas")])]);
 }];
 render._withStripped = true;
 
@@ -88557,8 +88561,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

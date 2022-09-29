@@ -36,7 +36,14 @@
                                 <td class="align-middle">{{ product.category.name }}</td>
                                 <td class="align-middle text-center">{{ product.warehouse.entity_id }}</td>
                                 <td class="align-middle ">{{ product.warehouse.name }}</td>
-                                <td class="align-middle text-center">{{ product.status }}</td>
+                                <td class="align-middle text-center">
+                                    <div v-if="product.status == 1">
+                                        <i  class="fa-solid fa-circle fa-lg fa-green"></i>
+                                    </div>
+                                    <div v-else>
+                                        <i  class="fa-solid fa-circle fa-lg fa-red"></i>
+                                    </div>
+                                </td>
                                 <td class="align-middle text-center">
                                     <a class="btn-primary btn" @click="listEquipment(product)">Detalhe</a>
 

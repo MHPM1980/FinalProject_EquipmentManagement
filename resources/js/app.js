@@ -78,10 +78,12 @@ let routes = [
         component: require('./components/Categories/Categories.vue').default },
     { path: '/equipments',
         component: require('./components/Products/Products.vue').default },
+    { path: '/equipmentsView',
+        component: require('./components/ProductsView/ProductsView.vue').default },
     { path: '/developer',
         component: require('./components/Developer.vue').default },
     { path: '/equipmentdetails',
-        component: require('./components/Products/ProductDetail.vue').default },
+        component: require('./components/ProductsView/ProductDetail.vue').default },
 
     { path: '/error',
         component: require('./components/Error500.vue').default },

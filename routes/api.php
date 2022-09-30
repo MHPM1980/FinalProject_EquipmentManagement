@@ -33,4 +33,6 @@ Route::apiResource('categories','CategoryController');
 Route::get('findCategory','CategoryController@search');
 
 Route::apiResource('products','ProductController');
+Route::get('findProduct','ProductController@search');
+
 Route::get('profile','UserController@profile');

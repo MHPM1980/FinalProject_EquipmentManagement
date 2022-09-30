@@ -22,6 +22,21 @@ class ProductController extends Controller
         return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(5);
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $products = Product::with(['category','warehouse'])->where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                        ->orWhere('description','LIKE',"%$search%")
+                        ->orWhere('serial_number','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $products;}
+        else {
+            return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(15);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

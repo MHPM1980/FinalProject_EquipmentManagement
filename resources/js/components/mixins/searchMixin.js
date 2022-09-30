@@ -51,6 +51,18 @@ export const searchMixin={
                     .catch((error) => {
                         console.log(error)
                     })
+            }),
+
+            Fire.$on('searchProduct',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findProduct?q='+ query)
+                    .then(response => {
+                        this.products = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
     },
 }

@@ -27,6 +27,18 @@ export const searchMixin={
                     .catch((error) => {
                         console.log(error)
                     })
+            }),
+
+            Fire.$on('searchCost',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findCost?q='+ query)
+                    .then(response => {
+                        this.costs = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
     },
 }

@@ -22,6 +22,20 @@ class CategoryController extends Controller
         return Category::with(['products'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $categories = Category::with(['products'])->where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $categories;}
+        else {
+            return Category::with(['products'])->orderBy('id','asc')->paginate(15);
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.

@@ -20,10 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('users','UserController');
 Route::get('findUser','UserController@search');
+
 Route::apiResource('entities','EntityController');
 Route::apiResource('warehouses','WarehouseController');
 Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
+
 Route::apiResource('categories','CategoryController');
+Route::get('findCategory','CategoryController@search');
+
 Route::apiResource('products','ProductController');
 Route::get('profile','UserController@profile');

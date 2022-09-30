@@ -158,7 +158,11 @@ const app = new Vue({
     },
     methods:{
         searchit(){
-            Fire.$emit('searching');
+            if(this.$route.path == '/users'){
+                Fire.$emit('searchUser');
+            } else if(this.$route.path == '/categories'){
+                Fire.$emit('searchCategory');
+            }
         }
     }
 });

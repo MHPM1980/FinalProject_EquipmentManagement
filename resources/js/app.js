@@ -61,7 +61,7 @@ window.toast=Swal
 //VueRoutes implementation
 let routes = [
     { path: '/dashboard',
-        component: require('./components/Dashboard.vue').default},
+        component: require('./components/Dashboards/Dashboard.vue').default},
     { path: '/profile',
         component: require('./components/Profile/Profile.vue').default },
     { path: '/users',

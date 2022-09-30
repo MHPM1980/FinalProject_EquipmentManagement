@@ -164,6 +164,8 @@ const app = new Vue({
                 Fire.$emit('searchCategory');
             } else if(this.$route.path == '/costs') {
                 Fire.$emit('searchCost');
+            } else if(this.$route.path == '/entities') {
+                Fire.$emit('searchEntity');
             }
         }
     }

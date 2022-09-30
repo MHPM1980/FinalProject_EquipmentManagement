@@ -2194,6 +2194,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompEntities_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompEntities.vue */ "./resources/js/components/Entities/widgets/formCompEntities.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/searchMixin */ "./resources/js/components/mixins/searchMixin.js");
+
 
 
 
@@ -2211,7 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: false
     };
   },
-  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"], _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__["searchMixin"]],
   created: function created() {
     var _this = this;
 
@@ -86235,6 +86237,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
         Fire.$emit('searchCategory');
       } else if (this.$route.path == '/costs') {
         Fire.$emit('searchCost');
+      } else if (this.$route.path == '/entities') {
+        Fire.$emit('searchEntity');
       }
     }
   }
@@ -88207,6 +88211,13 @@ var searchMixin = {
       var query = _this.$parent.search;
       axios.get('api/findCost?q=' + query).then(function (response) {
         _this.costs = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }), Fire.$on('searchEntity', function () {
+      var query = _this.$parent.search;
+      axios.get('api/findEntity?q=' + query).then(function (response) {
+        _this.entities = response.data;
       })["catch"](function (error) {
         console.log(error);
       });

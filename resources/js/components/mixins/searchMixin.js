@@ -39,6 +39,18 @@ export const searchMixin={
                     .catch((error) => {
                         console.log(error)
                     })
+            }),
+
+            Fire.$on('searchEntity',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findEntity?q='+ query)
+                    .then(response => {
+                        this.entities = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
     },
 }

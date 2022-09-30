@@ -22,6 +22,8 @@ Route::apiResource('users','UserController');
 Route::get('findUser','UserController@search');
 
 Route::apiResource('entities','EntityController');
+Route::get('findEntity','EntityController@search');
+
 Route::apiResource('warehouses','WarehouseController');
 Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');

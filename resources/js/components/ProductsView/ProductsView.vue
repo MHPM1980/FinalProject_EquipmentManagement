@@ -68,12 +68,13 @@
                     <div class="card-footer">
                         <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
+
                 </div>
             </div>
         </div>
-        <div v-if="$gate.isFormando()">
-
-        </div>
+        <modal-product title="Reservar Equipamento">
+            <product-detail :edit-form="form"></product-detail>
+        </modal-product>
     </div>
 
 </template>

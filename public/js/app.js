@@ -2043,6 +2043,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompCosts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompCosts */ "./resources/js/components/Costs/widgets/formCompCosts.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/searchMixin */ "./resources/js/components/mixins/searchMixin.js");
+
 
 
 
@@ -2059,7 +2061,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: false
     };
   },
-  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"], _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__["searchMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2206,6 +2208,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompEntities_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompEntities.vue */ "./resources/js/components/Entities/widgets/formCompEntities.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/searchMixin */ "./resources/js/components/mixins/searchMixin.js");
+
 
 
 
@@ -2223,7 +2227,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: false
     };
   },
-  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"], _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__["searchMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2370,6 +2374,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_modalComp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/modalComp */ "./resources/js/components/widgets/modalComp.vue");
 /* harmony import */ var _widgets_formCompProducts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/formCompProducts */ "./resources/js/components/Products/widgets/formCompProducts.vue");
 /* harmony import */ var _mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/deleteMixin */ "./resources/js/components/mixins/deleteMixin.js");
+/* harmony import */ var _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/searchMixin */ "./resources/js/components/mixins/searchMixin.js");
+
 
 
 
@@ -2390,7 +2396,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: false
     };
   },
-  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"]],
+  mixins: [_mixins_deleteMixin__WEBPACK_IMPORTED_MODULE_2__["deleteMixin"], _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_3__["searchMixin"]],
   created: function created() {
     var _this = this;
 
@@ -2599,6 +2605,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProductDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductDetail */ "./resources/js/components/ProductsView/ProductDetail.vue");
 /* harmony import */ var _modalProduct__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalProduct */ "./resources/js/components/ProductsView/modalProduct.vue");
+/* harmony import */ var _mixins_searchMixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/searchMixin */ "./resources/js/components/mixins/searchMixin.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2616,6 +2624,7 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
+  mixins: [_mixins_searchMixin__WEBPACK_IMPORTED_MODULE_2__["searchMixin"]],
   created: function created() {
     var _this = this;
 
@@ -86326,6 +86335,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
         Fire.$emit('searchUser');
       } else if (this.$route.path == '/categories') {
         Fire.$emit('searchCategory');
+      } else if (this.$route.path == '/costs') {
+        Fire.$emit('searchCost');
+      } else if (this.$route.path == '/entities') {
+        Fire.$emit('searchEntity');
+      } else if (this.$route.path == '/equipments') {
+        Fire.$emit('searchProduct');
+      } else if (this.$route.path == '/equipmentsView') {
+        Fire.$emit('searchProduct');
       }
     }
   }
@@ -88453,6 +88470,27 @@ var searchMixin = {
       })["catch"](function (error) {
         console.log(error);
       });
+    }), Fire.$on('searchCost', function () {
+      var query = _this.$parent.search;
+      axios.get('api/findCost?q=' + query).then(function (response) {
+        _this.costs = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }), Fire.$on('searchEntity', function () {
+      var query = _this.$parent.search;
+      axios.get('api/findEntity?q=' + query).then(function (response) {
+        _this.entities = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }), Fire.$on('searchProduct', function () {
+      var query = _this.$parent.search;
+      axios.get('api/findProduct?q=' + query).then(function (response) {
+        _this.products = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     });
   }
 };
@@ -88853,8 +88891,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> feature/SearchBar
 
 
 /***/ })

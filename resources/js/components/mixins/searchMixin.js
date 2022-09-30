@@ -27,6 +27,42 @@ export const searchMixin={
                     .catch((error) => {
                         console.log(error)
                     })
+            }),
+
+            Fire.$on('searchCost',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findCost?q='+ query)
+                    .then(response => {
+                        this.costs = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }),
+
+            Fire.$on('searchEntity',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findEntity?q='+ query)
+                    .then(response => {
+                        this.entities = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }),
+
+            Fire.$on('searchProduct',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findProduct?q='+ query)
+                    .then(response => {
+                        this.products = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
     },
 }

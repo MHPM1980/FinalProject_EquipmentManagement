@@ -22,6 +22,20 @@ class EntityController extends Controller
         return Entity::with(['warehouses'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $entities = Entity::with(['warehouses'])->where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $entities;}
+        else {
+            return Entity::with(['warehouses'])->orderBy('id','asc')->paginate(15);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *

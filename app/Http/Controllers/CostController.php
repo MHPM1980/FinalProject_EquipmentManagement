@@ -22,6 +22,20 @@ class CostController extends Controller
         return Cost::with(['users'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $costs = Cost::with(['users'])->where(function($query) use ($search){
+                $query->where('designation','LIKE',"%$search%")
+                        ->orWhere('description','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $costs;}
+        else {
+            return Cost::with(['users'])->orderBy('id','asc')->paginate(15);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

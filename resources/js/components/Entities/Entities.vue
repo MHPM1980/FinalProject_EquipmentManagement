@@ -66,6 +66,7 @@
     import ModalComp from "../widgets/modalComp";
     import formCompEntities from "./widgets/formCompEntities.vue";
     import {deleteMixin} from "../mixins/deleteMixin";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -81,7 +82,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin],
+        mixins:[deleteMixin, searchMixin],
         created(){
             this.loadEntities();
             //custom Event to reload DOM

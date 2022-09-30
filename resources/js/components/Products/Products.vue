@@ -68,6 +68,7 @@
     import ModalComp from "../widgets/modalComp";
     import formCompProducts from "./widgets/formCompProducts";
     import {deleteMixin} from "../mixins/deleteMixin";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -86,7 +87,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin],
+        mixins:[deleteMixin,searchMixin],
         created(){
             this.loadProducts();
             //custom Event to reload DOM

@@ -81,6 +81,7 @@
 <script>
     import productDetail from "./ProductDetail";
     import modalProduct from "./modalProduct";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -97,6 +98,7 @@
                 }),
             }
         },
+        mixins:[searchMixin],
         created(){
             this.loadProducts();
             //custom Event to reload DOM

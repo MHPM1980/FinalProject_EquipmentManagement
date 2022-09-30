@@ -22,12 +22,17 @@ Route::apiResource('users','UserController');
 Route::get('findUser','UserController@search');
 
 Route::apiResource('entities','EntityController');
+Route::get('findEntity','EntityController@search');
+
 Route::apiResource('warehouses','WarehouseController');
 Route::apiResource('roles','RoleController');
 Route::apiResource('costs','CostController');
+Route::get('findCost','CostController@search');
 
 Route::apiResource('categories','CategoryController');
 Route::get('findCategory','CategoryController@search');
 
 Route::apiResource('products','ProductController');
+Route::get('findProduct','ProductController@search');
+
 Route::get('profile','UserController@profile');

@@ -2174,6 +2174,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get("api/profile").then(function (_ref) {
+      var data = _ref.data;
+      return _this.profile = data;
+    });
+  },
+  data: function data() {
+    return {
+      profile: {}
+    };
   }
 });
 
@@ -4064,8 +4077,111 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "text-center"
-  }, [_c("h1", [_vm._v(" ADMIN DASHBOARD")])]);
+    staticClass: "text-center pt-5 align-middle"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6 col-12 px-3 py-1"
+  }, [_c("div", {
+    staticClass: "small-box bg-info"
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h1", {
+    staticClass: "col-6"
+  }, [_vm._v("150")]), _vm._v(" "), _c("p", {
+    staticClass: "col-6"
+  }, [_vm._v("Utilizadores")])]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mais info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6 col-12 px-3 py-1"
+  }, [_c("div", {
+    staticClass: "small-box bg-success"
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h3", {
+    staticClass: "col-6"
+  }, [_vm._v("53")]), _vm._v(" "), _c("p", {
+    staticClass: "col-6"
+  }, [_vm._v("Bounce Rate")])]), _vm._v(" "), _c("div", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "ion ion-stats-bars"
+  })]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("More info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6 col-12 px-3 py-1"
+  }, [_c("div", {
+    staticClass: "small-box bg-warning"
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h3", {
+    staticClass: "col-6"
+  }, [_vm._v("44")]), _vm._v(" "), _c("p", {
+    staticClass: "col-6"
+  }, [_vm._v("User Registrations")])]), _vm._v(" "), _c("div", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "ion ion-person-add"
+  })]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("More info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6 col-12 px-3 py-1"
+  }, [_c("div", {
+    staticClass: "small-box bg-danger"
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h3", {
+    staticClass: "col-6"
+  }, [_vm._v("65")]), _vm._v(" "), _c("p", {
+    staticClass: "col-6"
+  }, [_vm._v("Unique Visitors")])]), _vm._v(" "), _c("div", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "ion ion-pie-graph"
+  })]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("More info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 px-3 py-1"
+  }, [_c("div", {
+    staticClass: "small-box bg-danger"
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h3", {
+    staticClass: "col-6"
+  }, [_vm._v("65")]), _vm._v(" "), _c("p", {
+    staticClass: "col-6"
+  }, [_vm._v("Unique Visitors")])]), _vm._v(" "), _c("div", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "ion ion-pie-graph"
+  })]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("More info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])])])]);
 }];
 render._withStripped = true;
 
@@ -4090,10 +4206,12 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "row justify-content-center text-center"
+    staticClass: "row text-center d-flex align-items-center justify-content-center"
   }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
+    staticClass: "col-md-12 pt-5"
+  }, [_c("div", [_c("h1", {
+    staticClass: "text-light"
+  }, [_vm._v("Bem-Vindo, " + _vm._s(this.profile.name) + " !")])]), _vm._v(" "), _vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
 };
 
 var staticRenderFns = [];
@@ -88891,13 +89009,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> feature/SearchBar
 
 
 /***/ })

@@ -64,6 +64,7 @@ export default {
         this.form=this.editForm;
         this.mode=this.editMode;
     },
+
     data () {
         return {
             link:'products',
@@ -103,7 +104,6 @@ export default {
             let file= e.target.files[0];
             //console.log(file);
             let reader= new FileReader();
-
             if(file['size'] < 211117755){
                 reader.onloadend = (file) => {
                     //console.log('RESULT',reader.result)

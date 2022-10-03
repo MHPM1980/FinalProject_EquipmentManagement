@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('serial_number');
-            $table->string('image');
+            $table->string('image')->default("default.png");
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();

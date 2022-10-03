@@ -20,7 +20,7 @@
             <has-error :form="form" field="email"></has-error>
         </div>
         <div class="modal-footer pb-0">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" @click.prevent="updateInfo">
             Atualizar
         </button>
         </div>
@@ -28,10 +28,13 @@
 </template>
 
 <script>
+import {updateProfileMixin} from "../../mixins/updateProfileMixin";
+
 export default {
     props:{
         editForm: Object,
     },
+    mixins:[updateProfileMixin],
     mounted() {
         this.form=this.editForm;
     },

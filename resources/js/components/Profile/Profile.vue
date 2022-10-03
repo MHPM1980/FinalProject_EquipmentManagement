@@ -90,6 +90,9 @@ export default {
     created() {
         axios.get("api/profile")
             .then(({ data }) => (this.form.fill(data)));
+    },
+    methods:{
+
     }
 }
 </script>

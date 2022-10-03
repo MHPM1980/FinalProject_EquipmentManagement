@@ -36,3 +36,4 @@ Route::apiResource('products','ProductController');
 Route::get('findProduct','ProductController@search');
 
 Route::get('profile','UserController@profile');
+Route::put('profile','UserController@updateProfile');

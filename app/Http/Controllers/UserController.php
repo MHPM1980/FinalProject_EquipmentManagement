@@ -70,15 +70,29 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function profile()
     {
         return auth('api')->user();
+    }
+
+    public function updateProfile(Request $request){
+        $user = auth('api')->user();
+
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+            'phone_number' => 'required|integer|digits:9',
+            'password' => 'sometimes|string|min:6',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return['message'=>"Success"];
     }
 
     /**

@@ -2,26 +2,37 @@
     <form>
         <div class="form-group">
             <label for="inputPasswordNew">Nova Password:</label>
-            <input type="password" class="form-control"
-                   id="inputPasswordNew" placeholder="Nova Password">
-        </div>
-        <div class="form-group">
-            <label for="inputPasswordNew2">Confirmar Password:</label>
-            <input type="password" class="form-control"
-                   id="inputPasswordNew2" placeholder="Confirmar Nova Password">
+            <input v-model="form.password" type="password" class="form-control"
+                   id="inputPasswordNew" placeholder="Nova Password" :class="{ 'is-invalid': form.errors.has('password') }">
+            <has-error :form="form" field="password"></has-error>
         </div>
         <div class="modal-footer pb-0">
-            <button type="submit" class="btn btn-primary">Atualizar</button>
+            <button type="submit" class="btn btn-primary" @click.prevent="updateInfo">Atualizar</button>
         </div>
     </form>
 </template>
 
 <script>
+import {updateProfileMixin} from "../../mixins/updateProfileMixin";
+
 export default {
-    data() {
-        return {}
+    props:{
+        editForm: Object,
     },
-    components: {},
+    data() {
+        return {
+            form: new Form({
+                password: ''
+            }),
+        }
+    },
+    mounted() {
+        this.form=this.editForm;
+    },
+    mixins:[updateProfileMixin],
+    components: {
+
+    },
 
 }
 </script>

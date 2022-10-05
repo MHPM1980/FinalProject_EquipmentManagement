@@ -2558,6 +2558,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment_moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment/moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment_moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment_moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mixins_createReservationMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/createReservationMixin */ "./resources/js/components/mixins/createReservationMixin.js");
+
 
 var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2572,45 +2574,58 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
       categories: {},
       warehouses: {},
       entities: {},
+      profile: {},
       range: {
         start: new Date(),
         end: new Date()
       },
       form: new Form({
+        id: '',
         image: '',
         name: '',
         description: '',
         serial_number: '',
+        entity_id: '',
+        warehouse_id: '',
+        user_id: '',
+        registry_date: '',
+        start_date: '',
+        end_date: '',
         category: {},
         warehouse: {}
       })
     };
   },
+  mixins: [_mixins_createReservationMixin__WEBPACK_IMPORTED_MODULE_1__["createReservationMixin"]],
   created: function created() {
+    var _this = this;
+
     this.loadWarehouses();
     this.loadEntities();
+    axios.get("api/profile").then(function (_ref) {
+      var data = _ref.data;
+      return _this.profile = data;
+    });
   },
   methods: {
     loadWarehouses: function loadWarehouses() {
-      var _this = this;
+      var _this2 = this;
 
-      axios.get("api/warehouses/").then(function (_ref) {
-        var data = _ref.data;
-        return _this.warehouses = data.data;
+      axios.get("api/warehouses/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.warehouses = data.data;
       });
     },
     loadEntities: function loadEntities() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get("api/entities/").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this2.entities = data.data;
+      axios.get("api/entities/").then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.entities = data.data;
       });
     },
     hideModal: function hideModal() {
       $('#addNew').modal('hide');
-      console.log(moment_moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.start).format('DD/MM/YYYY'));
-      console.log(moment_moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.end).format('DD/MM/YYYY'));
     }
   }
 });
@@ -5352,15 +5367,116 @@ var render = function render() {
         _vm.$set(_vm.form.warehouse, "name", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h5", [_vm._v("Selecionar dados para reserva")]), _vm._v(" "), _c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.makeReservation.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.entity_id,
+      expression: "form.entity_id"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("entity_id")
+    },
+    attrs: {
+      name: "entity_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a entidade destino")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
+    return _c("option", {
+      attrs: {
+        name: "entity_id"
+      },
+      domProps: {
+        value: entity.id
+      }
+    }, [_vm._v("\n                                " + _vm._s(entity.name) + "\n                            ")]);
+  })], 2), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "entity_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.warehouse_id,
+      expression: "form.warehouse_id"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("warehouse_id")
+    },
+    attrs: {
+      name: "warehouse_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "warehouse_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha o armazém destino")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
+    return _c("option", {
+      attrs: {
+        name: "warehouse_id"
+      },
+      domProps: {
+        value: warehouse.id
+      }
+    }, [_vm._v("\n                                " + _vm._s(warehouse.name) + "\n                            ")]);
+  })], 2), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "entity_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "text-center",
     staticStyle: {
       width: "100%",
-      height: "330px",
-      border: "solid black 1px"
+      height: "330px"
     }
   }, [_c("v-date-picker", {
     attrs: {
+      "min-date": new Date(),
       "is-range": "",
       "is-expanded": ""
     },
@@ -5375,17 +5491,19 @@ var render = function render() {
     staticClass: "text-right pt-3"
   }, [_c("button", {
     staticClass: "btn btn-danger",
-    on: {
-      click: _vm.hideModal
+    attrs: {
+      type: "button",
+      "data-dismiss": "modal"
     }
   }, [_vm._v("Fechar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
+    attrs: {
+      type: "submit"
+    },
     on: {
-      click: function click($event) {
-        return _vm.$router.push("reservations");
-      }
+      click: _vm.picker
     }
-  }, [_vm._v("Reservar")])])])])])]);
+  }, [_vm._v("Reservar")])])])])])])]);
 };
 
 var staticRenderFns = [];
@@ -88573,6 +88691,57 @@ var createMixin = {
       })["catch"](function () {
         _this.$Progress.fail();
       });
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins/createReservationMixin.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/mixins/createReservationMixin.js ***!
+  \******************************************************************/
+/*! exports provided: createReservationMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReservationMixin", function() { return createReservationMixin; });
+/* harmony import */ var moment_moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment/moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment_moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment_moment__WEBPACK_IMPORTED_MODULE_0__);
+
+var createReservationMixin = {
+  data: function data() {
+    return {};
+  },
+  methods: {
+    makeReservation: function makeReservation() {
+      var _this = this;
+
+      this.$Progress.start();
+      this.form.post("api/reservations").then(function () {
+        //custom Event to reload DOM
+        Fire.$emit('AfterCreate'); //Clear form
+
+        _this.form.reset();
+
+        $('#addNew').modal('hide'); //Success toast
+
+        toast.fire({
+          icon: 'success',
+          title: 'Registo criado com sucesso!'
+        });
+
+        _this.$Progress.finish();
+      })["catch"](function () {
+        _this.$Progress.fail();
+      });
+    },
+    picker: function picker() {
+      this.form.user_id = this.profile.id;
+      this.form.registry_date = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()().format('YYYY-MM-DD');
+      this.form.start_date = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.start).format('YYYY-MM-DD');
+      this.form.end_date = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.end).format('YYYY-MM-DD');
     }
   }
 };

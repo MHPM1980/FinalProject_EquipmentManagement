@@ -25,7 +25,9 @@ Route::apiResource('entities','EntityController');
 Route::get('findEntity','EntityController@search');
 
 Route::apiResource('warehouses','WarehouseController');
+
 Route::apiResource('roles','RoleController');
+
 Route::apiResource('costs','CostController');
 Route::get('findCost','CostController@search');
 
@@ -34,6 +36,8 @@ Route::get('findCategory','CategoryController@search');
 
 Route::apiResource('products','ProductController');
 Route::get('findProduct','ProductController@search');
+
+Route::apiResource('reservations','ReservationController');
 
 Route::get('profile','UserController@profile');
 Route::put('profile','UserController@updateProfile');

@@ -40,7 +40,26 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'user_id' => 'required|integer',
+            'warehouse_id' => 'required|integer',
+            'registry_date' => 'required|date',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
+
+        try{
+            return Reservation::create([
+                'user_id' => $request['user_id'],
+                'warehouse_id' => $request['warehouse_id'],
+                'registry_date' => $request['registry_date'],
+                'start_date' => $request['start_date'],
+                'end_date' => $request['end_date'],
+            ]);
+
+        } catch (\Exception $exception){
+            return response()->json(['error'=>$exception],500);
+        }
     }
 
     /**

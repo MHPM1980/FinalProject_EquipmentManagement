@@ -125,12 +125,17 @@ Vue.filter('upText',function (text){
     return text.charAt(0).toUpperCase()+text.slice(1);
 })
 
-// Format date to (16/08/2022)
-Vue.filter('myDate',function(date){
-    return moment(date).format('L');
-})
 
 window.Fire = new Vue();
+
+
+// V-Calendar implementation
+import VCalendar from 'v-calendar';
+Vue.use(VCalendar, {
+    //componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+        // ...other defaults
+});
+
 
 /**
  * The following block of code may be used to automatically register your

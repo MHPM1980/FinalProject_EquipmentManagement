@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="text-center" style="width: 100%; height: 330px; border: solid black 1px;">
-                        IMPLEMENTAR CALENDÁRIO
+                        <v-date-picker v-model="range" is-range is-expanded/>
                     </div>
                     <div class="text-right pt-3">
                         <button class="btn btn-danger" @click="hideModal">Fechar</button>
@@ -49,7 +49,8 @@
 </template>
 
 <script>
-
+import moment from "moment/moment";
+let m= moment();
 
     export default {
         props:{
@@ -63,6 +64,10 @@
                 categories: {},
                 warehouses: {},
                 entities:{},
+                range: {
+                    start: new Date(),
+                    end: new Date()
+                },
                 form: new Form({
                     image:'',
                     name: '',
@@ -93,6 +98,8 @@
             },
             hideModal(){
                 $('#addNew').modal('hide');
+                console.log(moment(this.range.start).format('DD/MM/YYYY'))
+                console.log(moment(this.range.end).format('DD/MM/YYYY'))
             }
         }
     }

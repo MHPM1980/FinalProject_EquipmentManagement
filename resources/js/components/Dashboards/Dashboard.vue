@@ -30,9 +30,6 @@
 
     export default {
         components: {ProductsView,FormadorDashboard, GestorDashboard, AdminDashboard},
-        mounted() {
-            console.log('Component mounted.')
-        },
         created() {
             axios.get("api/profile")
                 .then(({ data }) => (this.profile = data));

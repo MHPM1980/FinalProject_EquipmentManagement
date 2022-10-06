@@ -38,6 +38,7 @@ Route::apiResource('products','ProductController');
 Route::get('findProduct','ProductController@search');
 
 Route::apiResource('reservations','ReservationController');
+Route::get('findReservations','ReservationController@countReservations');
 
 Route::get('profile','UserController@profile');
 Route::put('profile','UserController@updateProfile');

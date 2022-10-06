@@ -22,6 +22,12 @@ class ReservationController extends Controller
         return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function countReservations(Request $request){
+        return response()->json(Reservation::where([
+            ["delivered", "LIKE", "%{$request->delivered}%"],
+        ]));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

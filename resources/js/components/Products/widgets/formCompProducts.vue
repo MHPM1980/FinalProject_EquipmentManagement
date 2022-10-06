@@ -35,8 +35,18 @@
         </div>
 
         <div class="form-group">
+            <select class="form-control" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
+                <option disabled value="">Escolha a Entidade</option>
+                <option name="entity_id" v-for="entity in entities" v-bind:value="entity.id">
+                    {{entity.name}}
+                </option>
+            </select>
+            <has-error :form="form" field="entity_id"></has-error>
+        </div>
+
+        <div class="form-group">
             <select class="form-control" name="warehouse_id" v-model="form.warehouse_id" :class="{ 'is-invalid': form.errors.has('warehouse_id') }">
-                <option disabled value="">Escolha o armazém</option>
+                <option disabled value="">Escolha o Armazém</option>
                 <option name="warehouse_id" v-for="warehouse in warehouses" v-bind:value="warehouse.id">
                     {{warehouse.name}}
                 </option>
@@ -70,6 +80,7 @@ export default {
             mode:this.mode,
             products: {},
             categories: {},
+            entities: {},
             warehouses: {},
             form: new Form({
                 image:'',
@@ -77,6 +88,7 @@ export default {
                 description: '',
                 serial_number:'',
                 category_id: '',
+                entity_id: '',
                 warehouse_id:''
             })
         }
@@ -84,6 +96,7 @@ export default {
     created(){
         this.loadCategories();
         this.loadWarehouses();
+        this.loadEntities();
     },
     mixins:[createMixin, updateMixin],
     methods:{
@@ -91,6 +104,12 @@ export default {
             axios
                 .get("api/categories/")
                 .then(({ data }) => (this.categories = data.data))
+            ;
+        },
+        loadEntities() {
+            axios
+                .get("api/entities/")
+                .then(({data}) => (this.entities = data.data))
             ;
         },
         loadWarehouses(){

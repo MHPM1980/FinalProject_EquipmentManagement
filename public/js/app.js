@@ -2529,6 +2529,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: this.mode,
       products: {},
       categories: {},
+      entities: {},
       warehouses: {},
       form: new Form({
         image: '',
@@ -2536,6 +2537,7 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         serial_number: '',
         category_id: '',
+        entity_id: '',
         warehouse_id: ''
       })
     };
@@ -2543,6 +2545,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.loadCategories();
     this.loadWarehouses();
+    this.loadEntities();
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
@@ -2554,16 +2557,24 @@ __webpack_require__.r(__webpack_exports__);
         return _this.categories = data.data;
       });
     },
-    loadWarehouses: function loadWarehouses() {
+    loadEntities: function loadEntities() {
       var _this2 = this;
 
-      axios.get("api/warehouses/").then(function (_ref2) {
+      axios.get("api/entities/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this2.warehouses = data.data;
+        return _this2.entities = data.data;
+      });
+    },
+    loadWarehouses: function loadWarehouses() {
+      var _this3 = this;
+
+      axios.get("api/warehouses/").then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.warehouses = data.data;
       });
     },
     insertImage: function insertImage(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var file = e.target.files[0]; //console.log(file);
 
@@ -2572,7 +2583,7 @@ __webpack_require__.r(__webpack_exports__);
       if (file['size'] < 211117755) {
         reader.onloadend = function (file) {
           //console.log('RESULT',reader.result)
-          _this3.form.image = reader.result;
+          _this4.form.image = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -5095,6 +5106,53 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
+      value: _vm.form.entity_id,
+      expression: "form.entity_id"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("entity_id")
+    },
+    attrs: {
+      name: "entity_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a Entidade")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
+    return _c("option", {
+      attrs: {
+        name: "entity_id"
+      },
+      domProps: {
+        value: entity.id
+      }
+    }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
+  })], 2), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "entity_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
       value: _vm.form.warehouse_id,
       expression: "form.warehouse_id"
     }],
@@ -5122,7 +5180,7 @@ var render = function render() {
       disabled: "",
       value: ""
     }
-  }, [_vm._v("Escolha o armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
+  }, [_vm._v("Escolha o Armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
     return _c("option", {
       attrs: {
         name: "warehouse_id"
@@ -89387,8 +89445,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

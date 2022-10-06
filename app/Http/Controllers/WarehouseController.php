@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Warehouse;
+use App\Entity;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
@@ -19,7 +20,18 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        return Warehouse::with(['entity'])->orderBy('id','asc')->paginate(15);
+        {
+            return Warehouse::with(['entity'])->orderBy('id','asc')->paginate(15);
+        }
+        {
+            $entity_id = request('entity:id');
+            $warehouses = Warehouse::where('entity_id',$entity_id)->get();
+            return WarehouseResource::collection($warehouses);
+        }
+
+
+
+
     }
 
 

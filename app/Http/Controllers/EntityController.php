@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Entity;
+use App\Warehouse;
+use App\Http\Resources\EntityResource;
 use Illuminate\Http\Request;
 
 class EntityController extends Controller
@@ -19,8 +21,15 @@ class EntityController extends Controller
      */
     public function index()
     {
-        return Entity::with(['warehouses'])->orderBy('id','asc')->paginate(15);
+        {
+            return Entity::with(['warehouses'])->orderBy('id','asc')->paginate(15);
+        }
+        {
+            $entity = Entity::all();
+            return EntityResource::collection($entity);
+        }
     }
+
 
     public function search(){
 

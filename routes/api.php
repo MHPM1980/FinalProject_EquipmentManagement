@@ -23,8 +23,10 @@ Route::get('findUser','UserController@search');
 
 Route::apiResource('entities','EntityController');
 Route::get('findEntity','EntityController@search');
+Route::get('entity',[EntityController::entity,'index']);
 
 Route::apiResource('warehouses','WarehouseController');
+Route::get('warehouse',[WarehouseController::entity,'index']);
 
 Route::apiResource('roles','RoleController');
 

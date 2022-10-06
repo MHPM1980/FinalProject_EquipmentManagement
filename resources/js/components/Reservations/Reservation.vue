@@ -23,16 +23,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="">
-                                <td class="align-middle text-center">{{ 1 }}</td>
-                                <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{ 2 }}</td>
-                                <td class="align-middle text-center">{{ 3 }}</td>
-                                <td class="align-middle text-center">{{ 4 }}</td>
-                                <td class="align-middle text-center">{{ 5 }}</td>
-                                <td class="align-middle text-center">{{ 6 }}</td>
+                            <tr v-for="reservation in reservations.data" :key="reservation.id" >
+                                <td class="align-middle text-center">{{reservation.id}}</td>
+                                <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
+                                <td class="align-middle text-center">{{ reservation.product.name }}</td>
+                                <td class="align-middle text-center">{{ reservation.registry_date }}</td>
+                                <td class="align-middle text-center">{{ reservation.start_date }}</td>
+                                <td class="align-middle text-center">{{ reservation.end_date }}</td>
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{ 7 }}</td>
-                                <td class="align-middle text-center">{{ 8 }}</td>
-                                <td class="align-middle text-center">{{ 9 }}</td>
+                                <td class="align-middle text-center">{{ reservation.delivered }}</td>
+                                <td class="align-middle text-center">{{ reservation.returned }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -49,14 +49,21 @@
 
 <script>
     export default {
+        data(){
+            return{
+                reservations: {},
+            }
+        },
+        created(){
+            this.loadReservations();
+        },
         methods:{
-            loadRoles(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
+            loadReservations(){
                     axios
-                        .get("api/roles/")
-                        .then(({ data }) => (this.roles = data.data))
-                };
+                        .get("api/reservations/")
+                        .then(({ data }) => (this.reservations = data))
             },
+
         }
     }
 

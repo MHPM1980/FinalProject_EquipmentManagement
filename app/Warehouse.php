@@ -15,6 +15,7 @@ class Warehouse extends Model
         return $this->belongsTo(Entity::class);
     }
 
+
     protected $fillable = [
         'entity_id',
         'name',

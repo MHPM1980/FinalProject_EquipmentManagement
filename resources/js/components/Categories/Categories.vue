@@ -55,59 +55,59 @@
 </template>
 
 <script>
-    import ModalComp from "../widgets/modalComp";
-    import formCompCategories from "./widgets/formCompCategories";
-    import {deleteMixin} from "../mixins/deleteMixin";
-
-    export default {
-        data(){
-            return{
-                categories: {},
-                form: new Form({
-                    id:'',
-                    name: '',
-                    description: '',
-                }),
-                link:'categories',
-                mode: false,
-            }
-        },
-        mixins:[deleteMixin],
-        created(){
+import ModalComp from "../widgets/modalComp";
+import formCompCategories from "./widgets/formCompCategories";
+import {deleteMixin} from "../mixins/deleteMixin";
+import {searchMixin} from "../mixins/searchMixin";
+export default {
+    data(){
+        return{
+            categories: {},
+            form: new Form({
+                id:'',
+                name: '',
+                description: '',
+            }),
+            link:'categories',
+            mode: false,
+        }
+    },
+    mixins:[deleteMixin, searchMixin],
+    created(){
+        this.loadCategories();
+        //custom Event to reload DOM
+        Fire.$on('AfterCreate',()=>{
             this.loadCategories();
-            //custom Event to reload DOM
-            Fire.$on('AfterCreate',()=>{
-                this.loadCategories();
-            });
+        });
+    },
+    components: {
+        ModalComp,
+        formCompCategories
+    },
+    methods:{
+        getResults(page = 1){
+            axios
+                .get('api/categories?page=' + page)
+                .then(response => {
+                    this.categories = response.data;
+                });
         },
-        components: {
-            ModalComp,
-            formCompCategories
+        newModal(){
+            this.mode=false;
+            $('#addNew').modal('show');
+            this.form.reset();
         },
-        methods:{
-            getResults(page = 1){
-                axios
-                    .get('api/categories?page=' + page)
-                    .then(response => {
-                        this.categories = response.data;
-                    });
-            },
-            newModal(){
-                this.mode=false;
-                $('#addNew').modal('show');
-                this.form.reset();
-            },
-            editModal(category){
-                this.mode=true;
-                $('#addNew').modal('show');
-                this.form.fill(category);
-            },
-            loadCategories(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
+        editModal(category){
+            this.mode=true;
+            $('#addNew').modal('show');
+            this.form.fill(category);
+        },
+        loadCategories(){
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/categories/")
                     .then(({ data }) => (this.categories = data));}
-            },
-        }
+        },
     }
+}
 </script>

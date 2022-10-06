@@ -61,7 +61,7 @@ window.toast=Swal
 //VueRoutes implementation
 let routes = [
     { path: '/dashboard',
-        component: require('./components/Dashboard.vue').default},
+        component: require('./components/Dashboards/Dashboard.vue').default},
     { path: '/profile',
         component: require('./components/Profile/Profile.vue').default },
     { path: '/users',
@@ -125,12 +125,17 @@ Vue.filter('upText',function (text){
     return text.charAt(0).toUpperCase()+text.slice(1);
 })
 
-// Format date to (16/08/2022)
-Vue.filter('myDate',function(date){
-    return moment(date).format('L');
-})
 
 window.Fire = new Vue();
+
+
+// V-Calendar implementation
+import VCalendar from 'v-calendar';
+Vue.use(VCalendar, {
+    //componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+        // ...other defaults
+});
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -158,7 +163,19 @@ const app = new Vue({
     },
     methods:{
         searchit(){
-            Fire.$emit('searching');
+            if(this.$route.path == '/users'){
+                Fire.$emit('searchUser');
+            } else if(this.$route.path == '/categories'){
+                Fire.$emit('searchCategory');
+            } else if(this.$route.path == '/costs') {
+                Fire.$emit('searchCost');
+            } else if(this.$route.path == '/entities') {
+                Fire.$emit('searchEntity');
+            } else if(this.$route.path == '/equipments') {
+                Fire.$emit('searchProduct');
+            } else if(this.$route.path == '/equipmentsView') {
+                Fire.$emit('searchProduct');
+            }
         }
     }
 });

@@ -13,7 +13,6 @@
                         <div class="col-12 col-lg-6 justify-content-center">
                             <div>
                                 <form>
-
                                     <label class="col-3 text-right pb-3" for="EquipmentName">Nome:</label>
                                     <input class="col-8" id="EquipmentName" type="text" v-model="form.name" disabled>
 
@@ -35,13 +34,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center" style="width: 100%; height: 330px; border: solid black 1px;">
-                        IMPLEMENTAR CALENDÁRIO
-                    </div>
-                    <div class="text-right pt-3">
-                        <button class="btn btn-danger" @click="$router.push('equipments')">Fechar</button>
-                        <button class="btn btn-primary" @click="$router.push('reservations')">Reservar</button>
-                    </div>
+                    <hr>
+                    <h5>Selecionar dados para reserva</h5>
+                    <form  @submit.prevent="makeReservation">
+                        <div class="form-group">
+                            <select class="form-control" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
+                                <option disabled value="">Escolha a entidade destino</option>
+                                <option name="entity_id" v-for="entity in entities" v-bind:value="entity.id">
+                                    {{entity.name}}
+                                </option>
+                            </select>
+                            <has-error :form="form" field="entity_id"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="warehouse_id" v-model="form.warehouse_id" :class="{ 'is-invalid': form.errors.has('warehouse_id') }">
+                                <option disabled value="">Escolha o armazém destino</option>
+                                <option name="warehouse_id" v-for="warehouse in warehouses" v-bind:value="warehouse.id">
+                                    {{warehouse.name}}
+                                </option>
+                            </select>
+                            <has-error :form="form" field="entity_id"></has-error>
+                        </div>
+                        <div class="text-center" style="width: 100%; height: 330px;">
+                            <v-date-picker v-model="range" :min-date='new Date()' is-range is-expanded/>
+                        </div>
+                        <div class="text-right pt-3">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            <button class="btn btn-primary" type="submit" @click="picker">Reservar</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -49,7 +71,9 @@
 </template>
 
 <script>
-
+import moment from "moment/moment";
+import {createReservationMixin} from "../mixins/createReservationMixin";
+let m= moment();
 
     export default {
         props:{
@@ -63,22 +87,37 @@
                 categories: {},
                 warehouses: {},
                 entities:{},
+                profile: {},
+                range: {
+                    start: new Date(),
+                    end: new Date()
+                },
                 form: new Form({
+                    id:'',
                     image:'',
                     name: '',
                     description: '',
                     serial_number:'',
+                    entity_id:'',
+                    warehouse_id:'',
+                    user_id:'',
+                    registry_date:'',
+                    start_date:'',
+                    end_date:'',
                     category: {},
                     warehouse: {},
-                })
+                }),
             }
         },
+        mixins:[createReservationMixin],
         created(){
             this.loadWarehouses();
             this.loadEntities()
+            axios.get("api/profile")
+                .then(({ data }) => (this.profile = data));
         },
-
         methods:{
+
             loadWarehouses(){
                 axios
                     .get("api/warehouses/")
@@ -91,6 +130,9 @@
                     .then(({ data }) => (this.entities = data.data))
                 ;
             },
+            hideModal(){
+                $('#addNew').modal('hide');
+            }
         }
     }
 </script>

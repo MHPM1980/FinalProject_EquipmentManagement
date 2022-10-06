@@ -1,10 +1,17 @@
 <template>
     <div class="container">
-        <div class="row mt-3" v-if="$gate.isAdmin() || $gate.isGestor()">
+        <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Listagem de Equipamentos</h3>
+                        <div v-if="$gate.isFormando()" class="d-flex justify-content-start align-items-center">
+                            <h3 class="align-middle">Listagem de Equipamentos</h3>
+                            <h6 class="ml-2">(Para reservar contacte um Formador!)</h6>
+                        </div>
+                        <div v-else>
+                            <h3 class="card-title">Listagem de Equipamentos</h3>
+                        </div>
+
                         <div class="card-tools">
 
                         </div>
@@ -22,7 +29,7 @@
                                 <th class="text-center">Entidade</th>
                                 <th class="text-center">Armazém</th>
                                 <th class="text-center">Estado</th>
-                                <th class="text-center">Ação</th>
+                                <th v-if="!$gate.isFormando()" class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,13 +38,20 @@
                                     <img class="imagem-equipamento" :src="'img/products/'+ product.image " alt="" title="">
                                 </td>
                                 <td class="align-middle text-center">{{ product.name }}</td>
-                                <td class="align-middle">{{ product.description }}</td>
-                                <td class="align-middle">{{ product.serial_number }}</td>
-                                <td class="align-middle">{{ product.category.name }}</td>
+                                <td class="align-middle text-center">{{ product.description }}</td>
+                                <td class="align-middle text-center">{{ product.serial_number }}</td>
+                                <td class="align-middle text-center">{{ product.category.name }}</td>
                                 <td class="align-middle text-center">{{ product.warehouse.entity_id }}</td>
-                                <td class="align-middle ">{{ product.warehouse.name }}</td>
-                                <td class="align-middle text-center">{{ product.status }}</td>
+                                <td class="align-middle text-center">{{ product.warehouse.name }}</td>
                                 <td class="align-middle text-center">
+                                    <div v-if="product.status == 1">
+                                        <i  class="fa-solid fa-circle fa-lg fa-green"></i>
+                                    </div>
+                                    <div v-else>
+                                        <i  class="fa-solid fa-circle fa-lg fa-red"></i>
+                                    </div>
+                                </td>
+                                <td v-if="!$gate.isFormando()" class="align-middle text-center">
                                     <a class="btn-primary btn" @click="listEquipment(product)">Detalhe</a>
 
 <!--                                   <a href="#" @click="editModal(product)">
@@ -54,11 +68,9 @@
                     <div class="card-footer">
                         <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
+
                 </div>
             </div>
-        </div>
-        <div v-if="!$gate.isAdmin() && !$gate.isGestor()">
-            <not-found></not-found>
         </div>
         <modal-product title="Reservar Equipamento">
             <product-detail :edit-form="form"></product-detail>
@@ -70,6 +82,7 @@
 <script>
     import productDetail from "./ProductDetail";
     import modalProduct from "./modalProduct";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -86,6 +99,7 @@
                 }),
             }
         },
+        mixins:[searchMixin],
         created(){
             this.loadProducts();
             //custom Event to reload DOM
@@ -112,11 +126,9 @@
                 this.form.fill(product);
             },
             loadProducts(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
                     .get("api/products/")
                     .then(({ data }) => (this.products = data))
-                };
             },
         }
     }

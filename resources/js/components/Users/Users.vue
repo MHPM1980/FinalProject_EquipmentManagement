@@ -64,6 +64,7 @@
 import ModalComp from "../widgets/modalComp";
 import formComp from "./widgets/formComp";
 import {deleteMixin} from "../mixins/deleteMixin";
+import {searchMixin} from "../mixins/searchMixin";
 
 export default {
     name: 'Users',
@@ -83,19 +84,9 @@ export default {
             mode: false,
         }
     },
-    mixins:[deleteMixin],
+    mixins:[deleteMixin, searchMixin],
     created(){
-        Fire.$on('searching',() => {
-            let query = this.$parent.search;
-            axios
-                .get('api/findUser?q='+ query)
-                .then(response => {
-                    this.users = response.data
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-        })
+
         this.loadUsers();
         //custom Event to reload DOM
         Fire.$on('AfterCreate',()=>{

@@ -53061,6 +53061,14 @@ footer {
   bottom: 0;
 }
 
+.fa-red {
+  color: red;
+}
+
+.fa-green {
+  color: forestgreen;
+}
+
 @media screen and (max-width: 450px) {
   .mainbox {
     margin: auto;

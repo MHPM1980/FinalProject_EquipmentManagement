@@ -100,6 +100,7 @@ let m= moment();
                     serial_number:'',
                     entity_id:'',
                     warehouse_id:'',
+                    product_id: '',
                     user_id:'',
                     registry_date:'',
                     start_date:'',

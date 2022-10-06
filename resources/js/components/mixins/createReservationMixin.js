@@ -29,7 +29,8 @@ export const createReservationMixin={
                 })
         },
         picker(){
-            this.form.user_id= this.profile.id
+            this.form.product_id = this.form.id
+            this.form.user_id = this.profile.id
             this.form.registry_date = moment().format('YYYY-MM-DD')
             this.form.start_date = moment(this.range.start).format('YYYY-MM-DD')
             this.form.end_date = moment(this.range.end).format('YYYY-MM-DD')

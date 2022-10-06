@@ -2629,6 +2629,7 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
         serial_number: '',
         entity_id: '',
         warehouse_id: '',
+        product_id: '',
         user_id: '',
         registry_date: '',
         start_date: '',
@@ -2884,19 +2885,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      reservations: {}
-    };
-  },
   methods: {
-    loadReservations: function loadReservations() {
+    loadRoles: function loadRoles() {
       var _this = this;
 
-      axios.get("api/reservations/").then(function (_ref) {
-        var data = _ref.data;
-        return _this.reservations = data.data;
-      });
+      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
+        axios.get("api/roles/").then(function (_ref) {
+          var data = _ref.data;
+          return _this.roles = data.data;
+        });
+      }
+
+      ;
     }
   }
 });
@@ -88837,6 +88837,7 @@ var createReservationMixin = {
       });
     },
     picker: function picker() {
+      this.form.product_id = this.form.id;
       this.form.user_id = this.profile.id;
       this.form.registry_date = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()().format('YYYY-MM-DD');
       this.form.start_date = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.start).format('YYYY-MM-DD');
@@ -89378,8 +89379,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

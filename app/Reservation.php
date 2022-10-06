@@ -11,6 +11,7 @@ class Reservation extends Model
     use HasApiTokens, SoftDeletes;
 
     protected $fillable = [
+        'product_id',
         'user_id',
         'warehouse_id',
         'registry_date',

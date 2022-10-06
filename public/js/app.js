@@ -2885,18 +2885,22 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      reservations: {}
+    };
+  },
+  created: function created() {
+    this.loadReservations();
+  },
   methods: {
-    loadRoles: function loadRoles() {
+    loadReservations: function loadReservations() {
       var _this = this;
 
-      if (this.$gate.isAdmin() || this.$gate.isGestor()) {
-        axios.get("api/roles/").then(function (_ref) {
-          var data = _ref.data;
-          return _this.roles = data.data;
-        });
-      }
-
-      ;
+      axios.get("api/reservations/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.reservations = data;
+      });
     }
   }
 });
@@ -6103,25 +6107,29 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Entregue")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", [_c("tr", {}, [_c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(1))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(2))]) : _vm._e(), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(3))]), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(4))]), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(5))]), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(6))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(7))]) : _vm._e(), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(8))]), _vm._v(" "), _c("td", {
-    staticClass: "align-middle text-center"
-  }, [_vm._v(_vm._s(9))])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
+    return _c("tr", {
+      key: reservation.id
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.id))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.product.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.registry_date))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.start_date))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.end_date))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(7))]) : _vm._e(), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.returned))])]);
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   })])])])]);
 };
@@ -89379,8 +89387,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

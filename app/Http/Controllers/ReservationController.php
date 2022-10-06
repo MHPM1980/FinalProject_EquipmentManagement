@@ -19,7 +19,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return Reservation::with(['user','product'])->orderBy('id','asc')->paginate(15);
+        return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
     /**

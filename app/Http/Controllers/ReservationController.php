@@ -42,6 +42,7 @@ class ReservationController extends Controller
     {
         $this->validate($request,[
             'user_id' => 'required|integer',
+            'product_id' => 'required|integer',
             'warehouse_id' => 'required|integer',
             'registry_date' => 'required|date',
             'start_date' => 'required|date',
@@ -51,6 +52,7 @@ class ReservationController extends Controller
         try{
             return Reservation::create([
                 'user_id' => $request['user_id'],
+                'product_id' => $request['product_id'],
                 'warehouse_id' => $request['warehouse_id'],
                 'registry_date' => $request['registry_date'],
                 'start_date' => $request['start_date'],

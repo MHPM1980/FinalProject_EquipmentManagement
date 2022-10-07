@@ -11,8 +11,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">User</th>
+                                <th  class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">Utilizador</th>
                                 <th class="text-center" >Equipamento</th>
                                 <th class="text-center" >Data Reserva</th>
                                 <th class="text-center" >Início Reserva</th>
@@ -24,13 +23,21 @@
                             </thead>
                             <tbody>
                             <tr v-for="reservation in reservations.data" :key="reservation.id" >
-                                <td class="align-middle text-center">{{reservation.id}}</td>
+
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>
                                 <td class="align-middle text-center">{{ reservation.registry_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.start_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.end_date }}</td>
-                                <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{ 7 }}</td>
+                                <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >
+                                    <form @submit.prevent="">
+                                        <button class="btn btn-primary" v-if="reservation.approved === null" @click="reservationApproved(reservation.id)">Sim</button>
+                                        <button class="btn btn-danger" v-if="reservation.approved === null" @click="reservationDenied(reservation.id)">Não</button>
+                                    </form>
+                                    <div v-if="reservation.approved === 1">Aprovada</div>
+                                    <div v-if="reservation.approved === 0">Recusada</div>
+
+                                </td>
                                 <td class="align-middle text-center">{{ reservation.delivered }}</td>
                                 <td class="align-middle text-center">{{ reservation.returned }}</td>
                             </tr>
@@ -52,10 +59,17 @@
         data(){
             return{
                 reservations: {},
+                form: new Form({
+                    id:'',
+                    approved: '',
+                }),
             }
         },
         created(){
             this.loadReservations();
+            Fire.$on('AfterCreate',()=>{
+                this.loadReservations();
+            });
         },
         methods:{
             loadReservations(){
@@ -64,6 +78,42 @@
                         .then(({ data }) => (this.reservations = data))
             },
 
+            reservationApproved(id){
+                this.form.approved=1
+                this.form.put(`api/reservations/`+id)
+                    .then(()=>{
+                        Swal.fire(
+                            'Atualizado!',
+                            'O registo foi Atualizado.',
+                            'success'
+                        )
+                        this.$Progress.finish();
+                        //custom Event to reload DOM
+                        Fire.$emit('AfterCreate');
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
+                    })
+            },
+            reservationDenied(id){
+                this.form.approved=0
+                this.form.put(`api/reservations/`+id)
+                    .then(()=>{
+                        Swal.fire(
+                            'Atualizado!',
+                            'O registo foi Atualizado.',
+                            'success'
+                        )
+                        this.$Progress.finish();
+                        //custom Event to reload DOM
+                        Fire.$emit('AfterCreate');
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
+                    })
+            }
         }
     }
 

@@ -2,8 +2,8 @@
     <div class="col-12 px-3 py-1" :class="size">
         <div class="small-box" :class="background">
             <div class="inner row p-4 p-lg-5">
-                <h1 class="col-6">{{ number }}</h1>
-                <h4 class="col-6">Total de <br>{{text}}</h4>
+                <h1 class="col-4">{{ number }}</h1>
+                <h4 class="col-8">Total de <br>{{text}}</h4>
             </div>
             <a :href="rota" class="small-box-footer">Mais info <i class="fas fa-arrow-circle-right"></i></a>
         </div>

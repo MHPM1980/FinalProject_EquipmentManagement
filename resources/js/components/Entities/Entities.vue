@@ -15,26 +15,26 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Morada</th>
-                                <th>Telefone</th>
-                                <th>Armazens</th>
-                                <th>Ação</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Morada</th>
+                                <th class="text-center">Telefone</th>
+                                <th class="text-center">Armazens</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="entity in entities.data" :key="entity.id">
-                                <td>{{ entity.id }}</td>
-                                <td>{{ entity.name }}</td>
-                                <td>{{ entity.address }}</td>
-                                <td>{{ entity.phone_number }}</td>
-                                <td >
+                                <td class="align-middle text-center">{{ entity.id }}</td>
+                                <td class="align-middle text-center">{{ entity.name }}</td>
+                                <td class="align-middle text-center">{{ entity.address }}</td>
+                                <td class="align-middle text-center">{{ entity.phone_number }}</td>
+                                <td class="align-middle text-center">
                                     <p v-for="waresouses in entity.warehouses">
                                         {{ waresouses.name }}
                                     </p>
                                 </td>
-                                <td>
+                                <td class="align-middle text-center">
                                     <a href="#" @click="editModal(entity)">
                                         <i class="fa fa-edit"></i>
                                     </a>

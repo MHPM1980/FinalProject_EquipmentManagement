@@ -12,7 +12,7 @@
                             <thead>
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th  class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">User</th>
+                                <th class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">User</th>
                                 <th class="text-center" >Equipamento</th>
                                 <th class="text-center" >Data Reserva</th>
                                 <th class="text-center" >Início Reserva</th>

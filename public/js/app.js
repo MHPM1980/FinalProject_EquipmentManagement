@@ -2161,10 +2161,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      users: 0,
+      equipments: 0,
+      approved: 0,
+      pendings: 0,
+      returned: 0
+    };
+  },
+  created: function created() {
+    this.numberUsers();
+    this.numberEquipments();
+    this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
   },
   components: {
     card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    numberUsers: function numberUsers() {
+      var _this = this;
+
+      axios.get("api/users/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.users = Object.keys(data.data).length;
+      });
+    },
+    numberEquipments: function numberEquipments() {
+      var _this2 = this;
+
+      axios.get("api/products/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.equipments = Object.keys(data.data).length;
+      });
+    },
+    numberApReservation: function numberApReservation() {
+      var _this3 = this;
+
+      axios.get('api/findReservations/?approved=1').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.approved = data;
+      });
+    },
+    numberPendReservation: function numberPendReservation() {
+      var _this4 = this;
+
+      axios.get('api/findPendReservations/?approved=null').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.pendings = data;
+      });
+    },
+    numberReturReservation: function numberReturReservation() {
+      var _this5 = this;
+
+      axios.get('api/findReturReservations/?returned=1').then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.returned = data;
+      });
+    }
   }
 });
 
@@ -2193,9 +2248,6 @@ __webpack_require__.r(__webpack_exports__);
     FormadorDashboard: _FormadorDashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
     GestorDashboard: _GestorDashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     AdminDashboard: _AdminDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   },
   created: function created() {
     var _this = this;
@@ -2228,7 +2280,8 @@ __webpack_require__.r(__webpack_exports__);
     background: String,
     size: String,
     text: String,
-    rota: String
+    rota: String,
+    number: Number
   }
 });
 
@@ -4167,6 +4220,7 @@ var render = function render() {
       background: "bg-info",
       size: "col-md-6",
       text: "Total de Utilizadores",
+      number: _vm.users,
       rota: "/users"
     }
   }), _vm._v(" "), _c("card", {
@@ -4174,6 +4228,7 @@ var render = function render() {
       background: "bg-secondary",
       size: "col-md-6",
       text: "Total de equipamentos",
+      number: _vm.equipments,
       rota: "/equipments"
     }
   }), _vm._v(" "), _c("card", {
@@ -4181,6 +4236,7 @@ var render = function render() {
       background: "bg-warning",
       size: "col-md-6",
       text: "Total de reservas aprovadas",
+      number: _vm.approved,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
@@ -4188,12 +4244,14 @@ var render = function render() {
       background: "bg-danger",
       size: "col-md-6",
       text: "Total de reservas pendentes",
+      number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-success",
       text: "Total de equipamentos por devolver",
+      number: _vm.returned,
       rota: "/equipments"
     }
   })], 1)]);
@@ -4320,7 +4378,7 @@ var render = function render() {
     staticClass: "inner row p-4 p-lg-5"
   }, [_c("h1", {
     staticClass: "col-6"
-  }, [_vm._v("150")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
     staticClass: "col-6"
   }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
@@ -89387,8 +89445,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

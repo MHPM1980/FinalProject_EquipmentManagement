@@ -22,6 +22,23 @@ class ReservationController extends Controller
         return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function countReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
+    }
+    public function countPendReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
+    }
+    public function countReturReservations(Request $request){
+        return response()->json(Reservation::where(
+            "returned", "=", $request->returned
+        )->count());
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

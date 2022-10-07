@@ -2163,13 +2163,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: 0,
-      equipments: 0
+      equipments: 0,
+      approved: 0,
+      pendings: 0,
+      returned: 0
     };
   },
   created: function created() {
     this.numberUsers();
     this.numberEquipments();
     this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
   },
   components: {
     card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -2192,12 +2197,27 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     numberApReservation: function numberApReservation() {
-      axios.get('api/reservations/findReservations', {
-        params: {
-          delivered: 0
-        }
-      }).then(function (res) {
-        console.log(res);
+      var _this3 = this;
+
+      axios.get('api/findReservations/?approved=1').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.approved = data;
+      });
+    },
+    numberPendReservation: function numberPendReservation() {
+      var _this4 = this;
+
+      axios.get('api/findPendReservations/?approved=null').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.pendings = data;
+      });
+    },
+    numberReturReservation: function numberReturReservation() {
+      var _this5 = this;
+
+      axios.get('api/findReturReservations/?returned=1').then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.returned = data;
       });
     }
   }
@@ -4216,6 +4236,7 @@ var render = function render() {
       background: "bg-warning",
       size: "col-md-6",
       text: "Total de reservas aprovadas",
+      number: _vm.approved,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
@@ -4223,12 +4244,14 @@ var render = function render() {
       background: "bg-danger",
       size: "col-md-6",
       text: "Total de reservas pendentes",
+      number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-success",
       text: "Total de equipamentos por devolver",
+      number: _vm.returned,
       rota: "/equipments"
     }
   })], 1)]);

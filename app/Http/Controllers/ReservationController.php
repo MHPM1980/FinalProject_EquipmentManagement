@@ -23,10 +23,21 @@ class ReservationController extends Controller
     }
 
     public function countReservations(Request $request){
-        return response()->json(Reservation::where([
-            ["delivered", "LIKE", "%{$request->delivered}%"],
-        ]));
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
     }
+    public function countPendReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
+    }
+    public function countReturReservations(Request $request){
+        return response()->json(Reservation::where(
+            "returned", "=", $request->returned
+        )->count());
+    }
+
 
     /**
      * Show the form for creating a new resource.

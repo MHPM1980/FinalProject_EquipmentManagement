@@ -4219,7 +4219,7 @@ var render = function render() {
     attrs: {
       background: "bg-info",
       size: "col-md-6",
-      text: "Total de Utilizadores",
+      text: "Utilizadores",
       number: _vm.users,
       rota: "/users"
     }
@@ -4227,7 +4227,7 @@ var render = function render() {
     attrs: {
       background: "bg-secondary",
       size: "col-md-6",
-      text: "Total de equipamentos",
+      text: "Equipamentos",
       number: _vm.equipments,
       rota: "/equipments"
     }
@@ -4235,7 +4235,7 @@ var render = function render() {
     attrs: {
       background: "bg-warning",
       size: "col-md-6",
-      text: "Total de reservas aprovadas",
+      text: "Reservas aprovadas",
       number: _vm.approved,
       rota: "/reservations"
     }
@@ -4243,14 +4243,14 @@ var render = function render() {
     attrs: {
       background: "bg-danger",
       size: "col-md-6",
-      text: "Total de reservas pendentes",
+      text: "Reservas pendentes",
       number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-success",
-      text: "Total de equipamentos por devolver",
+      text: "Equipamentos por devolver",
       number: _vm.returned,
       rota: "/equipments"
     }
@@ -4380,7 +4380,7 @@ var render = function render() {
     staticClass: "col-6"
   }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
     staticClass: "col-6"
-  }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
+  }, [_vm._v("Total de "), _c("br"), _vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
       href: _vm.rota
@@ -89445,8 +89445,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

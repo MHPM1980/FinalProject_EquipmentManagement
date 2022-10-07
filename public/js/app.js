@@ -3112,6 +3112,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.form.approved = 1;
+      element.classList.add("bg-success");
       this.form.put("api/reservations/" + id).then(function () {
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
@@ -6493,7 +6494,10 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
-      key: reservation.id
+      key: reservation.id,
+      attrs: {
+        name: "tr"
+      }
     }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {

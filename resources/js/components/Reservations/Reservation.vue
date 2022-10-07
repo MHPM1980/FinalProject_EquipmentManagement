@@ -22,7 +22,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="reservation in reservations.data" :key="reservation.id" >
+                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" class="">
 
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>
@@ -80,6 +80,7 @@
 
             reservationApproved(id){
                 this.form.approved=1
+                element.classList.add("bg-success");
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
                         Swal.fire(
@@ -116,7 +117,4 @@
             }
         }
     }
-
-
-
 </script>

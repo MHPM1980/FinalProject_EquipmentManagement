@@ -2207,7 +2207,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this4 = this;
 
-      axios.get('api/findPendReservations/?approved=').then(function (_ref4) {
+      axios.get('api/findPendReservations/?approved=null').then(function (_ref4) {
         var data = _ref4.data;
         return _this4.pendings = data;
       });
@@ -2215,7 +2215,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this5 = this;
 
-      axios.get('api/findReturReservations/?returned=0').then(function (_ref5) {
+      axios.get('api/findReturReservations/?returned=1').then(function (_ref5) {
         var data = _ref5.data;
         return _this5.returned = data;
       });
@@ -3084,19 +3084,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      reservations: {}
+      reservations: {},
+      form: new Form({
+        id: '',
+        approved: ''
+      })
     };
   },
   created: function created() {
+    var _this = this;
+
     this.loadReservations();
+    Fire.$on('AfterCreate', function () {
+      _this.loadReservations();
+    });
   },
   methods: {
     loadReservations: function loadReservations() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/reservations/").then(function (_ref) {
         var data = _ref.data;
-        return _this.reservations = data;
+        return _this2.reservations = data;
+      });
+    },
+    reservationApproved: function reservationApproved(id) {
+      var _this3 = this;
+
+      this.form.approved = 1;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this3.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this3.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    reservationDenied: function reservationDenied(id) {
+      var _this4 = this;
+
+      this.form.approved = 0;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this4.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this4.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
     }
   }
@@ -4363,7 +4406,7 @@ var render = function render() {
     attrs: {
       background: "bg-info",
       size: "col-md-6",
-      text: "Utilizadores",
+      text: "Total de Utilizadores",
       number: _vm.users,
       rota: "/users"
     }
@@ -4371,32 +4414,32 @@ var render = function render() {
     attrs: {
       background: "bg-secondary",
       size: "col-md-6",
-      text: "Equipamentos",
+      text: "Total de equipamentos",
       number: _vm.equipments,
       rota: "/equipments"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-success",
+      background: "bg-warning",
       size: "col-md-6",
-      text: "Reservas aprovadas",
+      text: "Total de reservas aprovadas",
       number: _vm.approved,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-warning",
+      background: "bg-danger",
       size: "col-md-6",
-      text: "Reservas pendentes",
+      text: "Total de reservas pendentes",
       number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-danger",
-      text: "Equipamentos por devolver",
+      background: "bg-success",
+      text: "Total de equipamentos por devolver",
       number: _vm.returned,
-      rota: "/reservations"
+      rota: "/equipments"
     }
   })], 1)]);
 };
@@ -4593,7 +4636,7 @@ var render = function render() {
     staticClass: "col-6"
   }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
     staticClass: "col-6"
-  }, [_vm._v("Total de "), _c("br"), _vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
+  }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
       href: _vm.rota
@@ -6360,11 +6403,9 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_c("thead", [_c("tr", [_c("th", {
+  }, [_c("thead", [_c("tr", [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("ID")]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("th", {
-    staticClass: "text-center"
-  }, [_vm._v("User")]) : _vm._e(), _vm._v(" "), _c("th", {
+  }, [_vm._v("Utilizador")]) : _vm._e(), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Equipamento")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
@@ -6381,9 +6422,7 @@ var render = function render() {
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
       key: reservation.id
-    }, [_c("td", {
-      staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.id))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -6395,7 +6434,27 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.end_date))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(7))]) : _vm._e(), _vm._v(" "), _c("td", {
+    }, [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.approved === null ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.reservationApproved(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e(), _vm._v(" "), reservation.approved === null ? _c("button", {
+      staticClass: "btn btn-danger",
+      on: {
+        click: function click($event) {
+          return _vm.reservationDenied(reservation.id);
+        }
+      }
+    }, [_vm._v("Não")]) : _vm._e()]), _vm._v(" "), reservation.approved === 1 ? _c("div", [_vm._v("Aprovada")]) : _vm._e(), _vm._v(" "), reservation.approved === 0 ? _c("div", [_vm._v("Recusada")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -89690,8 +89749,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

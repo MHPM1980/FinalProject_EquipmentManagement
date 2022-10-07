@@ -15,24 +15,24 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Designação</th>
-                                <th>Descrição</th>
-                                <th>Utilizadores</th>
-                                <th>Ação</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Designação</th>
+                                <th class="text-center">Descrição</th>
+                                <th class="text-center">Utilizadores</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="cost in costs.data" :key="cost.id">
-                                <td>{{ cost.id }}</td>
-                                <td>{{ cost.designation }}</td>
-                                <td>{{ cost.description }}</td>
-                                <td >
+                                <td class="align-middle text-center">{{ cost.id }}</td>
+                                <td class="align-middle text-center">{{ cost.designation }}</td>
+                                <td class="align-middle text-center">{{ cost.description }}</td>
+                                <td class="align-middle text-center">
                                     <p v-for="users in cost.users">
                                         {{ users.name }}
                                     </p>
                                 </td>
-                                <td>
+                                <td class="align-middle text-center">
                                     <a href="#" @click="editModal(cost)">
                                         <i class="fa fa-edit"></i>
                                     </a>

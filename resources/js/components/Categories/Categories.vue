@@ -15,18 +15,18 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Ação</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Descrição</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="category in categories.data" :key="category.id">
-                                <td>{{ category.id }}</td>
-                                <td>{{ category.name }}</td>
-                                <td>{{ category.description }}</td>
-                                <td>
+                                <td class="align-middle text-center">{{ category.id }}</td>
+                                <td class="align-middle text-center">{{ category.name }}</td>
+                                <td class="align-middle text-center">{{ category.description }}</td>
+                                <td class="align-middle text-center">
                                     <a href="#" @click="editModal(category)">
                                         <i class="fa fa-edit"></i>
                                     </a>

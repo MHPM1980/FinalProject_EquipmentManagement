@@ -81,6 +81,10 @@ class ReservationController extends Controller
         }
     }
 
+    public function reservationApproved(Request $request, $id){
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -110,9 +114,29 @@ class ReservationController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $reservation = Reservation::query()->findOrFail($id);
+
+        $this->validate($request,[
+            'approved'=> 'sometimes|boolean',
+            'delivered'=> 'sometimes|boolean',
+            'returned'=> 'sometimes|boolean',
+        ]);
+
+        try{
+            $reservation -> approved = $request->approved;
+            $reservation -> delivered = $request->approved;
+            $reservation -> approved = $request->approved;
+            $reservation -> save();
+
+            return['message'=>"Success"];
+
+        }catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
+
     }
 
     /**

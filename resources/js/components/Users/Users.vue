@@ -15,24 +15,24 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Contacto</th>
-                                <th>Permissão</th>
-                                <th>Centro Custo</th>
-                                <th>Ação</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Contacto</th>
+                                <th class="text-center">Permissão</th>
+                                <th class="text-center">Centro Custo</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="user in users.data" :key="user.id">
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.phone_number }}</td>
-                                <td>{{ user.role?.name }}</td>
-                                <td>{{ user.cost?.designation }}</td>
-                                <td>
+                                <td class="align-middle text-center">{{ user.id }}</td>
+                                <td class="align-middle text-center">{{ user.name }}</td>
+                                <td class="align-middle text-center">{{ user.email }}</td>
+                                <td class="align-middle text-center">{{ user.phone_number }}</td>
+                                <td class="align-middle text-center">{{ user.role?.name }}</td>
+                                <td class="align-middle text-center">{{ user.cost?.designation }}</td>
+                                <td class="align-middle text-center">
                                     <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
                                     </a>

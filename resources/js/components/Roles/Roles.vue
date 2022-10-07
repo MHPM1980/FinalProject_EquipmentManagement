@@ -15,22 +15,22 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Utilizadores</th>
-                                <th>Descrição</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Utilizadores</th>
+                                <th class="text-center">Descrição</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="role in roles" :key="role.id">
-                                <td>{{ role.id }}</td>
-                                <td>{{ role.name }}</td>
-                                <td >
+                                <td class="align-middle text-center">{{ role.id }}</td>
+                                <td class="align-middle text-center">{{ role.name }}</td>
+                                <td class="align-middle text-center" >
                                     <p v-for="users in role.users">
                                         {{ users.name }}
                                     </p>
                                 </td>
-                                <td>
+                                <td class="align-middle text-center">
                                     <p v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
                                 </td>
                                 <td>

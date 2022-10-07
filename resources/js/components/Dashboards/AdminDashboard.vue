@@ -1,11 +1,11 @@
 <template>
     <div class="text-center pt-5 align-middle">
         <div class="row">
-            <card background="bg-info" size="col-md-6" text="Total de Utilizadores" :number=users rota="/users"></card>
-            <card background="bg-secondary" size="col-md-6" text="Total de equipamentos" :number=equipments rota="/equipments"></card>
-            <card background="bg-warning" size="col-md-6" text="Total de reservas aprovadas" :number=approved rota="/reservations"></card>
-            <card background="bg-danger" size="col-md-6" text="Total de reservas pendentes" :number=pendings rota="/reservations"></card>
-            <card background="bg-success" text="Total de equipamentos por devolver" :number=returned rota="/equipments"></card>
+            <card background="bg-info" size="col-md-6" text="Utilizadores" :number=users rota="/users"></card>
+            <card background="bg-secondary" size="col-md-6" text="Equipamentos" :number=equipments rota="/equipments"></card>
+            <card background="bg-success" size="col-md-6" text="Reservas aprovadas" :number=approved rota="/reservations"></card>
+            <card background="bg-warning" size="col-md-6" text="Reservas pendentes" :number=pendings rota="/reservations"></card>
+            <card background="bg-danger" text="Equipamentos por devolver" :number=returned rota="/reservations"></card>
         </div>
     </div>
 </template>
@@ -50,12 +50,12 @@
             },
             numberPendReservation(){
                 axios
-                    .get('api/findPendReservations/?approved=null')
+                    .get('api/findPendReservations/?approved=')
                     .then(({ data }) => (this.pendings=data))
             },
             numberReturReservation(){
                 axios
-                    .get('api/findReturReservations/?returned=1')
+                    .get('api/findReturReservations/?returned=0')
                     .then(({ data }) => (this.returned=data))
             },
         }

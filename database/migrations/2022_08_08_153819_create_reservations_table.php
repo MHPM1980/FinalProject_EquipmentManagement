@@ -23,7 +23,7 @@ class CreateReservationsTable extends Migration
             $table->date('end_date');
             $table->boolean('delivered')->default(0);
             $table->boolean('returned')->default(0);
-            $table->boolean('approved')->default(0);
+            $table->boolean('approved')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -2207,7 +2207,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this4 = this;
 
-      axios.get('api/findPendReservations/?approved=null').then(function (_ref4) {
+      axios.get('api/findPendReservations/?approved=').then(function (_ref4) {
         var data = _ref4.data;
         return _this4.pendings = data;
       });
@@ -2215,7 +2215,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this5 = this;
 
-      axios.get('api/findReturReservations/?returned=1').then(function (_ref5) {
+      axios.get('api/findReturReservations/?returned=0').then(function (_ref5) {
         var data = _ref5.data;
         return _this5.returned = data;
       });
@@ -4233,7 +4233,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-warning",
+      background: "bg-success",
       size: "col-md-6",
       text: "Reservas aprovadas",
       number: _vm.approved,
@@ -4241,7 +4241,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-danger",
+      background: "bg-warning",
       size: "col-md-6",
       text: "Reservas pendentes",
       number: _vm.pendings,
@@ -4249,10 +4249,10 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-success",
+      background: "bg-danger",
       text: "Equipamentos por devolver",
       number: _vm.returned,
-      rota: "/equipments"
+      rota: "/reservations"
     }
   })], 1)]);
 };

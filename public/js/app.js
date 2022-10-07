@@ -2161,10 +2161,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      users: 0,
+      equipments: 0,
+      approved: 0,
+      pendings: 0,
+      returned: 0
+    };
+  },
+  created: function created() {
+    this.numberUsers();
+    this.numberEquipments();
+    this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
   },
   components: {
     card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    numberUsers: function numberUsers() {
+      var _this = this;
+
+      axios.get("api/users/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.users = Object.keys(data.data).length;
+      });
+    },
+    numberEquipments: function numberEquipments() {
+      var _this2 = this;
+
+      axios.get("api/products/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.equipments = Object.keys(data.data).length;
+      });
+    },
+    numberApReservation: function numberApReservation() {
+      var _this3 = this;
+
+      axios.get('api/findReservations/?approved=1').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.approved = data;
+      });
+    },
+    numberPendReservation: function numberPendReservation() {
+      var _this4 = this;
+
+      axios.get('api/findPendReservations/?approved=').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.pendings = data;
+      });
+    },
+    numberReturReservation: function numberReturReservation() {
+      var _this5 = this;
+
+      axios.get('api/findReturReservations/?returned=0').then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.returned = data;
+      });
+    }
   }
 });
 
@@ -2194,9 +2249,6 @@ __webpack_require__.r(__webpack_exports__);
     GestorDashboard: _GestorDashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     AdminDashboard: _AdminDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
   created: function created() {
     var _this = this;
 
@@ -2209,6 +2261,150 @@ __webpack_require__.r(__webpack_exports__);
     return {
       profile: {}
     };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _widgets_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/card */ "./resources/js/components/Dashboards/widgets/card.vue");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      equipments: 0,
+      approved: 0,
+      pendings: 0,
+      returned: 0
+    };
+  },
+  created: function created() {
+    this.numberEquipments();
+    this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
+  },
+  components: {
+    card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    numberEquipments: function numberEquipments() {
+      var _this = this;
+
+      axios.get("api/products/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.equipments = Object.keys(data.data).length;
+      });
+    },
+    numberApReservation: function numberApReservation() {
+      var _this2 = this;
+
+      axios.get('api/findReservations/?approved=1').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.approved = data;
+      });
+    },
+    numberPendReservation: function numberPendReservation() {
+      var _this3 = this;
+
+      axios.get('api/findPendReservations/?approved=').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.pendings = data;
+      });
+    },
+    numberReturReservation: function numberReturReservation() {
+      var _this4 = this;
+
+      axios.get('api/findReturReservations/?returned=0').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.returned = data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _widgets_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/card */ "./resources/js/components/Dashboards/widgets/card.vue");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      users: 0,
+      equipments: 0,
+      approved: 0,
+      pendings: 0,
+      returned: 0
+    };
+  },
+  created: function created() {
+    this.numberUsers();
+    this.numberEquipments();
+    this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
+  },
+  components: {
+    card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    numberUsers: function numberUsers() {
+      var _this = this;
+
+      axios.get("api/users/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.users = Object.keys(data.data).length;
+      });
+    },
+    numberEquipments: function numberEquipments() {
+      var _this2 = this;
+
+      axios.get("api/products/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.equipments = Object.keys(data.data).length;
+      });
+    },
+    numberApReservation: function numberApReservation() {
+      var _this3 = this;
+
+      axios.get('api/findReservations/?approved=1').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.approved = data;
+      });
+    },
+    numberPendReservation: function numberPendReservation() {
+      var _this4 = this;
+
+      axios.get('api/findPendReservations/?approved=').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.pendings = data;
+      });
+    },
+    numberReturReservation: function numberReturReservation() {
+      var _this5 = this;
+
+      axios.get('api/findReturReservations/?returned=0').then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.returned = data;
+      });
+    }
   }
 });
 
@@ -2228,7 +2424,8 @@ __webpack_require__.r(__webpack_exports__);
     background: String,
     size: String,
     text: String,
-    rota: String
+    rota: String,
+    number: Number
   }
 });
 
@@ -2898,19 +3095,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      reservations: {}
+      reservations: {},
+      form: new Form({
+        id: '',
+        approved: ''
+      })
     };
   },
   created: function created() {
+    var _this = this;
+
     this.loadReservations();
+    Fire.$on('AfterCreate', function () {
+      _this.loadReservations();
+    });
   },
   methods: {
     loadReservations: function loadReservations() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/reservations/").then(function (_ref) {
         var data = _ref.data;
-        return _this.reservations = data;
+        return _this2.reservations = data;
+      });
+    },
+    reservationApproved: function reservationApproved(id) {
+      var _this3 = this;
+
+      this.form.approved = 1;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this3.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this3.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    reservationDenied: function reservationDenied(id) {
+      var _this4 = this;
+
+      this.form.approved = 0;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this4.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this4.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
     }
   }
@@ -3745,7 +3985,15 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.categories.data, function (category) {
     return _c("tr", {
       key: category.id
-    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -3793,7 +4041,15 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -3970,9 +4226,19 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.costs.data, function (cost) {
     return _c("tr", {
       key: cost.id
-    }, [_c("td", [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", _vm._l(cost.users, function (users) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(cost.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_c("a", {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4020,7 +4286,17 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Designação")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Designação")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4177,35 +4453,40 @@ var render = function render() {
     attrs: {
       background: "bg-info",
       size: "col-md-6",
-      text: "Total de Utilizadores",
+      text: "Utilizadores",
+      number: _vm.users,
       rota: "/users"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-secondary",
       size: "col-md-6",
-      text: "Total de equipamentos",
+      text: "Equipamentos",
+      number: _vm.equipments,
       rota: "/equipments"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-success",
+      size: "col-md-6",
+      text: "Reservas aprovadas",
+      number: _vm.approved,
+      rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-warning",
       size: "col-md-6",
-      text: "Total de reservas aprovadas",
+      text: "Reservas pendentes",
+      number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
       background: "bg-danger",
-      size: "col-md-6",
-      text: "Total de reservas pendentes",
+      text: "Equipamentos por devolver",
+      number: _vm.returned,
       rota: "/reservations"
-    }
-  }), _vm._v(" "), _c("card", {
-    attrs: {
-      background: "bg-success",
-      text: "Total de equipamentos por devolver",
-      rota: "/equipments"
     }
   })], 1)]);
 };
@@ -4263,15 +4544,46 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "text-center pt-5 align-middle"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("card", {
+    attrs: {
+      background: "bg-secondary",
+      size: "col-md-6",
+      text: "Equipamentos",
+      number: _vm.equipments,
+      rota: "/equipmentsView"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-success",
+      size: "col-md-6",
+      text: "Reservas aprovadas",
+      number: _vm.approved,
+      rota: "/reservations"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-warning",
+      size: "col-md-6",
+      text: "Reservas pendentes",
+      number: _vm.pendings,
+      rota: "/reservations"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-danger",
+      size: "col-md-6",
+      text: "Equipamentos por devolver",
+      number: _vm.returned,
+      rota: "/reservations"
+    }
+  })], 1)]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", [_c("h1", [_vm._v("FORMADOR DASHBOARD")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -4292,15 +4604,53 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "text-center pt-5 align-middle"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("card", {
+    attrs: {
+      background: "bg-info",
+      size: "col-md-6",
+      text: "Utilizadores",
+      number: _vm.users,
+      rota: "/users"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-secondary",
+      size: "col-md-6",
+      text: "Equipamentos",
+      number: _vm.equipments,
+      rota: "/equipments"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-success",
+      size: "col-md-6",
+      text: "Reservas aprovadas",
+      number: _vm.approved,
+      rota: "/reservations"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-warning",
+      size: "col-md-6",
+      text: "Reservas pendentes",
+      number: _vm.pendings,
+      rota: "/reservations"
+    }
+  }), _vm._v(" "), _c("card", {
+    attrs: {
+      background: "bg-danger",
+      text: "Equipamentos por devolver",
+      number: _vm.returned,
+      rota: "/reservations"
+    }
+  })], 1)]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", [_c("h1", [_vm._v("GESTOR DASHBOARD")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -4331,9 +4681,9 @@ var render = function render() {
     staticClass: "inner row p-4 p-lg-5"
   }, [_c("h1", {
     staticClass: "col-6"
-  }, [_vm._v("150")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
     staticClass: "col-6"
-  }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
+  }, [_vm._v("Total de "), _c("br"), _vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
       href: _vm.rota
@@ -4422,9 +4772,21 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.entities.data, function (entity) {
     return _c("tr", {
       key: entity.id
-    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(entity.warehouses, function (waresouses) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_c("a", {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4472,7 +4834,19 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Armazens")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Morada")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Telefone")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Armazens")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4845,17 +5219,17 @@ var render = function render() {
         title: ""
       }
     })]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_c("a", {
       attrs: {
         href: "#"
@@ -4908,7 +5282,19 @@ var staticRenderFns = [function () {
     staticClass: "text-center"
   }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
     staticClass: "th-imagem text-center"
-  }, [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  }, [_vm._v("Imagem")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Número Série")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Categoria")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Armazém")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -6147,11 +6533,9 @@ var render = function render() {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_c("thead", [_c("tr", [_c("th", {
+  }, [_c("thead", [_c("tr", [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("ID")]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("th", {
-    staticClass: "text-center"
-  }, [_vm._v("User")]) : _vm._e(), _vm._v(" "), _c("th", {
+  }, [_vm._v("Utilizador")]) : _vm._e(), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Equipamento")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
@@ -6168,9 +6552,7 @@ var render = function render() {
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
       key: reservation.id
-    }, [_c("td", {
-      staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.id))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -6182,7 +6564,27 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.end_date))]), _vm._v(" "), _vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(7))]) : _vm._e(), _vm._v(" "), _c("td", {
+    }, [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.approved === null ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.reservationApproved(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e(), _vm._v(" "), reservation.approved === null ? _c("button", {
+      staticClass: "btn btn-danger",
+      on: {
+        click: function click($event) {
+          return _vm.reservationDenied(reservation.id);
+        }
+      }
+    }, [_vm._v("Não")]) : _vm._e()]), _vm._v(" "), reservation.approved === 1 ? _c("div", [_vm._v("Aprovada")]) : _vm._e(), _vm._v(" "), reservation.approved === 0 ? _c("div", [_vm._v("Recusada")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -6237,9 +6639,17 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
     return _c("tr", {
       key: role.id
-    }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", _vm._l(_vm.permissions[role.id], function (permission, index) {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(_vm.permissions[role.id], function (permission, index) {
       return _c("p", {
         key: index
       }, [_vm._v(_vm._s(permission))]);
@@ -6271,7 +6681,15 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Descrição")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")])])]);
 }];
 render._withStripped = true;
 
@@ -6417,7 +6835,21 @@ var render = function render() {
 
     return _c("tr", {
       key: user.id
-    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s((_user$role = user.role) === null || _user$role === void 0 ? void 0 : _user$role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s((_user$cost = user.cost) === null || _user$cost === void 0 ? void 0 : _user$cost.designation))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s((_user$role = user.role) === null || _user$role === void 0 ? void 0 : _user$role.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s((_user$cost = user.cost) === null || _user$cost === void 0 ? void 0 : _user$cost.designation))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -6465,7 +6897,21 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Email")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Contacto")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Permissão")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -87204,15 +87650,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormadorDashboard_vue_vue_type_template_id_18f330c5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormadorDashboard.vue?vue&type=template&id=18f330c5& */ "./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=template&id=18f330c5&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _FormadorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormadorDashboard.vue?vue&type=script&lang=js& */ "./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormadorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _FormadorDashboard_vue_vue_type_template_id_18f330c5___WEBPACK_IMPORTED_MODULE_0__["render"],
   _FormadorDashboard_vue_vue_type_template_id_18f330c5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -87226,6 +87674,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/Dashboards/FormadorDashboard.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormadorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FormadorDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/FormadorDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormadorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -87257,15 +87719,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GestorDashboard_vue_vue_type_template_id_0c2126ad___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GestorDashboard.vue?vue&type=template&id=0c2126ad& */ "./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=template&id=0c2126ad&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _GestorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GestorDashboard.vue?vue&type=script&lang=js& */ "./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GestorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _GestorDashboard_vue_vue_type_template_id_0c2126ad___WEBPACK_IMPORTED_MODULE_0__["render"],
   _GestorDashboard_vue_vue_type_template_id_0c2126ad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -87279,6 +87743,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/Dashboards/GestorDashboard.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GestorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./GestorDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/GestorDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GestorDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

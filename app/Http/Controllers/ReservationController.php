@@ -22,6 +22,23 @@ class ReservationController extends Controller
         return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
+    public function countReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
+    }
+    public function countPendReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->count());
+    }
+    public function countReturReservations(Request $request){
+        return response()->json(Reservation::where(
+            "returned", "=", $request->returned
+        )->count());
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,6 +81,10 @@ class ReservationController extends Controller
         }
     }
 
+    public function reservationApproved(Request $request, $id){
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -93,9 +114,29 @@ class ReservationController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, $id)
     {
-        //
+        //Find user in DB
+        $reservation = Reservation::query()->findOrFail($id);
+
+        $this->validate($request,[
+            'approved'=> 'sometimes|boolean',
+            'delivered'=> 'sometimes|boolean',
+            'returned'=> 'sometimes|boolean',
+        ]);
+
+        try{
+            $reservation -> approved = $request->approved;
+            $reservation -> delivered = $request->approved;
+            $reservation -> approved = $request->approved;
+            $reservation -> save();
+
+            return['message'=>"Success"];
+
+        }catch (\Exception $exception) {
+            return response()->json(['error' => $exception], 500);
+        }
+
     }
 
     /**

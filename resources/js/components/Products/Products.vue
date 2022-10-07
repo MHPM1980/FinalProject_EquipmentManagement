@@ -17,12 +17,12 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="th-imagem text-center">Imagem</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Número Série</th>
-                                <th>Categoria</th>
-                                <th>Armazém</th>
-                                <th>Ação</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Descrição</th>
+                                <th class="text-center">Número Série</th>
+                                <th class="text-center">Categoria</th>
+                                <th class="text-center">Armazém</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,12 +31,12 @@
                                 <td class="td-imagem align-middle">
                                     <img class="imagem-equipamento" :src="'img/products/'+ product.image " alt="" title="">
                                 </td>
-                                <td class="align-middle">{{ product.name }}</td>
-                                <td class="align-middle">{{ product.description }}</td>
-                                <td class="align-middle">{{ product.serial_number }}</td>
-                                <td class="align-middle">{{ product.category.name }}</td>
-                                <td class="align-middle">{{ product.warehouse.name }}</td>
-                                <td class="align-middle">
+                                <td class="align-middle text-center">{{ product.name }}</td>
+                                <td class="align-middle text-center">{{ product.description }}</td>
+                                <td class="align-middle text-center">{{ product.serial_number }}</td>
+                                <td class="align-middle text-center">{{ product.category.name }}</td>
+                                <td class="align-middle text-center">{{ product.warehouse.name }}</td>
+                                <td class="align-middle text-center">
                                     <a href="#" @click="editModal(product)">
                                         <i class="fa fa-edit"></i>
                                     </a>

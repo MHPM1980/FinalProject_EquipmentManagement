@@ -2207,7 +2207,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this4 = this;
 
-      axios.get('api/findPendReservations/?approved=null').then(function (_ref4) {
+      axios.get('api/findPendReservations/?approved=').then(function (_ref4) {
         var data = _ref4.data;
         return _this4.pendings = data;
       });
@@ -2215,7 +2215,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this5 = this;
 
-      axios.get('api/findReturReservations/?returned=1').then(function (_ref5) {
+      axios.get('api/findReturReservations/?returned=0').then(function (_ref5) {
         var data = _ref5.data;
         return _this5.returned = data;
       });
@@ -3974,7 +3974,15 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.categories.data, function (category) {
     return _c("tr", {
       key: category.id
-    }, [_c("td", [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(category.description))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4022,7 +4030,15 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4199,9 +4215,19 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.costs.data, function (cost) {
     return _c("tr", {
       key: cost.id
-    }, [_c("td", [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", _vm._l(cost.users, function (users) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.designation))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(cost.description))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(cost.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_c("a", {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4249,7 +4275,17 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Designação")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Designação")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -4406,7 +4442,7 @@ var render = function render() {
     attrs: {
       background: "bg-info",
       size: "col-md-6",
-      text: "Total de Utilizadores",
+      text: "Utilizadores",
       number: _vm.users,
       rota: "/users"
     }
@@ -4414,32 +4450,32 @@ var render = function render() {
     attrs: {
       background: "bg-secondary",
       size: "col-md-6",
-      text: "Total de equipamentos",
+      text: "Equipamentos",
       number: _vm.equipments,
       rota: "/equipments"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-warning",
+      background: "bg-success",
       size: "col-md-6",
-      text: "Total de reservas aprovadas",
+      text: "Reservas aprovadas",
       number: _vm.approved,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-danger",
+      background: "bg-warning",
       size: "col-md-6",
-      text: "Total de reservas pendentes",
+      text: "Reservas pendentes",
       number: _vm.pendings,
       rota: "/reservations"
     }
   }), _vm._v(" "), _c("card", {
     attrs: {
-      background: "bg-success",
-      text: "Total de equipamentos por devolver",
+      background: "bg-danger",
+      text: "Equipamentos por devolver",
       number: _vm.returned,
-      rota: "/equipments"
+      rota: "/reservations"
     }
   })], 1)]);
 };
@@ -4636,7 +4672,7 @@ var render = function render() {
     staticClass: "col-6"
   }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
     staticClass: "col-6"
-  }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
+  }, [_vm._v("Total de "), _c("br"), _vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
       href: _vm.rota
@@ -4725,9 +4761,21 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.entities.data, function (entity) {
     return _c("tr", {
       key: entity.id
-    }, [_c("td", [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", _vm._l(entity.warehouses, function (waresouses) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.address))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(entity.phone_number))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(entity.warehouses, function (waresouses) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(waresouses.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", [_c("a", {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -4775,7 +4823,19 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Morada")]), _vm._v(" "), _c("th", [_vm._v("Telefone")]), _vm._v(" "), _c("th", [_vm._v("Armazens")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Morada")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Telefone")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Armazens")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -5148,17 +5208,17 @@ var render = function render() {
         title: ""
       }
     })]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.serial_number))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle"
+      staticClass: "align-middle text-center"
     }, [_c("a", {
       attrs: {
         href: "#"
@@ -5211,7 +5271,19 @@ var staticRenderFns = [function () {
     staticClass: "text-center"
   }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
     staticClass: "th-imagem text-center"
-  }, [_vm._v("Imagem")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Descrição")]), _vm._v(" "), _c("th", [_vm._v("Número Série")]), _vm._v(" "), _c("th", [_vm._v("Categoria")]), _vm._v(" "), _c("th", [_vm._v("Armazém")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  }, [_vm._v("Imagem")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Número Série")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Categoria")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Armazém")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -6509,9 +6581,17 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.roles, function (role) {
     return _c("tr", {
       key: role.id
-    }, [_c("td", [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", _vm._l(role.users, function (users) {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(role.users, function (users) {
       return _c("p", [_vm._v("\n                                    " + _vm._s(users.name) + "\n                                ")]);
-    }), 0), _vm._v(" "), _c("td", _vm._l(_vm.permissions[role.id], function (permission, index) {
+    }), 0), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, _vm._l(_vm.permissions[role.id], function (permission, index) {
       return _c("p", {
         key: index
       }, [_vm._v(_vm._s(permission))]);
@@ -6543,7 +6623,15 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", [_vm._v("Descrição")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Utilizadores")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Descrição")])])]);
 }];
 render._withStripped = true;
 
@@ -6689,7 +6777,21 @@ var render = function render() {
 
     return _c("tr", {
       key: user.id
-    }, [_c("td", [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", [_vm._v(_vm._s((_user$role = user.role) === null || _user$role === void 0 ? void 0 : _user$role.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s((_user$cost = user.cost) === null || _user$cost === void 0 ? void 0 : _user$cost.designation))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(user.phone_number))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s((_user$role = user.role) === null || _user$role === void 0 ? void 0 : _user$role.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s((_user$cost = user.cost) === null || _user$cost === void 0 ? void 0 : _user$cost.designation))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_c("a", {
       attrs: {
         href: "#"
       },
@@ -6737,7 +6839,21 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Contacto")]), _vm._v(" "), _c("th", [_vm._v("Permissão")]), _vm._v(" "), _c("th", [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", [_vm._v("Ação")])])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Email")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Contacto")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Permissão")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Centro Custo")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
+  }, [_vm._v("Ação")])])]);
 }];
 render._withStripped = true;
 
@@ -89749,8 +89865,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

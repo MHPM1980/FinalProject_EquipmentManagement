@@ -53059,6 +53059,7 @@ footer {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+  z-index: 1;
 }
 
 .fa-red {
@@ -53467,13 +53468,13 @@ footer {
     top: 8%;
   }
 
-  .far {
-    color: #ffffff;
-    position: absolute;
-    font-size: 6.5rem;
-    left: 45%;
-    top: 14%;
-  }
+  /*.far {
+      color: #ffffff;
+      position: absolute;
+      font-size: 6.5rem;
+      left: 45%;
+      top: 14%;
+  }*/
 
   .msg {
     color: white;
@@ -53523,7 +53524,7 @@ footer {
     color: #ffffff;
     font-size: 11rem;
     position: absolute;
-    left: 32%;
+    left: 34%;
     top: 8%;
   }
 
@@ -53531,7 +53532,7 @@ footer {
     color: #ffffff;
     font-size: 11rem;
     position: absolute;
-    left: 60%;
+    left: 58%;
     top: 8%;
   }
 

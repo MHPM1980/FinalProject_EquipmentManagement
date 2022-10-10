@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+   {{-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-sm-10">
                 <div class="bg-transparent">
@@ -77,5 +77,28 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
+
+   <div class="container">
+       <div class="row justify-content-center">
+           <div class="mainbox">
+               <div class="err">
+                   4
+               </div>
+               <!--                <i class="far fa-question-circle fa-spin"></i>-->
+               <div class="err3">
+                   0
+               </div>
+               <div class="err2">
+                   4
+               </div>
+               <div class="msg">
+                   <h2>Oops... A página que procura não foi encontrada!</h2>
+                   <p>Clique <a class="not-found-link" href="{{ route('login') }}">aqui</a> para voltar à página de login.</p>
+               </div>
+               <img class="img-not-found" src="img/atec-ge-white.png" alt="ATEC-GE">
+           </div>
+       </div>
+   </div>
+
 @endsection

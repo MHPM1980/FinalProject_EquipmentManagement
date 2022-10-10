@@ -37,8 +37,8 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 my-2 d-flex justify-content-between offset-md-2">
-                                        <a class="btn btn-dark text-light" style="text-decoration: none" href="{{ route('register') }}">Registar</a>
+                                <div class="col-md-8 my-2 text-right offset-md-2">
+<!--                                        <a class="btn btn-dark text-light" style="text-decoration: none" href="{{ route('register') }}">Registar</a>-->
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>

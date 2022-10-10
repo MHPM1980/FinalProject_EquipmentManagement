@@ -35,6 +35,7 @@
                         </div>
                     </div>
                     <hr>
+                    {{this.reservations}}
                     <h5>Selecionar dados para reserva</h5>
                     <form  @submit.prevent="makeReservation">
                         <div class="form-group">
@@ -78,9 +79,11 @@ let m= moment();
     export default {
         props:{
             editForm: Object,
+            invalidReservations:Object,
         },
         mounted() {
             this.form=this.editForm;
+            this.reservations=this.invalidReservations;
         },
         data () {
             return {
@@ -88,6 +91,7 @@ let m= moment();
                 warehouses: {},
                 entities:{},
                 profile: {},
+                reservations:{},
                 range: {
                     start: new Date(),
                     end: new Date()
@@ -111,14 +115,18 @@ let m= moment();
             }
         },
         mixins:[createReservationMixin],
+        watch:{
+            reservations:function(){
+            }
+        },
         created(){
             this.loadWarehouses();
-            this.loadEntities()
+            this.loadEntities();
+            //this.numberApReservation()
             axios.get("api/profile")
                 .then(({ data }) => (this.profile = data));
         },
         methods:{
-
             loadWarehouses(){
                 axios
                     .get("api/warehouses/")

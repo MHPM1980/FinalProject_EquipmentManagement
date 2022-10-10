@@ -69,6 +69,16 @@ class ReservationController extends Controller
             ->count());
     }
 
+    /**
+     * Search product reservations data
+     *
+     */
+
+    public function productReservation(Request $request){
+        return response()->json(Reservation::where(
+            "product_id", "=", $request->product_id
+        )->get());
+    }
 
     /**
      * Show the form for creating a new resource.

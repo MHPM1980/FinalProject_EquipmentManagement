@@ -52,7 +52,7 @@
                                     </div>
                                 </td>
                                 <td v-if="!$gate.isFormando()" class="align-middle text-center">
-                                    <a class="btn-primary btn" @click="listEquipment(product)">Detalhe</a>
+                                    <a class="btn-primary btn" @click="[numberApReservation(product.id), listEquipment(product)]">Detalhe</a>
 
 <!--                                   <a href="#" @click="editModal(product)">
                                         <i class="fa fa-edit"></i>
@@ -73,7 +73,7 @@
             </div>
         </div>
         <modal-product title="Reservar Equipamento">
-            <product-detail :edit-form="form"></product-detail>
+            <product-detail :edit-form="form" :invalid-reservations="reservations.data"></product-detail>
         </modal-product>
     </div>
 
@@ -88,6 +88,7 @@
         data(){
             return{
                 products: {},
+                reservations:{},
                 form: new Form({
                     id:'',
                     image:'',
@@ -119,6 +120,11 @@
                     .then(response => {
                         this.products = response.data;
                     });
+            },
+            numberApReservation(id){
+                axios
+                    .get(`api/findProductReservations/?product_id=`+id)
+                    .then(({ data }) => (this.reservations.data=data))
             },
             listEquipment(product){
                 this.form.fill(product);

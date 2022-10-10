@@ -3169,7 +3169,8 @@ __webpack_require__.r(__webpack_exports__);
 
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
-    }
+    },
+    equipmentDelivered: function equipmentDelivered(id) {}
   }
 });
 
@@ -6612,9 +6613,26 @@ var render = function render() {
       }
     }, [_vm._v("Não")]) : _vm._e()]), _vm._v(" "), reservation.approved === 1 ? _c("div", [_vm._v("Aprovada")]) : _vm._e(), _vm._v(" "), reservation.approved === 0 ? _c("div", [_vm._v("Recusada")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
+    }, [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), _c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.approved === 1 ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.equipmentDelivered(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e()])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.returned))])]);
+    }, [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e()])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   })])])])]);

@@ -38,8 +38,15 @@
                                     <div v-if="reservation.approved === 0">Recusada</div>
 
                                 </td>
-                                <td class="align-middle text-center">{{ reservation.delivered }}</td>
-                                <td class="align-middle text-center">{{ reservation.returned }}</td>
+                                <td class="align-middle text-center">
+                                    <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                    <form @submit.prevent="">
+                                        <button class="btn btn-primary" v-if="reservation.approved ===1" @click="equipmentDelivered(reservation.id)">Sim</button>
+                                    </form>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -113,6 +120,9 @@
                         this.$Progress.fail()
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
+            },
+            equipmentDelivered(id){
+
             }
         }
     }

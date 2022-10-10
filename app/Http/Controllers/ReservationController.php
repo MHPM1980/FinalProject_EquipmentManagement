@@ -22,6 +22,12 @@ class ReservationController extends Controller
         return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
     }
 
+
+    /**
+     * Display Admin and Gestor dashboard card information.
+     *
+     */
+
     public function countReservations(Request $request){
         return response()->json(Reservation::where(
             "approved", "=", $request->approved
@@ -36,6 +42,31 @@ class ReservationController extends Controller
         return response()->json(Reservation::where(
             "returned", "=", $request->returned
         )->count());
+    }
+
+    /**
+     * Display Formador dashboard card information.
+     *
+     */
+
+    public function countFormReservations(Request $request){
+        $user=auth('api')->user();
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->where("user_id","=",$request->user_id)
+            ->count());
+    }
+    public function countFormPendReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->where("user_id","=",$request->user_id)
+            ->count());
+    }
+    public function countFormReturReservations(Request $request){
+        return response()->json(Reservation::where(
+            "returned", "=", $request->returned
+        )->where("user_id","=",$request->user_id)
+            ->count());
     }
 
 

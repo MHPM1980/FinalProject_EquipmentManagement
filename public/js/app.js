@@ -2249,7 +2249,7 @@ __webpack_require__.r(__webpack_exports__);
     GestorDashboard: _GestorDashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     AdminDashboard: _AdminDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.get("api/profile").then(function (_ref) {
@@ -2278,6 +2278,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/formadorCard */ "./resources/js/components/Dashboards/widgets/formadorCard.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {}
+  },
   data: function data() {
     return {
       equipments: 0,
@@ -2286,12 +2289,15 @@ __webpack_require__.r(__webpack_exports__);
       returned: 0
     };
   },
-  created: function created() {
-    this.numberEquipments();
-    this.numberApReservation();
-    this.numberPendReservation();
-    this.numberReturReservation();
+  watch: {
+    user: function user() {
+      this.numberEquipments();
+      this.numberApReservation();
+      this.numberPendReservation();
+      this.numberReturReservation();
+    }
   },
+  mounted: function mounted() {},
   components: {
     FormadorCard: _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2307,7 +2313,8 @@ __webpack_require__.r(__webpack_exports__);
     numberApReservation: function numberApReservation() {
       var _this2 = this;
 
-      axios.get('api/findReservations/?approved=1').then(function (_ref2) {
+      console.log(this.user);
+      axios.get("api/findFormReservations/?approved=1&user_id=" + this.user.id).then(function (_ref2) {
         var data = _ref2.data;
         return _this2.approved = data;
       });
@@ -2315,7 +2322,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this3 = this;
 
-      axios.get('api/findPendReservations/?approved=').then(function (_ref3) {
+      axios.get("api/findFormPendReservations/?approved=&user_id=" + this.user.id).then(function (_ref3) {
         var data = _ref3.data;
         return _this3.pendings = data;
       });
@@ -2323,7 +2330,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this4 = this;
 
-      axios.get('api/findReturReservations/?returned=0').then(function (_ref4) {
+      axios.get("api/findFormReturReservations/?returned=0&user_id=" + this.user.id).then(function (_ref4) {
         var data = _ref4.data;
         return _this4.returned = data;
       });
@@ -4531,7 +4538,11 @@ var render = function render() {
     staticClass: "col-md-12 pt-5"
   }, [_c("div", [_c("h1", {
     staticClass: "text-light"
-  }, [_vm._v("Bem-Vindo, " + _vm._s(this.profile.name) + " !")])]), _vm._v(" "), _vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
+  }, [_vm._v("Bem-Vindo, " + _vm._s(this.profile.name) + " !")])]), _vm._v(" "), _vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard", {
+    attrs: {
+      user: this.profile
+    }
+  })], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
 };
 
 var staticRenderFns = [];
@@ -90006,8 +90017,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

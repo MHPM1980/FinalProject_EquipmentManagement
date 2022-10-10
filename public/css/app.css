@@ -53059,6 +53059,7 @@ footer {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+  z-index: 1;
 }
 
 .fa-red {

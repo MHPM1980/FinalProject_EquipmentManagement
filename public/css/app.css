@@ -53418,6 +53418,10 @@ footer {
     color: white;
     text-decoration: underline;
   }
+
+  .descricao-card {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -53589,6 +53593,10 @@ footer {
   .not-found-link:hover {
     color: white;
     text-decoration: underline;
+  }
+
+  .descricao-card {
+    font-size: 20px;
   }
 }
 

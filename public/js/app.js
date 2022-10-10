@@ -4602,6 +4602,7 @@ var render = function render() {
       rota: "/reservations"
     }
   })], 1), _vm._v(" "), _c("div", [_c("v-calendar", {
+    staticClass: "mb-4",
     attrs: {
       "is-expanded": ""
     }
@@ -4750,7 +4751,7 @@ var render = function render() {
   }, [_c("h1", {
     staticClass: "col-12"
   }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
-    staticClass: "col-12"
+    staticClass: "col-12 descricao-card"
   }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
@@ -90017,8 +90018,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\T0121088\Projeto Final - Equipment Management\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

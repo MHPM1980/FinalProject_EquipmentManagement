@@ -3134,8 +3134,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       reservations: {},
       form: new Form({
-        id: '',
-        approved: ''
+        id: ''
       })
     };
   },
@@ -3156,10 +3155,10 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.reservations = data;
       });
     },
-    reservationApproved: function reservationApproved(id) {
+    reservationDenied: function reservationDenied(id) {
       var _this3 = this;
 
-      this.form.approved = 1;
+      this.form.approved = 0;
       this.form.put("api/reservations/" + id).then(function () {
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
@@ -3173,10 +3172,11 @@ __webpack_require__.r(__webpack_exports__);
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
     },
-    reservationDenied: function reservationDenied(id) {
+    reservationApproved: function reservationApproved(id) {
       var _this4 = this;
 
-      this.form.approved = 0;
+      this.form.approved = 1;
+      this.form.delivered = 0;
       this.form.put("api/reservations/" + id).then(function () {
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
@@ -3186,6 +3186,44 @@ __webpack_require__.r(__webpack_exports__);
         Fire.$emit('AfterCreate');
       })["catch"](function () {
         _this4.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    equipmentDelivered: function equipmentDelivered(id) {
+      var _this5 = this;
+
+      this.form.approved = 1;
+      this.form.delivered = 1;
+      this.form.returned = 0;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this5.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this5.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    equipmentReturned: function equipmentReturned(id) {
+      var _this6 = this;
+
+      this.form.returned = 1;
+      this.form.approved = 1;
+      this.form.delivered = 1;
+      this.form.put("api/reservations/" + id).then(function () {
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this6.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this6.$Progress.fail();
 
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
@@ -6584,6 +6622,8 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Equipamento")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
+  }, [_vm._v("Destino")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
   }, [_vm._v("Data Reserva")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Início Reserva")]), _vm._v(" "), _c("th", {
@@ -6592,7 +6632,7 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Aprovação")]) : _vm._e(), _vm._v(" "), _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("Entregue")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("Levantado")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
@@ -6606,6 +6646,8 @@ var render = function render() {
     }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.product.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.registry_date))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -6635,9 +6677,55 @@ var render = function render() {
       }
     }, [_vm._v("Não")]) : _vm._e()]), _vm._v(" "), reservation.approved === 1 ? _c("div", [_vm._v("Aprovada")]) : _vm._e(), _vm._v(" "), reservation.approved === 0 ? _c("div", [_vm._v("Recusada")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.approved === 1 && reservation.delivered === 0 ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.equipmentDelivered(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e()]), _vm._v(" "), reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-yellow"
+    })]) : _vm._e(), _vm._v(" "), reservation.delivered === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.returned))])]);
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.delivered === 1 && reservation.returned === 0 ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.equipmentReturned(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e()]), _vm._v(" "), reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 1 && reservation.returned === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.delivered === 1 && reservation.returned === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-yellow"
+    })]) : _vm._e(), _vm._v(" "), reservation.returned === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e()])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   })])])])]);
@@ -90041,8 +90129,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

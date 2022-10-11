@@ -6592,7 +6592,7 @@ var render = function render() {
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
       key: reservation.id,
-      "class": [reservation.approved === 1 ? "bg-success" : reservation.approved === 0 ? "bg-danger" : "bg-warning"],
+      "class": [reservation.approved === 1 ? "text-success" : reservation.approved === 0 ? "text-danger" : "bg-warning"],
       attrs: {
         name: "tr"
       }

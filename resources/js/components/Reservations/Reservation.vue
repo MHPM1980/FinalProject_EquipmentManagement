@@ -22,7 +22,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'bg-success' : reservation.approved === 0 ? 'bg-danger' : 'bg-warning']">
+                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
 
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>

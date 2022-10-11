@@ -175,8 +175,8 @@ class ReservationController extends Controller
 
         try{
             $reservation -> approved = $request->approved;
-            $reservation -> delivered = $request->approved;
-            $reservation -> approved = $request->approved;
+            $reservation -> delivered = $request->delivered;
+            $reservation -> returned = $request->returned;
             $reservation -> save();
 
             return['message'=>"Success"];

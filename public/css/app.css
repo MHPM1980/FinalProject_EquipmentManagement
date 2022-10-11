@@ -53074,6 +53074,10 @@ footer {
   color: forestgreen;
 }
 
+.fa-yellow {
+  color: #F5F51D;
+}
+
 @media screen and (max-width: 450px) {
   .mainbox {
     margin: auto;

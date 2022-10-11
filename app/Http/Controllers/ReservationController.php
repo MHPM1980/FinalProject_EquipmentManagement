@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -69,6 +70,22 @@ class ReservationController extends Controller
             ->count());
     }
 
+    /**
+     * Search product reservations data
+     *
+     */
+
+    public function productReservation(Request $request){
+        response()->json(Reservation::where('product_id',$request->product_id)->where('approved',$request->approved)->get()
+            ->map(function($item){
+                $period = CarbonPeriod::create($item->start_date, $item->end_date);
+                // Iterate over the period
+                foreach ($period as $date) {
+                    echo $date->format('Y-m-d ');
+                }
+                return $item->dates = $period->toArray();
+            }));
+    }
 
     /**
      * Show the form for creating a new resource.

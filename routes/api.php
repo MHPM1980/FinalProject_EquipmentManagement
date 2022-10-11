@@ -49,6 +49,9 @@ Route::get('findFormReservations','ReservationController@countFormReservations')
 Route::get('findFormPendReservations','ReservationController@countFormPendReservations');
 Route::get('findFormReturReservations','ReservationController@countFormReturReservations');
 
+//Search product reservations data
+Route::get('findProductReservations','ReservationController@productReservation');
+
 
 Route::get('profile','UserController@profile');
 Route::put('profile','UserController@updateProfile');

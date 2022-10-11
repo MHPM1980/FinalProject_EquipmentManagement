@@ -73,7 +73,7 @@
             </div>
         </div>
         <modal-product title="Reservar Equipamento">
-            <product-detail :edit-form="form" :invalid-reservations="reservations.data"></product-detail>
+            <product-detail :edit-form="form" :edit-reservations="reservations" ></product-detail>
         </modal-product>
     </div>
 
@@ -88,7 +88,7 @@
         data(){
             return{
                 products: {},
-                reservations:{},
+                reservations:[],
                 form: new Form({
                     id:'',
                     image:'',
@@ -111,7 +111,6 @@
         components: {
             modalProduct,
             productDetail
-
         },
         methods:{
             getResults(page = 1){
@@ -123,8 +122,8 @@
             },
             numberApReservation(id){
                 axios
-                    .get(`api/findProductReservations/?product_id=`+id)
-                    .then(({ data }) => (this.reservations.data=data))
+                    .get(`api/findProductReservations/?product_id=`+id+`?approved!=0`)
+                    .then(({ data }) => (this.reservations=data.trim().split(" ")))
             },
             listEquipment(product){
                 this.form.fill(product);

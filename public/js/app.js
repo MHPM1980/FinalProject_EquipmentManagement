@@ -2832,11 +2832,10 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     editForm: Object,
-    invalidReservations: Object
+    editReservations: Array
   },
   mounted: function mounted() {
     this.form = this.editForm;
-    this.reservations = this.invalidReservations;
   },
   data: function data() {
     return {
@@ -2844,7 +2843,7 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
       warehouses: {},
       entities: {},
       profile: {},
-      reservations: {},
+      disabledDays: [],
       range: {
         start: new Date(),
         end: new Date()
@@ -2869,20 +2868,24 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
   },
   mixins: [_mixins_createReservationMixin__WEBPACK_IMPORTED_MODULE_1__["createReservationMixin"]],
   watch: {
-    reservations: function reservations() {}
+    editReservations: function editReservations() {
+      this.loadReservations();
+    }
   },
   created: function created() {
     var _this = this;
 
     this.loadWarehouses();
-    this.loadEntities(); //this.numberApReservation()
-
+    this.loadEntities();
     axios.get("api/profile").then(function (_ref) {
       var data = _ref.data;
       return _this.profile = data;
     });
   },
   methods: {
+    loadReservations: function loadReservations() {
+      this.disabledDays = this.editReservations;
+    },
     loadWarehouses: function loadWarehouses() {
       var _this2 = this;
 
@@ -2901,6 +2904,7 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
     },
     hideModal: function hideModal() {
       $('#addNew').modal('hide');
+      this.disabledDays = [];
     }
   }
 });
@@ -2926,7 +2930,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: {},
-      reservations: {},
+      reservations: [],
       form: new Form({
         id: '',
         image: '',
@@ -2964,9 +2968,9 @@ __webpack_require__.r(__webpack_exports__);
     numberApReservation: function numberApReservation(id) {
       var _this3 = this;
 
-      axios.get("api/findProductReservations/?product_id=" + id).then(function (_ref) {
+      axios.get("api/findProductReservations/?product_id=" + id + "?approved!=0").then(function (_ref) {
         var data = _ref.data;
-        return _this3.reservations.data = data;
+        return _this3.reservations = data.trim().split(" ");
       });
     },
     listEquipment: function listEquipment(product) {
@@ -5867,7 +5871,7 @@ var render = function render() {
         _vm.$set(_vm.form.warehouse, "name", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("hr"), _vm._v("\n                " + _vm._s(this.reservations) + "\n                "), _c("h5", [_vm._v("Selecionar dados para reserva")]), _vm._v(" "), _c("form", {
+  })])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h5", [_vm._v("Selecionar dados para reserva")]), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -5976,6 +5980,7 @@ var render = function render() {
     }
   }, [_c("v-date-picker", {
     attrs: {
+      "disabled-dates": _vm.disabledDays,
       "min-date": new Date(),
       "is-range": "",
       "is-expanded": ""
@@ -6127,7 +6132,7 @@ var render = function render() {
   }, [_c("product-detail", {
     attrs: {
       "edit-form": _vm.form,
-      "invalid-reservations": _vm.reservations.data
+      "edit-reservations": _vm.reservations
     }
   })], 1)], 1);
 };
@@ -90036,8 +90041,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\T0121547\00-ProjFinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

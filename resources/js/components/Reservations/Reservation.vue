@@ -111,11 +111,11 @@
                         .get("api/reservations/")
                         .then(({ data }) => (this.reservations = data))
             },
-
             reservationDenied(id){
                 this.form.approved=0
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',
@@ -138,6 +138,7 @@
                 this.form.delivered=0
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',
@@ -154,11 +155,12 @@
             },
 
             equipmentDelivered(id){
-                this.form.approved=1
                 this.form.delivered=1
                 this.form.returned=0
+                this.form.approved=1
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',
@@ -175,10 +177,11 @@
             },
             equipmentReturned(id){
                 this.form.returned=1
-                this.form.approved=1
                 this.form.delivered=1
+                this.form.approved=1
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',

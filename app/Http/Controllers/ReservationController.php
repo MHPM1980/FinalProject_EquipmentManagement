@@ -76,7 +76,7 @@ class ReservationController extends Controller
      */
 
     public function productReservation(Request $request){
-        response()->json(Reservation::where('product_id',$request->product_id)->where('approved',$request->approved)->get()
+        response()->json(Reservation::where('product_id',$request->product_id)->whereIn('approved', [1])->orWhereNull('approved')->get()
             ->map(function($item){
                 $period = CarbonPeriod::create($item->start_date, $item->end_date);
                 // Iterate over the period

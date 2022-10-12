@@ -122,7 +122,7 @@
             },
             numberApReservation(id){
                 axios
-                    .get(`api/findProductReservations/?product_id=`+id+`?approved!=0`)
+                    .get(`api/findProductReservations/?product_id=`+id+`&approved!=0`)
                     .then(({ data }) => (this.reservations=data.trim().split(" ")))
             },
             listEquipment(product){

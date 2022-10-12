@@ -2968,7 +2968,7 @@ __webpack_require__.r(__webpack_exports__);
     numberApReservation: function numberApReservation(id) {
       var _this3 = this;
 
-      axios.get("api/findProductReservations/?product_id=" + id + "?approved!=0").then(function (_ref) {
+      axios.get("api/findProductReservations/?product_id=" + id + "&approved!=0").then(function (_ref) {
         var data = _ref.data;
         return _this3.reservations = data.trim().split(" ");
       });
@@ -3160,6 +3160,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.form.approved = 0;
       this.form.put("api/reservations/" + id).then(function () {
+        _this3.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this3.$Progress.finish(); //custom Event to reload DOM
@@ -3178,6 +3180,8 @@ __webpack_require__.r(__webpack_exports__);
       this.form.approved = 1;
       this.form.delivered = 0;
       this.form.put("api/reservations/" + id).then(function () {
+        _this4.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this4.$Progress.finish(); //custom Event to reload DOM
@@ -3193,10 +3197,12 @@ __webpack_require__.r(__webpack_exports__);
     equipmentDelivered: function equipmentDelivered(id) {
       var _this5 = this;
 
-      this.form.approved = 1;
       this.form.delivered = 1;
       this.form.returned = 0;
+      this.form.approved = 1;
       this.form.put("api/reservations/" + id).then(function () {
+        _this5.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this5.$Progress.finish(); //custom Event to reload DOM
@@ -3213,9 +3219,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this6 = this;
 
       this.form.returned = 1;
-      this.form.approved = 1;
       this.form.delivered = 1;
+      this.form.approved = 1;
       this.form.put("api/reservations/" + id).then(function () {
+        _this6.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this6.$Progress.finish(); //custom Event to reload DOM
@@ -90129,8 +90137,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

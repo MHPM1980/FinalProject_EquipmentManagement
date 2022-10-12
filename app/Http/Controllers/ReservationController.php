@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -19,8 +21,17 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
+        if(Auth::user()->role->name=='FORMADOR'){
+            return Reservation::with(['user','product', 'warehouse'])->where("user_id", "=", Auth::user()->id)->orderBy('id','asc')->paginate(15);
+        }else{
+            return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
+        }
     }
+
+    /**
+     * Display Admin and Gestor dashboard card information.
+     *
+     */
 
     public function countReservations(Request $request){
         return response()->json(Reservation::where(
@@ -38,6 +49,46 @@ class ReservationController extends Controller
         )->count());
     }
 
+    /**
+     * Display Formador dashboard card information.
+     *
+     */
+
+    public function countFormReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->where("user_id","=",Auth::user()->id)
+            ->count());
+    }
+    public function countFormPendReservations(Request $request){
+        return response()->json(Reservation::where(
+            "approved", "=", $request->approved
+        )->where("user_id","=",Auth::user()->id)
+            ->count());
+    }
+    public function countFormReturReservations(Request $request){
+        return response()->json(Reservation::where(
+            "returned", "=", $request->returned
+        )->where("user_id","=",Auth::user()->id)
+            ->count());
+    }
+
+    /**
+     * Search product reservations data
+     *
+     */
+
+    public function productReservation(Request $request){
+        response()->json(Reservation::where('product_id',$request->product_id)->whereIn('approved', [1])->orWhereNull('approved')->get()
+            ->map(function($item){
+                $period = CarbonPeriod::create($item->start_date, $item->end_date);
+                // Iterate over the period
+                foreach ($period as $date) {
+                    echo $date->format('Y-m-d ');
+                }
+                return $item->dates = $period->toArray();
+            }));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -81,31 +132,6 @@ class ReservationController extends Controller
         }
     }
 
-    public function reservationApproved(Request $request, $id){
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservation $reservation)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -127,8 +153,8 @@ class ReservationController extends Controller
 
         try{
             $reservation -> approved = $request->approved;
-            $reservation -> delivered = $request->approved;
-            $reservation -> approved = $request->approved;
+            $reservation -> delivered = $request->delivered;
+            $reservation -> returned = $request->returned;
             $reservation -> save();
 
             return['message'=>"Success"];

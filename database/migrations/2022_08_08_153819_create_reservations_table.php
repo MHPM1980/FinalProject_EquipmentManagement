@@ -21,8 +21,8 @@ class CreateReservationsTable extends Migration
             $table->date('registry_date');
             $table->date('start_date');
             $table->date('end_date');
-            $table->boolean('delivered')->default(0);
-            $table->boolean('returned')->default(0);
+            $table->boolean('delivered')->nullable();
+            $table->boolean('returned')->nullable();
             $table->boolean('approved')->nullable();
             $table->timestamps();
             $table->softDeletes();

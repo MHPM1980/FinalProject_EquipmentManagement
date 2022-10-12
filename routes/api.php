@@ -40,9 +40,21 @@ Route::apiResource('products','ProductController');
 Route::get('findProduct','ProductController@search');
 
 Route::apiResource('reservations','ReservationController');
+
+
+//Admin and Gestor dashboard card information Routes
 Route::get('findReservations','ReservationController@countReservations');
 Route::get('findPendReservations','ReservationController@countPendReservations');
 Route::get('findReturReservations','ReservationController@countReturReservations');
+
+//Formador dashboard card information Routes
+Route::get('findFormReservations','ReservationController@countFormReservations');
+Route::get('findFormPendReservations','ReservationController@countFormPendReservations');
+Route::get('findFormReturReservations','ReservationController@countFormReturReservations');
+
+//Search product reservations data
+Route::get('findProductReservations','ReservationController@productReservation');
+
 
 Route::get('profile','UserController@profile');
 Route::put('profile','UserController@updateProfile');

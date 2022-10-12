@@ -56,14 +56,13 @@
                             <has-error :form="form" field="entity_id"></has-error>
                         </div>
                         <div class="text-center" style="width: 100%; height: 330px;">
-                            <v-date-picker v-model="range" :min-date='new Date()' is-range is-expanded/>
+                            <v-date-picker v-model="range" :disabled-dates="disabledDays" :min-date='new Date()' is-range is-expanded/>
                         </div>
                         <div class="text-right pt-3">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                             <button class="btn btn-primary" type="submit" @click="picker">Reservar</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -78,6 +77,7 @@ let m= moment();
     export default {
         props:{
             editForm: Object,
+            editReservations:Array,
         },
         mounted() {
             this.form=this.editForm;
@@ -88,6 +88,7 @@ let m= moment();
                 warehouses: {},
                 entities:{},
                 profile: {},
+                disabledDays:[],
                 range: {
                     start: new Date(),
                     end: new Date()
@@ -111,14 +112,21 @@ let m= moment();
             }
         },
         mixins:[createReservationMixin],
+        watch:{
+            editReservations :function (){
+                this.loadReservations();
+            }
+        },
         created(){
             this.loadWarehouses();
-            this.loadEntities()
+            this.loadEntities();
             axios.get("api/profile")
                 .then(({ data }) => (this.profile = data));
         },
         methods:{
-
+            loadReservations(){
+                this.disabledDays=this.editReservations;
+            },
             loadWarehouses(){
                 axios
                     .get("api/warehouses/")
@@ -133,6 +141,7 @@ let m= moment();
             },
             hideModal(){
                 $('#addNew').modal('hide');
+                this.disabledDays=[]
             }
         }
     }

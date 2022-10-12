@@ -55,6 +55,11 @@ body{
 footer{
     position: sticky;
     bottom: 0;
+    z-index: 1;
+}
+
+.small-box-footer{
+    z-index: 0 !important;
 }
 
 .fa-red{
@@ -62,6 +67,10 @@ footer{
 }
 .fa-green{
     color: forestgreen;
+}
+
+.fa-yellow{
+    color: #F5F51D;
 }
 
 @media screen and (max-width: 450px){
@@ -417,6 +426,10 @@ footer{
         color: white;
         text-decoration: underline;
     }
+
+    .descricao-card{
+        font-size: 16px;
+    }
 }
 
 
@@ -475,13 +488,13 @@ footer{
         top: 8%;
     }
 
-    .far {
+    /*.far {
         color: #ffffff;
         position: absolute;
         font-size: 6.5rem;
         left: 45%;
         top: 14%;
-    }
+    }*/
 
     .msg{
         color: white;
@@ -532,7 +545,7 @@ footer{
         color: #ffffff;
         font-size: 11rem;
         position:absolute;
-        left: 32%;
+        left: 34%;
         top: 8%;
     }
 
@@ -540,7 +553,7 @@ footer{
         color: #ffffff;
         font-size: 11rem;
         position:absolute;
-        left: 60%;
+        left: 58%;
         top: 8%;
     }
 
@@ -593,6 +606,10 @@ footer{
     .not-found-link:hover {
         color: white;
         text-decoration: underline;
+    }
+
+    .descricao-card{
+        font-size: 20px;
     }
 }
 

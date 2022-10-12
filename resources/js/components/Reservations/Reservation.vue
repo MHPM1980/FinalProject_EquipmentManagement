@@ -13,22 +13,26 @@
                             <tr>
                                 <th  class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">Utilizador</th>
                                 <th class="text-center" >Equipamento</th>
+                                <th class="text-center">Destino</th>
                                 <th class="text-center" >Data Reserva</th>
                                 <th class="text-center" >Início Reserva</th>
                                 <th class="text-center" >Fim Reserva</th>
                                 <th class="text-center"  v-if="$gate.isAdmin() || $gate.isGestor()" >Aprovação</th>
-                                <th class="text-center" >Entregue</th>
+                                <th class="text-center" >Levantado</th>
                                 <th class="text-center" >Devolvido</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="reservation in reservations.data" :key="reservation.id" >
+                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
 
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>
+                                <td class="align-middle text-center">{{ reservation.warehouse.name }}</td>
                                 <td class="align-middle text-center">{{ reservation.registry_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.start_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.end_date }}</td>
+
+                                    <!------------------------------ COLUNA DE APROVAÇÃO ------------------------- -->
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >
                                     <form @submit.prevent="">
                                         <button class="btn btn-primary" v-if="reservation.approved === null" @click="reservationApproved(reservation.id)">Sim</button>
@@ -38,8 +42,39 @@
                                     <div v-if="reservation.approved === 0">Recusada</div>
 
                                 </td>
-                                <td class="align-middle text-center">{{ reservation.delivered }}</td>
-                                <td class="align-middle text-center">{{ reservation.returned }}</td>
+                                    <!------------------------------ COLUNA DE LEVANTAMENTO ------------------------- -->
+                                <td class="align-middle text-center">
+                                    <div v-if="$gate.isAdmin() || $gate.isGestor()">
+                                        <form @submit.prevent="">
+                                            <button class="btn btn-primary" v-if="reservation.approved===1 && reservation.delivered === 0" @click="equipmentDelivered(reservation.id)">Sim</button>
+                                        </form>
+                                        <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                        <div v-if="reservation.approved === 1 && reservation.delivered === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
+                                    </div>
+
+                                    <div v-if="$gate.isFormador()">
+                                        <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                        <div v-if="reservation.approved === 1 && reservation.delivered === 0"> <i class="fa-solid fa-circle fa-lg fa-yellow"></i> </div>
+                                        <div v-if="reservation.delivered === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
+                                    </div>
+
+                                </td>
+                                <!------------------------------ COLUNA DE DEVOLUÇÃO ------------------------- -->
+                                <td class="align-middle text-center">
+                                    <div v-if="$gate.isAdmin() || $gate.isGestor()">
+                                        <form @submit.prevent="">
+                                            <button class="btn btn-primary" v-if="reservation.delivered === 1 && reservation.returned === 0" @click="equipmentReturned(reservation.id)">Sim</button>
+                                        </form>
+                                        <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                        <div v-if="reservation.approved === 1 && reservation.delivered===1 && reservation.returned === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
+                                    </div>
+
+                                    <div v-if="$gate.isFormador()">
+                                        <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
+                                        <div v-if="reservation.delivered === 1 && reservation.returned === 0"> <i class="fa-solid fa-circle fa-lg fa-yellow"></i> </div>
+                                        <div v-if="reservation.returned === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
+                                    </div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -59,9 +94,9 @@
         data(){
             return{
                 reservations: {},
+                profile: {},
                 form: new Form({
                     id:'',
-                    approved: '',
                 }),
             }
         },
@@ -78,10 +113,34 @@
                         .then(({ data }) => (this.reservations = data))
             },
 
-            reservationApproved(id){
-                this.form.approved=1
+            reservationDenied(id){
+                this.form.approved=0
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
+                        Swal.fire(
+                            'Atualizado!',
+                            'O registo foi Atualizado.',
+                            'success'
+                        )
+                        this.$Progress.finish();
+                        //custom Event to reload DOM
+                        Fire.$emit('AfterCreate');
+                    })
+
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
+                    })
+
+            },
+
+            reservationApproved(id){
+                this.form.approved=1
+                this.form.delivered=0
+                this.form.put(`api/reservations/`+id)
+                    .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',
@@ -96,10 +155,14 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
-            reservationDenied(id){
-                this.form.approved=0
+
+            equipmentDelivered(id){
+                this.form.delivered=1
+                this.form.returned=0
+                this.form.approved=1
                 this.form.put(`api/reservations/`+id)
                     .then(()=>{
+                        this.form.reset();
                         Swal.fire(
                             'Atualizado!',
                             'O registo foi Atualizado.',
@@ -113,10 +176,29 @@
                         this.$Progress.fail()
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
-            }
+            },
+            equipmentReturned(id){
+                this.form.returned=1
+                this.form.delivered=1
+                this.form.approved=1
+                this.form.put(`api/reservations/`+id)
+                    .then(()=>{
+                        this.form.reset();
+                        Swal.fire(
+                            'Atualizado!',
+                            'O registo foi Atualizado.',
+                            'success'
+                        )
+                        this.$Progress.finish();
+                        //custom Event to reload DOM
+                        Fire.$emit('AfterCreate');
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
+                    })
+            },
+
         }
     }
-
-
-
 </script>

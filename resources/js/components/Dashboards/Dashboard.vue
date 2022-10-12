@@ -12,7 +12,7 @@
                     <gestor-dashboard></gestor-dashboard>
                 </div>
                 <div v-if="$gate.isFormador()">
-                    <formador-dashboard></formador-dashboard>
+                    <formador-dashboard ></formador-dashboard>
                 </div>
                 <div v-if="$gate.isFormando()">
                     <products-view></products-view>
@@ -30,7 +30,7 @@
 
     export default {
         components: {ProductsView,FormadorDashboard, GestorDashboard, AdminDashboard},
-        created() {
+        mounted() {
             axios.get("api/profile")
                 .then(({ data }) => (this.profile = data));
         },

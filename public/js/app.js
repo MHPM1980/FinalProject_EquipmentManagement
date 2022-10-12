@@ -2249,7 +2249,7 @@ __webpack_require__.r(__webpack_exports__);
     GestorDashboard: _GestorDashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     AdminDashboard: _AdminDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.get("api/profile").then(function (_ref) {
@@ -2275,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _widgets_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/card */ "./resources/js/components/Dashboards/widgets/card.vue");
+/* harmony import */ var _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/formadorCard */ "./resources/js/components/Dashboards/widgets/formadorCard.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2293,7 +2293,7 @@ __webpack_require__.r(__webpack_exports__);
     this.numberReturReservation();
   },
   components: {
-    card: _widgets_card__WEBPACK_IMPORTED_MODULE_0__["default"]
+    FormadorCard: _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     numberEquipments: function numberEquipments() {
@@ -2307,7 +2307,7 @@ __webpack_require__.r(__webpack_exports__);
     numberApReservation: function numberApReservation() {
       var _this2 = this;
 
-      axios.get('api/findReservations/?approved=1').then(function (_ref2) {
+      axios.get("api/findFormReservations/?approved=1").then(function (_ref2) {
         var data = _ref2.data;
         return _this2.approved = data;
       });
@@ -2315,7 +2315,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this3 = this;
 
-      axios.get('api/findPendReservations/?approved=').then(function (_ref3) {
+      axios.get("api/findFormPendReservations/?approved=").then(function (_ref3) {
         var data = _ref3.data;
         return _this3.pendings = data;
       });
@@ -2323,7 +2323,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this4 = this;
 
-      axios.get('api/findReturReservations/?returned=0').then(function (_ref4) {
+      axios.get("api/findFormReturReservations/?returned=0").then(function (_ref4) {
         var data = _ref4.data;
         return _this4.returned = data;
       });
@@ -2414,6 +2414,27 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboards/widgets/card.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    background: String,
+    size: String,
+    text: String,
+    rota: String,
+    number: Number
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2814,7 +2835,8 @@ __webpack_require__.r(__webpack_exports__);
 var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    editForm: Object
+    editForm: Object,
+    editReservations: Array
   },
   mounted: function mounted() {
     this.form = this.editForm;
@@ -2825,6 +2847,7 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
       warehouses: {},
       entities: {},
       profile: {},
+      disabledDays: [],
       range: {
         start: new Date(),
         end: new Date()
@@ -2848,6 +2871,11 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
     };
   },
   mixins: [_mixins_createReservationMixin__WEBPACK_IMPORTED_MODULE_1__["createReservationMixin"]],
+  watch: {
+    editReservations: function editReservations() {
+      this.loadReservations();
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -2859,6 +2887,9 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
     });
   },
   methods: {
+    loadReservations: function loadReservations() {
+      this.disabledDays = this.editReservations;
+    },
     loadWarehouses: function loadWarehouses() {
       var _this2 = this;
 
@@ -2877,6 +2908,7 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
     },
     hideModal: function hideModal() {
       $('#addNew').modal('hide');
+      this.disabledDays = [];
     }
   }
 });
@@ -2902,6 +2934,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: {},
+      reservations: [],
       form: new Form({
         id: '',
         image: '',
@@ -2936,17 +2969,25 @@ __webpack_require__.r(__webpack_exports__);
         _this2.products = response.data;
       });
     },
+    numberApReservation: function numberApReservation(id) {
+      var _this3 = this;
+
+      axios.get("api/findProductReservations/?product_id=" + id + "&approved!=0").then(function (_ref) {
+        var data = _ref.data;
+        return _this3.reservations = data.trim().split(" ");
+      });
+    },
     listEquipment: function listEquipment(product) {
       this.form.fill(product);
       $('#addNew').modal('show');
       this.form.fill(product);
     },
     loadProducts: function loadProducts() {
-      var _this3 = this;
+      var _this4 = this;
 
-      axios.get("api/products/").then(function (_ref) {
-        var data = _ref.data;
-        return _this3.products = data;
+      axios.get("api/products/").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this4.products = data;
       });
     }
   }
@@ -3096,9 +3137,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       reservations: {},
+      profile: {},
       form: new Form({
-        id: '',
-        approved: ''
+        id: ''
       })
     };
   },
@@ -3119,11 +3160,13 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.reservations = data;
       });
     },
-    reservationApproved: function reservationApproved(id) {
+    reservationDenied: function reservationDenied(id) {
       var _this3 = this;
 
-      this.form.approved = 1;
+      this.form.approved = 0;
       this.form.put("api/reservations/" + id).then(function () {
+        _this3.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this3.$Progress.finish(); //custom Event to reload DOM
@@ -3136,11 +3179,14 @@ __webpack_require__.r(__webpack_exports__);
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
     },
-    reservationDenied: function reservationDenied(id) {
+    reservationApproved: function reservationApproved(id) {
       var _this4 = this;
 
-      this.form.approved = 0;
+      this.form.approved = 1;
+      this.form.delivered = 0;
       this.form.put("api/reservations/" + id).then(function () {
+        _this4.form.reset();
+
         Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
 
         _this4.$Progress.finish(); //custom Event to reload DOM
@@ -3149,6 +3195,48 @@ __webpack_require__.r(__webpack_exports__);
         Fire.$emit('AfterCreate');
       })["catch"](function () {
         _this4.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    equipmentDelivered: function equipmentDelivered(id) {
+      var _this5 = this;
+
+      this.form.delivered = 1;
+      this.form.returned = 0;
+      this.form.approved = 1;
+      this.form.put("api/reservations/" + id).then(function () {
+        _this5.form.reset();
+
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this5.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this5.$Progress.fail();
+
+        Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
+      });
+    },
+    equipmentReturned: function equipmentReturned(id) {
+      var _this6 = this;
+
+      this.form.returned = 1;
+      this.form.delivered = 1;
+      this.form.approved = 1;
+      this.form.put("api/reservations/" + id).then(function () {
+        _this6.form.reset();
+
+        Swal.fire('Atualizado!', 'O registo foi Atualizado.', 'success');
+
+        _this6.$Progress.finish(); //custom Event to reload DOM
+
+
+        Fire.$emit('AfterCreate');
+      })["catch"](function () {
+        _this6.$Progress.fail();
 
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
@@ -4548,37 +4636,42 @@ var render = function render() {
     staticClass: "text-center pt-5 align-middle"
   }, [_c("div", {
     staticClass: "row"
-  }, [_c("card", {
+  }, [_c("formador-card", {
     attrs: {
       background: "bg-secondary",
-      size: "col-md-6",
-      text: "Equipamentos",
+      size: "col-md-3",
+      text: "Total de Equipamentos",
       number: _vm.equipments,
       rota: "/equipmentsView"
     }
-  }), _vm._v(" "), _c("card", {
+  }), _vm._v(" "), _c("formador-card", {
     attrs: {
       background: "bg-success",
-      size: "col-md-6",
+      size: "col-md-3",
       text: "Reservas aprovadas",
       number: _vm.approved,
       rota: "/reservations"
     }
-  }), _vm._v(" "), _c("card", {
+  }), _vm._v(" "), _c("formador-card", {
     attrs: {
       background: "bg-warning",
-      size: "col-md-6",
+      size: "col-md-3",
       text: "Reservas pendentes",
       number: _vm.pendings,
       rota: "/reservations"
     }
-  }), _vm._v(" "), _c("card", {
+  }), _vm._v(" "), _c("formador-card", {
     attrs: {
       background: "bg-danger",
-      size: "col-md-6",
+      size: "col-md-3",
       text: "Equipamentos por devolver",
       number: _vm.returned,
       rota: "/reservations"
+    }
+  })], 1), _vm._v(" "), _c("div", [_c("v-calendar", {
+    staticClass: "mb-4",
+    attrs: {
+      "is-expanded": ""
     }
   })], 1)]);
 };
@@ -4680,10 +4773,53 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "inner row p-4 p-lg-5"
   }, [_c("h1", {
-    staticClass: "col-6"
+    staticClass: "col-4"
   }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
-    staticClass: "col-6"
+    staticClass: "col-8"
   }, [_vm._v("Total de "), _c("br"), _vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
+    staticClass: "small-box-footer",
+    attrs: {
+      href: _vm.rota
+    }
+  }, [_vm._v("Mais info "), _c("i", {
+    staticClass: "fas fa-arrow-circle-right"
+  })])])]);
+};
+
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af&":
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-12 px-3 py-1",
+    "class": _vm.size
+  }, [_c("div", {
+    staticClass: "small-box",
+    "class": _vm.background
+  }, [_c("div", {
+    staticClass: "inner row p-4 p-lg-5"
+  }, [_c("h1", {
+    staticClass: "col-12"
+  }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c("h4", {
+    staticClass: "col-12 descricao-card"
+  }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _c("a", {
     staticClass: "small-box-footer",
     attrs: {
       href: _vm.rota
@@ -5938,6 +6074,7 @@ var render = function render() {
     }
   }, [_c("v-date-picker", {
     attrs: {
+      "disabled-dates": _vm.disabledDays,
       "min-date": new Date(),
       "is-range": "",
       "is-expanded": ""
@@ -6068,7 +6205,8 @@ var render = function render() {
       staticClass: "btn-primary btn",
       on: {
         click: function click($event) {
-          return _vm.listEquipment(product);
+          ;
+          [_vm.numberApReservation(product.id), _vm.listEquipment(product)];
         }
       }
     }, [_vm._v("Detalhe")])]) : _vm._e()]);
@@ -6087,7 +6225,8 @@ var render = function render() {
     }
   }, [_c("product-detail", {
     attrs: {
-      "edit-form": _vm.form
+      "edit-form": _vm.form,
+      "edit-reservations": _vm.reservations
     }
   })], 1)], 1);
 };
@@ -6539,6 +6678,8 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Equipamento")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
+  }, [_vm._v("Destino")]), _vm._v(" "), _c("th", {
+    staticClass: "text-center"
   }, [_vm._v("Data Reserva")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Início Reserva")]), _vm._v(" "), _c("th", {
@@ -6547,16 +6688,22 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Aprovação")]) : _vm._e(), _vm._v(" "), _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("Entregue")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("Levantado")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Devolvido")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.reservations.data, function (reservation) {
     return _c("tr", {
-      key: reservation.id
+      key: reservation.id,
+      "class": [reservation.approved === 1 ? "text-success" : reservation.approved === 0 ? "text-danger" : "bg-warning"],
+      attrs: {
+        name: "tr"
+      }
     }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.user.name))]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.product.name))]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle text-center"
+    }, [_vm._v(_vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.registry_date))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -6586,9 +6733,55 @@ var render = function render() {
       }
     }, [_vm._v("Não")]) : _vm._e()]), _vm._v(" "), reservation.approved === 1 ? _c("div", [_vm._v("Aprovada")]) : _vm._e(), _vm._v(" "), reservation.approved === 0 ? _c("div", [_vm._v("Recusada")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.delivered))]), _vm._v(" "), _c("td", {
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.approved === 1 && reservation.delivered === 0 ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.equipmentDelivered(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e()]), _vm._v(" "), reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-yellow"
+    })]) : _vm._e(), _vm._v(" "), reservation.delivered === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.returned))])]);
+    }, [_vm.$gate.isAdmin() || _vm.$gate.isGestor() ? _c("div", [_c("form", {
+      on: {
+        submit: function submit($event) {
+          $event.preventDefault();
+        }
+      }
+    }, [reservation.delivered === 1 && reservation.returned === 0 ? _c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.equipmentReturned(reservation.id);
+        }
+      }
+    }, [_vm._v("Sim")]) : _vm._e()]), _vm._v(" "), reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.approved === 1 && reservation.delivered === 1 && reservation.returned === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [reservation.approved === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-red"
+    })]) : _vm._e(), _vm._v(" "), reservation.delivered === 1 && reservation.returned === 0 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-yellow"
+    })]) : _vm._e(), _vm._v(" "), reservation.returned === 1 ? _c("div", [_c("i", {
+      staticClass: "fa-solid fa-circle fa-lg fa-green"
+    })]) : _vm._e()]) : _vm._e()])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   })])])])]);
@@ -87847,6 +88040,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Dashboards/widgets/formadorCard.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Dashboards/widgets/formadorCard.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formadorCard.vue?vue&type=template&id=6e2162af& */ "./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af&");
+/* harmony import */ var _formadorCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formadorCard.vue?vue&type=script&lang=js& */ "./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _formadorCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Dashboards/widgets/formadorCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formadorCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./formadorCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formadorCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../../../node_modules/vue-loader/lib??vue-loader-options!./formadorCard.vue?vue&type=template&id=6e2162af& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dashboards/widgets/formadorCard.vue?vue&type=template&id=6e2162af&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_formadorCard_vue_vue_type_template_id_6e2162af___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Developer.vue":
 /*!***********************************************!*\
   !*** ./resources/js/components/Developer.vue ***!
@@ -89923,8 +90185,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

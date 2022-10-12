@@ -2740,6 +2740,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.form = this.editForm;
     this.mode = this.editMode;
+    this.loadCategories();
+    this.loadEntities();
   },
   data: function data() {
     return {
@@ -2760,35 +2762,32 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  created: function created() {
-    this.loadCategories();
-    this.loadWarehouses();
-    this.loadEntities();
-  },
+  created: function created() {},
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
+  watch: {
+    'form.entity_id': function formEntity_id(value) {
+      var _this = this;
+
+      axios.get("api/loadWarehousesSection/?entity_id=" + this.form.entity_id).then(function (data) {
+        return _this.warehouses = data.data;
+      });
+    }
+  },
   methods: {
     loadCategories: function loadCategories() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/categories/").then(function (_ref) {
         var data = _ref.data;
-        return _this.categories = data.data;
+        return _this2.categories = data.data;
       });
     },
     loadEntities: function loadEntities() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("api/entities/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this2.entities = data.data;
-      });
-    },
-    loadWarehouses: function loadWarehouses() {
-      var _this3 = this;
-
-      axios.get("api/warehouses/").then(function (_ref3) {
-        var data = _ref3.data;
-        return _this3.warehouses = data.data;
+        return _this3.entities = data.data;
       });
     },
     insertImage: function insertImage(e) {
@@ -2874,35 +2873,33 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
   watch: {
     editReservations: function editReservations() {
       this.loadReservations();
+    },
+    'form.entity_id': function formEntity_id(value) {
+      var _this = this;
+
+      axios.get("api/loadWarehousesSection/?entity_id=" + this.form.entity_id).then(function (data) {
+        return _this.warehouses = data.data;
+      });
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
-    this.loadWarehouses();
     this.loadEntities();
     axios.get("api/profile").then(function (_ref) {
       var data = _ref.data;
-      return _this.profile = data;
+      return _this2.profile = data;
     });
   },
   methods: {
     loadReservations: function loadReservations() {
       this.disabledDays = this.editReservations;
     },
-    loadWarehouses: function loadWarehouses() {
-      var _this2 = this;
-
-      axios.get("api/warehouses/").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this2.warehouses = data.data;
-      });
-    },
     loadEntities: function loadEntities() {
       var _this3 = this;
 
-      axios.get("api/entities/").then(function (_ref3) {
-        var data = _ref3.data;
+      axios.get("api/entities/").then(function (_ref2) {
+        var data = _ref2.data;
         return _this3.entities = data.data;
       });
     },
@@ -90222,8 +90219,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

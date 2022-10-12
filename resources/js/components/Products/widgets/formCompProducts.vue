@@ -73,6 +73,8 @@ export default {
     mounted() {
         this.form=this.editForm;
         this.mode=this.editMode;
+        this.loadCategories();
+        this.loadEntities();
     },
     data () {
         return {
@@ -94,11 +96,17 @@ export default {
         }
     },
     created(){
-        this.loadCategories();
-        this.loadWarehouses();
-        this.loadEntities();
+
     },
     mixins:[createMixin, updateMixin],
+    watch:{
+        'form.entity_id':function (value){
+            axios
+                .get("api/loadWarehousesSection/?entity_id="+this.form.entity_id)
+                .then( data  =>
+                    (this.warehouses = data.data)
+                )},
+    },
     methods:{
         loadCategories(){
             axios
@@ -110,12 +118,6 @@ export default {
             axios
                 .get("api/entities/")
                 .then(({data}) => (this.entities = data.data))
-            ;
-        },
-        loadWarehouses(){
-            axios
-                .get("api/warehouses/")
-                .then(({ data }) => (this.warehouses = data.data))
             ;
         },
         insertImage(e){

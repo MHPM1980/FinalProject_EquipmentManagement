@@ -25,6 +25,7 @@ Route::apiResource('entities','EntityController');
 Route::get('findEntity','EntityController@search');
 
 Route::apiResource('warehouses','WarehouseController');
+Route::get('loadWarehousesSection','WarehouseController@warehouseSection');
 
 Route::apiResource('roles','RoleController');
 

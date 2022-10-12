@@ -3237,6 +3237,14 @@ __webpack_require__.r(__webpack_exports__);
 
         Swal.fire("Erro!", "Não é possível atualizar o registo.", "warning");
       });
+    },
+    getResults: function getResults() {
+      var _this7 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/reservations?page=' + page).then(function (response) {
+        _this7.reservations = response.data;
+      });
     }
   }
 });
@@ -6780,7 +6788,14 @@ var render = function render() {
     })]) : _vm._e()]) : _vm._e()])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
-  })])])])]);
+  }, [_c("pagination", {
+    attrs: {
+      data: _vm.reservations
+    },
+    on: {
+      "pagination-change-page": _vm.getResults
+    }
+  }), _vm._v(" "), _vm._m(1)], 1)])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -6788,10 +6803,33 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "card-header"
+    staticClass: "card-header d-flex justify-content-between pb-0"
   }, [_c("h3", {
     staticClass: "card-title"
   }, [_vm._v("Listagem de Reservas")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("p", {
+    staticClass: "text-right legenda pb-0"
+  }, [_c("span", {
+    staticClass: "text-success px-3 col-6 col-sm-2"
+  }, [_vm._v("Reserva Aprovada")]), _vm._v(" "), _c("span", {
+    staticClass: "text-danger px-3 col-6 col-sm-2"
+  }, [_vm._v("Reserva Recusada")]), _vm._v(" "), _c("span", {
+    staticClass: "px-3 col-4 col-sm-2"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle fa-md fa-green"
+  }), _vm._v("  Ação concluída ")]), _vm._v(" "), _c("span", {
+    staticClass: "px-3 col-4 col-sm-2"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle fa-md fa-yellow"
+  }), _vm._v("  A aguardar aprovação")]), _vm._v(" "), _c("span", {
+    staticClass: "px-3 col-4 col-sm-2"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle fa-md fa-red"
+  }), _vm._v("  Ação em falta")])]);
 }];
 render._withStripped = true;
 

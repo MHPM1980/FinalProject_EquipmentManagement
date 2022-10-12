@@ -3,7 +3,7 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between pb-0">
                         <h3 class="card-title">Listagem de Reservas</h3>
                     </div>
 
@@ -80,7 +80,14 @@
                         </table>
                     </div>
                     <div class="card-footer">
-
+                            <pagination :data="reservations" @pagination-change-page="getResults"></pagination>
+                            <p class="text-right legenda pb-0">
+                                <span class="text-success px-3 col-6 col-sm-2">Reserva Aprovada</span>
+                                <span class="text-danger px-3 col-6 col-sm-2">Reserva Recusada</span>
+                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-green"></i>&nbsp; Ação concluída </span>
+                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-yellow"></i>&nbsp; A aguardar aprovação</span>
+                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-red"></i>&nbsp; Ação em falta</span>
+                            </p>
                     </div>
                 </div>
             </div>
@@ -197,6 +204,14 @@
                         this.$Progress.fail()
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
+            },
+
+            getResults(page = 1){
+                axios
+                    .get('api/reservations?page=' + page)
+                    .then(response => {
+                        this.reservations = response.data;
+                    });
             },
 
         }

@@ -2747,6 +2747,7 @@ __webpack_require__.r(__webpack_exports__);
       mode: this.mode,
       products: {},
       categories: {},
+      entities: {},
       warehouses: {},
       form: new Form({
         image: '',
@@ -2754,6 +2755,7 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         serial_number: '',
         category_id: '',
+        entity_id: '',
         warehouse_id: ''
       })
     };
@@ -2761,6 +2763,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.loadCategories();
     this.loadWarehouses();
+    this.loadEntities();
   },
   mixins: [_mixins_createMixin__WEBPACK_IMPORTED_MODULE_0__["createMixin"], _mixins_updateMixin__WEBPACK_IMPORTED_MODULE_1__["updateMixin"]],
   methods: {
@@ -2772,16 +2775,24 @@ __webpack_require__.r(__webpack_exports__);
         return _this.categories = data.data;
       });
     },
-    loadWarehouses: function loadWarehouses() {
+    loadEntities: function loadEntities() {
       var _this2 = this;
 
-      axios.get("api/warehouses/").then(function (_ref2) {
+      axios.get("api/entities/").then(function (_ref2) {
         var data = _ref2.data;
-        return _this2.warehouses = data.data;
+        return _this2.entities = data.data;
+      });
+    },
+    loadWarehouses: function loadWarehouses() {
+      var _this3 = this;
+
+      axios.get("api/warehouses/").then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.warehouses = data.data;
       });
     },
     insertImage: function insertImage(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var file = e.target.files[0]; //console.log(file);
 
@@ -2790,7 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
       if (file['size'] < 211117755) {
         reader.onloadend = function (file) {
           //console.log('RESULT',reader.result)
-          _this3.form.image = reader.result;
+          _this4.form.image = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -5617,6 +5628,53 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
+      value: _vm.form.entity_id,
+      expression: "form.entity_id"
+    }],
+    staticClass: "form-control",
+    "class": {
+      "is-invalid": _vm.form.errors.has("entity_id")
+    },
+    attrs: {
+      name: "entity_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Escolha a Entidade")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
+    return _c("option", {
+      attrs: {
+        name: "entity_id"
+      },
+      domProps: {
+        value: entity.id
+      }
+    }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
+  })], 2), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "entity_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
       value: _vm.form.warehouse_id,
       expression: "form.warehouse_id"
     }],
@@ -5644,7 +5702,7 @@ var render = function render() {
       disabled: "",
       value: ""
     }
-  }, [_vm._v("Escolha o armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
+  }, [_vm._v("Escolha o Armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
     return _c("option", {
       attrs: {
         name: "warehouse_id"
@@ -5725,12 +5783,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12 col-lg-6"
+    staticClass: "col-12 col-lg-6 text-center"
   }, [_c("img", {
-    staticClass: "offset-md-3",
     staticStyle: {
-      width: "350px",
-      height: "350px",
+      width: "320px",
+      height: "320px",
       "object-fit": "contain"
     },
     attrs: {
@@ -5739,8 +5796,12 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-lg-6 justify-content-center"
-  }, [_c("div", [_c("form", [_c("label", {
-    staticClass: "col-3 text-right pb-3",
+  }, [_c("div", {
+    staticClass: "mt-4"
+  }, [_c("form", {
+    staticClass: "align-middle"
+  }, [_c("label", {
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentName"
     }
@@ -5751,7 +5812,7 @@ var render = function render() {
       value: _vm.form.name,
       expression: "form.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentName",
       type: "text",
@@ -5768,7 +5829,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentDescription"
     }
@@ -5779,7 +5840,7 @@ var render = function render() {
       value: _vm.form.description,
       expression: "form.description"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentDescription",
       type: "text",
@@ -5796,7 +5857,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentSerialNumber"
     }
@@ -5807,7 +5868,7 @@ var render = function render() {
       value: _vm.form.serial_number,
       expression: "form.serial_number"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentSerialNumber",
       type: "text",
@@ -5824,7 +5885,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentCategory"
     }
@@ -5835,7 +5896,7 @@ var render = function render() {
       value: _vm.form.category.name,
       expression: "form.category.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentCategory",
       type: "text",
@@ -5852,7 +5913,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentEntity"
     }
@@ -5863,7 +5924,7 @@ var render = function render() {
       value: _vm.form.warehouse.entity_id,
       expression: "form.warehouse.entity_id"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentEntity",
       type: "text",
@@ -5880,7 +5941,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentWarehouse"
     }
@@ -5891,7 +5952,7 @@ var render = function render() {
       value: _vm.form.warehouse.name,
       expression: "form.warehouse.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentWarehouse",
       type: "text",
@@ -6104,9 +6165,7 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Categoria")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("Entidade")]), _vm._v(" "), _c("th", {
-    staticClass: "text-center"
-  }, [_vm._v("Armazém")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("Proprietário")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Estado")]), _vm._v(" "), !_vm.$gate.isFormando() ? _c("th", {
     staticClass: "text-center"
@@ -6133,9 +6192,7 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.warehouse.entity_id))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(product.warehouse.entity_id) + " - " + _vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [product.status == 1 ? _c("div", [_c("i", {
       staticClass: "fa-solid fa-circle fa-lg fa-green"
@@ -90127,8 +90184,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

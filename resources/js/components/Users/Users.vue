@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestão de Utilizadores</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" @click="newModal">>
+                            <button class="btn btn-success" @click="newModal">
                                 Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>

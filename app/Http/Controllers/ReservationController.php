@@ -24,9 +24,10 @@ class ReservationController extends Controller
         if(Auth::user()->role->name=='FORMADOR'){
             return Reservation::with(['user','product', 'warehouse'])->where("user_id", "=", Auth::user()->id)->orderBy('id','asc')->paginate(15);
         }else{
-            return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
+            return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(10);
         }
     }
+
 
     /**
      * Display Admin and Gestor dashboard card information.

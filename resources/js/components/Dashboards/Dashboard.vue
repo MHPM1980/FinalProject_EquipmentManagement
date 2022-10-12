@@ -12,7 +12,7 @@
                     <gestor-dashboard></gestor-dashboard>
                 </div>
                 <div v-if="$gate.isFormador()">
-                    <formador-dashboard :user="this.profile"></formador-dashboard>
+                    <formador-dashboard ></formador-dashboard>
                 </div>
                 <div v-if="$gate.isFormando()">
                     <products-view></products-view>

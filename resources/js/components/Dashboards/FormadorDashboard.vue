@@ -17,9 +17,6 @@
 <script>
 import FormadorCard from "./widgets/formadorCard";
 export default {
-    props:{
-        user:{}
-    },
     data(){
         return{
             equipments:0,
@@ -28,16 +25,11 @@ export default {
             returned:0,
         }
     },
-    watch:{
-        user :function (){
-            this.numberEquipments();
-            this.numberApReservation();
-            this.numberPendReservation();
-            this.numberReturReservation();
-        }
-    },
-    mounted(){
-
+    created(){
+        this.numberEquipments();
+        this.numberApReservation();
+        this.numberPendReservation();
+        this.numberReturReservation();
     },
     components:{
         FormadorCard
@@ -49,19 +41,18 @@ export default {
                 .then(({ data }) => (this.equipments=Object.keys(data.data).length))
         },
         numberApReservation(){
-            console.log(this.user)
             axios
-                .get(`api/findFormReservations/?approved=1&user_id=`+this.user.id)
+                .get(`api/findFormReservations/?approved=1`)
                 .then(({ data }) => (this.approved=data))
         },
         numberPendReservation(){
             axios
-                .get(`api/findFormPendReservations/?approved=&user_id=`+this.user.id)
+                .get(`api/findFormPendReservations/?approved=`)
                 .then(({ data }) => (this.pendings=data))
         },
         numberReturReservation(){
             axios
-                .get(`api/findFormReturReservations/?returned=0&user_id=`+this.user.id)
+                .get(`api/findFormReturReservations/?returned=0`)
                 .then(({ data }) => (this.returned=data))
         },
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Reservation;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -20,9 +21,12 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
+        if(Auth::user()->role->name=='FORMADOR'){
+            return Reservation::with(['user','product', 'warehouse'])->where("user_id", "=", Auth::user()->id)->orderBy('id','asc')->paginate(15);
+        }else{
+            return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(15);
+        }
     }
-
 
     /**
      * Display Admin and Gestor dashboard card information.
@@ -51,22 +55,21 @@ class ReservationController extends Controller
      */
 
     public function countFormReservations(Request $request){
-        $user=auth('api')->user();
         return response()->json(Reservation::where(
             "approved", "=", $request->approved
-        )->where("user_id","=",$request->user_id)
+        )->where("user_id","=",Auth::user()->id)
             ->count());
     }
     public function countFormPendReservations(Request $request){
         return response()->json(Reservation::where(
             "approved", "=", $request->approved
-        )->where("user_id","=",$request->user_id)
+        )->where("user_id","=",Auth::user()->id)
             ->count());
     }
     public function countFormReturReservations(Request $request){
         return response()->json(Reservation::where(
             "returned", "=", $request->returned
-        )->where("user_id","=",$request->user_id)
+        )->where("user_id","=",Auth::user()->id)
             ->count());
     }
 
@@ -129,31 +132,6 @@ class ReservationController extends Controller
         }
     }
 
-    public function reservationApproved(Request $request, $id){
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservation $reservation)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

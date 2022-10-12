@@ -2278,9 +2278,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/formadorCard */ "./resources/js/components/Dashboards/widgets/formadorCard.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    user: {}
-  },
   data: function data() {
     return {
       equipments: 0,
@@ -2289,15 +2286,12 @@ __webpack_require__.r(__webpack_exports__);
       returned: 0
     };
   },
-  watch: {
-    user: function user() {
-      this.numberEquipments();
-      this.numberApReservation();
-      this.numberPendReservation();
-      this.numberReturReservation();
-    }
+  created: function created() {
+    this.numberEquipments();
+    this.numberApReservation();
+    this.numberPendReservation();
+    this.numberReturReservation();
   },
-  mounted: function mounted() {},
   components: {
     FormadorCard: _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2313,8 +2307,7 @@ __webpack_require__.r(__webpack_exports__);
     numberApReservation: function numberApReservation() {
       var _this2 = this;
 
-      console.log(this.user);
-      axios.get("api/findFormReservations/?approved=1&user_id=" + this.user.id).then(function (_ref2) {
+      axios.get("api/findFormReservations/?approved=1").then(function (_ref2) {
         var data = _ref2.data;
         return _this2.approved = data;
       });
@@ -2322,7 +2315,7 @@ __webpack_require__.r(__webpack_exports__);
     numberPendReservation: function numberPendReservation() {
       var _this3 = this;
 
-      axios.get("api/findFormPendReservations/?approved=&user_id=" + this.user.id).then(function (_ref3) {
+      axios.get("api/findFormPendReservations/?approved=").then(function (_ref3) {
         var data = _ref3.data;
         return _this3.pendings = data;
       });
@@ -2330,7 +2323,7 @@ __webpack_require__.r(__webpack_exports__);
     numberReturReservation: function numberReturReservation() {
       var _this4 = this;
 
-      axios.get("api/findFormReturReservations/?returned=0&user_id=" + this.user.id).then(function (_ref4) {
+      axios.get("api/findFormReturReservations/?returned=0").then(function (_ref4) {
         var data = _ref4.data;
         return _this4.returned = data;
       });
@@ -3133,6 +3126,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       reservations: {},
+      profile: {},
       form: new Form({
         id: ''
       })
@@ -4603,11 +4597,7 @@ var render = function render() {
     staticClass: "col-md-12 pt-5"
   }, [_c("div", [_c("h1", {
     staticClass: "text-light"
-  }, [_vm._v("Bem-Vindo, " + _vm._s(this.profile.name) + " !")])]), _vm._v(" "), _vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard", {
-    attrs: {
-      user: this.profile
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
+  }, [_vm._v("Bem-Vindo, " + _vm._s(this.profile.name) + " !")])]), _vm._v(" "), _vm.$gate.isAdmin() ? _c("div", [_c("admin-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isGestor() ? _c("div", [_c("gestor-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormador() ? _c("div", [_c("formador-dashboard")], 1) : _vm._e(), _vm._v(" "), _vm.$gate.isFormando() ? _c("div", [_c("products-view")], 1) : _vm._e()])])]);
 };
 
 var staticRenderFns = [];

@@ -94,6 +94,7 @@
         data(){
             return{
                 reservations: {},
+                profile: {},
                 form: new Form({
                     id:'',
                 }),
@@ -111,6 +112,7 @@
                         .get("api/reservations/")
                         .then(({ data }) => (this.reservations = data))
             },
+
             reservationDenied(id){
                 this.form.approved=0
                 this.form.put(`api/reservations/`+id)

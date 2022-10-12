@@ -5783,12 +5783,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12 col-lg-6"
+    staticClass: "col-12 col-lg-6 text-center"
   }, [_c("img", {
-    staticClass: "offset-md-3",
     staticStyle: {
-      width: "350px",
-      height: "350px",
+      width: "320px",
+      height: "320px",
       "object-fit": "contain"
     },
     attrs: {
@@ -5797,8 +5796,12 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-lg-6 justify-content-center"
-  }, [_c("div", [_c("form", [_c("label", {
-    staticClass: "col-3 text-right pb-3",
+  }, [_c("div", {
+    staticClass: "mt-4"
+  }, [_c("form", {
+    staticClass: "align-middle"
+  }, [_c("label", {
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentName"
     }
@@ -5809,7 +5812,7 @@ var render = function render() {
       value: _vm.form.name,
       expression: "form.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentName",
       type: "text",
@@ -5826,7 +5829,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentDescription"
     }
@@ -5837,7 +5840,7 @@ var render = function render() {
       value: _vm.form.description,
       expression: "form.description"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentDescription",
       type: "text",
@@ -5854,7 +5857,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentSerialNumber"
     }
@@ -5865,7 +5868,7 @@ var render = function render() {
       value: _vm.form.serial_number,
       expression: "form.serial_number"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentSerialNumber",
       type: "text",
@@ -5882,7 +5885,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentCategory"
     }
@@ -5893,7 +5896,7 @@ var render = function render() {
       value: _vm.form.category.name,
       expression: "form.category.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentCategory",
       type: "text",
@@ -5910,7 +5913,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentEntity"
     }
@@ -5921,7 +5924,7 @@ var render = function render() {
       value: _vm.form.warehouse.entity_id,
       expression: "form.warehouse.entity_id"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentEntity",
       type: "text",
@@ -5938,7 +5941,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "col-3 text-right pb-3",
+    staticClass: "col-4 col-xl-3 pb-lg-3 text-lg-right",
     attrs: {
       "for": "EquipmentWarehouse"
     }
@@ -5949,7 +5952,7 @@ var render = function render() {
       value: _vm.form.warehouse.name,
       expression: "form.warehouse.name"
     }],
-    staticClass: "col-8",
+    staticClass: "col-7 col-xl-8",
     attrs: {
       id: "EquipmentWarehouse",
       type: "text",
@@ -6162,9 +6165,7 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("Categoria")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
-  }, [_vm._v("Entidade")]), _vm._v(" "), _c("th", {
-    staticClass: "text-center"
-  }, [_vm._v("Armazém")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("Proprietário")]), _vm._v(" "), _c("th", {
     staticClass: "text-center"
   }, [_vm._v("Estado")]), _vm._v(" "), !_vm.$gate.isFormando() ? _c("th", {
     staticClass: "text-center"
@@ -6191,9 +6192,7 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.warehouse.entity_id))]), _vm._v(" "), _c("td", {
-      staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(product.warehouse.entity_id) + " - " + _vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [product.status == 1 ? _c("div", [_c("i", {
       staticClass: "fa-solid fa-circle fa-lg fa-green"

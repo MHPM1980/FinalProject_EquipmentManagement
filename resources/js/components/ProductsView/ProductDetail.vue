@@ -6,30 +6,30 @@
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <img class="offset-md-3" :src="'img/products/'+ form.image" alt="Product Image"
-                                 style="width: 350px; height: 350px; object-fit: contain">
+                        <div class="col-12 col-lg-6 text-center">
+                            <img class="" :src="'img/products/'+ form.image" alt="Product Image"
+                                 style="width: 320px; height: 320px; object-fit: contain">
                         </div>
                         <div class="col-12 col-lg-6 justify-content-center">
-                            <div>
-                                <form>
-                                    <label class="col-3 text-right pb-3" for="EquipmentName">Nome:</label>
-                                    <input class="col-8" id="EquipmentName" type="text" v-model="form.name" disabled>
+                            <div class="mt-4">
+                                <form class="align-middle">
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentName">Nome:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentName" type="text" v-model="form.name" disabled>
 
-                                    <label class="col-3 text-right pb-3" for="EquipmentDescription">Descrição:</label>
-                                    <input class="col-8" id="EquipmentDescription" type="text" v-model="form.description" disabled>
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentDescription">Descrição:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentDescription" type="text" v-model="form.description" disabled>
 
-                                    <label class="col-3 text-right pb-3" for="EquipmentSerialNumber">Nº de Série:</label>
-                                    <input class="col-8" id="EquipmentSerialNumber" type="text" v-model="form.serial_number" disabled>
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentSerialNumber">Nº de Série:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentSerialNumber" type="text" v-model="form.serial_number" disabled>
 
-                                    <label class="col-3 text-right pb-3" for="EquipmentCategory">Categoria:</label>
-                                    <input class="col-8" id="EquipmentCategory" type="text" v-model="form.category.name" disabled>
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentCategory">Categoria:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentCategory" type="text" v-model="form.category.name" disabled>
 
-                                    <label class="col-3 text-right pb-3" for="EquipmentEntity">Entidade:</label>
-                                    <input class="col-8" id="EquipmentEntity" type="text" v-model="form.warehouse.entity_id" disabled>
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentEntity">Entidade:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentEntity" type="text" v-model="form.warehouse.entity_id" disabled>
 
-                                    <label class="col-3 text-right pb-3" for="EquipmentWarehouse">Armazém:</label>
-                                    <input class="col-8" id="EquipmentWarehouse" type="text" v-model="form.warehouse.name" disabled>
+                                    <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentWarehouse">Armazém:</label>
+                                    <input class="col-7 col-xl-8" id="EquipmentWarehouse" type="text" v-model="form.warehouse.name" disabled>
                                 </form>
                             </div>
                         </div>

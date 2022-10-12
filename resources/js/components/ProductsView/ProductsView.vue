@@ -26,8 +26,7 @@
                                 <th class="text-center">Descrição</th>
                                 <th class="text-center">Número Série</th>
                                 <th class="text-center">Categoria</th>
-                                <th class="text-center">Entidade</th>
-                                <th class="text-center">Armazém</th>
+                                <th class="text-center">Proprietário</th>
                                 <th class="text-center">Estado</th>
                                 <th v-if="!$gate.isFormando()" class="text-center">Ação</th>
                             </tr>
@@ -41,8 +40,7 @@
                                 <td class="align-middle text-center">{{ product.description }}</td>
                                 <td class="align-middle text-center">{{ product.serial_number }}</td>
                                 <td class="align-middle text-center">{{ product.category.name }}</td>
-                                <td class="align-middle text-center">{{ product.warehouse.entity_id }}</td>
-                                <td class="align-middle text-center">{{ product.warehouse.name }}</td>
+                                <td class="align-middle text-center">{{ product.warehouse.entity_id }} - {{ product.warehouse.name }}</td>
                                 <td class="align-middle text-center">
                                     <div v-if="product.status == 1">
                                         <i  class="fa-solid fa-circle fa-lg fa-green"></i>

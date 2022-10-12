@@ -115,10 +115,15 @@ let m= moment();
         watch:{
             editReservations :function (){
                 this.loadReservations();
-            }
+            },
+            'form.entity_id':function (value){
+                axios
+                    .get("api/loadWarehousesSection/?entity_id="+this.form.entity_id)
+                    .then( data  =>
+                        (this.warehouses = data.data)
+                    )},
         },
         created(){
-            this.loadWarehouses();
             this.loadEntities();
             axios.get("api/profile")
                 .then(({ data }) => (this.profile = data));
@@ -126,12 +131,6 @@ let m= moment();
         methods:{
             loadReservations(){
                 this.disabledDays=this.editReservations;
-            },
-            loadWarehouses(){
-                axios
-                    .get("api/warehouses/")
-                    .then(({ data }) => (this.warehouses = data.data))
-                ;
             },
             loadEntities(){
                 axios

@@ -23,15 +23,12 @@ class WarehouseController extends Controller
         {
             return Warehouse::with(['entity'])->orderBy('id','asc')->paginate(15);
         }
-        {
-            $entity_id = request('entity:id');
-            $warehouses = Warehouse::where('entity_id',$entity_id)->get();
-            return WarehouseResource::collection($warehouses);
-        }
+    }
 
-
-
-
+    public function warehouseSection(Request $request){
+        return response()->json(Warehouse::where(
+            "entity_id", "=", $request->entity_id
+        )->get());
     }
 
 

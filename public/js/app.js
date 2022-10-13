@@ -6751,7 +6751,7 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.product.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(reservation.warehouse.entity_id) + " - " + _vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.registry_date))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
@@ -90266,8 +90266,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

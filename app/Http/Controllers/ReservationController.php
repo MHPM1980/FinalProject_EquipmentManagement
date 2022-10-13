@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+use App\Warehouse;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,12 @@ class ReservationController extends Controller
         if(Auth::user()->role->name=='FORMADOR'){
             return Reservation::with(['user','product', 'warehouse'])->where("user_id", "=", Auth::user()->id)->orderBy('id','asc')->paginate(15);
         }else{
-            return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(10);
+            //$reservations = Reservation::with(['user','product'])->orderBy('id','asc')->each(function ($reservation) {
+            //    $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
+            //});
+            //$collection = $reservations->response()->getData(true);
+            //return $collection;
+           return Reservation::with(['user','product', 'warehouse'])->orderBy('id','asc')->paginate(10);
         }
     }
 

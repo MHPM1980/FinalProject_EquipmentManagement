@@ -1,5 +1,25 @@
 <template>
     <form @submit.prevent="mode ? updateData() : createNew()">
+
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="permission" class="col-4 align-middle mt-1">Escolher Permissão: </label>
+            <select class="form-control col-7" id="permission" name="role_id"  v-model="form.role_id" :class="{ 'is-invalid': form.errors.has('permissão') }">
+                <option name="role_id"  v-for="role in roles" v-bind:value="role.id">
+                    {{role.name}}
+                </option>
+            </select>
+            <has-error :form="form" field="role_id"></has-error>
+        </div>
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="centroCusto" class="col-4 align-middle mt-1">Centro de Custo: </label>
+            <select class="form-control col-7" id="centroCusto" name="cost_id" v-model="form.cost_id" :class="{ 'is-invalid': form.errors.has('centro custo') }">
+                <option name="cost_id" v-for="cost in costs" v-bind:value="cost.id">
+                    {{cost.description}}
+                </option>
+            </select>
+            <has-error :form="form" field="cost_id"></has-error>
+        </div>
+
         <div class="form-group">
             <input v-model="form.name" type="text" name="name" placeholder="Nome"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('nome') }">
@@ -18,24 +38,6 @@
             <has-error :form="form" field="phone_number"></has-error>
         </div>
 
-        <div class="form-group">
-            <select class="form-control" name="role_id"  v-model="form.role_id" :class="{ 'is-invalid': form.errors.has('permissão') }">
-                <option disabled value="">Escolha a permissão</option>
-                <option name="role_id"  v-for="role in roles" v-bind:value="role.id">
-                    {{role.name}}
-                </option>
-            </select>
-            <has-error :form="form" field="role_id"></has-error>
-        </div>
-        <div class="form-group">
-            <select class="form-control" name="cost_id" v-model="form.cost_id" :class="{ 'is-invalid': form.errors.has('centro custo') }">
-                <option disabled value="">Escolha o centro de custo</option>
-                <option name="cost_id" v-for="cost in costs" v-bind:value="cost.id">
-                    {{cost.description}}
-                </option>
-            </select>
-            <has-error :form="form" field="cost_id"></has-error>
-        </div>
         <div class="form-group">
             <input v-model="form.password" type="password" name="password" placeholder="Password"
                    class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">

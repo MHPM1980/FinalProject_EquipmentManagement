@@ -5615,19 +5615,25 @@ var render = function render() {
       field: "serial_number"
     }
   })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "category"
+    }
+  }, [_vm._v("Escolher Categoria: ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.category_id,
       expression: "form.category_id"
     }],
-    staticClass: "form-control",
+    staticClass: "form-control col-7",
     "class": {
       "is-invalid": _vm.form.errors.has("category_id")
     },
     attrs: {
+      id: "category",
       name: "category_id"
     },
     on: {
@@ -5642,12 +5648,7 @@ var render = function render() {
         _vm.$set(_vm.form, "category_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha a categoria")]), _vm._v(" "), _vm._l(_vm.categories, function (category) {
+  }, _vm._l(_vm.categories, function (category) {
     return _c("option", {
       attrs: {
         name: "category_id"
@@ -5656,25 +5657,31 @@ var render = function render() {
         value: category.id
       }
     }, [_vm._v("\n                " + _vm._s(category.name) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
+  }), 0), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "category_id"
     }
   })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "entity"
+    }
+  }, [_vm._v("Escolher Entidade: ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.entity_id,
       expression: "form.entity_id"
     }],
-    staticClass: "form-control",
+    staticClass: "form-control col-7",
     "class": {
       "is-invalid": _vm.form.errors.has("entity_id")
     },
     attrs: {
+      id: "entity",
       name: "entity_id"
     },
     on: {
@@ -5689,12 +5696,7 @@ var render = function render() {
         _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha a Entidade")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
+  }, _vm._l(_vm.entities, function (entity) {
     return _c("option", {
       attrs: {
         name: "entity_id"
@@ -5703,25 +5705,31 @@ var render = function render() {
         value: entity.id
       }
     }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
+  }), 0), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "entity_id"
     }
   })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "warehouse"
+    }
+  }, [_vm._v("Escolher Armazém: ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.warehouse_id,
       expression: "form.warehouse_id"
     }],
-    staticClass: "form-control",
+    staticClass: "form-control col-7",
     "class": {
       "is-invalid": _vm.form.errors.has("warehouse_id")
     },
     attrs: {
+      id: "warehouse",
       name: "warehouse_id"
     },
     on: {
@@ -5736,12 +5744,7 @@ var render = function render() {
         _vm.$set(_vm.form, "warehouse_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha o Armazém")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
+  }, _vm._l(_vm.warehouses, function (warehouse) {
     return _c("option", {
       attrs: {
         name: "warehouse_id"
@@ -5750,7 +5753,7 @@ var render = function render() {
         value: warehouse.id
       }
     }, [_vm._v("\n                " + _vm._s(warehouse.name) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
+  }), 0), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "warehouse_id"
@@ -7202,6 +7205,102 @@ var render = function render() {
       }
     }
   }, [_c("div", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "permission"
+    }
+  }, [_vm._v("Escolher Permissão: ")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.role_id,
+      expression: "form.role_id"
+    }],
+    staticClass: "form-control col-7",
+    "class": {
+      "is-invalid": _vm.form.errors.has("permissão")
+    },
+    attrs: {
+      id: "permission",
+      name: "role_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "role_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, _vm._l(_vm.roles, function (role) {
+    return _c("option", {
+      attrs: {
+        name: "role_id"
+      },
+      domProps: {
+        value: role.id
+      }
+    }, [_vm._v("\n                " + _vm._s(role.name) + "\n            ")]);
+  }), 0), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "role_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "centroCusto"
+    }
+  }, [_vm._v("Centro de Custo: ")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.cost_id,
+      expression: "form.cost_id"
+    }],
+    staticClass: "form-control col-7",
+    "class": {
+      "is-invalid": _vm.form.errors.has("centro custo")
+    },
+    attrs: {
+      id: "centroCusto",
+      name: "cost_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "cost_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, _vm._l(_vm.costs, function (cost) {
+    return _c("option", {
+      attrs: {
+        name: "cost_id"
+      },
+      domProps: {
+        value: cost.id
+      }
+    }, [_vm._v("\n                " + _vm._s(cost.description) + "\n            ")]);
+  }), 0), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "cost_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("input", {
     directives: [{
@@ -7300,100 +7399,6 @@ var render = function render() {
     attrs: {
       form: _vm.form,
       field: "phone_number"
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.role_id,
-      expression: "form.role_id"
-    }],
-    staticClass: "form-control",
-    "class": {
-      "is-invalid": _vm.form.errors.has("permissão")
-    },
-    attrs: {
-      name: "role_id"
-    },
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-
-        _vm.$set(_vm.form, "role_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }
-    }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha a permissão")]), _vm._v(" "), _vm._l(_vm.roles, function (role) {
-    return _c("option", {
-      attrs: {
-        name: "role_id"
-      },
-      domProps: {
-        value: role.id
-      }
-    }, [_vm._v("\n                " + _vm._s(role.name) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
-    attrs: {
-      form: _vm.form,
-      field: "role_id"
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.cost_id,
-      expression: "form.cost_id"
-    }],
-    staticClass: "form-control",
-    "class": {
-      "is-invalid": _vm.form.errors.has("centro custo")
-    },
-    attrs: {
-      name: "cost_id"
-    },
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-
-        _vm.$set(_vm.form, "cost_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }
-    }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha o centro de custo")]), _vm._v(" "), _vm._l(_vm.costs, function (cost) {
-    return _c("option", {
-      attrs: {
-        name: "cost_id"
-      },
-      domProps: {
-        value: cost.id
-      }
-    }, [_vm._v("\n                " + _vm._s(cost.description) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
-    attrs: {
-      form: _vm.form,
-      field: "cost_id"
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
@@ -7588,6 +7593,54 @@ var render = function render() {
       }
     }
   }, [_c("div", {
+    staticClass: "form-group row d-flex justify-content-between mr-1"
+  }, [_c("label", {
+    staticClass: "col-4 align-middle mt-1",
+    attrs: {
+      "for": "entity"
+    }
+  }, [_vm._v("Escolher Entidade: ")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.entity_id,
+      expression: "form.entity_id"
+    }],
+    staticClass: "form-control col-7",
+    "class": {
+      "is-invalid": _vm.form.errors.has("entity_id")
+    },
+    attrs: {
+      id: "entity",
+      name: "entity_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+
+        _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, _vm._l(_vm.entities, function (entity) {
+    return _c("option", {
+      attrs: {
+        name: "entity_id"
+      },
+      domProps: {
+        value: entity.id
+      }
+    }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
+  }), 0), _vm._v(" "), _c("has-error", {
+    attrs: {
+      form: _vm.form,
+      field: "entity_id"
+    }
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("input", {
     directives: [{
@@ -7619,53 +7672,6 @@ var render = function render() {
     attrs: {
       form: _vm.form,
       field: "name"
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.entity_id,
-      expression: "form.entity_id"
-    }],
-    staticClass: "form-control",
-    "class": {
-      "is-invalid": _vm.form.errors.has("entity_id")
-    },
-    attrs: {
-      name: "entity_id"
-    },
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-
-        _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }
-    }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha a entidade")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
-    return _c("option", {
-      attrs: {
-        name: "entity_id"
-      },
-      domProps: {
-        value: entity.id
-      }
-    }, [_vm._v("\n                " + _vm._s(entity.name) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
-    attrs: {
-      form: _vm.form,
-      field: "entity_id"
     }
   })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
@@ -90253,8 +90259,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Renato\PhpstormProjects\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

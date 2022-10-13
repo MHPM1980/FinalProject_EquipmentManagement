@@ -24,9 +24,9 @@
             <has-error :form="form" field="serial_number"></has-error>
         </div>
 
-        <div class="form-group">
-            <select class="form-control" name="category_id" v-model="form.category_id" :class="{ 'is-invalid': form.errors.has('category_id') }">
-                <option disabled value="">Escolha a categoria</option>
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="category" class="col-4 align-middle mt-1">Escolher Categoria: </label>
+            <select class="form-control col-7" id="category" name="category_id" v-model="form.category_id" :class="{ 'is-invalid': form.errors.has('category_id') }">
                 <option name="category_id" v-for="category in categories" v-bind:value="category.id">
                     {{category.name}}
                 </option>
@@ -34,9 +34,9 @@
             <has-error :form="form" field="category_id"></has-error>
         </div>
 
-        <div class="form-group">
-            <select class="form-control" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
-                <option disabled value="">Escolha a Entidade</option>
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="entity" class="col-4 align-middle mt-1">Escolher Entidade: </label>
+            <select class="form-control col-7" id="entity" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
                 <option name="entity_id" v-for="entity in entities" v-bind:value="entity.id">
                     {{entity.name}}
                 </option>
@@ -44,9 +44,9 @@
             <has-error :form="form" field="entity_id"></has-error>
         </div>
 
-        <div class="form-group">
-            <select class="form-control" name="warehouse_id" v-model="form.warehouse_id" :class="{ 'is-invalid': form.errors.has('warehouse_id') }">
-                <option disabled value="">Escolha o Armazém</option>
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="warehouse" class="col-4 align-middle mt-1">Escolher Armazém: </label>
+            <select class="form-control col-7" id="warehouse" name="warehouse_id" v-model="form.warehouse_id" :class="{ 'is-invalid': form.errors.has('warehouse_id') }">
                 <option name="warehouse_id" v-for="warehouse in warehouses" v-bind:value="warehouse.id">
                     {{warehouse.name}}
                 </option>

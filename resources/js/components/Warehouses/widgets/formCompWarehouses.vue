@@ -1,19 +1,20 @@
 <template>
     <form @submit.prevent="mode ? updateData() : createNew()">
-        <div class="form-group">
-            <input v-model="form.name" type="text" name="name" placeholder="Nome"
-                   class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-            <has-error :form="form" field="name"></has-error>
-        </div>
 
-        <div class="form-group">
-            <select class="form-control" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
-                <option disabled value="">Escolha a entidade</option>
+        <div class="form-group row d-flex justify-content-between mr-1">
+            <label for="entity" class="col-4 align-middle mt-1">Escolher Entidade: </label>
+            <select class="form-control col-7" id="entity" name="entity_id" v-model="form.entity_id" :class="{ 'is-invalid': form.errors.has('entity_id') }">
                 <option name="entity_id" v-for="entity in entities" v-bind:value="entity.id">
                     {{entity.name}}
                 </option>
             </select>
             <has-error :form="form" field="entity_id"></has-error>
+        </div>
+
+        <div class="form-group">
+            <input v-model="form.name" type="text" name="name" placeholder="Nome"
+                   class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+            <has-error :form="form" field="name"></has-error>
         </div>
 
         <div class="form-group">

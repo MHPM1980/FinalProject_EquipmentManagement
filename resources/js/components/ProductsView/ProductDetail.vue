@@ -90,8 +90,8 @@ let m= moment();
                 profile: {},
                 disabledDays:[],
                 range: {
-                    start: new Date(),
-                    end: new Date()
+                    start: null,
+                    end: null
                 },
                 form: new Form({
                     id:'',

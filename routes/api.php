@@ -39,7 +39,7 @@ Route::apiResource('products','ProductController');
 Route::get('findProduct','ProductController@search');
 
 Route::apiResource('reservations','ReservationController');
-
+Route::get('formadorReservation','ReservationController@getFormadorReservation');
 
 //Admin and Gestor dashboard card information Routes
 Route::get('findReservations','ReservationController@countReservations');

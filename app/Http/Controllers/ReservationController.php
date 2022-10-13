@@ -90,6 +90,23 @@ class ReservationController extends Controller
                 return $item->dates = $period->toArray();
             }));
     }
+    /**
+     * Search Formador aproved reservations data
+     *
+     */
+
+    public function getFormadorReservation(){
+        response()->json(Reservation::where("user_id", "=", Auth::user()->id)->whereIn('approved', [1])->get()
+            ->map(function($item){
+                $period = CarbonPeriod::create($item->start_date, $item->end_date);
+                // Iterate over the period
+                foreach ($period as $date) {
+                    echo $date->format('Y-m-d ');
+                }
+
+                return $item->dates = $period->toArray();
+            }));
+    }
 
     /**
      * Show the form for creating a new resource.

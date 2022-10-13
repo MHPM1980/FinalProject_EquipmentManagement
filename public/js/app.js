@@ -2276,6 +2276,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets/formadorCard */ "./resources/js/components/Dashboards/widgets/formadorCard.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2283,7 +2295,8 @@ __webpack_require__.r(__webpack_exports__);
       equipments: 0,
       approved: 0,
       pendings: 0,
-      returned: 0
+      returned: 0,
+      reservations: []
     };
   },
   created: function created() {
@@ -2291,6 +2304,17 @@ __webpack_require__.r(__webpack_exports__);
     this.numberApReservation();
     this.numberPendReservation();
     this.numberReturReservation();
+    this.loadReservations();
+  },
+  computed: {
+    attributes: function attributes() {
+      return _toConsumableArray(this.reservations.map(function (reservation) {
+        return {
+          dates: reservation,
+          highlight: 'green'
+        };
+      }));
+    }
   },
   components: {
     FormadorCard: _widgets_formadorCard__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -2326,6 +2350,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("api/findFormReturReservations/?returned=0").then(function (_ref4) {
         var data = _ref4.data;
         return _this4.returned = data;
+      });
+    },
+    loadReservations: function loadReservations() {
+      var _this5 = this;
+
+      axios.get("api/formadorReservation/").then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.reservations = data.trim().split(" ");
       });
     }
   }
@@ -2848,8 +2880,8 @@ var m = moment_moment__WEBPACK_IMPORTED_MODULE_0___default()();
       profile: {},
       disabledDays: [],
       range: {
-        start: new Date(),
-        end: new Date()
+        start: null,
+        end: null
       },
       form: new Form({
         id: '',
@@ -4676,6 +4708,8 @@ var render = function render() {
   })], 1), _vm._v(" "), _c("div", [_c("v-calendar", {
     staticClass: "mb-4",
     attrs: {
+      availableDates: _vm.reservations,
+      attributes: _vm.attributes,
       "is-expanded": ""
     }
   })], 1)]);

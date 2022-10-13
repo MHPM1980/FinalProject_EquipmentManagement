@@ -119,7 +119,6 @@
                         .get("api/reservations/")
                         .then(({ data }) => (this.reservations = data))
             },
-
             reservationDenied(id){
                 this.form.approved=0
                 this.form.put(`api/reservations/`+id)
@@ -141,7 +140,6 @@
                     })
 
             },
-
             reservationApproved(id){
                 this.form.approved=1
                 this.form.delivered=0
@@ -162,7 +160,6 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
-
             equipmentDelivered(id){
                 this.form.delivered=1
                 this.form.returned=0

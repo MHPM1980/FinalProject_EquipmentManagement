@@ -7,10 +7,8 @@
             <formador-card background="bg-danger" size="col-md-3" text="Equipamentos por devolver" :number=returned rota="/reservations"></formador-card>
         </div>
         <div>
-            <v-calendar is-expanded class="mb-4"/>
+            <v-calendar :availableDates="reservations" :attributes='attributes' is-expanded class="mb-4"/>
         </div>
-
-
     </div>
 </template>
 
@@ -23,6 +21,7 @@ export default {
             approved:0,
             pendings:0,
             returned:0,
+            reservations:[],
         }
     },
     created(){
@@ -30,6 +29,17 @@ export default {
         this.numberApReservation();
         this.numberPendReservation();
         this.numberReturReservation();
+        this.loadReservations();
+    },
+    computed:{
+        attributes(){
+            return [
+                ...this.reservations.map(reservation=>({
+                    dates:reservation,
+                    highlight: 'green'
+                }))
+            ]
+        }
     },
     components:{
         FormadorCard
@@ -54,6 +64,11 @@ export default {
             axios
                 .get(`api/findFormReturReservations/?returned=0`)
                 .then(({ data }) => (this.returned=data))
+        },
+        loadReservations(){
+            axios
+                .get("api/formadorReservation/")
+                .then(({ data }) => (this.reservations = data.trim().split(" ")))
         },
     }
 }

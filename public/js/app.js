@@ -5903,7 +5903,7 @@ var render = function render() {
     attrs: {
       "for": "EquipmentSerialNumber"
     }
-  }, [_vm._v("Nº de Série:")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Nº\n                                    de Série:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6010,7 +6010,8 @@ var render = function render() {
         _vm.$set(_vm.form.warehouse, "name", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h5", [_vm._v("Selecionar dados para reserva")]), _vm._v(" "), _c("form", {
+  })])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h5", [_vm._v("Selecionar dados para reserva")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("form", {
+    staticClass: "row pb-0",
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -6018,19 +6019,27 @@ var render = function render() {
       }
     }
   }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
+    staticClass: "col-12 col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group row"
+  }, [_c("label", {
+    staticClass: "col-5 mt-1",
+    attrs: {
+      "for": "entidadeDestino"
+    }
+  }, [_vm._v("Escolher entidade destino: ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.entity_id,
       expression: "form.entity_id"
     }],
-    staticClass: "form-control",
+    staticClass: "form-control col-6",
     "class": {
       "is-invalid": _vm.form.errors.has("entity_id")
     },
     attrs: {
+      id: "entidadeDestino",
       name: "entity_id"
     },
     on: {
@@ -6045,12 +6054,7 @@ var render = function render() {
         _vm.$set(_vm.form, "entity_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha a entidade destino")]), _vm._v(" "), _vm._l(_vm.entities, function (entity) {
+  }, _vm._l(_vm.entities, function (entity) {
     return _c("option", {
       attrs: {
         name: "entity_id"
@@ -6058,26 +6062,34 @@ var render = function render() {
       domProps: {
         value: entity.id
       }
-    }, [_vm._v("\n                                " + _vm._s(entity.name) + "\n                            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
+    }, [_vm._v("\n                                    " + _vm._s(entity.name) + "\n                                ")]);
+  }), 0), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "entity_id"
     }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group row"
+  }, [_c("label", {
+    staticClass: "col-5 mt-1",
+    attrs: {
+      "for": "armazemDestino"
+    }
+  }, [_vm._v("Escolher armazém destino: ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.warehouse_id,
       expression: "form.warehouse_id"
     }],
-    staticClass: "form-control",
+    staticClass: "form-control col-6",
     "class": {
       "is-invalid": _vm.form.errors.has("warehouse_id")
     },
     attrs: {
+      id: "armazemDestino",
       name: "warehouse_id"
     },
     on: {
@@ -6092,12 +6104,7 @@ var render = function render() {
         _vm.$set(_vm.form, "warehouse_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      disabled: "",
-      value: ""
-    }
-  }, [_vm._v("Escolha o armazém destino")]), _vm._v(" "), _vm._l(_vm.warehouses, function (warehouse) {
+  }, _vm._l(_vm.warehouses, function (warehouse) {
     return _c("option", {
       attrs: {
         name: "warehouse_id"
@@ -6105,17 +6112,17 @@ var render = function render() {
       domProps: {
         value: warehouse.id
       }
-    }, [_vm._v("\n                                " + _vm._s(warehouse.name) + "\n                            ")]);
-  })], 2), _vm._v(" "), _c("has-error", {
+    }, [_vm._v("\n                                    " + _vm._s(warehouse.name) + "\n                                ")]);
+  }), 0), _vm._v(" "), _c("has-error", {
     attrs: {
       form: _vm.form,
       field: "entity_id"
     }
-  })], 1), _vm._v(" "), _c("div", {
+  })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "text-center",
     staticStyle: {
       width: "100%",
-      height: "330px"
+      height: "300px"
     }
   }, [_c("v-date-picker", {
     attrs: {
@@ -6131,8 +6138,8 @@ var render = function render() {
       },
       expression: "range"
     }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "text-right pt-3"
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "text-right"
   }, [_c("button", {
     staticClass: "btn btn-danger",
     attrs: {
@@ -6147,7 +6154,7 @@ var render = function render() {
     on: {
       click: _vm.picker
     }
-  }, [_vm._v("Reservar")])])])])])])]);
+  }, [_vm._v("Reservar")])])])])])]);
 };
 
 var staticRenderFns = [];

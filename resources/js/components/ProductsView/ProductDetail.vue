@@ -34,7 +34,7 @@
                                     <label class="col-4 col-xl-3 pb-lg-3 text-lg-right"
                                            for="EquipmentEntity">Entidade:</label>
                                     <input class="col-7 col-xl-8" id="EquipmentEntity" type="text"
-                                           v-model="form.warehouse.entity_id" disabled>
+                                           v-model="form.warehouse.entity.name" disabled>
 
                                     <label class="col-4 col-xl-3 pb-lg-3 text-lg-right" for="EquipmentWarehouse">Armazém:</label>
                                     <input class="col-7 col-xl-8" id="EquipmentWarehouse" type="text"

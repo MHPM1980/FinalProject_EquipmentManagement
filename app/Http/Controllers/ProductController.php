@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Warehouse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,7 +20,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(5);
+        return tap(Product::with(['category'])->orderBy('id','asc')->paginate(5),function($paginatedInstance){
+            return $paginatedInstance->getCollection()->transform(function ($reservation){
+                $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
+
+                return $reservation;
+            });
+        });
     }
 
     public function search(){

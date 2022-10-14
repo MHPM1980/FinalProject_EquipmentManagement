@@ -5963,8 +5963,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.form.warehouse.entity_id,
-      expression: "form.warehouse.entity_id"
+      value: _vm.form.warehouse.entity.name,
+      expression: "form.warehouse.entity.name"
     }],
     staticClass: "col-7 col-xl-8",
     attrs: {
@@ -5973,13 +5973,13 @@ var render = function render() {
       disabled: ""
     },
     domProps: {
-      value: _vm.form.warehouse.entity_id
+      value: _vm.form.warehouse.entity.name
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
 
-        _vm.$set(_vm.form.warehouse, "entity_id", $event.target.value);
+        _vm.$set(_vm.form.warehouse.entity, "name", $event.target.value);
       }
     }
   }), _vm._v(" "), _c("label", {
@@ -6241,7 +6241,7 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(product.category.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(product.warehouse.entity_id) + " - " + _vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(product.warehouse.entity.name) + " - " + _vm._s(product.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [product.status == 1 ? _c("div", [_c("i", {
       staticClass: "fa-solid fa-circle fa-lg fa-green"
@@ -90266,8 +90266,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TPSIP 10.21\5417\FinalProject_EquipmentManagement\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Curso ATEC\PROJECTO FINAL\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -40,7 +40,7 @@
                                 <td class="align-middle text-center">{{ product.description }}</td>
                                 <td class="align-middle text-center">{{ product.serial_number }}</td>
                                 <td class="align-middle text-center">{{ product.category.name }}</td>
-                                <td class="align-middle text-center">{{ product.warehouse.entity_id }} - {{ product.warehouse.name }}</td>
+                                <td class="align-middle text-center">{{ product.warehouse.entity.name }} - {{ product.warehouse.name }}</td>
                                 <td class="align-middle text-center">
                                     <div v-if="product.status == 1">
                                         <i  class="fa-solid fa-circle fa-lg fa-green"></i>

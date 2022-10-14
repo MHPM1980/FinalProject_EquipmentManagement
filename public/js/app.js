@@ -6751,7 +6751,7 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.product.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
-    }, [_vm._v(_vm._s(reservation.warehouse.entity_id) + " - " + _vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(reservation.warehouse.entity.name) + " - " + _vm._s(reservation.warehouse.name))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"
     }, [_vm._v(_vm._s(reservation.registry_date))]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center"

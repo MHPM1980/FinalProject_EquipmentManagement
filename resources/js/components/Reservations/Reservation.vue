@@ -27,7 +27,7 @@
 
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>
-                                <td class="align-middle text-center">{{ reservation.warehouse.entity_id }} - {{ reservation.warehouse.name }}</td>
+                                <td class="align-middle text-center">{{ reservation.warehouse.entity.name }} - {{ reservation.warehouse.name }}</td>
                                 <td class="align-middle text-center">{{ reservation.registry_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.start_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.end_date }}</td>

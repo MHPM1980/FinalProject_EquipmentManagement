@@ -10,8 +10,12 @@
                                 Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                        :rows="10"
+                        :columns="7"
+                        :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -70,6 +74,7 @@ export default {
     name: 'Users',
     data(){
         return{
+            dataFetched:false,
             users: {},
             form: new Form({
                 id:'',
@@ -86,21 +91,27 @@ export default {
     },
     mixins:[deleteMixin, searchMixin],
     created(){
-
-        this.loadUsers();
         //custom Event to reload DOM
         Fire.$on('AfterCreate',()=>{
-            this.loadUsers();
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                axios
+                    .get("api/users/")
+                    .then(({ data }) => (this.users = data))
+            }
         });
     },
     components: {
         ModalComp,
         formComp,
     },
-    computed: {
-        userList(){
-            return this.users.data
-
+    mounted() {
+        if(this.$gate.isAdmin() || this.$gate.isGestor()){
+            axios
+                .get("api/users/")
+                .then(({ data }) => (this.users = data))
+                .finally(()=>{
+                    this.dataFetched=true;
+                })
         }
     },
     methods:{
@@ -122,13 +133,6 @@ export default {
             $('#addNew').modal('show');
             this.form.clear();
             this.form.fill(user);
-        },
-        loadUsers(){
-            if(this.$gate.isAdmin() || this.$gate.isGestor()){
-                axios
-                    .get("api/users/")
-                    .then(({ data }) => (this.users = data));
-            }
         },
     }
 }

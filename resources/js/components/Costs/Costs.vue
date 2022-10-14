@@ -10,8 +10,12 @@
                                 Novo <i class="fa-solid fa-euro-sign"></i></button>
                         </div>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                                      :rows="10"
+                                      :columns="7"
+                                      :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -69,6 +73,7 @@
     export default {
         data(){
             return{
+                dataFetched:false,
                 costs: {},
                 form: new Form({
                     id:'',
@@ -81,15 +86,28 @@
         },
         mixins:[deleteMixin, searchMixin],
         created(){
-            this.loadCosts();
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
-                this.loadCosts();
+                if(this.$gate.isAdmin()){
+                    axios
+                        .get("api/costs/")
+                        .then(({ data }) => (this.costs = data))
+                };
             });
         },
         components: {
             ModalComp,
             formCompCosts
+        },
+        mounted() {
+            if(this.$gate.isAdmin()){
+                axios
+                    .get("api/costs/")
+                    .then(({ data }) => (this.costs = data))
+                    .finally(()=>{
+                        this.dataFetched=true;
+                    })
+            }
         },
         methods:{
             getResults(page = 1){
@@ -108,13 +126,6 @@
                 this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(cost);
-            },
-            loadCosts(){
-                if(this.$gate.isAdmin()){
-                axios
-                    .get("api/costs/")
-                    .then(({ data }) => (this.costs = data))
-                };
             },
         }
     }

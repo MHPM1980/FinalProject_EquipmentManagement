@@ -10,8 +10,12 @@
                                 Novo <i class="fa-solid fa-gears"></i></button>
                         </div>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                                      :rows="10"
+                                      :columns="7"
+                                      :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -62,6 +66,7 @@ import {searchMixin} from "../mixins/searchMixin";
 export default {
     data(){
         return{
+            dataFetched:false,
             categories: {},
             form: new Form({
                 id:'',
@@ -74,15 +79,27 @@ export default {
     },
     mixins:[deleteMixin, searchMixin],
     created(){
-        this.loadCategories();
         //custom Event to reload DOM
         Fire.$on('AfterCreate',()=>{
-            this.loadCategories();
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                axios
+                    .get("api/categories/")
+                    .then(({ data }) => (this.categories = data));}
         });
     },
     components: {
         ModalComp,
         formCompCategories
+    },
+    mounted() {
+        if(this.$gate.isAdmin() || this.$gate.isGestor()){
+            axios
+                .get("api/categories/")
+                .then(({ data }) => (this.categories = data))
+                .finally(()=>{
+                    this.dataFetched=true;
+                })
+        }
     },
     methods:{
         getResults(page = 1){
@@ -101,12 +118,6 @@ export default {
             this.mode=true;
             $('#addNew').modal('show');
             this.form.fill(category);
-        },
-        loadCategories(){
-            if(this.$gate.isAdmin() || this.$gate.isGestor()){
-                axios
-                    .get("api/categories/")
-                    .then(({ data }) => (this.categories = data));}
         },
     }
 }

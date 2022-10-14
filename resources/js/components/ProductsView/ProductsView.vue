@@ -16,8 +16,12 @@
 
                         </div>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                                      :rows="10"
+                                      :columns="7"
+                                      :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -51,13 +55,6 @@
                                 </td>
                                 <td v-if="!$gate.isFormando()" class="align-middle text-center">
                                     <a class="btn-primary btn" @click="[numberApReservation(product.id), listEquipment(product)]">Detalhe</a>
-
-<!--                                   <a href="#" @click="editModal(product)">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" @click="deleteItem(product.id)">
-                                        <i class="fa fa-trash text-red"></i>
-                                    </a>-->
                                 </td>
                             </tr>
                             </tbody>
@@ -85,6 +82,7 @@
     export default {
         data(){
             return{
+                dataFetched:false,
                 products: {},
                 reservations:[],
                 form: new Form({
@@ -100,15 +98,24 @@
         },
         mixins:[searchMixin],
         created(){
-            this.loadProducts();
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
-                this.loadProducts();
+                axios
+                    .get("api/products/")
+                    .then(({ data }) => (this.products = data))
             });
         },
         components: {
             modalProduct,
             productDetail
+        },
+        mounted() {
+            axios
+                .get("api/products/")
+                .then(({ data }) => (this.products = data))
+                    .finally(()=>{
+                        this.dataFetched=true;
+                    })
         },
         methods:{
             getResults(page = 1){
@@ -127,11 +134,6 @@
                 this.form.fill(product);
                 $('#addNew').modal('show');
                 this.form.fill(product);
-            },
-            loadProducts(){
-                axios
-                    .get("api/products/")
-                    .then(({ data }) => (this.products = data))
             },
         }
     }

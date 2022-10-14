@@ -10,8 +10,12 @@
                                 Novo <i class="fa-solid fa-screwdriver-wrench"></i></button>
                         </div>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                                      :rows="10"
+                                      :columns="7"
+                                      :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -73,6 +77,7 @@
     export default {
         data(){
             return{
+                dataFetched:false,
                 products: {},
                 form: new Form({
                     id:'',
@@ -89,15 +94,28 @@
         },
         mixins:[deleteMixin,searchMixin],
         created(){
-            this.loadProducts();
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
-                this.loadProducts();
+                if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                    axios
+                        .get("api/products/")
+                        .then(({ data }) => (this.products = data))
+                };
             });
         },
         components: {
             ModalComp,
             formCompProducts
+        },
+        mounted() {
+            if(this.$gate.isAdmin() || this.$gate.isGestor()){
+                axios
+                    .get("api/products/")
+                    .then(({ data }) => (this.products = data))
+                    .finally(()=>{
+                        this.dataFetched=true;
+                    })
+            }
         },
         methods:{
             getResults(page = 1){
@@ -116,13 +134,6 @@
                 this.mode=true;
                 $('#addNew').modal('show');
                 this.form.fill(product);
-            },
-            loadProducts(){
-                if(this.$gate.isAdmin() || this.$gate.isGestor()){
-                axios
-                    .get("api/products/")
-                    .then(({ data }) => (this.products = data))
-                };
             },
         }
     }

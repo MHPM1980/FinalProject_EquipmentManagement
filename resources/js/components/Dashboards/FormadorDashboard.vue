@@ -7,7 +7,7 @@
             <formador-card background="bg-danger" size="col-md-3" text="Equipamentos por devolver" :number=returned rota="/reservations"></formador-card>
         </div>
         <div>
-            <v-calendar :availableDates="reservations" :attributes='attributes' is-expanded class="mb-4"/>
+            <v-calendar :availableDates="reservations" :attributes='attributes' is-expanded is-dark class="mb-4"/>
         </div>
     </div>
 </template>

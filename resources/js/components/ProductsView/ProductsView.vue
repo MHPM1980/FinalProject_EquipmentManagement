@@ -5,11 +5,11 @@
                 <div class="card">
                     <div class="card-header">
                         <div v-if="$gate.isFormando()" class="d-flex justify-content-start align-items-center">
-                            <h3 class="align-middle">Listagem de Equipamentos</h3>
-                            <h6 class="ml-2">(Para reservar contacte um Formador!)</h6>
+                            <h3 class="align-middle mt-2">Listagem de Equipamentos</h3>
+                            <h6 class="ml-2 mt-2">(Para reservar contacte um Formador!)</h6>
                         </div>
                         <div v-else>
-                            <h3 class="card-title">Listagem de Equipamentos</h3>
+                            <h3 class="card-title mt-2">Listagem de Equipamentos</h3>
                         </div>
 
                         <div class="card-tools">

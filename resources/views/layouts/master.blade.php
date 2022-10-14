@@ -158,7 +158,7 @@
                             <li class="nav-item">
                                 <router-link to="/costs" class="nav-link">
                                     <i class="fas fa-solid fa-euro-sign nav-icon"></i>
-                                    <p>Centro Custos</p>
+                                    <p>Centros de Custo</p>
                                 </router-link>
                             </li>
                             @endcan

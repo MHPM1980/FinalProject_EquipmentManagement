@@ -53082,6 +53082,10 @@ footer {
   font-size: 10px;
 }
 
+.welcome-msg {
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 450px) {
   .mainbox {
     margin: auto;

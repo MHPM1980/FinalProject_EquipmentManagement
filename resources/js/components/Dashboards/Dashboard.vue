@@ -3,7 +3,7 @@
         <div class="row text-center d-flex align-items-center justify-content-center">
             <div class="col-md-12 pt-5">
                 <div>
-                    <h1 class="text-light">Bem-Vindo, {{this.profile.name}} !</h1>
+                    <h1 class="text-light welcome-msg">Bem-Vindo, {{this.profile.name}} !</h1>
                 </div>
                 <div v-if="$gate.isAdmin()">
                     <admin-dashboard></admin-dashboard>

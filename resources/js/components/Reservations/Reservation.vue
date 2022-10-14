@@ -3,11 +3,15 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between pb-0">
-                        <h3 class="card-title">Listagem de Reservas</h3>
+                    <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title mt-2">Listagem de Reservas</h3>
                     </div>
-
-                    <div class="card-body table-responsive p-0">
+                    <b-skeleton-table v-if="!dataFetched"
+                                      :rows="10"
+                                      :columns="7"
+                                      :table-props="{ bordered: true, striped: true }">
+                    </b-skeleton-table>
+                    <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -100,6 +104,7 @@
     export default {
         data(){
             return{
+                dataFetched:false,
                 reservations: {},
                 profile: {},
                 form: new Form({
@@ -108,11 +113,22 @@
             }
         },
         created(){
-            this.loadReservations();
             Fire.$on('AfterCreate',()=>{
-                this.loadReservations();
+                axios
+                    .get("api/reservations/")
+                    .then(({ data }) => (this.reservations = data))
             });
         },
+
+        mounted() {
+            axios
+                .get("api/reservations/")
+                .then(({ data }) => (this.reservations = data))
+                    .finally(()=>{
+                        this.dataFetched=true;
+                    })
+        },
+
         methods:{
             loadReservations(){
                     axios

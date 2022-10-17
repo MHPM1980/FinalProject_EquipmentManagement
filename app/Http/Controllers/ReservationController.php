@@ -23,7 +23,7 @@ class ReservationController extends Controller
     public function index()
     {
         if(Auth::user()->role->name=='FORMADOR'){
-            return tap(Reservation::with(['user','product'])->where("user_id", "=", Auth::user()->id)->orderBy('id','asc')->paginate(9),function($paginatedInstance){
+            return tap(Reservation::with(['user','product'])->where("user_id", "=", Auth::user()->id)->orderBy('registry_date','desc')->paginate(9),function($paginatedInstance){
                 return $paginatedInstance->getCollection()->transform(function ($reservation){
                     $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
 
@@ -31,7 +31,7 @@ class ReservationController extends Controller
                 });
             });
         }else{
-            return tap(Reservation::with(['user','product'])->orderBy('id','asc')->paginate(9),function($paginatedInstance){
+            return tap(Reservation::with(['user','product'])->orderBy('registry_date','desc')->paginate(9),function($paginatedInstance){
                 return $paginatedInstance->getCollection()->transform(function ($reservation){
                     $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
 
@@ -102,7 +102,8 @@ class ReservationController extends Controller
                     echo $date->format('Y-m-d ');
                 }
                 return $item->dates = $period->toArray();
-            }));
+            })
+        );
     }
     /**
      * Search Formador aproved reservations data

@@ -33,12 +33,18 @@ export default {
     },
     computed:{
         attributes(){
-            return [
-                ...this.reservations.map(reservation=>({
-                    dates:reservation,
-                    highlight: 'green'
-                }))
-            ]
+            console.log(this.reservations)
+            return this.reservations.map(r => {
+                return {
+                    highlight: {
+
+                        start: { fillMode: 'outline',color: 'green' },
+                        base: { fillMode: 'light',color: 'green', },
+                        end: { fillMode: 'outline',color: 'green', },
+                    },
+                    dates: r,
+                };
+            })
         }
     },
     components:{
@@ -67,8 +73,15 @@ export default {
         },
         loadReservations(){
             axios
-                .get("api/formadorReservation/")
-                .then(({ data }) => (this.reservations = data.trim().split(" ")))
+                .get("api/reservations")
+                .then(
+                    ({ data }) => {
+                        this.reservations = data.data.map(r => {
+                            console.log(typeof r.start_date)
+                            return {"start": r.start_date, "end": r.end_date}
+                        });
+                    }
+                )
         },
     }
 }

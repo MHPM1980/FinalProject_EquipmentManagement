@@ -22,7 +22,9 @@ export const createReservationMixin={
                         title: 'Registo criado com sucesso!'
                     })
                     this.$Progress.finish();
-
+                    setTimeout(()=>{
+                        this.$router.go();
+                    },2000)
                 })
                 .catch(()=>{
                     this.$Progress.fail()

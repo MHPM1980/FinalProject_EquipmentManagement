@@ -30,18 +30,28 @@ class ProductController extends Controller
     }
 
     public function search(){
-
         if($search= \Request::get('q')){
-            $products = Product::with(['category','warehouse'])->where(function($query) use ($search){
+            return tap(Product::with(['category'])->orderBy('id','asc')->where(function($query) use ($search){
                 $query->where('name','LIKE',"%$search%")
-                        ->orWhere('description','LIKE',"%$search%")
-                        ->orWhere('serial_number','LIKE',"%$search%");
-            })->paginate(15);
+                    ->orWhere('description','LIKE',"%$search%")
+                    ->orWhere('serial_number','LIKE',"%$search%");
+            })->paginate(5),function($paginatedInstance){
+                return $paginatedInstance->getCollection()->transform(function ($reservation){
+                    $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
 
+                    return $reservation;
+                });
+            });
 
-            return $products;}
+        }
         else {
-            return Product::with(['category','warehouse'])->orderBy('id','asc')->paginate(15);
+            return tap(Product::with(['category'])->orderBy('id','asc')->paginate(5),function($paginatedInstance){
+                return $paginatedInstance->getCollection()->transform(function ($reservation){
+                    $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
+
+                    return $reservation;
+                });
+            });
         }
     }
 

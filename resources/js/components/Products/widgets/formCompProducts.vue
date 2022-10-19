@@ -31,7 +31,7 @@
                     {{category.name}}
                 </option>
             </select>
-            <has-error :form="form" field="category_id"></has-error>
+            <has-error :form="form" field="category_id" class="ml-3"></has-error>
         </div>
 
         <div class="form-group row d-flex justify-content-between mr-1">
@@ -51,7 +51,7 @@
                     {{warehouse.name}}
                 </option>
             </select>
-            <has-error :form="form" field="warehouse_id"></has-error>
+            <has-error :form="form" field="warehouse_id" class="ml-3"></has-error>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>

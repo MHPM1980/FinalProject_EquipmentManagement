@@ -8,7 +8,7 @@
                     {{entity.name}}
                 </option>
             </select>
-            <has-error :form="form" field="entity_id"></has-error>
+            <has-error :form="form" field="entity_id" class="ml-3"></has-error>
         </div>
 
         <div class="form-group">

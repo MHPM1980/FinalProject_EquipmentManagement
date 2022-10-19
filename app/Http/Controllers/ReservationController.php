@@ -204,8 +204,13 @@ class ReservationController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation)
+    public function destroy($id)
     {
-        //
+        //Find user in DB
+        $reservation = Reservation::query()->findOrFail($id);
+        //Delete user in DB
+        $reservation->delete();
+
+        return ['message' => 'Reservation Deleted'];
     }
 }

@@ -15,7 +15,6 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">Utilizadores</th>
                                 <th class="text-center">Descrição</th>
@@ -23,15 +22,14 @@
                             </thead>
                             <tbody>
                             <tr v-for="role in roles" :key="role.id">
-                                <td class="align-middle text-center">{{ role.id }}</td>
                                 <td class="align-middle text-center">{{ role.name }}</td>
                                 <td class="align-middle text-center" >
                                     <p v-for="users in role.users">
                                         {{ users.name }}
                                     </p>
                                 </td>
-                                <td class="align-middle text-center ">
-                                    <p class="text-left" v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
+                                <td class="align-middle">
+                                    <p class="role-desc" v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
                                 </td>
                             </tr>
                             </tbody>
@@ -75,7 +73,7 @@ export default {
                 1:[ "Visualizar equipamentos",
                     "Criar reservas de equipamentos",
                     "Eliminar reservas",
-                    "Gerir as próprias reservas",
+                    "Gerir reservas",
                     "Gerir utilizadores",
                     "Gerir equipamentos",
                     "Gerir categorias de equipamentos",
@@ -85,7 +83,7 @@ export default {
                 ],
                 2:[ "Visualizar equipamentos",
                     "Criar reservas de equipamentos",
-                    "Gerir as próprias reservas",
+                    "Gerir reservas",
                     "Gerir utilizadores",
                     "Gerir equipamentos",
                     "Gerir categorias de equipamentos",
@@ -94,7 +92,7 @@ export default {
                 ],
                 3:[ "Visualizar equipamentos",
                     "Criar reservas de equipamentos",
-                    "Gerir as próprias reservas"
+                    "Visualizar as próprias reservas"
                 ],
                 4:[ "Visualizar equipamentos"
                 ]
@@ -134,3 +132,4 @@ export default {
     }
 }
 </script>
+

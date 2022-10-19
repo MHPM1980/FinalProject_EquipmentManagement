@@ -53086,6 +53086,10 @@ footer {
   text-transform: uppercase;
 }
 
+.card-footer {
+  z-index: 0;
+}
+
 @media screen and (max-width: 450px) {
   .mainbox {
     margin: auto;
@@ -53353,6 +53357,10 @@ footer {
   .not-found-link:hover {
     color: white;
     text-decoration: underline;
+  }
+
+  .role-desc {
+    margin-left: 35%;
   }
 }
 

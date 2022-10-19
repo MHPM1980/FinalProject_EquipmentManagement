@@ -52,11 +52,7 @@
 import ModalComp from "../widgets/modalComp";
 import formCompRoles from "./widgets/formCompRoles";
 import {deleteMixin} from "../mixins/deleteMixin";
-
-import Vue from 'vue'
-import VSwitch from 'v-switch-case'
-
-Vue.use(VSwitch)
+import {searchMixin} from "../mixins/searchMixin";
 
 export default {
 
@@ -99,7 +95,7 @@ export default {
             }
         }
     },
-    mixins:[deleteMixin],
+    mixins:[deleteMixin, searchMixin],
     created(){
         this.loadRoles();
         //custom Event to reload DOM

@@ -21,6 +21,19 @@ class RoleController extends Controller
     {
         return Role::with(['users'])->orderBy('id','asc')->paginate(15);
     }
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $roles = Role::with(['users'])->where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $roles;}
+        else {
+            return Role::with(['users'])->orderBy('id','asc')->paginate(15);
+        }
+    }
 
 
     /**

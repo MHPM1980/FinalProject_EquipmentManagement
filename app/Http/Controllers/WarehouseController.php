@@ -29,14 +29,13 @@ class WarehouseController extends Controller
 
         if($search= \Request::get('q')){
             $warehouses = Warehouse::with(['entity'])->where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%")
-                    ->orWhere('entity','LIKE',"%$search%");
+                $query->where('name','LIKE',"%$search%");
             })->paginate(15);
 
 
             return $warehouses;}
         else {
-            return User::with(['entity'])->orderBy('id','asc')->paginate(15);
+            return Warehouse::with(['entity'])->orderBy('id','asc')->paginate(15);
         }
     }
 

@@ -20,6 +20,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Cost::class);
     }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 
 
     /**
@@ -48,4 +52,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected static function booted()
+    {
+        static::deleting(function ($user) {
+            if ($user->reservations()->exists()) {
+                throw new \Exception('Related reservations found');
+            }
+        });
+    }
 }

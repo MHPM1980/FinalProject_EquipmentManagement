@@ -24,6 +24,7 @@
                                 <th class="text-center"  v-if="$gate.isAdmin() || $gate.isGestor()" >Aprovação</th>
                                 <th class="text-center" >Levantado</th>
                                 <th class="text-center" >Devolvido</th>
+                                <th class="text-center" v-if="$gate.isAdmin()">Cancelar</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -79,6 +80,18 @@
                                         <div v-if="reservation.returned === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
                                     </div>
                                 </td>
+                                <td class="align-middle text-center" v-if="$gate.isAdmin()">
+                                    <div v-if="(reservation.approved === 1 && reservation.returned != 1) || (reservation.approved != 1 && reservation.approved != 0)">
+                                            <a href="#" @click="deleteItem(reservation.id)">
+                                                <i class="fa fa-trash text-red"></i>
+                                            </a>
+                                    </div>
+                                    <div v-if="reservation.approved === 0 || reservation.returned === 1 || reservation.delivered === 1">
+                                        <button class="btn" disabled>
+                                            <i class="fa fa-trash text-red"></i>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -101,6 +114,8 @@
 </template>
 
 <script>
+    import {deleteMixin} from "../mixins/deleteMixin";
+
     export default {
         data(){
             return{
@@ -110,8 +125,12 @@
                 form: new Form({
                     id:'',
                 }),
+                link:'reservations',
             }
         },
+
+        mixins:[deleteMixin],
+
         created(){
             Fire.$on('AfterCreate',()=>{
                 axios

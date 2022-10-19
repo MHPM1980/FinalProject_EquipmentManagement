@@ -89,7 +89,9 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
-        $user->password = bcrypt($request->password);
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         return['message'=>"Success"];
@@ -123,7 +125,9 @@ class UserController extends Controller
         $user->cost_id = $request->cost_id;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
-        $user->password = bcrypt($request->password);
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
        return ['message'=>'Updated the user info'];

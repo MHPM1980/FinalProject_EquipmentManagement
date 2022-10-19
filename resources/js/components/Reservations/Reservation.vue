@@ -81,7 +81,7 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center" v-if="$gate.isAdmin()">
-                                    <div v-if="(reservation.approved === 1 && reservation.returned != 1) || (reservation.approved != 1 && reservation.approved != 0)">
+                                    <div v-if="(reservation.approved === 1 && reservation.delivered != 1) || (reservation.approved != 1 && reservation.approved != 0)">
                                             <a href="#" @click="deleteItem(reservation.id)">
                                                 <i class="fa fa-trash text-red"></i>
                                             </a>

@@ -19,6 +19,10 @@ class Product extends Model
     {
         return $this->belongsTo(Warehouse::class);
     }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 
     protected $fillable = [
         'image',
@@ -30,14 +34,11 @@ class Product extends Model
         'status',
     ];
 
-    public function reservations()
-    {
-        return $this->belongsToMany(Reservation::class);
-    }
+
     protected static function booted()
     {
-        static::deleting(function ($reservation) {
-            if ($reservation->users()->exists()) {
+        static::deleting(function ($product) {
+            if ($product->reservations()->exists()) {
                 throw new \Exception('Related reservations found');
             }
         });

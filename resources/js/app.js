@@ -185,6 +185,12 @@ const app = new Vue({
                 Fire.$emit('searchProduct');
             } else if(this.$route.path == '/equipmentsView') {
                 Fire.$emit('searchProduct');
+            } else if(this.$route.path == '/reservations') {
+                Fire.$emit('searchReservation');
+            } else if(this.$route.path == '/warehouses') {
+                Fire.$emit('searchWarehouse');
+            } else if(this.$route.path == '/roles') {
+                Fire.$emit('searchRole');
             }
         }
     }

@@ -115,6 +115,7 @@
 
 <script>
     import {deleteMixin} from "../mixins/deleteMixin";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -129,7 +130,7 @@
             }
         },
 
-        mixins:[deleteMixin],
+        mixins:[deleteMixin, searchMixin],
 
         created(){
             Fire.$on('AfterCreate',()=>{

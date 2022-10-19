@@ -25,6 +25,21 @@ class WarehouseController extends Controller
         }
     }
 
+    public function search(){
+
+        if($search= \Request::get('q')){
+            $warehouses = Warehouse::with(['entity'])->where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                    ->orWhere('entity','LIKE',"%$search%");
+            })->paginate(15);
+
+
+            return $warehouses;}
+        else {
+            return User::with(['entity'])->orderBy('id','asc')->paginate(15);
+        }
+    }
+
     public function warehouseSection(Request $request){
         return response()->json(Warehouse::where(
             "entity_id", "=", $request->entity_id

@@ -68,6 +68,7 @@
     import ModalComp from "../widgets/modalComp";
     import formCompWarehouses from "./widgets/formCompWarehouses";
     import {deleteMixin} from "../mixins/deleteMixin";
+    import {searchMixin} from "../mixins/searchMixin";
 
     export default {
         data(){
@@ -86,7 +87,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin],
+        mixins:[deleteMixin, searchMixin],
         created(){
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{

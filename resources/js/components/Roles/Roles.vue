@@ -30,16 +30,8 @@
                                         {{ users.name }}
                                     </p>
                                 </td>
-                                <td class="align-middle text-center">
-                                    <p v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
-                                </td>
-                                <td>
-                                    <!--                                    <a href="#" @click="editModal(role)">
-                                                                            <i class="fa fa-edit"></i>
-                                                                        </a>
-                                                                        <a href="#" @click="deleteItem(role.id)">
-                                                                            <i class="fa fa-trash text-red"></i>
-                                                                        </a>-->
+                                <td class="align-middle text-center ">
+                                    <p class="text-left" v-for="(permission, index) in permissions[role.id]" :key="index">{{permission}}</p>
                                 </td>
                             </tr>
                             </tbody>
@@ -82,6 +74,7 @@ export default {
             permissions:{
                 1:[ "Visualizar equipamentos",
                     "Criar reservas de equipamentos",
+                    "Eliminar reservas",
                     "Gerir as próprias reservas",
                     "Gerir utilizadores",
                     "Gerir equipamentos",

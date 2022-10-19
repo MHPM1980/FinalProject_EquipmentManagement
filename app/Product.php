@@ -34,4 +34,12 @@ class Product extends Model
     {
         return $this->belongsToMany(Reservation::class);
     }
+    protected static function booted()
+    {
+        static::deleting(function ($reservation) {
+            if ($reservation->users()->exists()) {
+                throw new \Exception('Related reservations found');
+            }
+        });
+    }
 }

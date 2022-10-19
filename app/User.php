@@ -48,4 +48,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected static function booted()
+    {
+        static::deleting(function ($reservation) {
+            if ($reservation->users()->exists()) {
+                throw new \Exception('Related reservations found');
+            }
+        });
+    }
 }

@@ -1,6 +1,6 @@
 <template>
-    <div class="modal fade" id="addNew" tabindex="-1" aria-labelledby="addNew" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal fade" data-backdrop="static" id="addNew" tabindex="-1" aria-labelledby="addNew" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addNewLabel">{{title}}</h5>
@@ -34,5 +34,7 @@ export default {
 </script>
 
 <style scoped>
-
+.close {
+    display: none;
+}
 </style>

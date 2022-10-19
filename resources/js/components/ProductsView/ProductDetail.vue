@@ -1,9 +1,7 @@
 <template>
-    <div class="container pt-3">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="card">
-                <div class="card-header">Detalhes de Equipamento</div>
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-6 text-center">
@@ -79,13 +77,11 @@
                             <v-date-picker v-model="range" :disabled-dates="disabledDays" :min-date='new Date()'
                                            is-range is-expanded/>
                         </div>
-
                         <div class="offset-xl-10 offset-lg-9 offset-7">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-danger" @click="resetDays" data-dismiss="modal">Fechar</button>
                             <button class="btn btn-primary" type="submit" @click="picker">Reservar</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -147,6 +143,7 @@ export default {
                     (this.warehouses = data.data)
                 )
         },
+
     },
     created() {
         this.loadEntities();
@@ -163,9 +160,12 @@ export default {
                 .then(({data}) => (this.entities = data.data))
             ;
         },
-        hideModal() {
-            $('#addNew').modal('hide');
-            this.disabledDays = []
+        resetDays(){
+            this.range={
+                start: null,
+                end:null
+            }
+            this.form.clear()
         }
     }
 }

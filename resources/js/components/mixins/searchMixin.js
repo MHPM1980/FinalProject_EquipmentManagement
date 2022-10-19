@@ -63,6 +63,43 @@ export const searchMixin={
                     .catch((error) => {
                         console.log(error)
                     })
+            }),
+
+            Fire.$on('searchReservation',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findReservation?q='+ query)
+                    .then(response => {
+                        this.reservations = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }),
+
+            Fire.$on('searchRole',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findRole?q='+ query)
+                    .then(response => {
+                        this.roles = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }),
+
+            Fire.$on('searchWarehouse',() => {
+                let query = this.$parent.search;
+                axios
+                    .get('api/findWarehouse?q='+ query)
+                    .then(response => {
+                        this.warehouses = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
+
     },
 }

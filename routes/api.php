@@ -26,8 +26,10 @@ Route::get('findEntity','EntityController@search');
 
 Route::apiResource('warehouses','WarehouseController');
 Route::get('loadWarehousesSection','WarehouseController@warehouseSection');
+Route::get('findWarehouse','WarehouseController@search');
 
 Route::apiResource('roles','RoleController');
+Route::get('findRole','RoleController@search');
 
 Route::apiResource('costs','CostController');
 Route::get('findCost','CostController@search');
@@ -40,6 +42,7 @@ Route::get('findProduct','ProductController@search');
 
 Route::apiResource('reservations','ReservationController');
 Route::get('formadorReservation','ReservationController@getFormadorReservation');
+Route::get('findReservation','ReservationController@search');
 
 //Admin and Gestor dashboard card information Routes
 Route::get('findReservations','ReservationController@countReservations');

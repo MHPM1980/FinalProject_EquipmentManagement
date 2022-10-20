@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Reservation;
+use App\User;
 use App\Warehouse;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
@@ -41,7 +43,33 @@ class ReservationController extends Controller
         }
     }
 
+    public function search(){
+        if($search= \Request::get('q') && Auth::user()->role->name=='FORMADOR'){
 
+
+        }else if($search= \Request::get('q') && Auth::user()->role->name!=='FORMADOR'){
+
+
+
+        } else if(Auth::user()->role->name=='FORMADOR'){
+            return tap(Reservation::with(['user','product'])->where("user_id", "=", Auth::user()->id)->orderBy('registry_date','desc')->paginate(9),function($paginatedInstance){
+                return $paginatedInstance->getCollection()->transform(function ($reservation){
+                    $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
+
+                    return $reservation;
+                });
+            });
+        }else{
+            return tap(Reservation::with(['user','product'])->orderBy('registry_date','desc')->paginate(9),function($paginatedInstance){
+                return $paginatedInstance->getCollection()->transform(function ($reservation){
+                    $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
+
+                    return $reservation;
+                });
+            });
+        }
+
+    }
 
     /**
      * Display Admin and Gestor dashboard card information.

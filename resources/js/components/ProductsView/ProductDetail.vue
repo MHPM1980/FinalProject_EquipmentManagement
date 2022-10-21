@@ -73,7 +73,7 @@
                                 <has-error :form="form" field="entity_id"></has-error>
                             </div>
                         </div>
-                        <div class="text-center" style="width: 100%; height: 300px;">
+                        <div class="text-center vc-reservation-calendar" style="width: 100%; height: 300px;">
                             <v-date-picker v-model="range" :disabled-dates="disabledDays" :min-date='new Date()'
                                            is-range is-expanded/>
                         </div>
@@ -170,4 +170,15 @@ export default {
     }
 }
 </script>
+<style>
+
+.vc-reservation-calendar .vc-day-content.is-disabled{
+    color: var(--danger); opacity:0.3;
+}
+
+.vc-reservation-calendar .vc-day-content{
+    color: var(--green);
+}
+
+</style>
 

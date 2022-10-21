@@ -39,7 +39,7 @@ export default {
                     highlight: {
 
                         start: { fillMode: 'outline',color: 'green' },
-                        base: { fillMode: 'light',color: 'green', },
+                        base: { fillMode: 'solid',color: 'green', },
                         end: { fillMode: 'outline',color: 'green', },
                     },
                     dates: r,

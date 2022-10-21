@@ -177,7 +177,7 @@ export default {
 }
 
 .vc-reservation-calendar .vc-day-content{
-    color: var(--green);
+    color: var(--success);
 }
 
 </style>

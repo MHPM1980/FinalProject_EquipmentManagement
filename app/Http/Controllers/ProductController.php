@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return tap(Product::with(['category'])->orderBy('id','asc')->paginate(5),function($paginatedInstance){
+        return tap(Product::with(['category', 'reservations'])->orderBy('id','asc')->paginate(5),function($paginatedInstance){
             return $paginatedInstance->getCollection()->transform(function ($reservation){
                 $reservation->warehouse = Warehouse::find($reservation->warehouse_id)->load(['entity']);
 

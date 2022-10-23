@@ -46,7 +46,7 @@
                                 <td class="align-middle text-center">{{ product.category.name }}</td>
                                 <td class="align-middle text-center">{{ product.warehouse.entity.name }} - {{ product.warehouse.name }}</td>
                                 <td class="align-middle text-center">
-                                    <div v-if="product.status == 1">
+                                    <div v-if="isBetween(product.reservations)">
                                         <i  class="fa-solid fa-circle fa-lg fa-green"></i>
                                     </div>
                                     <div v-else>
@@ -75,66 +75,77 @@
 </template>
 
 <script>
-    import productDetail from "./ProductDetail";
-    import modalProduct from "./modalProduct";
-    import {searchMixin} from "../mixins/searchMixin";
+import moment from "moment/moment";
 
-    export default {
-        data(){
-            return{
-                dataFetched:false,
-                products: {},
-                reservations:[],
-                form: new Form({
-                    id:'',
-                    image:'',
-                    name: '',
-                    description: '',
-                    serial_number:'',
-                    category: {},
-                    warehouse: {},
-                }),
-            }
-        },
-        mixins:[searchMixin],
-        created(){
-            //custom Event to reload DOM
-            Fire.$on('AfterCreate',()=>{
-                axios
-                    .get("api/products/")
-                    .then(({ data }) => (this.products = data))
-            });
-        },
-        components: {
-            modalProduct,
-            productDetail
-        },
-        mounted() {
+import productDetail from "./ProductDetail";
+import modalProduct from "./modalProduct";
+import {searchMixin} from "../mixins/searchMixin";
+
+export default {
+    data(){
+        return{
+            dataFetched:false,
+            products: {},
+            reservations:[],
+            form: new Form({
+                id:'',
+                image:'',
+                name: '',
+                description: '',
+                serial_number:'',
+                category: {},
+                warehouse: {},
+            }),
+        }
+    },
+    mixins:[searchMixin],
+    created(){
+        //custom Event to reload DOM
+        Fire.$on('AfterCreate',()=>{
             axios
                 .get("api/products/")
                 .then(({ data }) => (this.products = data))
-                    .finally(()=>{
-                        this.dataFetched=true;
-                    })
+        });
+    },
+    components: {
+        modalProduct,
+        productDetail
+    },
+    mounted() {
+        axios
+            .get("api/products/")
+            .then(({ data }) => (this.products = data))
+            .finally(()=>{
+                this.dataFetched=true;
+            })
+    },
+    methods:{
+        getResults(page = 1){
+            axios
+                .get('api/products?page=' + page)
+                .then(response => {
+                    this.products = response.data;
+                });
         },
-        methods:{
-            getResults(page = 1){
-                axios
-                    .get('api/products?page=' + page)
-                    .then(response => {
-                        this.products = response.data;
-                    });
-            },
-            numberApReservation(id){
-                axios
-                    .get(`api/findProductReservations/?product_id=`+id+`&approved!=0`)
-                    .then(({ data }) => (this.reservations=data.trim().split(" ")))
-            },
-            listEquipment(product){
-                this.form.fill(product);
-                $('#addNew').modal('show');
-                this.form.fill(product);
-            },
-        }
+        isBetween(reservations){
+            let flag = false
+
+            for (let reservation of reservations) {
+                if (moment().isBetween(reservation.start_date, reservation.end_date)) flag = true
+            }
+
+            return !flag;
+        },
+        numberApReservation(id){
+            axios
+                .get(`api/findProductReservations/?product_id=`+id+`&approved!=0`)
+                .then(({ data }) => (this.reservations=data.trim().split(" ")))
+        },
+        listEquipment(product){
+            this.form.fill(product);
+            $('#addNew').modal('show');
+            this.form.fill(product);
+        },
     }
+}
 </script>

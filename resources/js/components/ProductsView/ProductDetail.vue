@@ -77,7 +77,7 @@
                             <v-date-picker v-model="range" :disabled-dates="disabledDays" :min-date='new Date()'
                                            is-range is-expanded/>
                         </div>
-                        <div class="offset-xl-10 offset-lg-9 offset-7">
+                        <div class="offset-xl-10 offset-lg-9 offset-sm-7 offset-5">
                             <button type="button" class="btn btn-danger" @click="resetDays" data-dismiss="modal">Fechar</button>
                             <button class="btn btn-primary" type="submit" @click="picker">Reservar</button>
                         </div>

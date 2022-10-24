@@ -47,10 +47,10 @@
                                 <td class="align-middle text-center">{{ product.warehouse.entity.name }} - {{ product.warehouse.name }}</td>
                                 <td class="align-middle text-center">
                                     <div v-if="isBetween(product.reservations)">
-                                        <i  class="fa-solid fa-circle fa-lg fa-green"></i>
+                                        <i  class="fa-solid fa-circle fa-lg fa-red"></i>
                                     </div>
                                     <div v-else>
-                                        <i  class="fa-solid fa-circle fa-lg fa-red"></i>
+                                        <i  class="fa-solid fa-circle fa-lg fa-green"></i>
                                     </div>
                                 </td>
                                 <td v-if="!$gate.isFormando()" class="align-middle text-center">
@@ -128,13 +128,9 @@ export default {
                 });
         },
         isBetween(reservations){
-            let flag = false
+            const result = reservations.find((approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date)))
 
-            for (let reservation of reservations) {
-                if (moment().isBetween(reservation.start_date, reservation.end_date)) flag = true
-            }
-
-            return !flag;
+            return result != null && result.approved !== 1;
         },
         numberApReservation(id){
             axios

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Reservation;
 use App\User;
+use App\Entity;
 use App\Warehouse;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
@@ -43,12 +45,37 @@ class ReservationController extends Controller
         }
     }
 
-    public function search(){
+    public function search(Request $request){
         if($search= \Request::get('q') && Auth::user()->role->name=='FORMADOR'){
+            $search = $request->q;
+            return DB::table('reservations')
+                ->join('users','reservations.user_id', '=' ,'users.id')
+                ->join('products', 'reservations.product_id', '=', 'products.id')
+                ->join('warehouses', 'reservations.warehouse_id', '=', 'warehouses.id')
+                ->join('entities', 'warehouses.entity_id', '=', 'entities.id')
+                ->where("user_id", "=", Auth::user()->id)
+                ->where('users.name','like',"%$search%")
+                ->orWhere('products.name','LIKE',"%$search%")
+                ->orWhere('warehouses.name','LIKE',"%$search%")
+                ->orWhere('entities.name','LIKE',"%$search%")
+                ->orderByDesc('reservations.registry_date')
+                ->paginate(9);
+
 
 
         }else if($search= \Request::get('q') && Auth::user()->role->name!=='FORMADOR'){
-
+            $search = $request->q;
+            return DB::table('reservations')
+                ->join('users','reservations.user_id', '=' ,'users.id')
+                ->join('products', 'reservations.product_id', '=', 'products.id')
+                ->join('warehouses', 'reservations.warehouse_id', '=', 'warehouses.id')
+                ->join('entities', 'warehouses.entity_id', '=', 'entities.id')
+                ->where('users.name','like',"%$search%")
+                ->orWhere('products.name','LIKE',"%$search%")
+                ->orWhere('warehouses.name','LIKE',"%$search%")
+                ->orWhere('entities.name','LIKE',"%$search%")
+                ->orderByDesc('reservations.registry_date')
+                ->paginate(9);
 
 
         } else if(Auth::user()->role->name=='FORMADOR'){

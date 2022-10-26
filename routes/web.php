@@ -23,11 +23,6 @@ Route::get('/home', function (){
     return redirect('/dashboard');
 });
 
-Route::get('/link', function () {
-    $target = '/inetpub/vhosts/atecge.atec-porto.eu/httpdocs/';
-    $shortcut = '/inetpub/vhosts/atecge.atec-porto.eu/httpdocs/core/public/';
-    symlink($target, $shortcut);
-});
 
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z]+)?' );
 

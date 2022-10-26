@@ -23,5 +23,9 @@ Route::get('/home', function (){
     return redirect('/dashboard');
 });
 
+Route::get('/foo', function (){
+   Artisan::call('storage:link');
+});
+
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z]+)?' );
 

@@ -13,7 +13,7 @@ export const updateMixin={
     methods:{
         updateData(){
             this.$Progress.start()
-            this.form.put(`api/${this.link}/`+this.form.id)
+            this.form.post(`api/${this.link}/`+this.form.id)
                 .then(()=>{
                     $('#addNew').modal('hide');
                     Swal.fire(

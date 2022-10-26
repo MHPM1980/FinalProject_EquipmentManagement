@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="mode ? updateData() : createNew()">
+    <form method="post" @submit.prevent="mode ? updateData() : createNew()">
 
         <div class="form-group row d-flex justify-content-between mr-1">
             <label for="permission" class="col-4 align-middle mt-1">Escolher Permissão: </label>

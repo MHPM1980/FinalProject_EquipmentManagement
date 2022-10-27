@@ -10,11 +10,13 @@
                                 Novo <i class="fa-solid fa-euro-sign"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+                    <!-- ----------------------------------- INICIO DA TABELA -------------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +24,7 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+                            <!-- ------------------------------------ CORPO DA TABELA ------------------------------ -->
                             <tbody>
                             <tr v-for="cost in costs.data" :key="cost.id">
                                 <td class="align-middle text-center">{{ cost.id }}</td>
@@ -61,6 +64,7 @@
 </template>
 
 <script>
+    import NotFound from "../NotFound";
     import ModalComp from "../widgets/modalComp";
     import formCompCosts from "./widgets/formCompCosts";
     import {deleteMixin} from "../mixins/deleteMixin";
@@ -90,7 +94,7 @@
         },
         mixins:[deleteMixin, searchMixin, newModalMixin],
         created(){
-            //custom Event to reload DOM
+            //custom Event para recarregar a DOM
             Fire.$on('AfterCreate',()=>{
                 if(this.$gate.isAdmin()){
                     axios
@@ -101,8 +105,10 @@
         },
         components: {
             ModalComp,
-            formCompCosts
+            formCompCosts,
+            NotFound
         },
+        //Fetch dos dados da API
         mounted() {
             if(this.$gate.isAdmin()){
                 axios
@@ -114,6 +120,7 @@
             }
         },
         methods:{
+            //Paginação
             getResults(page = 1){
                 axios
                     .get('api/costs?page=' + page)
@@ -121,6 +128,7 @@
                         this.costs = response.data;
                     });
             },
+            //Preencher Formulário de Edição
             editModal(cost){
                 this.mode=true;
                 $('#addNew').modal('show');

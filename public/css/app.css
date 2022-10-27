@@ -53011,49 +53011,52 @@ a.text-muted:hover {
   border-color: #4b545c !important;
 }@charset "UTF-8";
 
-.text-blue {
-  color: #3490dc;
-}
+/*#region COLOR VARIABLES*/
 
-.text-indigo {
-  color: #6574cd;
-}
+/*#endregion*/
 
-.text-purple {
-  color: #9561e2;
-}
-
-.text-pink {
-  color: #f66d9b;
-}
-
-.text-red {
-  color: #e3342f;
-}
-
-.text-orange {
-  color: #f6993f;
-}
-
-.text-yellow {
-  color: #ffed4a;
-}
-
-.text-green {
-  color: #38c172;
-}
-
-.text-teal {
-  color: #4dc0b5;
-}
-
-.text-cyan {
-  color: #6cb2eb;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: table;
 }
 
 body {
   overflow: auto;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: rgb(12, 48, 72);
+  background: linear-gradient(180deg, rgb(43, 121, 180) 0%, rgb(32, 95, 142) 30%, rgb(12, 48, 72) 60%, rgb(9, 41, 61) 100%);
 }
+
+.legenda {
+  font-size: 10px;
+}
+
+.welcome-msg {
+  text-transform: uppercase;
+}
+
+/*#region PRODUCT*/
+
+.product-desc-image {
+  width: 320px;
+  height: 320px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.product-details-calendar {
+  width: 100%;
+  height: 300px;
+}
+
+/*#endregion*/
+
+/*#region FOOTERS*/
 
 footer {
   position: -webkit-sticky;
@@ -53065,6 +53068,14 @@ footer {
 .small-box-footer {
   z-index: 0 !important;
 }
+
+.card-footer {
+  z-index: 0;
+}
+
+/*#endregion*/
+
+/*#region STATUS ICONS*/
 
 .fa-red {
   color: red;
@@ -53078,29 +53089,38 @@ footer {
   color: #F5F51D;
 }
 
-.legenda {
-  font-size: 10px;
+/*#endregion*/
+
+/*#region LOGIN-REGISTER PAGE*/
+
+.atec-ge-login {
+  width: 65%;
+  margin: 4%;
 }
 
-.welcome-msg {
-  text-transform: uppercase;
+.atec-ge-register {
+  width: 65%;
+  margin: 2%;
 }
 
-.card-footer {
-  z-index: 0;
+.vertical-align {
+  vertical-align: top;
 }
 
-.product-desc-image {
-  width: 320px;
-  height: 320px;
-  -o-object-fit: contain;
-     object-fit: contain;
+@media only screen and (max-width: 400px) {
+  .atec-ge-login {
+    width: 85%;
+  }
+
+  .atec-ge-register {
+    width: 85%;
+    margin: 10% 10% 0% 10%;
+  }
 }
 
-.product-details-calendar {
-  width: 100%;
-  height: 300px;
-}
+/*#endregion LOGIN-REGISTER PAGE*/
+
+/*#region MEDIA QUERIES*/
 
 @media screen and (max-width: 450px) {
   .mainbox {
@@ -53281,13 +53301,6 @@ footer {
        object-fit: cover;
   }
 
-  .mainbox {
-    margin: auto;
-    height: 85vh;
-    width: 80vw;
-    position: relative;
-  }
-
   .err {
     color: #ffffff;
     font-size: 7.8rem;
@@ -53353,11 +53366,8 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
-  .mainbox {
-    margin: auto;
-    height: 85vh;
-    width: 80vw;
-    position: relative;
+  .descricao-card {
+    font-size: 16px;
   }
 
   .err {
@@ -53374,14 +53384,6 @@ footer {
     position: absolute;
     left: 61%;
     top: 8%;
-  }
-
-  .far {
-    color: #ffffff;
-    position: absolute;
-    font-size: 5.5rem;
-    left: 45%;
-    top: 14%;
   }
 
   .msg {
@@ -53418,10 +53420,6 @@ footer {
     color: white;
     text-decoration: underline;
   }
-
-  .descricao-card {
-    font-size: 16px;
-  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -53443,13 +53441,6 @@ footer {
     height: 85px;
     -o-object-fit: cover;
        object-fit: cover;
-  }
-
-  .mainbox {
-    margin: auto;
-    height: 85vh;
-    width: 80vw;
-    position: relative;
   }
 
   .err {
@@ -53513,11 +53504,8 @@ footer {
 }
 
 @media only screen and (min-width: 1200px) {
-  .mainbox {
-    margin: auto;
-    height: 85vh;
-    width: 80vw;
-    position: relative;
+  .descricao-card {
+    font-size: 20px;
   }
 
   .err {
@@ -53578,11 +53566,9 @@ footer {
     color: white;
     text-decoration: underline;
   }
-
-  .descricao-card {
-    font-size: 20px;
-  }
 }
+
+/*#endregion*/
 
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)

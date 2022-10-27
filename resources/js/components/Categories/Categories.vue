@@ -10,12 +10,13 @@
                                 Novo <i class="fa-solid fa-gears"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
-
+                    <!-- --------------------------------- INICIO DA TABElA ---------------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -23,6 +24,7 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+                            <!-- --------------------------------------- CORPO TABELA ---------------------------------------- -->
                             <tbody>
                             <tr v-for="category in categories.data" :key="category.id">
                                 <td class="align-middle text-center">{{ category.id }}</td>
@@ -57,6 +59,7 @@
 </template>
 
 <script>
+import NotFound from "../NotFound";
 import ModalComp from "../widgets/modalComp";
 import formCompCategories from "./widgets/formCompCategories";
 import {deleteMixin} from "../mixins/deleteMixin";
@@ -84,7 +87,7 @@ export default {
     },
     mixins:[deleteMixin, searchMixin, newModalMixin],
     created(){
-        //custom Event to reload DOM
+        //custom Event para recarregar a DOM
         Fire.$on('AfterCreate',()=>{
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
@@ -94,8 +97,10 @@ export default {
     },
     components: {
         ModalComp,
-        formCompCategories
+        formCompCategories,
+        NotFound
     },
+    //Fetch dos dados da API
     mounted() {
         if(this.$gate.isAdmin() || this.$gate.isGestor()){
             axios
@@ -107,6 +112,7 @@ export default {
         }
     },
     methods:{
+        //Paginação
         getResults(page = 1){
             axios
                 .get('api/categories?page=' + page)
@@ -114,6 +120,7 @@ export default {
                     this.categories = response.data;
                 });
         },
+        //Preencher Formulário de Edição
         editModal(category){
             this.mode=true;
             $('#addNew').modal('show');

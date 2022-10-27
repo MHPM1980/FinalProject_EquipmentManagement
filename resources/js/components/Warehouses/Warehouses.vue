@@ -17,7 +17,7 @@
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
 
-                    <!-- ------------------------------------- INICIO DA TABALEA ----------------------------------- -->
+                    <!-- -------------------------------------- INICIO DA TABElA ----------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+    import NotFound from "../NotFound";
     import ModalComp from "../widgets/modalComp";
     import formCompWarehouses from "./widgets/formCompWarehouses";
     import {deleteMixin} from "../mixins/deleteMixin";
@@ -109,8 +110,10 @@
         },
         components: {
             ModalComp,
-            formCompWarehouses
+            formCompWarehouses,
+            NotFound
         },
+        //Fetch dos dados da API
         mounted() {
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
@@ -122,6 +125,7 @@
             }
         },
         methods:{
+            //Paginação
             getResults(page = 1){
                 axios
                     .get('api/warehouses?page=' + page)
@@ -129,6 +133,7 @@
                         this.warehouses = response.data;
                     });
             },
+            //Preencher Formulário de Edição
             editModal(warehouse){
                 this.mode=true;
                 $('#addNew').modal('show');

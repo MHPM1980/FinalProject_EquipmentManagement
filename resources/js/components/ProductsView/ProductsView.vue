@@ -19,18 +19,13 @@
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
 
-                    <!-- ------------------------------------- INICIO DA TABALEA ---------------------------------------------- -->
+                    <!-- ------------------------------------- INICIO DA TABELA ---------------------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
                                 <th class="th-imagem text-center">Imagem</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Descrição</th>
-                                <th class="text-center">Número Série</th>
-                                <th class="text-center">Categoria</th>
-                                <th class="text-center">Proprietário</th>
-                                <th class="text-center">Estado</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                                 <th v-if="!$gate.isFormando()" class="text-center">Ação</th>
                             </tr>
                             </thead>
@@ -90,6 +85,14 @@ export default {
             dataFetched:false,
             products: {},
             reservations:[],
+            theaders: [
+                'Nome',
+                'Descrição',
+                'Número Série',
+                'Categoria',
+                'Proprietário',
+                'Estado'
+            ],
             form: new Form({
                 id:'',
                 image:'',
@@ -103,7 +106,7 @@ export default {
     },
     mixins:[searchMixin],
     created(){
-        //custom Event to reload DOM
+        //custom Event para recarregar a DOM
         Fire.$on('AfterCreate',()=>{
             axios
                 .get("api/products/")
@@ -114,6 +117,7 @@ export default {
         modalProduct,
         productDetail
     },
+    //Fetch dos dados da API
     mounted() {
         axios
             .get("api/products/")
@@ -123,6 +127,7 @@ export default {
             })
     },
     methods:{
+        //Paginação
         getResults(page = 1){
             axios
                 .get('api/products?page=' + page)
@@ -130,16 +135,19 @@ export default {
                     this.products = response.data;
                 });
         },
+        //Atualizar Estado do Produto na view
         isBetween(reservations){
             const result = reservations.find((approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date)))
 
             return result != null && result.approved !== 1;
         },
+        //Retorna um vetor de reservas Aprovadas
         numberApReservation(id){
             axios
                 .get(`api/findProductReservations/?product_id=`+id+`&approved!=0`)
                 .then(({ data }) => (this.reservations=data.trim().split(" ")))
         },
+        //Preencher Dados do Produto
         listEquipment(product){
             this.form.fill(product);
             $('#addNew').modal('show');

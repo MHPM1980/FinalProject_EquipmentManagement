@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import NotFound from "../NotFound";
 import ModalComp from "../widgets/modalComp";
 import formComp from "./widgets/formComp";
 import {deleteMixin} from "../mixins/deleteMixin";
@@ -111,7 +112,9 @@ export default {
     components: {
         ModalComp,
         formComp,
+        NotFound
     },
+    //Fetch dos dados da API
     mounted() {
         if(this.$gate.isAdmin() || this.$gate.isGestor()){
             axios
@@ -123,6 +126,7 @@ export default {
         }
     },
     methods:{
+        //Paginação
         getResults(page = 1){
             axios
                 .get('api/users?page=' + page)
@@ -130,6 +134,7 @@ export default {
                     this.users = response.data;
                 });
         },
+        //Preencher Formulário de Edição
         editModal(user){
             this.mode=true;
             $('#addNew').modal('show');

@@ -10,11 +10,13 @@
                                 Novo <i class="fa-solid fa-building"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+                    <!-- ------------------------------------ INICIO DA TABALEA ------------------------------------ -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +24,7 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+                            <!-- ---------------------------------- CORPO TABELA ----------------------------------- -->
                             <tbody>
                             <tr v-for="entity in entities.data" :key="entity.id">
                                 <td class="align-middle text-center">{{ entity.id }}</td>
@@ -62,6 +65,7 @@
 </template>
 
 <script>
+    import NotFound from "../NotFound";
     import ModalComp from "../widgets/modalComp";
     import formCompEntities from "./widgets/formCompEntities.vue";
     import {deleteMixin} from "../mixins/deleteMixin";
@@ -93,7 +97,7 @@
         },
         mixins:[deleteMixin, searchMixin, newModalMixin],
         created(){
-            //custom Event to reload DOM
+            //custom Event para recarregar a DOM
             Fire.$on('AfterCreate',()=>{
                 if(this.$gate.isAdmin() || this.$gate.isGestor()){
                     axios
@@ -104,8 +108,10 @@
         },
         components: {
             ModalComp,
-            formCompEntities
+            formCompEntities,
+            NotFound
         },
+        //Fetch dos dados da API
         mounted() {
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
@@ -117,6 +123,7 @@
             }
         },
         methods:{
+            //Paginação
             getResults(page = 1){
                 axios
                     .get('api/entities?page=' + page)
@@ -124,6 +131,7 @@
                         this.entities = response.data;
                     });
             },
+            //Preencher Formulário de Edição
             editModal(entity){
                 this.mode=true;
                 $('#addNew').modal('show');

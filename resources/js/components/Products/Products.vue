@@ -10,11 +10,13 @@
                                 Novo <i class="fa-solid fa-screwdriver-wrench"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+                    <!-- ------------------------------------ INICIO DA TABELA ------------------------------------ -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +24,7 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+                            <!-- ---------------------------------- CORPO DA TABELA --------------------------------- -->
                             <tbody>
                             <tr v-for="product in products.data" :key="product.id" class="altura-row">
                                 <td class="align-middle text-center">{{ product.id }}</td>
@@ -62,6 +65,7 @@
 </template>
 
 <script>
+    import NotFound from "../NotFound";
     import ModalComp from "../widgets/modalComp";
     import formCompProducts from "./widgets/formCompProducts";
     import {deleteMixin} from "../mixins/deleteMixin";
@@ -98,7 +102,7 @@
         },
         mixins:[deleteMixin,searchMixin, newModalMixin],
         created(){
-            //custom Event to reload DOM
+            //custom Event para recarregar a DOM
             Fire.$on('AfterCreate',()=>{
                 if(this.$gate.isAdmin() || this.$gate.isGestor()){
                     axios
@@ -109,8 +113,10 @@
         },
         components: {
             ModalComp,
-            formCompProducts
+            formCompProducts,
+            NotFound
         },
+        //Fetch dos dados da API
         mounted() {
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios
@@ -122,6 +128,7 @@
             }
         },
         methods:{
+            //Paginação
             getResults(page = 1){
                 axios
                     .get('api/products?page=' + page)
@@ -129,6 +136,7 @@
                         this.products = response.data;
                     });
             },
+            //Preencher Formulário de Edição
             editModal(product){
                 this.mode=true;
                 $('#addNew').modal('show');

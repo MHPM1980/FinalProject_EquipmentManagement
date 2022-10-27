@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import NotFound from "../NotFound";
 import ModalComp from "../widgets/modalComp";
 import formCompRoles from "./widgets/formCompRoles";
 import {deleteMixin} from "../mixins/deleteMixin";
@@ -108,14 +109,17 @@ export default {
     },
     components: {
         ModalComp,
-        formCompRoles
+        formCompRoles,
+        NotFound
     },
     methods:{
+        //Preencher Formulário de Edição
         editModal(role){
             this.mode=true;
             $('#addNew').modal('show');
             this.form.fill(role);
         },
+        //Fetch dos dados da API
         loadRoles(){
             if(this.$gate.isAdmin() || this.$gate.isGestor()){
                 axios

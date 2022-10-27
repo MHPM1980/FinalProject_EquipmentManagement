@@ -13,7 +13,7 @@
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
 
-                    <!-- ------------------------------------- INICIO DA TABALEA ----------------------------------- -->
+                    <!-- ------------------------------------- INICIO DA TABELA ----------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -25,7 +25,7 @@
                                 <th class="text-center" v-if="$gate.isAdmin()">Cancelar</th>
                             </tr>
                             </thead>
-                            <!-- ---------------------------------- CORPO TABELA ----------------------------------- -->
+                            <!-- -------------------------------- CORPO DA TABELA ----------------------------------- -->
                             <tbody>
                             <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
 
@@ -149,7 +149,7 @@
                     .then(({ data }) => (this.reservations = data))
             });
         },
-
+        //Fetch dos dados da API
         mounted() {
             axios
                 .get("api/reservations/")
@@ -160,11 +160,7 @@
         },
 
         methods:{
-            loadReservations(){
-                    axios
-                        .get("api/reservations/")
-                        .then(({ data }) => (this.reservations = data))
-            },
+            //Recusar uma reserva - altera a aprovação para 0
             reservationDenied(id){
                 this.form.approved=0
                 this.form.put(`api/reservations/`+id)
@@ -186,6 +182,7 @@
                     })
 
             },
+            //Aceitar uma reserva
             reservationApproved(id){
                 this.form.approved=1
                 this.form.delivered=0
@@ -206,6 +203,7 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
+            //Confirma levantamento do equipamento da reserva
             equipmentDelivered(id){
                 this.form.delivered=1
                 this.form.returned=0
@@ -227,6 +225,7 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
+            //Confirma a devolução do equipamento
             equipmentReturned(id){
                 this.form.returned=1
                 this.form.delivered=1
@@ -248,6 +247,7 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
+            //Paginação
             getResults(page = 1){
                 axios
                     .get('api/reservations?page=' + page)

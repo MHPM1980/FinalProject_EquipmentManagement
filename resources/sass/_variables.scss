@@ -6,6 +6,7 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+/*#region COLOR VARIABLES*/
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -17,60 +18,22 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+/*#endregion*/
 
-.text-blue{
-    color:$blue;
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display:table;
 }
-.text-indigo{
-    color:$indigo;
-}
-.text-purple{
-    color:$purple;
-}
-.text-pink{
-    color:$pink;
-}
-.text-red{
-    color:$red;
-}
-.text-orange{
-    color:$orange;
-}
-.text-yellow{
-    color:$yellow;
-}
-.text-green{
-    color:$green;
-}
-.text-teal{
-    color:$teal;
-}
-.text-cyan{
-    color:$cyan;
-}
-body{
+
+body {
     overflow: auto;
-}
-
-footer{
-    position: sticky;
-    bottom: 0;
-    z-index: 1;
-}
-
-.small-box-footer{
-    z-index: 0 !important;
-}
-
-.fa-red{
-    color: red;
-}
-.fa-green{
-    color: forestgreen;
-}
-
-.fa-yellow{
-    color: #F5F51D;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: rgba(12,48,72,1);
+    background:  linear-gradient(180deg, rgba(43,121,180,1) 0%, rgba(32,95,142,1) 30%, rgba(12,48,72,1) 60%, rgba(9,41,61,1) 100%);
 }
 
 .legenda{
@@ -81,9 +44,7 @@ footer{
     text-transform: uppercase;
 }
 
-.card-footer{
-    z-index: 0;
-}
+/*#region PRODUCT*/
 
 .product-desc-image{
     width: 320px;
@@ -96,6 +57,66 @@ footer{
     height: 300px;
 }
 
+/*#endregion*/
+
+/*#region FOOTERS*/
+footer{
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+.small-box-footer{
+    z-index: 0 !important;
+}
+
+.card-footer{
+    z-index: 0;
+}
+/*#endregion*/
+
+/*#region STATUS ICONS*/
+.fa-red{
+    color: red;
+}
+.fa-green{
+    color: forestgreen;
+}
+
+.fa-yellow{
+    color: #F5F51D;
+}
+/*#endregion*/
+
+/*#region LOGIN-REGISTER PAGE*/
+.atec-ge-login{
+    width: 65%;
+    margin: 4%;
+}
+
+.atec-ge-register{
+    width: 65%;
+    margin: 2%;
+}
+
+.vertical-align{
+    vertical-align: top;
+}
+
+@media only screen and (max-width: 400px) {
+    .atec-ge-login{
+        width: 85%;
+    }
+
+    .atec-ge-register{
+        width: 85%;
+        margin:10% 10% 0% 10%;
+
+    }
+}
+/*#endregion LOGIN-REGISTER PAGE*/
+
+/*#region MEDIA QUERIES*/
 @media screen and (max-width: 450px){
     // PÁGINA DE ERRO 404
 
@@ -546,6 +567,8 @@ footer{
         text-decoration: underline;
     }
 }
+/*#endregion*/
+
 
 
 

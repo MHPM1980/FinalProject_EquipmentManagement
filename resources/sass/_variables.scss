@@ -85,6 +85,16 @@ footer{
     z-index: 0;
 }
 
+.product-desc-image{
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+}
+.product-details-calendar{
+    width: 100%;
+    height: 300px;
+}
+
 @media screen and (max-width: 450px){
     // PÁGINA DE ERRO 404
 

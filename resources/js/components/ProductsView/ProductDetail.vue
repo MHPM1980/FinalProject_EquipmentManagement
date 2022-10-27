@@ -5,8 +5,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-6 text-center">
-                            <img class="" :src="'img/products/'+ form.image" alt="Product Image"
-                                 style="width: 320px; height: 320px; object-fit: contain">
+                            <img class="product-desc-image" :src="'img/products/'+ form.image" alt="Product Image">
                         </div>
                         <div class="col-12 col-lg-6 justify-content-center">
                             <div class="mt-4">
@@ -73,7 +72,7 @@
                                 <has-error :form="form" field="entity_id"></has-error>
                             </div>
                         </div>
-                        <div class="text-center vc-reservation-calendar" style="width: 100%; height: 300px;">
+                        <div class="text-center vc-reservation-calendar product-details-calendar">
                             <v-date-picker v-model="range" :disabled-dates="disabledDays" :min-date='new Date()'
                                            is-range is-expanded/>
                         </div>

@@ -166,9 +166,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //Find cost in DB
+        //Find product in DB
         $product = Product::query()->findOrFail($id);
-        //Delete cost in DB
+
+        //Delete product and image in DB
+        $image_path = public_path().'/img/products/'.$product->image;
+        unlink($image_path);
         $product->delete();
 
         return ['message' => 'User Deleted'];

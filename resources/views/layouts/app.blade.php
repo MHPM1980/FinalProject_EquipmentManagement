@@ -19,13 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
-
-    <style>
-
-
-
-
-    </style>
+    <link rel="stylesheet" href="{{asset('../resources/sass/_variables.scss')}}">
 </head>
 <body>
 <div id="app">

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/app.css">
 
     <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
+    <link rel="stylesheet" href="{{asset('../resources/sass/_variables.scss')}}">
 
     <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
 <body class="hold-transition sidebar-mini">

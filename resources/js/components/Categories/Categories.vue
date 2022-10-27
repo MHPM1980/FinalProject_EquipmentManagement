@@ -15,14 +15,12 @@
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Descrição</th>
-                                <th class="text-center">Ação</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -63,11 +61,18 @@ import ModalComp from "../widgets/modalComp";
 import formCompCategories from "./widgets/formCompCategories";
 import {deleteMixin} from "../mixins/deleteMixin";
 import {searchMixin} from "../mixins/searchMixin";
+import {newModalMixin} from "../mixins/newModalMixin";
 export default {
     data(){
         return{
             dataFetched:false,
             categories: {},
+            theaders: [
+                'ID',
+                'Nome',
+                'Descrição',
+                'Ação'
+            ],
             form: new Form({
                 id:'',
                 name: '',
@@ -77,7 +82,7 @@ export default {
             mode: false,
         }
     },
-    mixins:[deleteMixin, searchMixin],
+    mixins:[deleteMixin, searchMixin, newModalMixin],
     created(){
         //custom Event to reload DOM
         Fire.$on('AfterCreate',()=>{
@@ -108,11 +113,6 @@ export default {
                 .then(response => {
                     this.categories = response.data;
                 });
-        },
-        newModal(){
-            this.mode=false;
-            $('#addNew').modal('show');
-            this.form.reset();
         },
         editModal(category){
             this.mode=true;

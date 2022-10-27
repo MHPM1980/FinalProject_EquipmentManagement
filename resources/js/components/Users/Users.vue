@@ -19,13 +19,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Contacto</th>
-                                <th class="text-center">Permissão</th>
-                                <th class="text-center">Centro Custo</th>
-                                <th class="text-center">Ação</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,6 +63,7 @@ import ModalComp from "../widgets/modalComp";
 import formComp from "./widgets/formComp";
 import {deleteMixin} from "../mixins/deleteMixin";
 import {searchMixin} from "../mixins/searchMixin";
+import {newModalMixin} from "../mixins/newModalMixin";
 
 export default {
     name: 'Users',
@@ -76,6 +71,15 @@ export default {
         return{
             dataFetched:false,
             users: {},
+            theaders: [
+                'ID',
+                'Nome',
+                'Email',
+                'Contacto',
+                'Permissão',
+                'Centro Custo',
+                'Ação'
+            ],
             form: new Form({
                 id:'',
                 name: '',
@@ -89,7 +93,7 @@ export default {
             mode: false,
         }
     },
-    mixins:[deleteMixin, searchMixin],
+    mixins:[deleteMixin, searchMixin, newModalMixin],
     created(){
         //custom Event to reload DOM
         Fire.$on('AfterCreate',()=>{
@@ -121,12 +125,6 @@ export default {
                 .then(response => {
                     this.users = response.data;
                 });
-        },
-        newModal(){
-            this.mode=false;
-            $('#addNew').modal('show');
-            this.form.reset();
-            this.form.clear();
         },
         editModal(user){
             this.mode=true;

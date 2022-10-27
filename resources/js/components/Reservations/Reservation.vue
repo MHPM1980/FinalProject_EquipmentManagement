@@ -16,14 +16,9 @@
                             <thead>
                             <tr>
                                 <th  class="text-center" v-if="$gate.isAdmin() || $gate.isGestor()">Utilizador</th>
-                                <th class="text-center" >Equipamento</th>
-                                <th class="text-center">Destino</th>
-                                <th class="text-center" >Data Reserva</th>
-                                <th class="text-center" >Início Reserva</th>
-                                <th class="text-center" >Fim Reserva</th>
+                                <th v-for="thead in theaders1" class="text-center">{{thead}}</th>
                                 <th class="text-center"  v-if="$gate.isAdmin() || $gate.isGestor()" >Aprovação</th>
-                                <th class="text-center" >Levantado</th>
-                                <th class="text-center" >Devolvido</th>
+                                <th v-for="thead in theaders2" class="text-center">{{thead}}</th>
                                 <th class="text-center" v-if="$gate.isAdmin()">Cancelar</th>
                             </tr>
                             </thead>
@@ -123,6 +118,18 @@
                 dataFetched:false,
                 reservations: {},
                 profile: {},
+                theaders1: [
+                    'Equipamento',
+                    'Destino',
+                    'Data Reserva',
+                    'Início Reserva',
+                    'Fim Reserva',
+                    'Ação'
+                ],
+                theaders2: [
+                    'Levantado',
+                    'Devolvido',
+                ],
                 form: new Form({
                     id:'',
                 }),
@@ -238,7 +245,6 @@
                         Swal.fire("Erro!","Não é possível atualizar o registo.","warning");
                     })
             },
-
             getResults(page = 1){
                 axios
                     .get('api/reservations?page=' + page)

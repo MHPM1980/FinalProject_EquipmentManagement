@@ -19,14 +19,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="th-imagem text-center">Imagem</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Descrição</th>
-                                <th class="text-center">Número Série</th>
-                                <th class="text-center">Categoria</th>
-                                <th class="text-center">Proprietário</th>
-                                <th class="text-center">Ação</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -73,12 +66,23 @@
     import formCompProducts from "./widgets/formCompProducts";
     import {deleteMixin} from "../mixins/deleteMixin";
     import {searchMixin} from "../mixins/searchMixin";
+    import {newModalMixin} from "../mixins/newModalMixin";
 
     export default {
         data(){
             return{
                 dataFetched:false,
                 products: {},
+                theaders: [
+                    'ID',
+                    'Imagem',
+                    'Nome',
+                    'Descrição',
+                    'Número Série',
+                    'Categoria',
+                    'Proprietário',
+                    'Ação'
+                ],
                 form: new Form({
                     id:'',
                     image:'',
@@ -92,7 +96,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin,searchMixin],
+        mixins:[deleteMixin,searchMixin, newModalMixin],
         created(){
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
@@ -124,11 +128,6 @@
                     .then(response => {
                         this.products = response.data;
                     });
-            },
-            newModal(){
-                this.mode=false;
-                $('#addNew').modal('show');
-                this.form.reset();
             },
             editModal(product){
                 this.mode=true;

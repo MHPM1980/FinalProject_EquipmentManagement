@@ -11,16 +11,15 @@
                         <div v-else>
                             <h3 class="card-title mt-2">Listagem de Equipamentos</h3>
                         </div>
-
-                        <div class="card-tools">
-
-                        </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+
+                    <!-- ------------------------------------- INICIO DA TABALEA ---------------------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -35,6 +34,7 @@
                                 <th v-if="!$gate.isFormando()" class="text-center">Ação</th>
                             </tr>
                             </thead>
+                            <!-- --------------------------------------- CORPO TABELA ---------------------------------------- -->
                             <tbody>
                             <tr v-for="product in products.data" :key="product.id" class="altura-row">
                                 <td class="td-imagem align-middle">
@@ -45,6 +45,8 @@
                                 <td class="align-middle text-center">{{ product.serial_number }}</td>
                                 <td class="align-middle text-center">{{ product.category.name }}</td>
                                 <td class="align-middle text-center">{{ product.warehouse.entity.name }} - {{ product.warehouse.name }}</td>
+
+                                <!-- --------------------------------------- COLUNA DE ESTADO ---------------------------------------->
                                 <td class="align-middle text-center">
                                     <div v-if="isBetween(product.reservations)">
                                         <i  class="fa-solid fa-circle fa-lg fa-red"></i>
@@ -53,6 +55,7 @@
                                         <i  class="fa-solid fa-circle fa-lg fa-green"></i>
                                     </div>
                                 </td>
+                                <!-- ------------------------------------ COLUNA DETALHE ------------------------------------------------ -->
                                 <td v-if="!$gate.isFormando()" class="align-middle text-center">
                                     <a class="btn-primary btn" @click="[numberApReservation(product.id), listEquipment(product)]">Detalhe</a>
                                 </td>

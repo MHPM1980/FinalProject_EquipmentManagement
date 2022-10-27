@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="/css/app.css">
 
     <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
-    <link rel="stylesheet" href="{{asset('../resources/sass/_variables.scss')}}">
+
+    <style>
+        body{
+            display: table-cell;
+            vertical-align: middle;
+            background-color: rgba(12,48,72,1);
+            background:  linear-gradient(180deg, rgba(43,121,180,1) 0%, rgba(32,95,142,1) 30%, rgba(12,48,72,1) 60%, rgba(9,41,61,1) 100%);
+        }
+    </style>
 
     <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
 <body class="hold-transition sidebar-mini">

@@ -19,7 +19,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('./img/logo.png') }}">
-    <link rel="stylesheet" href="{{asset('../resources/sass/_variables.scss')}}">
+
+    <style>
+        body{
+            background-color: rgba(12,48,72,1);
+            background:  linear-gradient(180deg, rgba(43,121,180,1) 0%, rgba(32,95,142,1) 30%, rgba(12,48,72,1) 60%, rgba(9,41,61,1) 100%);
+        }
+    </style>
 </head>
 <body>
 <div id="app">

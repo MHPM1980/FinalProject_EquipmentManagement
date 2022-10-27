@@ -131,9 +131,8 @@ export default {
                 });
         },
         isBetween(reservations){
-            const result = reservations.find((approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date)))
-
-            return result != null && result.approved !== 1;
+            const result = reservations.find((approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date, 'days', '[]')))
+            return  result != null && result.approved !== '' && result.approved !==0;
         },
         numberApReservation(id){
             axios

@@ -6,8 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title mt-2">Gestão de Permissões</h3>
                         <div class="card-tools">
-                            <!--                            <button class="btn btn-success" @click="newModal">
-                                                            Novo <i class="fa-solid fa-euro-sign"></i></button>-->
+
                         </div>
                     </div>
 
@@ -15,9 +14,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Utilizadores</th>
-                                <th class="text-center">Descrição</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,6 +50,7 @@ import ModalComp from "../widgets/modalComp";
 import formCompRoles from "./widgets/formCompRoles";
 import {deleteMixin} from "../mixins/deleteMixin";
 import {searchMixin} from "../mixins/searchMixin";
+import {newModalMixin} from "../mixins/newModalMixin";
 
 export default {
 
@@ -65,6 +63,11 @@ export default {
             }),
             link:'roles',
             mode: false,
+            theaders: [
+                'Nome',
+                'Utilizadores',
+                'Descrição',
+            ],
             permissions:{
                 1:[ "Visualizar equipamentos",
                     "Criar reservas de equipamentos",
@@ -95,7 +98,7 @@ export default {
             }
         }
     },
-    mixins:[deleteMixin, searchMixin],
+    mixins:[deleteMixin, searchMixin, newModalMixin],
     created(){
         this.loadRoles();
         //custom Event to reload DOM
@@ -108,11 +111,6 @@ export default {
         formCompRoles
     },
     methods:{
-        newModal(){
-            this.mode=false;
-            $('#addNew').modal('show');
-            this.form.reset();
-        },
         editModal(role){
             this.mode=true;
             $('#addNew').modal('show');

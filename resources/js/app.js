@@ -84,47 +84,21 @@ let routes = [
         component: require('./components/Developer.vue').default },
     { path: '/equipmentdetails',
         component: require('./components/ProductsView/ProductDetail.vue').default },
-
     { path: '/error',
         component: require('./components/Error500.vue').default },
     { path: '/reservations',
         component: require('./components/Reservations/Reservation').default },
-
 ]
 
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
-Vue.component(
-    'not-found',
-    require('./components/NotFound').default
-);
 Vue.component(
     'pagination',
     require('laravel-vue-pagination')
 );
 
-
-
 const router = new VueRouter({
     mode:'history',
     routes
 })
-
-//Uppercase the first letter, how to use -> ( text | upText )
-Vue.filter('upText',function (text){
-    return text.charAt(0).toUpperCase()+text.slice(1);
-})
-
 
 window.Fire = new Vue();
 
@@ -146,18 +120,6 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

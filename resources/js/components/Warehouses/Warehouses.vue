@@ -19,13 +19,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Morada</th>
-                                <th>Telefone</th>
-                                <th>Entidade</th>
-                                <th>Ação</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,12 +63,22 @@
     import formCompWarehouses from "./widgets/formCompWarehouses";
     import {deleteMixin} from "../mixins/deleteMixin";
     import {searchMixin} from "../mixins/searchMixin";
+    import {newModalMixin} from "../mixins/newModalMixin";
 
     export default {
         data(){
             return{
                 dataFetched:false,
                 warehouses: {},
+                theaders: [
+                    'ID',
+                    'Nome',
+                    'Descrição',
+                    'Morada',
+                    'Telefone',
+                    'Entidade',
+                    'Ação'
+                ],
                 form: new Form({
                     id:'',
                     name: '',
@@ -87,7 +91,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin, searchMixin],
+        mixins:[deleteMixin, searchMixin, newModalMixin],
         created(){
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
@@ -119,11 +123,6 @@
                     .then(response => {
                         this.warehouses = response.data;
                     });
-            },
-            newModal(){
-                this.mode=false;
-                $('#addNew').modal('show');
-                this.form.reset();
             },
             editModal(warehouse){
                 this.mode=true;

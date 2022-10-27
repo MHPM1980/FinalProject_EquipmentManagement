@@ -19,11 +19,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Designação</th>
-                                <th class="text-center">Descrição</th>
-                                <th class="text-center">Utilizadores</th>
-                                <th class="text-center">Ação</th>
+                                <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,12 +65,20 @@
     import formCompCosts from "./widgets/formCompCosts";
     import {deleteMixin} from "../mixins/deleteMixin";
     import {searchMixin} from "../mixins/searchMixin";
+    import {newModalMixin} from "../mixins/newModalMixin";
 
     export default {
         data(){
             return{
                 dataFetched:false,
                 costs: {},
+                theaders: [
+                    'ID',
+                    'Designação',
+                    'Descrição',
+                    'Utilizadores',
+                    'Ação'
+                ],
                 form: new Form({
                     id:'',
                     designation: '',
@@ -84,7 +88,7 @@
                 mode: false,
             }
         },
-        mixins:[deleteMixin, searchMixin],
+        mixins:[deleteMixin, searchMixin, newModalMixin],
         created(){
             //custom Event to reload DOM
             Fire.$on('AfterCreate',()=>{
@@ -116,11 +120,6 @@
                     .then(response => {
                         this.costs = response.data;
                     });
-            },
-            newModal(){
-                this.mode=false;
-                $('#addNew').modal('show');
-                this.form.reset();
             },
             editModal(cost){
                 this.mode=true;

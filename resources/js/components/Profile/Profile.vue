@@ -9,24 +9,24 @@
                         <br>
                         <div class="container p-0">
                             <div class="row">
-                                <div class="col-md-5 col-xl-4">
 
+                                <!-- ----------------- CARD DE NAVEGAÇÃO ----------------------------------- -->
+                                <div class="col-md-5 col-xl-4">
                                     <div class="card profile-card">
                                         <div class="card-header profile-header">
                                             <h5 class="card-title mb-0">Opções</h5>
                                         </div>
                                         <div class="list-group list-group-flush" role="tablist">
-                                            <a class="list-group-item list-group-item-action active" data-toggle="list"
-                                               href="#account" role="tab">
+                                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
                                                 Informações Pessoais
                                             </a>
-                                            <a class="list-group-item list-group-item-action" data-toggle="list"
-                                               href="#password" role="tab">
+                                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
                                                 Password
                                             </a>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- --------------------------CARD DO CONTEUDO ----------------------------------- -->
                                 <div class="col-md-7 col-xl-8">
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="account" role="tabpanel">

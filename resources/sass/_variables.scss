@@ -19,6 +19,7 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 /*#endregion*/
+
 body {
     overflow: auto;
 }
@@ -74,34 +75,6 @@ footer{
     color: #F5F51D;
 }
 /*#endregion*/
-
-/*#region LOGIN-REGISTER PAGE*/
-.atec-ge-login{
-    width: 65%;
-    margin: 4%;
-}
-
-.atec-ge-register{
-    width: 65%;
-    margin: 2%;
-}
-
-.vertical-align{
-    vertical-align: top;
-}
-
-@media only screen and (max-width: 400px) {
-    .atec-ge-login{
-        width: 85%;
-    }
-
-    .atec-ge-register{
-        width: 85%;
-        margin:10% 10% 0% 10%;
-
-    }
-}
-/*#endregion LOGIN-REGISTER PAGE*/
 
 /*#region MEDIA QUERIES*/
 @media screen and (max-width: 450px){

@@ -5,7 +5,6 @@
                 <div class="err">
                     4
                 </div>
-<!--                <i class="far fa-question-circle fa-spin"></i>-->
                 <div class="err3">
                     0
                 </div>

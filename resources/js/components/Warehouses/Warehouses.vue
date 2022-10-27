@@ -10,11 +10,14 @@
                                 Novo <i class="fa-solid fa-warehouse"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+
+                    <!-- ------------------------------------- INICIO DA TABALEA ----------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +25,8 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+
+                            <!-- ------------------------------ CORPO TABELA --------------------------------------- -->
                             <tbody>
                             <tr v-for="warehouse in warehouses.data" :key="warehouse.id">
                                 <td>{{ warehouse.id }}</td>

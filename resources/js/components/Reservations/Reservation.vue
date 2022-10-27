@@ -6,11 +6,14 @@
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mt-2">Listagem de Reservas</h3>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                                       :rows="10"
                                       :columns="7"
                                       :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+
+                    <!-- ------------------------------------- INICIO DA TABALEA ----------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +25,7 @@
                                 <th class="text-center" v-if="$gate.isAdmin()">Cancelar</th>
                             </tr>
                             </thead>
+                            <!-- ---------------------------------- CORPO TABELA ----------------------------------- -->
                             <tbody>
                             <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
 
@@ -32,7 +36,7 @@
                                 <td class="align-middle text-center">{{ reservation.start_date }}</td>
                                 <td class="align-middle text-center">{{ reservation.end_date }}</td>
 
-                                    <!------------------------------ COLUNA DE APROVAÇÃO ------------------------- -->
+                                    <!------------------------------ COLUNA DE APROVAÇÃO --------------------------- -->
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >
                                     <form @submit.prevent="">
                                         <button class="btn btn-primary" v-if="reservation.approved === null" @click="reservationApproved(reservation.id)">Sim</button>
@@ -42,7 +46,7 @@
                                     <div v-if="reservation.approved === 0">Recusada</div>
 
                                 </td>
-                                    <!------------------------------ COLUNA DE LEVANTAMENTO ------------------------- -->
+                                    <!------------------------------ COLUNA DE LEVANTAMENTO ------------------------ -->
                                 <td class="align-middle text-center">
                                     <div v-if="$gate.isAdmin() || $gate.isGestor()">
                                         <form @submit.prevent="">
@@ -59,7 +63,7 @@
                                     </div>
 
                                 </td>
-                                <!------------------------------ COLUNA DE DEVOLUÇÃO ------------------------- -->
+                                <!------------------------------ COLUNA DE DEVOLUÇÃO ------------------------------- -->
                                 <td class="align-middle text-center">
                                     <div v-if="$gate.isAdmin() || $gate.isGestor()">
                                         <form @submit.prevent="">

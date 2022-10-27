@@ -10,11 +10,14 @@
                                 Novo <i class="fa-solid fa-user-plus"></i></button>
                         </div>
                     </div>
+                    <!-- ------------------------ LOADING SKELETON ---------------------------------- -->
                     <b-skeleton-table v-if="!dataFetched"
                         :rows="10"
                         :columns="7"
                         :table-props="{ bordered: true, striped: true }">
                     </b-skeleton-table>
+
+                    <!-- ------------------------------------- INICIO DA TABALEA ----------------------------------- -->
                     <div v-else class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
@@ -22,6 +25,7 @@
                                 <th v-for="thead in theaders" class="text-center">{{thead}}</th>
                             </tr>
                             </thead>
+                            <!-- ---------------------------------- CORPO TABELA ----------------------------------- -->
                             <tbody>
                             <tr v-for="user in users.data" :key="user.id">
                                 <td class="align-middle text-center">{{ user.id }}</td>

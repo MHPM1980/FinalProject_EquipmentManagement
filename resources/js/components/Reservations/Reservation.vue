@@ -128,7 +128,6 @@
                     'Data Reserva',
                     'Início Reserva',
                     'Fim Reserva',
-                    'Ação'
                 ],
                 theaders2: [
                     'Levantado',

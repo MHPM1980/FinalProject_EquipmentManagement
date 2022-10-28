@@ -70,7 +70,9 @@ export const searchMixin={
                 axios
                     .get('api/findReservation?q='+ query)
                     .then(response => {
+                        console.log(response.data)
                         this.reservations = response.data
+
                     })
                     .catch((error) => {
                         console.log(error)

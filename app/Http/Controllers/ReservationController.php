@@ -239,7 +239,7 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         //Find user in DB
-        $reservation = Reservation::query()->findOrFail($id);
+        $reservation = Reservation::findOrFail($id);
 
         $this->validate($request,[
             'approved'=> 'sometimes|boolean',
@@ -248,9 +248,23 @@ class ReservationController extends Controller
         ]);
 
         try{
+
             $reservation -> approved = $request->approved;
             $reservation -> delivered = $request->delivered;
             $reservation -> returned = $request->returned;
+
+            if($reservation->approved == 1 && $reservation->delivered != 1 && $reservation->returned == null){
+                $checkExistingReservation = Reservation::where('product_id', $reservation->product_id)
+                    ->where('start_date', '>=', $reservation->end_date)
+                    ->where('end_date', '<=', $reservation->start_date)
+                    ->where('approved', '1')
+                    ->get();
+
+                if($checkExistingReservation->first() != null){
+                    return response()->json(['error' => 'Já existe uma reserva aprovada para as datas definidas!'], 403);
+                }
+            }
+
             $reservation -> save();
 
             return['message'=>"Success"];

@@ -27,7 +27,8 @@
                             </thead>
                             <!-- -------------------------------- CORPO DA TABELA ----------------------------------- -->
                             <tbody>
-                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ? 'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
+                            <tr name="tr" v-for="reservation in reservations.data" :key="reservation.id" :class="[reservation.approved === 1 ?
+                                'text-success' : reservation.approved === 0 ? 'text-danger' : 'bg-warning']">
 
                                 <td class="align-middle text-center" v-if="$gate.isAdmin() || $gate.isGestor()" >{{reservation.user.name}}</td>
                                 <td class="align-middle text-center">{{ reservation.product.name }}</td>
@@ -50,7 +51,8 @@
                                 <td class="align-middle text-center">
                                     <div v-if="$gate.isAdmin() || $gate.isGestor()">
                                         <form @submit.prevent="">
-                                            <button class="btn btn-primary" v-if="reservation.approved===1 && reservation.delivered === 0" @click="equipmentDelivered(reservation.id)">Sim</button>
+                                            <button class="btn btn-primary" v-if="reservation.approved===1 && reservation.delivered === 0"
+                                                    @click="equipmentDelivered(reservation.id)">Sim</button>
                                         </form>
                                         <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
                                         <div v-if="reservation.approved === 1 && reservation.delivered === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
@@ -67,10 +69,12 @@
                                 <td class="align-middle text-center">
                                     <div v-if="$gate.isAdmin() || $gate.isGestor()">
                                         <form @submit.prevent="">
-                                            <button class="btn btn-primary" v-if="reservation.delivered === 1 && reservation.returned === 0" @click="equipmentReturned(reservation.id)">Sim</button>
+                                            <button class="btn btn-primary" v-if="reservation.delivered === 1 && reservation.returned === 0"
+                                                    @click="equipmentReturned(reservation.id)">Sim</button>
                                         </form>
                                         <div v-if="reservation.approved === 0"> <i class="fa-solid fa-circle fa-lg fa-red"></i> </div>
-                                        <div v-if="reservation.approved === 1 && reservation.delivered===1 && reservation.returned === 1"> <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
+                                        <div v-if="reservation.approved === 1 && reservation.delivered===1 && reservation.returned === 1">
+                                            <i class="fa-solid fa-circle fa-lg fa-green"></i> </div>
                                     </div>
 
                                     <div v-if="$gate.isFormador()">

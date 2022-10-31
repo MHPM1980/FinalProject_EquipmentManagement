@@ -137,9 +137,9 @@ export default {
         },
         //Atualizar Estado do Produto na view
         isBetween(reservations){
-            const result = reservations.find((approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date, 'days', '[]') &&
-                                                                                        approvedReservation.delivered !=1
-                                                                                            && approvedReservation.approved ==1))
+            const result = reservations.find(
+                (approvedReservation => moment().isBetween(approvedReservation.start_date, approvedReservation.end_date, 'days', '[]')
+                                                            && approvedReservation.delivered !=1 && approvedReservation.approved ==1))
             return  result != null && result.approved !== '' && result.approved !==0 ;
         },
         //Retorna um vetor de reservas Aprovadas

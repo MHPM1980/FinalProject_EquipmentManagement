@@ -101,13 +101,19 @@
                     </div>
                     <div class="card-footer">
                             <pagination :data="reservations" @pagination-change-page="getResults"></pagination>
-                            <p class="text-right legenda pb-0">
-                                <span class="text-success px-3 col-6 col-sm-2">Reserva Aprovada</span>
-                                <span class="text-danger px-3 col-6 col-sm-2">Reserva Recusada</span>
-                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-green"></i>&nbsp; Ação concluída </span>
-                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-yellow"></i>&nbsp; A aguardar aprovação</span>
-                                <span class=" px-3 col-4 col-sm-2"><i class="fa-solid fa-circle fa-md fa-red"></i>&nbsp; Ação em falta</span>
-                            </p>
+                            <div class="text-right legenda p-0 row">
+                                <div class="col-6 col-md-12 col-lg-6 row">
+                                    <p class="m-0 col-12 col-md-4 "><span class="bg-warning">Aguardar aprovação</span></p>
+                                    <p class="text-success m-0 col-12 col-md-4 ">Reserva Aprovada</p>
+                                    <p class="text-danger m-0 col-12 col-md-4">Reserva Recusada</p>
+                                </div>
+                                <div class="col-6 col-md-12 col-lg-6 row">
+                                    <p class="m-0 col-12 col-md-4"><i class="fa-solid fa-circle fa-md fa-green"></i>&nbsp; Ação concluída </p>
+                                    <p class="m-0 col-12 col-md-4"><i class="fa-solid fa-circle fa-md fa-yellow"></i>&nbsp; A aguardar Ação</p>
+                                    <p class="m-0 col-12 col-md-4"><i class="fa-solid fa-circle fa-md fa-red"></i>&nbsp; Ação em falta</p>
+                                </div>
+
+                            </div>
                     </div>
                 </div>
             </div>
